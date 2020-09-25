@@ -3,9 +3,7 @@ layout: page
 title: User Guide
 ---
 
-Bagel is a **desktop app for managing flashcards, optimized for use via a Command Line Interface** 
-(CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Bagel manage 
-your flashcards faster than traditional GUI apps.
+Bagel is a **desktop app for managing flashcards, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Bagel manage your flashcards faster than traditional GUI apps.
 
 ### Table of Contents
 * Quick start
