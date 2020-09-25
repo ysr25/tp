@@ -57,3 +57,13 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Developer
 * Responsibilities: UI
+
+### Yong Shan Rong
+
+<img src="images/ysr25.png" width="200px">
+
+[[github](http://github.com/ysr25)]
+[[portfolio](team/ysr25.md)]
+
+* Role: Developer
+* Responsibilities: UI
