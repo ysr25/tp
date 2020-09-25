@@ -30,4 +30,3 @@ Given below are my contributions to the project.
 
 * **Community**:
   * PRs reviewed (with non-trivial review comments): [\#269](https://github.com/nus-cs2103-AY2021S1/ip/pull/269), [\#326](https://github.com/nus-cs2103-AY2021S1/ip/pull/326)
-   
