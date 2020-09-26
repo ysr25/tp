@@ -19,8 +19,11 @@ import javafx.application.Application;
  * to be the entry point of the application, we avoid this issue.
  */
 public class Main {
+    /**
+     * Main entry point.
+     * @param args Entry point.
+     */
     public static void main(String[] args) {
         Application.launch(MainApp.class, args);
-        System.out.println("Arbitrary Commit");
     }
 }
