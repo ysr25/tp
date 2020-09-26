@@ -8,7 +8,9 @@ while still having the benefits of a Graphical User Interface (GUI).
 If you can type fast, Bagel can manage your flashcards faster than traditional GUI apps.
 
 ### Table of Contents
+{:.no_toc}
 
+* Table of Contents
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
