@@ -10,8 +10,8 @@ Bagel is a **desktop app for managing flashcards, optimized for use via a Comman
 * Features
     - Adding a flashcard: add
     - Deleting a flashcard delete
-    - Editing a flashcard: edit 
-    - Viewing a flashcard: view 
+    - Editing a flashcard: edit
+    - Viewing a flashcard: view
     - Viewing list of all flashcards: list
     - Flipping through flashcards: flip
     - Exiting the program: exit
@@ -28,8 +28,8 @@ Bagel is a **desktop app for managing flashcards, optimized for use via a Comman
 5. Type the command in the command box and press Enter to execute it. e.g. typing help and pressing Enter will open the help window.
     Some example commands you can try:
         a. list : Lists all flashcards.
-        b. add t/Data Analysis d/Definition of data analysis: xxxxxx  : Adds a flashcard with the title 
-        'Data Analysis' and description of 'Definition of data analysis: xxxxxx' to the list of flashcards 
+        b. add t/Data Analysis d/Definition of data analysis: xxxxxx  : Adds a flashcard with the title
+        'Data Analysis' and description of 'Definition of data analysis: xxxxxx' to the list of flashcards
         c. delete 3 : Deletes the 3rd flashcard shown in the current flashcards set.
         d. view 3 : Shows the 3rd flashcard shown in the current flashcards set.
         e. edit 2 t/New description : Edits the title of 2nd existing flashcard of the current set to become 'New description'
@@ -46,7 +46,7 @@ Refer to the Features below for details of each command.
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in add TITLE, TITLE is the parameter which can be used as add 
+  e.g. in add TITLE, TITLE is the parameter which can be used as add
 
 * User should supply the number of the flashcard behind commands to eg. add 1, delete 10
 </div>
