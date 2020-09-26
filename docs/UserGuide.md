@@ -106,7 +106,7 @@ Examples:
 
 ### Viewing a flashcard: `view`
 
-Show an existing flashcard in the current list. 
+Show an existing flashcard in the current list.
 
 Format: `view INDEX`
 
