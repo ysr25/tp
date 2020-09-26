@@ -48,12 +48,22 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: TBC
 
-### James Doe
+### Jace Tan
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/jacetjy.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/jacetjy)]
+[[portfolio](team/jacetjy.md)]
 
 * Role: Developer
 * Responsibilities: UI
+
+### Yong Shan Rong
+
+<img src="images/ysr25.png" width="200px">
+
+[[github](http://github.com/ysr25)]
+[[portfolio](team/ysr25.md)]
+
+* Role: Developer
+* Responsibilities: Documentation, scheduling and tracking

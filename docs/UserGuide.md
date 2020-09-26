@@ -3,7 +3,8 @@ layout: page
 title: User Guide
 ---
 
-Bagel is a **desktop app for managing flashcards, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Bagel manage your flashcards faster than traditional GUI apps.
+Bagel is a **desktop app for managing flashcards, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI).
+If you can type fast, Bagel manage your flashcards faster than traditional GUI apps.
 
 ### Table of Contents
 * Quick start
@@ -67,6 +68,28 @@ Examples:
 * `add t/Data Analysis d/Definition of data analysis: xxxxxx`
 * `add t/p-value d/If p value < 0.05, xxxx; Else, xxxx`
 
+### Listing all persons : `list`
+
+Shows a list of all flashcards.
+
+Format: `list`
+
+### Editing a flashcard : `edit`
+
+Edits an existing flashcard.
+
+Format: `edit INDEX [t/TITLE] [d/DESCRIPTION]`
+
+* Edits the person at the specified `INDEX`.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, ...
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+
+Examples:
+*  `edit 1 t/Data analysis` Edits the title of the 1st flashcard to be `Data analysis`.
+*  `edit 1 t/p-value d/probability of ...` Edits the title and the description of the 1st flashcard to be `p-value` and `probability of ...` respectively.
+
 ### Deleting a flashcard : `delete`
 
 Deletes the specified flashcard from the total list of flashcards.
@@ -75,10 +98,13 @@ Format: `delete INDEX`
 
 * Deletes the person at the specified `INDEX`.
 * The index refers to the index number shown in the displayed flashcards list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* The index **must be a positive integer** 1, 2, 3, …
 
-Examples:
-* `list` followed by delete 2 deletes the 2nd flashcard in the shown list of flashcards
+### Exiting the program : `exit`
+
+Exits the program.
+
+Format: `exit`
 
 --------------------------------------------------------------------------------------------------------------------
 
