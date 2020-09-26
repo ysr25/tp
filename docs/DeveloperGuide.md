@@ -273,16 +273,18 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1. User chooses to find a flashcard. 
 2. User enters the keyword they would like to search for.
 3. Bagel finds the flashcard and shows a list of flashcards that contain that keyword. 
-  Use case ends.
+
+Use case ends.
 
 
 **Extensions**
 
-2a. Bagel detects an error in the entered data.
-    2a1. Bagel requests for the correct data.
-    2a2. User enters new details. 
-    Steps 2a1-2a2 are repeated until the data entered are correct.
-    Use case resumes from step 3.
+* 2a. Bagel detects an error in the entered data.
+    * 2a1. Bagel requests for the correct data.
+    * 2a2. User enters new details.<br>
+      Steps 2a1-2a2 are repeated until the data entered are correct.
+
+Use case resumes from step 3.
 
 
 **Use case: UC02 - Editing a flashcard**
@@ -294,16 +296,18 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 3. Bagel shows the list of flashcards.
 4. User enters the index of the flashcard they would like to edit, and the details to edit.
 5. Bagel edits the flashcard and shows the edited flashcard.
+
 Use case ends.
 
 
 **Extensions**
 
-4a. Bagel detects an error in the entered data.
-    4a1. Bagel requests for the correct data.
-    4a2. User enters new details. 
-    Steps 4a1-4a2 are repeated until the data entered are correct.
-    Use case resumes from step 5.
+* 4a. Bagel detects an error in the entered data.
+    * 4a1. Bagel requests for the correct data.
+    * 4a2. User enters new details.<br>
+      Steps 4a1-4a2 are repeated until the data entered are correct.
+
+Use case resumes from step 5.
 
 
 **Use case: UC03 - Deleting a flashcard**
@@ -315,16 +319,18 @@ Use case ends.
 3. Bagel shows the list of flashcards.
 4. User enters the index of the flashcard they would like to delete. 
 5. Bagel deletes the flashcard and shows the new list of flashcards. 
+
 Use case ends. 
 
 
 **Extensions**
 
-4a. Bagel detects an error in the entered data.
-    4a1. Bagel requests for the correct data.
-    4a2. User enters new details. 
-    Steps 4a1-4a2 are repeated until the data entered are correct.
-    Use case resumes from step 5.
+* 4a. Bagel detects an error in the entered data.
+    * 4a1. Bagel requests for the correct data.
+    * 4a2. User enters new details.<br>
+      Steps 4a1-4a2 are repeated until the data entered are correct.
+
+Use case resumes from step 5.
 
 
 **Use case: UC04 - Flipping through flashcards**
@@ -335,19 +341,21 @@ Use case ends.
 2. User enters ‘flip’ to start viewing from the first flashcard in the list.
 3. Bagel shows the first flashcard.
 4. User enters ‘flip’ to view the next flashcard in the list.
-5. Bagel shows the next flashcard. 
-Steps 4-5 are repeated for each flashcard, until the user reaches the end of the list.
+5. Bagel shows the next flashcard.<br>
+   Steps 4-5 are repeated for each flashcard, until the user reaches the end of the list.
 6. Bagel shows the current list of flashcards. 
+
 Use case ends. 
 
 
 **Extensions**
 
-2a/4a. Bagel detects an error in the entered data. 
-    2a1/4a1. Bagel requests for the correct data. 
-    2a2/4a2. User enters new details. 
-    Steps 2a1-2a2/4a1-4a2 are repeated until the data entered are correct.
-    Use case resumes from step 3/5.
+* 2a/4a. Bagel detects an error in the entered data.
+    * 2a1/4a1. Bagel requests for the correct data. 
+    * 2a2/4a2. User enters new details.<br>
+      Steps 2a1-2a2/4a1-4a2 are repeated until the data entered are correct.
+
+Use case resumes from step 3/5.
 
 
 ### Non-Functional Requirements
