@@ -65,3 +65,4 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](http://github.com/liuyxxy)]
 
 * Role: Developer
+* Responsibilities: Code Quality
