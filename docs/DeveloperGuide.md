@@ -243,10 +243,10 @@ _{Explain here how the data archiving feature will be implemented}_
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: a flashcard application faster than a typical mouse/GUI driven app 
-with additional functionality such as adding tags, links, or comments. It targets computing students taking GER1000
-because it is a module that requires memorising many keywords and items, and computing students would prefer typing
-over other means of input.
+**Value proposition**: 
+Bagel is a flashcard application faster than a typical mouse/GUI driven app with additional functionality such as 
+adding tags, links, or comments. It targets computing students taking GER1000 because it is a module that requires
+memorising many keywords and items, and computing students would prefer typing over other means of input.
 
 
 ### User stories
@@ -255,14 +255,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
 | -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
-
-*{More to be added}*
+| `* * *`  | user                                       | add flashcards                 | memorise them                 |
+| `* * *`  | user                                       | delete my flashcards when I am done with them               | keep the list organised                                                                       |
+| `* * *`  | user                                       | edit a flashcard                |  rephrase or fix mistakes that I originally wrote                                   |
+| `* * *`  | user                                       | view individual flashcards          | read them |
+| `* * *`    | user                                       | view a list of sets of flashcards that I currently have   | not mix them up                |
+| `* * *`      | user  | “flip” through a set of flashcards           | memorise them                                                 |
 
 ### Use cases
 
@@ -368,7 +366,6 @@ Use case ends.
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Private contact detail**: A contact detail that is not meant to be shared with others
 
 --------------------------------------------------------------------------------------------------------------------
 
