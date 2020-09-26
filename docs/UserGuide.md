@@ -3,40 +3,41 @@ layout: page
 title: User Guide
 ---
 
-Bagel is a **desktop app for managing flashcards, optimized for use via a Command Line Interface** (CLI) while still
-having the benefits of a Graphical User Interface (GUI). 
+Bagel is a **desktop app for managing flashcards, optimized for use via a Command Line Interface** (CLI)
+while still having the benefits of a Graphical User Interface (GUI).
 If you can type fast, Bagel can manage your flashcards faster than traditional GUI apps.
 
-* Table of Contents
-{:toc}
+### Table of Contents
+* Quick start
+* Features
+    - Adding a flashcard: add
+    - Deleting a flashcard delete
+    - Editing a flashcard: edit
+    - Viewing a flashcard: view
+    - Viewing list of all flashcards: list
+    - Flipping through flashcards: flip
+    - Exiting the program: exit
+* Command Summary
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Quick start
 
-1. Ensure you have Java `11` or above installed in your Computer.
-
-1. Download the latest `addressbook.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).
-
-1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
-
-1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
-
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
-   Some example commands you can try:
-
-   * **`list`** : Lists all flashcards.
-
-   * **`add`**`n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
-
-   * **`delete`**`3` : Deletes the 3rd contact shown in the current list.
-
-   * **`clear`** : Deletes all contacts.
-
-   * **`exit`** : Exits the app.
-
-1. Refer to the [Features](#features) below for details of each command.
+1. Ensure you have Java 11 or above installed in your Computer.
+2. Download the latest flashcard.jar from __.
+3. Copy the file to the folder you want to use as the home folder for your AddressBook.
+4. Double-click the file to start the app. The GUI should appear in a few seconds. Note how the app contains some sample data.
+5. Type the command in the command box and press Enter to execute it. e.g. typing help and pressing Enter will open the help window.
+    Some example commands you can try:
+        a. list : Lists all flashcards.
+        b. add t/Data Analysis d/Definition of data analysis: xxxxxx  : Adds a flashcard with the title
+        'Data Analysis' and description of 'Definition of data analysis: xxxxxx' to the list of flashcards
+        c. delete 3 : Deletes the 3rd flashcard shown in the current flashcards set.
+        d. view 3 : Shows the 3rd flashcard shown in the current flashcards set.
+        e. edit 2 t/New description : Edits the title of 2nd existing flashcard of the current set to become 'New description'
+        f. flip : Flips from current flashcard to next flashcard in the list.
+        g. exit : Exits the app.
+Refer to the Features below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -47,47 +48,36 @@ If you can type fast, Bagel can manage your flashcards faster than traditional G
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+  e.g. in add TITLE, TITLE is the parameter which can be used as add
 
-* Items in square brackets are optional.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
-
-* Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
-
-* Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
-
+* User should supply the number of the flashcard behind commands to eg. add 1, delete 10
 </div>
 
-### Viewing help : `help`
+### Adding a flashcard: `add`
 
-Shows a message explaning how to access the help page.
+Adds a flashcard to the total list of flashcards.
+* Adds a flashcard with a title and description
+* Title and description must be entered
 
-![help message](images/helpMessage.png)
-
-Format: `help`
-
-
-### Adding a person: `add`
-
-Adds a person to the address book.
-
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
+Format: `add t/TITLE d/DESCRIPTION`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A person can have any number of tags (including 0)
 </div>
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `add t/Data Analysis d/Definition of data analysis: xxxxxx`
+* `add t/p-value d/If p value < 0.05, xxxx; Else, xxxx`
 
-### Listing all persons : `list`
+### Deleting a flashcard : `delete`
 
-Shows a list of all flashcards.
+Deletes the specified flashcard from the total list of flashcards.
 
-Format: `list`
+Format: `delete INDEX`
+
+* Deletes the person at the specified `INDEX`.
+* The index refers to the index number shown in the displayed flashcards list.
+* The index **must be a positive integer** 1, 2, 3, …
 
 ### Editing a flashcard : `edit`
 
@@ -112,7 +102,13 @@ Show an existing flashcard in the current list.
 Format: `view INDEX`
 
 * The index refers to the index number shown in the displayed flashcards list.
-* The index **must be a positive integer** 1, 2, 3, ...​
+* The index **must be a positive integer** 1, 2, 3, ...
+
+### Viewing all flashcards : `list`
+
+Shows a list of all flashcards.
+
+Format: `list`
 
 ### Exiting the program : `exit`
 
@@ -124,8 +120,8 @@ Format: `exit`
 
 ## FAQ
 
-**Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+**Q**: Placeholder Question<br>
+**A**: Placeholder Answer
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -133,10 +129,10 @@ Format: `exit`
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-**Clear** | `clear`
+**Add** | `add t/TITLE d/DESCRIPTION`<br> e.g., `add t/Data Analysis d/The definition of Data Analysis is ...`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**Edit** | `edit INDEX t/TITLE d/DESCRIPTION`<br> e.g.,`edit 1 t/Data analysis`
+**View** | `view INDEX`<br> e.g., `view 1`
 **List** | `list`
-**Help** | `help`
+**Flip** | `flip`
+**Exit** | `exit`

@@ -15,9 +15,17 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 [[github](http://github.com/liuyxxy)]
 
-* Role: Developer
-* Responsibilities: Code Quality
-=======
+* Role: Code Quality
+
+### Rachel Gina Abelarde
+
+<img src="images/rgabelarde.png" width="200px">
+
+[[github](http://github.com/rgabelarde)]
+[[portfolio](team/rgabelarde.md)]
+
+* Role: Deliverables and Deadlines
+
 ### Jace Tan
 
 <img src="images/jacetjy.png" width="200px">
@@ -25,8 +33,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](http://github.com/jacetjy)]
 [[portfolio](team/jacetjy.md)]
 
-* Role: Developer
-* Responsibilities: UI
+* Role: Integration
 
 ### Yong Shan Rong
 
@@ -35,5 +42,4 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](http://github.com/ysr25)]
 [[portfolio](team/ysr25.md)]
 
-* Role: Developer
-* Responsibilities: Documentation, scheduling and tracking
+* Role: Documentation, Scheduling and Tracking
