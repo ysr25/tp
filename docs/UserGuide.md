@@ -104,6 +104,15 @@ Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
+### Viewing a flashcard: `view`
+
+Show an existing flashcard in the current list. 
+
+Format: `view INDEX`
+
+* The index refers to the index number shown in the displayed flashcards list.
+* The index must be a positive integer 1, 2, 3, ...​
+
 ### Locating persons by name: `find`
 
 Finds persons whose names contain any of the given keywords.
