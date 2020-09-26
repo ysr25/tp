@@ -101,6 +101,12 @@ Shows a list of all flashcards.
 
 Format: `list`
 
+### Flipping through flashcards : `flip`
+
+Flips from current flashcard to next flashcard in the list.
+
+Format: `flip`
+
 ### Exiting the program : `exit`
 
 Exits the program.
