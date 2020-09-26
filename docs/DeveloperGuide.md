@@ -291,11 +291,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-
-*{More to be added}*
+1. Bagel should work on any _mainstream OS_ as long as it has Java `11` or above installed.
+2. Bagel should be able to hold up to 500 flashcards without a noticeable sluggishness in performance for typical usage.
+3. Bagel should be intuitive to use for first time users.
+4. Bagel should be targeting users who can type fast and prefer typing over other means of input.
+5. Bagel should respond within two seconds.
+6. Bagel should show flashcards within one second of inputting the command. 
+7. Any version of Bagel should function as long as the user has it installed. 
+8. Bagel is expected to adhere to the CS2103T schedule. 
+9. Bagel is not expected to quiz the user. 
+10. Bagel should be for a single user. 
 
 ### Glossary
 
