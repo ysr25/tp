@@ -236,13 +236,17 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+* computing students taking GER1000
+* has a need to manage a significant number of flashcards
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: a flashcard application faster than a typical mouse/GUI driven app 
+with additional functionality such as adding tags, links, or comments. It targets computing students taking GER1000
+because it is a module that requires memorising many keywords and items, and computing students would prefer typing
+over other means of input.
 
 
 ### User stories
@@ -262,32 +266,91 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is `Bagel` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case: UC01 - Finding a flashcard**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1. User chooses to find a flashcard. 
+2. User enters the keyword they would like to search for.
+3. Bagel finds the flashcard and shows a list of flashcards that contain that keyword. 
+  Use case ends.
 
-    Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+2a. Bagel detects an error in the entered data.
+    2a1. Bagel requests for the correct data.
+    2a2. User enters new details. 
+    Steps 2a1-2a2 are repeated until the data entered are correct.
+    Use case resumes from step 3.
 
-  Use case ends.
 
-* 3a. The given index is invalid.
+**Use case: UC02 - Editing a flashcard**
 
-    * 3a1. AddressBook shows an error message.
+**MSS**
 
-      Use case resumes at step 2.
+1. User chooses to edit a flashcard.
+2. User enters ‘list’ to view indexes of flashcards.
+3. Bagel shows the list of flashcards.
+4. User enters the index of the flashcard they would like to edit, and the details to edit.
+5. Bagel edits the flashcard and shows the edited flashcard.
+Use case ends.
 
-*{More to be added}*
+
+**Extensions**
+
+4a. Bagel detects an error in the entered data.
+    4a1. Bagel requests for the correct data.
+    4a2. User enters new details. 
+    Steps 4a1-4a2 are repeated until the data entered are correct.
+    Use case resumes from step 5.
+
+
+**Use case: UC03 - Deleting a flashcard**
+
+**MSS**
+
+1. User chooses to delete a flashcard.
+2. User enters ‘list’ to view indexes of flashcards.
+3. Bagel shows the list of flashcards.
+4. User enters the index of the flashcard they would like to delete. 
+5. Bagel deletes the flashcard and shows the new list of flashcards. 
+Use case ends. 
+
+
+**Extensions**
+
+4a. Bagel detects an error in the entered data.
+    4a1. Bagel requests for the correct data.
+    4a2. User enters new details. 
+    Steps 4a1-4a2 are repeated until the data entered are correct.
+    Use case resumes from step 5.
+
+
+**Use case: UC04 - Flipping through flashcards**
+
+**MSS**
+
+1. User chooses to flip through the list of flashcards.
+2. User enters ‘flip’ to start viewing from the first flashcard in the list.
+3. Bagel shows the first flashcard.
+4. User enters ‘flip’ to view the next flashcard in the list.
+5. Bagel shows the next flashcard. 
+Steps 4-5 are repeated for each flashcard, until the user reaches the end of the list.
+6. Bagel shows the current list of flashcards. 
+Use case ends. 
+
+
+**Extensions**
+
+2a/4a. Bagel detects an error in the entered data. 
+    2a1/4a1. Bagel requests for the correct data. 
+    2a2/4a2. User enters new details. 
+    Steps 2a1-2a2/4a1-4a2 are repeated until the data entered are correct.
+    Use case resumes from step 3/5.
+
 
 ### Non-Functional Requirements
 
