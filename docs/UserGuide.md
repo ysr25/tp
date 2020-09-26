@@ -103,6 +103,15 @@ Examples:
 *  `edit 1 t/Data analysis` Edits the title of the 1st flashcard to be `Data analysis`.
 *  `edit 1 t/p-value d/probability of ...` Edits the title and the description of the 1st flashcard to be `p-value` and `probability of ...` respectively.
 
+### Viewing a flashcard: `view`
+
+Show an existing flashcard in the current list.
+
+Format: `view INDEX`
+
+* The index refers to the index number shown in the displayed flashcards list.
+* The index must be a positive integer 1, 2, 3, ...​
+
 ### Locating persons by name: `find`
 
 Finds persons whose names contain any of the given keywords.
