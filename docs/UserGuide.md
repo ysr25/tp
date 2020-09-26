@@ -3,8 +3,9 @@ layout: page
 title: User Guide
 ---
 
-Bagel is a **desktop app for managing flashcards, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI).
-If you can type fast, Bagel manage your flashcards faster than traditional GUI apps.
+Bagel is a **desktop app for managing flashcards, optimized for use via a Command Line Interface** (CLI)
+while still having the benefits of a Graphical User Interface (GUI).
+If you can type fast, Bagel can manage your flashcards faster than traditional GUI apps.
 
 ### Table of Contents
 * Quick start
@@ -78,12 +79,6 @@ Format: `delete INDEX`
 * The index refers to the index number shown in the displayed flashcards list.
 * The index **must be a positive integer** 1, 2, 3, …
 
-### Listing all flashcards : `list`
-
-Shows a list of all flashcards.
-
-Format: `list`
-
 ### Editing a flashcard : `edit`
 
 Edits an existing flashcard.
@@ -107,7 +102,13 @@ Show an existing flashcard in the current list.
 Format: `view INDEX`
 
 * The index refers to the index number shown in the displayed flashcards list.
-* The index must be a positive integer 1, 2, 3, ...​
+* The index **must be a positive integer** 1, 2, 3, ...
+
+### Viewing all flashcards : `list`
+
+Shows a list of all flashcards.
+
+Format: `list`
 
 ### Exiting the program : `exit`
 
