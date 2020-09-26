@@ -9,44 +9,22 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
+### Liu Yuxi
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/liuyxxy.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/liuyxxy)]
 
-* Role: Project Advisor
+* Role: Code Quality
 
-### Jane Doe
+### Rachel Gina Abelarde
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/rgabelarde.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/rgabelarde)]
+[[portfolio](team/rgabelarde.md)]
 
-* Role: Team Lead
-* Responsibilities: UI
-
-### Johnny Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: Data
-
-### Jean Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Role: Deliverables and Deadlines
 
 ### Jace Tan
 
@@ -55,5 +33,13 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](http://github.com/jacetjy)]
 [[portfolio](team/jacetjy.md)]
 
-* Role: Developer
-* Responsibilities: UI
+* Role: Integration
+
+### Yong Shan Rong
+
+<img src="images/ysr25.png" width="200px">
+
+[[github](http://github.com/ysr25)]
+[[portfolio](team/ysr25.md)]
+
+* Role: Documentation, Scheduling and Tracking

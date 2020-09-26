@@ -236,13 +236,17 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+* computing students taking GER1000
+* has a need to manage a significant number of flashcards
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: 
+Bagel is a flashcard application faster than a typical mouse/GUI driven app with additional functionality such as 
+adding tags, links, or comments. It targets computing students taking GER1000 because it is a module that requires
+memorising many keywords and items, and computing students would prefer typing over other means of input.
 
 
 ### User stories
@@ -251,56 +255,117 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
 | -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
-
-*{More to be added}*
+| `* * *`  | user                                       | add flashcards                 | memorise them                 |
+| `* * *`  | user                                       | delete my flashcards when I am done with them               | keep the list organised                                                                       |
+| `* * *`  | user                                       | edit a flashcard                |  rephrase or fix mistakes that I originally wrote                                   |
+| `* * *`  | user                                       | view individual flashcards          | read them |
+| `* * *`    | user                                       | view a list of sets of flashcards that I currently have   | not mix them up                |
+| `* * *`      | user  | “flip” through a set of flashcards           | memorise them                                                 |
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is `Bagel` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case: UC01 - Finding a flashcard**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1. User chooses to find a flashcard. 
+2. User enters the keyword they would like to search for.
+3. Bagel finds the flashcard and shows a list of flashcards that contain that keyword. 
+  Use case ends.
 
-    Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+2a. Bagel detects an error in the entered data.
+    2a1. Bagel requests for the correct data.
+    2a2. User enters new details. 
+    Steps 2a1-2a2 are repeated until the data entered are correct.
+    Use case resumes from step 3.
 
-  Use case ends.
 
-* 3a. The given index is invalid.
+**Use case: UC02 - Editing a flashcard**
 
-    * 3a1. AddressBook shows an error message.
+**MSS**
 
-      Use case resumes at step 2.
+1. User chooses to edit a flashcard.
+2. User enters ‘list’ to view indexes of flashcards.
+3. Bagel shows the list of flashcards.
+4. User enters the index of the flashcard they would like to edit, and the details to edit.
+5. Bagel edits the flashcard and shows the edited flashcard.
+Use case ends.
 
-*{More to be added}*
+
+**Extensions**
+
+4a. Bagel detects an error in the entered data.
+    4a1. Bagel requests for the correct data.
+    4a2. User enters new details. 
+    Steps 4a1-4a2 are repeated until the data entered are correct.
+    Use case resumes from step 5.
+
+
+**Use case: UC03 - Deleting a flashcard**
+
+**MSS**
+
+1. User chooses to delete a flashcard.
+2. User enters ‘list’ to view indexes of flashcards.
+3. Bagel shows the list of flashcards.
+4. User enters the index of the flashcard they would like to delete. 
+5. Bagel deletes the flashcard and shows the new list of flashcards. 
+Use case ends. 
+
+
+**Extensions**
+
+4a. Bagel detects an error in the entered data.
+    4a1. Bagel requests for the correct data.
+    4a2. User enters new details. 
+    Steps 4a1-4a2 are repeated until the data entered are correct.
+    Use case resumes from step 5.
+
+
+**Use case: UC04 - Flipping through flashcards**
+
+**MSS**
+
+1. User chooses to flip through the list of flashcards.
+2. User enters ‘flip’ to start viewing from the first flashcard in the list.
+3. Bagel shows the first flashcard.
+4. User enters ‘flip’ to view the next flashcard in the list.
+5. Bagel shows the next flashcard. 
+Steps 4-5 are repeated for each flashcard, until the user reaches the end of the list.
+6. Bagel shows the current list of flashcards. 
+Use case ends. 
+
+
+**Extensions**
+
+2a/4a. Bagel detects an error in the entered data. 
+    2a1/4a1. Bagel requests for the correct data. 
+    2a2/4a2. User enters new details. 
+    Steps 2a1-2a2/4a1-4a2 are repeated until the data entered are correct.
+    Use case resumes from step 3/5.
+
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-
-*{More to be added}*
+1. Bagel should work on any _mainstream OS_ as long as it has Java `11` or above installed.
+2. Bagel should be able to hold up to 500 flashcards without a noticeable sluggishness in performance for typical usage.
+3. Bagel should be intuitive to use for first time users.
+4. Bagel should be targeting users who can type fast and prefer typing over other means of input.
+5. Bagel should respond within two seconds.
+6. Bagel should show flashcards within one second of inputting the command. 
+7. Any version of Bagel should function as long as the user has it installed. 
+8. Bagel is expected to adhere to the CS2103T schedule. 
+9. Bagel is not expected to quiz the user. 
+10. Bagel should be for a single user. 
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Private contact detail**: A contact detail that is not meant to be shared with others
 
 --------------------------------------------------------------------------------------------------------------------
 
