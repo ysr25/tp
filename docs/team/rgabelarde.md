@@ -24,9 +24,10 @@ Given below are my contributions to the project.
 
 * **Documentation**:
   * User Guide:
-    * Added documentation for the features `add` and `delete` [\#72]()
+    * Added documentation for the features `add` and `delete` [\#00]()
   * Developer Guide:
     * Added implementation details of the `add` and `delete` feature.
 
 * **Community**:
   * PRs reviewed (with non-trivial review comments): [\#269](https://github.com/nus-cs2103-AY2021S1/ip/pull/269), [\#326](https://github.com/nus-cs2103-AY2021S1/ip/pull/326)
+  
