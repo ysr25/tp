@@ -294,6 +294,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 3. Bagel shows the list of flashcards.
 4. User enters the index of the flashcard they would like to edit, and the details to edit.
 5. Bagel edits the flashcard and shows the edited flashcard.
+
 Use case ends.
 
 
