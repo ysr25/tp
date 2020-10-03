@@ -8,35 +8,29 @@ while still having the benefits of a Graphical User Interface (GUI).
 If you can type fast, Bagel can manage your flashcards faster than traditional GUI apps.
 
 ### Table of Contents
-* Quick start
-* Features
-    - Adding a flashcard: add
-    - Deleting a flashcard delete
-    - Editing a flashcard: edit
-    - Viewing a flashcard: view
-    - Viewing list of all flashcards: list
-    - Flipping through flashcards: flip
-    - Exiting the program: exit
-* Command Summary
+{:.no_toc}
+
+* Table of Contents
+{:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Quick start
 
-1. Ensure you have Java 11 or above installed in your Computer.
-2. Download the latest flashcard.jar from __.
-3. Copy the file to the folder you want to use as the home folder for your AddressBook.
+1. Ensure you have Java 11 or above installed in your computer.
+2. Download the latest flashcard.jar from [here](https://github.com/AY2021S1-CS2103T-W13-2/tp/releases).
+3. Copy the file to the folder you want to use as the home folder for Bagel.
 4. Double-click the file to start the app. The GUI should appear in a few seconds. Note how the app contains some sample data.
-5. Type the command in the command box and press Enter to execute it. e.g. typing help and pressing Enter will open the help window.
+5. Type the command in the command box and press Enter to execute it.
     Some example commands you can try:
-        a. list : Lists all flashcards.
-        b. add t/Data Analysis d/Definition of data analysis: xxxxxx  : Adds a flashcard with the title
+    * `list` : Lists all flashcards.
+    * `add t/Data Analysis d/Definition of data analysis: xxxxxx`  : Adds a flashcard with the title
         'Data Analysis' and description of 'Definition of data analysis: xxxxxx' to the list of flashcards
-        c. delete 3 : Deletes the 3rd flashcard shown in the current flashcards set.
-        d. view 3 : Shows the 3rd flashcard shown in the current flashcards set.
-        e. edit 2 t/New description : Edits the title of 2nd existing flashcard of the current set to become 'New description'
-        f. flip : Flips from current flashcard to next flashcard in the list.
-        g. exit : Exits the app.
+    * `delete 3` : Deletes the 3rd flashcard shown in the current flashcards set.
+    * `view 3` : Shows the 3rd flashcard shown in the current flashcards set.
+    * `edit 2 t/New description` : Edits the title of 2nd existing flashcard of the current set to become 'New description'
+    * `flip` : Flips from the current flashcard to next flashcard in the list.
+    * `exit` : Exits the app.
 Refer to the Features below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -48,9 +42,10 @@ Refer to the Features below for details of each command.
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in add TITLE, TITLE is the parameter which can be used as add
+  e.g. in `add t/TITLE`, TITLE is the parameter which can be used.
 
-* User should supply the number of the flashcard behind commands to eg. add 1, delete 10
+* User should supply the number of the flashcard behind commands.<br>
+  e.g. `add 1`, `delete 10`.
 </div>
 
 ### Adding a flashcard: `add`
@@ -60,10 +55,6 @@ Adds a flashcard to the total list of flashcards.
 * Title and description must be entered
 
 Format: `add t/TITLE d/DESCRIPTION`
-
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-A person can have any number of tags (including 0)
-</div>
 
 Examples:
 * `add t/Data Analysis d/Definition of data analysis: xxxxxx`
@@ -109,6 +100,12 @@ Format: `view INDEX`
 Shows a list of all flashcards.
 
 Format: `list`
+
+### Flipping through flashcards : `flip`
+
+Flips from current flashcard to next flashcard in the list.
+
+Format: `flip`
 
 ### Exiting the program : `exit`
 
