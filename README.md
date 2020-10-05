@@ -1,4 +1,4 @@
-[![CI Status](https://github.com/nus-cs2103-AY2021S1/tp/workflows/Java%20CI/badge.svg)](https://github.com/nus-cs2103-AY2021S1/tp/actions)
+[![CI Status](https://github.com/AY2021S1-CS2103T-W13-2/tp/workflows/Java%20CI/badge.svg)](https://github.com/AY2021S1-CS2103T-W13-2/tp/actions)
 
 ![Ui](docs/images/Ui.png)
 
