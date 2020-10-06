@@ -14,4 +14,3 @@ Given below are my contributions to the project.
 * **Documentation**:
   * User Guide:
     * Updated documentation for the feature `flip`
-   
