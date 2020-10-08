@@ -47,7 +47,7 @@ public class StorageManager implements Storage {
     }
 
 
-    // ================ AddressBook methods ==============================
+    // ================ Bagel methods ==============================
 
     @Override
     public Path getBagelFilePath() {
@@ -67,7 +67,7 @@ public class StorageManager implements Storage {
 
     @Override
     public void saveBagel(ReadOnlyBagel bagel) throws IOException {
-        saveAddressBook(bagel, bagelStorage.getBagelFilePath());
+        saveBagel(bagel, bagelStorage.getBagelFilePath());
     }
 
     @Override
