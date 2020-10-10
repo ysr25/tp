@@ -15,8 +15,12 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.GuiSettings;
+<<<<<<< HEAD
+import seedu.address.model.flashcard.NameContainsKeywordsPredicate;
+=======
 import seedu.address.model.flashcard.TitleContainsKeywordsPredicate;
 import seedu.address.testutil.BagelBuilder;
+>>>>>>> a0f1560e2c1a16498aa44176cfb5d7df4e027f0f
 
 public class ModelManagerTest {
 

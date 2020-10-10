@@ -82,7 +82,7 @@ The `UI` component,
 
 1. `Logic` uses the `AddressBookParser` class to parse the user command.
 1. This results in a `Command` object which is executed by the `LogicManager`.
-1. The command execution can affect the `Model` (e.g. adding a person).
+1. The command execution can affect the `Model` (e.g. adding a flashcard).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
 1. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
 
@@ -151,11 +151,11 @@ Step 1. The user launches the application for the first time. The `VersionedAddr
 
 ![UndoRedoState0](images/UndoRedoState0.png)
 
-Step 2. The user executes `delete 5` command to delete the 5th person in the address book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
+Step 2. The user executes `delete 5` command to delete the 5th flashcard in the address book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
 
 ![UndoRedoState1](images/UndoRedoState1.png)
 
-Step 3. The user executes `add n/David …​` to add a new person. The `add` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
+Step 3. The user executes `add n/David …​` to add a new flashcard. The `add` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
 
 ![UndoRedoState2](images/UndoRedoState2.png)
 
@@ -163,7 +163,7 @@ Step 3. The user executes `add n/David …​` to add a new person. The `add` co
 
 </div>
 
-Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
+Step 4. The user now decides that adding the flashcard was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
 
 ![UndoRedoState3](images/UndoRedoState3.png)
 
@@ -208,7 +208,7 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 * **Alternative 2:** Individual command knows how to undo/redo by
   itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
+  * Pros: Will use less memory (e.g. for `delete`, just save the flashcard being deleted).
   * Cons: We must ensure that the implementation of each individual command are correct.
 
 _{more aspects and alternatives to be added}_
@@ -243,8 +243,8 @@ _{Explain here how the data archiving feature will be implemented}_
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**:
-Bagel is a flashcard application faster than a typical mouse/GUI driven app with additional functionality such as
+**Value proposition**: 
+Bagel is a flashcard application faster than a typical mouse/GUI driven app with additional functionality such as 
 adding tags, links, or comments. It targets computing students taking GER1000 because it is a module that requires
 memorising many keywords and items, and computing students would prefer typing over other means of input.
 
@@ -270,21 +270,34 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User chooses to find a flashcard.
+1. User chooses to find a flashcard. 
 2. User enters the keyword they would like to search for.
+<<<<<<< HEAD
+3. Bagel finds the flashcard and shows a list of flashcards that contain that keyword. 
+  Use case ends.
+=======
 3. Bagel finds the flashcard and shows a list of flashcards that contain that keyword.
 
 Use case ends.
+>>>>>>> a0f1560e2c1a16498aa44176cfb5d7df4e027f0f
 
 
 **Extensions**
 
+<<<<<<< HEAD
+2a. Bagel detects an error in the entered data.
+    2a1. Bagel requests for the correct data.
+    2a2. User enters new details. 
+    Steps 2a1-2a2 are repeated until the data entered are correct.
+    Use case resumes from step 3.
+=======
 * 2a. Bagel detects an error in the entered data.
     * 2a1. Bagel requests for the correct data.
     * 2a2. User enters new details.
     * Steps 2a1-2a2 are repeated until the data entered are correct.
 
 Use case resumes from step 3.
+>>>>>>> a0f1560e2c1a16498aa44176cfb5d7df4e027f0f
 
 
 **Use case: UC02 - Editing a flashcard**
@@ -296,18 +309,25 @@ Use case resumes from step 3.
 3. Bagel shows the list of flashcards.
 4. User enters the index of the flashcard they would like to edit, and the details to edit.
 5. Bagel edits the flashcard and shows the edited flashcard.
-
 Use case ends.
 
 
 **Extensions**
 
+<<<<<<< HEAD
+4a. Bagel detects an error in the entered data.
+    4a1. Bagel requests for the correct data.
+    4a2. User enters new details. 
+    Steps 4a1-4a2 are repeated until the data entered are correct.
+    Use case resumes from step 5.
+=======
 * 4a. Bagel detects an error in the entered data.
     * 4a1. Bagel requests for the correct data.
     * 4a2. User enters new details.
     * Steps 4a1-4a2 are repeated until the data entered are correct.
     
 Use case resumes from step 5.
+>>>>>>> a0f1560e2c1a16498aa44176cfb5d7df4e027f0f
 
 
 **Use case: UC03 - Deleting a flashcard**
@@ -317,20 +337,34 @@ Use case resumes from step 5.
 1. User chooses to delete a flashcard.
 2. User enters ‘list’ to view indexes of flashcards.
 3. Bagel shows the list of flashcards.
+<<<<<<< HEAD
+4. User enters the index of the flashcard they would like to delete. 
+5. Bagel deletes the flashcard and shows the new list of flashcards. 
+Use case ends. 
+=======
 4. User enters the index of the flashcard they would like to delete.
 5. Bagel deletes the flashcard and shows the new list of flashcards.
 
 Use case ends.
+>>>>>>> a0f1560e2c1a16498aa44176cfb5d7df4e027f0f
 
 
 **Extensions**
 
+<<<<<<< HEAD
+4a. Bagel detects an error in the entered data.
+    4a1. Bagel requests for the correct data.
+    4a2. User enters new details. 
+    Steps 4a1-4a2 are repeated until the data entered are correct.
+    Use case resumes from step 5.
+=======
 * 4a. Bagel detects an error in the entered data.
     * 4a1. Bagel requests for the correct data.
     * 4a2. User enters new details.
     * Steps 4a1-4a2 are repeated until the data entered are correct.
 
 Use case resumes from step 5.
+>>>>>>> a0f1560e2c1a16498aa44176cfb5d7df4e027f0f
 
 
 **Use case: UC04 - Flipping through flashcards**
@@ -341,21 +375,34 @@ Use case resumes from step 5.
 2. User enters ‘flip’ to start viewing from the first flashcard in the list.
 3. Bagel shows the first flashcard.
 4. User enters ‘flip’ to view the next flashcard in the list.
-5. Bagel shows the next flashcard.
+5. Bagel shows the next flashcard. 
 Steps 4-5 are repeated for each flashcard, until the user reaches the end of the list.
+<<<<<<< HEAD
+6. Bagel shows the current list of flashcards. 
+Use case ends. 
+=======
 6. Bagel shows the current list of flashcards.
 
 Use case ends.
+>>>>>>> a0f1560e2c1a16498aa44176cfb5d7df4e027f0f
 
 
 **Extensions**
 
+<<<<<<< HEAD
+2a/4a. Bagel detects an error in the entered data. 
+    2a1/4a1. Bagel requests for the correct data. 
+    2a2/4a2. User enters new details. 
+    Steps 2a1-2a2/4a1-4a2 are repeated until the data entered are correct.
+    Use case resumes from step 3/5.
+=======
 * 2a/4a. Bagel detects an error in the entered data.
     * 2a1/4a1. Bagel requests for the correct data.
     * 2a2/4a2. User enters new details.
     * Steps 2a1-2a2/4a1-4a2 are repeated until the data entered are correct.
 
 Use case resumes from step 3/5.
+>>>>>>> a0f1560e2c1a16498aa44176cfb5d7df4e027f0f
 
 
 ### Non-Functional Requirements
@@ -365,11 +412,11 @@ Use case resumes from step 3/5.
 3. Bagel should be intuitive to use for first time users.
 4. Bagel should be targeting users who can type fast and prefer typing over other means of input.
 5. Bagel should respond within two seconds.
-6. Bagel should show flashcards within one second of inputting the command.
-7. Any version of Bagel should function as long as the user has it installed.
-8. Bagel is expected to adhere to the CS2103T schedule.
-9. Bagel is not expected to quiz the user.
-10. Bagel should be for a single user.
+6. Bagel should show flashcards within one second of inputting the command. 
+7. Any version of Bagel should function as long as the user has it installed. 
+8. Bagel is expected to adhere to the CS2103T schedule. 
+9. Bagel is not expected to quiz the user. 
+10. Bagel should be for a single user. 
 
 ### Glossary
 
@@ -403,17 +450,17 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
-### Deleting a person
+### Deleting a flashcard
 
-1. Deleting a person while all persons are being shown
+1. Deleting a flashcard while all flashcards are being shown
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+   1. Prerequisites: List all flashcards using the `list` command. Multiple flashcards in the list.
 
    1. Test case: `delete 1`<br>
       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
    1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+      Expected: No flashcard is deleted. Error details shown in the status message. Status bar remains the same.
 
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.

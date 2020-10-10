@@ -1,4 +1,4 @@
-package seedu.bagel.ui;
+package seedu.address.ui;
 
 import javafx.stage.Stage;
 

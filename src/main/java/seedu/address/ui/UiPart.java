@@ -1,4 +1,4 @@
-package seedu.bagel.ui;
+package seedu.address.ui;
 
 import static java.util.Objects.requireNonNull;
 
@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.net.URL;
 
 import javafx.fxml.FXMLLoader;
-import seedu.bagel.MainApp;
+import seedu.address.MainApp;
 
 /**
  * Represents a distinct part of the UI. e.g. Windows, dialogs, panels, status bars, etc.

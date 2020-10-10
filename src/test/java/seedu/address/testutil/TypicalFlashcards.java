@@ -21,14 +21,14 @@ public class TypicalFlashcards {
 
     public static final Flashcard ALICE = new FlashcardBuilder().withTitle("Alice Pauline")
             .withDescription("123, Jurong West Ave 6, #08-111")
-            .withTags("friends").build();
+            .build();
     public static final Flashcard BENSON = new FlashcardBuilder().withTitle("Benson Meier")
             .withDescription("311, Clementi Ave 2, #02-25")
-            .withTags("owesMoney", "friends").build();
+            .build();
     public static final Flashcard CARL = new FlashcardBuilder().withTitle("Carl Kurz")
             .withDescription("wall street").build();
     public static final Flashcard DANIEL = new FlashcardBuilder().withTitle("Daniel Meier")
-            .withDescription("10th street").withTags("friends").build();
+            .withDescription("10th street").build();
     public static final Flashcard ELLE = new FlashcardBuilder().withTitle("Elle Meyer")
             .withDescription("werner@example.com").build();
     public static final Flashcard FIONA = new FlashcardBuilder().withTitle("Fiona Kunz")

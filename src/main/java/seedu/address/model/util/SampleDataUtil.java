@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import seedu.address.model.Bagel;
 import seedu.address.model.ReadOnlyBagel;
 import seedu.address.model.flashcard.Description;
+import seedu.address.model.flashcard.Flashcard;
 import seedu.address.model.flashcard.Title;
 import seedu.address.model.tag.Tag;
 

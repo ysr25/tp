@@ -108,7 +108,6 @@ public class ModelManager implements Model {
     @Override
     public void setFlashcard(Flashcard target, Flashcard editedFlashcard) {
         requireAllNonNull(target, editedFlashcard);
-
         bagel.setFlashcard(target, editedFlashcard);
     }
 
