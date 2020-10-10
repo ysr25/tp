@@ -26,9 +26,6 @@ import seedu.address.logic.parser.exceptions.ParseException;
 <<<<<<< HEAD
 import seedu.address.model.flashcard.NameContainsKeywordsPredicate;
 import seedu.address.model.flashcard.Person;
-import seedu.address.testutil.EditPersonDescriptorBuilder;
-import seedu.address.testutil.PersonBuilder;
-import seedu.address.testutil.PersonUtil;
 =======
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;

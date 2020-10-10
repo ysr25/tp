@@ -20,7 +20,6 @@ import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyUserPrefs;
 <<<<<<< HEAD
 import seedu.address.model.flashcard.Person;
-import seedu.address.testutil.PersonBuilder;
 =======
 import seedu.address.model.person.Person;
 import seedu.address.testutil.FlashcardBuilder;

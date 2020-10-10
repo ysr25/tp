@@ -22,15 +22,9 @@ import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-<<<<<<< HEAD
-import seedu.address.model.flashcard.Person;
-import seedu.address.testutil.EditPersonDescriptorBuilder;
-import seedu.address.testutil.PersonBuilder;
-=======
-import seedu.address.model.person.Person;
+import seedu.address.model.flashcard.Flashcard;
 import seedu.address.testutil.EditFlashcardDescriptorBuilder;
 import seedu.address.testutil.FlashcardBuilder;
->>>>>>> a0f1560e2c1a16498aa44176cfb5d7df4e027f0f
 
 /**
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for EditCommand.

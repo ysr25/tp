@@ -12,7 +12,6 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 <<<<<<< HEAD
 import seedu.address.model.flashcard.Person;
-import seedu.address.testutil.PersonBuilder;
 =======
 import seedu.address.model.person.Person;
 import seedu.address.testutil.FlashcardBuilder;

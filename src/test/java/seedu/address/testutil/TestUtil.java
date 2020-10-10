@@ -7,11 +7,7 @@ import java.nio.file.Paths;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.Model;
-<<<<<<< HEAD
-import seedu.address.model.flashcard.Person;
-=======
 import seedu.address.model.flashcard.Flashcard;
->>>>>>> a0f1560e2c1a16498aa44176cfb5d7df4e027f0f
 
 /**
  * A utility class for test cases.

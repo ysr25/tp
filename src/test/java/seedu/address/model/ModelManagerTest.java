@@ -17,7 +17,6 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.core.GuiSettings;
 <<<<<<< HEAD
 import seedu.address.model.flashcard.NameContainsKeywordsPredicate;
-import seedu.address.testutil.AddressBookBuilder;
 =======
 import seedu.address.model.flashcard.TitleContainsKeywordsPredicate;
 import seedu.address.testutil.BagelBuilder;
