@@ -8,7 +8,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.model.person.Person;
+import seedu.address.model.flashcard.Person;
 
 /**
  * Panel containing the list of persons.
@@ -23,9 +23,9 @@ public class PersonListPanel extends UiPart<Region> {
     /**
      * Creates a {@code PersonListPanel} with the given {@code ObservableList}.
      */
-    public PersonListPanel(ObservableList<Person> personList) {
+    public PersonListPanel(ObservableList<Person> flashcardList) {
         super(FXML);
-        personListView.setItems(personList);
+        personListView.setItems(flashcardList);
         personListView.setCellFactory(listView -> new PersonListViewCell());
     }
 
@@ -34,14 +34,14 @@ public class PersonListPanel extends UiPart<Region> {
      */
     class PersonListViewCell extends ListCell<Person> {
         @Override
-        protected void updateItem(Person person, boolean empty) {
-            super.updateItem(person, empty);
+        protected void updateItem(Person flashcard, boolean empty) {
+            super.updateItem(flashcard, empty);
 
-            if (empty || person == null) {
+            if (empty || flashcard == null) {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new PersonCard(person, getIndex() + 1).getRoot());
+                setGraphic(new PersonCard(flashcard, getIndex() + 1).getRoot());
             }
         }
     }
