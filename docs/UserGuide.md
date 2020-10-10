@@ -66,7 +66,7 @@ Deletes the specified flashcard from the total list of flashcards.
 
 Format: `delete INDEX`
 
-* Deletes the person at the specified `INDEX`.
+* Deletes the flashcard at the specified `INDEX`.
 * The index refers to the index number shown in the displayed flashcards list.
 * The index **must be a positive integer** 1, 2, 3, …
 
@@ -76,8 +76,8 @@ Edits an existing flashcard.
 
 Format: `edit INDEX [t/TITLE] [d/DESCRIPTION]`
 
-* Edits the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
+* Edits the flashcard at the specified `INDEX`.
+* The index refers to the index number shown in the displayed flashcard list.
 * The index **must be a positive integer** 1, 2, 3, ...
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.

@@ -10,7 +10,7 @@ import java.util.Set;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
-import seedu.address.model.person.Person;
+import seedu.address.model.flashcard.Person;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -21,20 +21,20 @@ public class PersonUtil {
     /**
      * Returns an add command string for adding the {@code person}.
      */
-    public static String getAddCommand(Person person) {
-        return AddCommand.COMMAND_WORD + " " + getPersonDetails(person);
+    public static String getAddCommand(Person flashcard) {
+        return AddCommand.COMMAND_WORD + " " + getPersonDetails(flashcard);
     }
 
     /**
      * Returns the part of command string for the given {@code person}'s details.
      */
-    public static String getPersonDetails(Person person) {
+    public static String getPersonDetails(Person flashcard) {
         StringBuilder sb = new StringBuilder();
-        sb.append(PREFIX_NAME + person.getName().fullName + " ");
-        sb.append(PREFIX_PHONE + person.getPhone().value + " ");
-        sb.append(PREFIX_EMAIL + person.getEmail().value + " ");
-        sb.append(PREFIX_ADDRESS + person.getAddress().value + " ");
-        person.getTags().stream().forEach(
+        sb.append(PREFIX_NAME + flashcard.getName().fullName + " ");
+        sb.append(PREFIX_PHONE + flashcard.getPhone().value + " ");
+        sb.append(PREFIX_EMAIL + flashcard.getEmail().value + " ");
+        sb.append(PREFIX_ADDRESS + flashcard.getAddress().value + " ");
+        flashcard.getTags().stream().forEach(
             s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );
         return sb.toString();
