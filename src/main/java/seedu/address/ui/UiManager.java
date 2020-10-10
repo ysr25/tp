@@ -1,4 +1,4 @@
-package seedu.address.ui;
+package seedu.bagel.ui;
 
 import java.util.logging.Logger;
 
@@ -7,10 +7,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import seedu.address.MainApp;
-import seedu.address.commons.core.LogsCenter;
-import seedu.address.commons.util.StringUtil;
-import seedu.address.logic.Logic;
+import seedu.bagel.MainApp;
+import seedu.bagel.commons.core.LogsCenter;
+import seedu.bagel.commons.util.StringUtil;
+import seedu.bagel.logic.Logic;
 
 /**
  * The manager of the UI component.
