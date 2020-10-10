@@ -11,7 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.model.flashcard.Person;
+import seedu.address.model.flashcard.Flashcard;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -19,26 +19,26 @@ import seedu.address.model.flashcard.Person;
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final AddressBook addressBook;
+    private final Bagel bagel;
     private final UserPrefs userPrefs;
-    private final FilteredList<Person> filteredFlashcards;
+    private final FilteredList<Flashcard> filteredFlashcards;
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given Bagel and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyBagel bagel, ReadOnlyUserPrefs userPrefs) {
         super();
-        requireAllNonNull(addressBook, userPrefs);
+        requireAllNonNull(bagel, userPrefs);
 
-        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with Bagel: " + bagel + " and user prefs " + userPrefs);
 
-        this.addressBook = new AddressBook(addressBook);
+        this.bagel = new Bagel(bagel);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredFlashcards = new FilteredList<>(this.addressBook.getPersonList());
+        filteredFlashcards = new FilteredList<>(this.bagel.getFlashcardList());
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new Bagel(), new UserPrefs());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -66,65 +66,64 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Path getAddressBookFilePath() {
-        return userPrefs.getAddressBookFilePath();
+    public Path getBagelFilePath() {
+        return userPrefs.getBagelFilePath();
     }
 
     @Override
-    public void setAddressBookFilePath(Path addressBookFilePath) {
-        requireNonNull(addressBookFilePath);
-        userPrefs.setAddressBookFilePath(addressBookFilePath);
+    public void setBagelFilePath(Path bagelFilePath) {
+        requireNonNull(bagelFilePath);
+        userPrefs.setBagelFilePath(bagelFilePath);
     }
 
     //=========== AddressBook ================================================================================
 
     @Override
-    public void setAddressBook(ReadOnlyAddressBook addressBook) {
-        this.addressBook.resetData(addressBook);
+    public void setBagel(ReadOnlyBagel bagel) {
+        this.bagel.resetData(bagel);
     }
 
     @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return addressBook;
+    public ReadOnlyBagel getBagel() {
+        return bagel;
     }
 
     @Override
-    public boolean hasPerson(Person flashcard) {
+    public boolean hasFlashcard(Flashcard flashcard) {
         requireNonNull(flashcard);
-        return addressBook.hasPerson(flashcard);
+        return bagel.hasFlashcard(flashcard);
     }
 
     @Override
-    public void deletePerson(Person target) {
-        addressBook.removePerson(target);
+    public void deleteFlashcard(Flashcard target) {
+        bagel.removeFlashcard(target);
     }
 
     @Override
-    public void addPerson(Person flashcard) {
-        addressBook.addPerson(flashcard);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+    public void addFlashcard(Flashcard flashcard) {
+        bagel.addFlashcard(flashcard);
+        updateFilteredFlashcardList(PREDICATE_SHOW_ALL_FLASHCARDS);
     }
 
     @Override
-    public void setPerson(Person target, Person editedFlashcard) {
+    public void setFlashcard(Flashcard target, Flashcard editedFlashcard) {
         requireAllNonNull(target, editedFlashcard);
-
-        addressBook.setPerson(target, editedFlashcard);
+        bagel.setFlashcard(target, editedFlashcard);
     }
 
-    //=========== Filtered Person List Accessors =============================================================
+    //=========== Filtered Flashcard List Accessors =============================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
-     * {@code versionedAddressBook}
+     * Returns an unmodifiable view of the list of {@code Flashcard} backed by the internal list of
+     * {@code versionedBagel}
      */
     @Override
-    public ObservableList<Person> getFilteredPersonList() {
+    public ObservableList<Flashcard> getFilteredFlashcardList() {
         return filteredFlashcards;
     }
 
     @Override
-    public void updateFilteredPersonList(Predicate<Person> predicate) {
+    public void updateFilteredFlashcardList(Predicate<Flashcard> predicate) {
         requireNonNull(predicate);
         filteredFlashcards.setPredicate(predicate);
     }
@@ -143,7 +142,7 @@ public class ModelManager implements Model {
 
         // state check
         ModelManager other = (ModelManager) obj;
-        return addressBook.equals(other.addressBook)
+        return bagel.equals(other.bagel)
                 && userPrefs.equals(other.userPrefs)
                 && filteredFlashcards.equals(other.filteredFlashcards);
     }

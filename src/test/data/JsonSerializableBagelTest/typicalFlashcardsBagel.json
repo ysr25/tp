@@ -1,0 +1,32 @@
+{
+  "_comment": "Bagel save file which contains the same Flashcard values as in TypicalFlashcards#getTypicalBagel()",
+  "flashcards" : [ {
+    "title" : "Alice Pauline",
+    "description" : "123, Jurong West Ave 6, #08-111",
+    "tagged" : [ "friends" ]
+  }, {
+    "title" : "Benson Meier",
+    "description" : "311, Clementi Ave 2, #02-25",
+    "tagged" : [ "owesMoney", "friends" ]
+  }, {
+    "title" : "Carl Kurz",
+    "description" : "wall street",
+    "tagged" : [ ]
+  }, {
+    "title" : "Daniel Meier",
+    "description" : "10th street",
+    "tagged" : [ "friends" ]
+  }, {
+    "title" : "Elle Meyer",
+    "description" : "michegan ave",
+    "tagged" : [ ]
+  }, {
+    "title" : "Fiona Kunz",
+    "description" : "little tokyo",
+    "tagged" : [ ]
+  }, {
+    "name" : "George Best",
+    "description" : "4th street",
+    "tagged" : [ ]
+  } ]
+}

@@ -16,12 +16,15 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
-import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
+<<<<<<< HEAD
 import seedu.address.model.flashcard.Person;
 import seedu.address.testutil.PersonBuilder;
+=======
+import seedu.address.model.person.Person;
+import seedu.address.testutil.FlashcardBuilder;
+>>>>>>> a0f1560e2c1a16498aa44176cfb5d7df4e027f0f
 
 public class AddCommandTest {
 
@@ -33,7 +36,11 @@ public class AddCommandTest {
     @Test
     public void execute_personAcceptedByModel_addSuccessful() throws Exception {
         ModelStubAcceptingPersonAdded modelStub = new ModelStubAcceptingPersonAdded();
+<<<<<<< HEAD
         Person validFlashcard = new PersonBuilder().build();
+=======
+        Person validPerson = new FlashcardBuilder().build();
+>>>>>>> a0f1560e2c1a16498aa44176cfb5d7df4e027f0f
 
         CommandResult commandResult = new AddCommand(validFlashcard).execute(modelStub);
 
@@ -43,17 +50,23 @@ public class AddCommandTest {
 
     @Test
     public void execute_duplicatePerson_throwsCommandException() {
+<<<<<<< HEAD
         Person validFlashcard = new PersonBuilder().build();
         AddCommand addCommand = new AddCommand(validFlashcard);
         ModelStub modelStub = new ModelStubWithPerson(validFlashcard);
+=======
+        Person validPerson = new FlashcardBuilder().build();
+        AddCommand addCommand = new AddCommand(validPerson);
+        ModelStub modelStub = new ModelStubWithPerson(validPerson);
+>>>>>>> a0f1560e2c1a16498aa44176cfb5d7df4e027f0f
 
         assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_PERSON, () -> addCommand.execute(modelStub));
     }
 
     @Test
     public void equals() {
-        Person alice = new PersonBuilder().withName("Alice").build();
-        Person bob = new PersonBuilder().withName("Bob").build();
+        Person alice = new FlashcardBuilder().withName("Alice").build();
+        Person bob = new FlashcardBuilder().withName("Bob").build();
         AddCommand addAliceCommand = new AddCommand(alice);
         AddCommand addBobCommand = new AddCommand(bob);
 
