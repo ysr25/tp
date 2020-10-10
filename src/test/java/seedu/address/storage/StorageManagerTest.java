@@ -24,11 +24,7 @@ public class StorageManagerTest {
 
     @BeforeEach
     public void setUp() {
-<<<<<<< HEAD
-        JsonBagelStorage addressBookStorage = new JsonBagelStorage(getTempFilePath("ab"));
-=======
         JsonBagelStorage bagelStorage = new JsonBagelStorage(getTempFilePath("ab"));
->>>>>>> a0f1560e2c1a16498aa44176cfb5d7df4e027f0f
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
         storageManager = new StorageManager(bagelStorage, userPrefsStorage);
     }
