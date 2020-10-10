@@ -1,4 +1,4 @@
-package seedu.bagel.ui;
+package seedu.address.ui;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;

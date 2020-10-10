@@ -4,15 +4,11 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-<<<<<<< HEAD
-import seedu.address.model.flashcard.Name;
-import seedu.address.model.flashcard.Person;
-=======
 import seedu.address.model.Bagel;
 import seedu.address.model.ReadOnlyBagel;
 import seedu.address.model.flashcard.Description;
+import seedu.address.model.flashcard.Flashcard;
 import seedu.address.model.flashcard.Title;
->>>>>>> a0f1560e2c1a16498aa44176cfb5d7df4e027f0f
 import seedu.address.model.tag.Tag;
 
 /**
@@ -47,17 +43,10 @@ public class SampleDataUtil {
         };
     }
 
-<<<<<<< HEAD
-    public static ReadOnlyAddressBook getSampleAddressBook() {
-        AddressBook sampleAb = new AddressBook();
-        for (Person sampleFlashcard : getSamplePersons()) {
-            sampleAb.addPerson(sampleFlashcard);
-=======
     public static ReadOnlyBagel getSampleBagel() {
         Bagel sampleBagel = new Bagel();
         for (Flashcard sampleFlashcard : getSampleFlashcards()) {
             sampleBagel.addFlashcard(sampleFlashcard);
->>>>>>> a0f1560e2c1a16498aa44176cfb5d7df4e027f0f
         }
         return sampleBagel;
     }
