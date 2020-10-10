@@ -80,7 +80,7 @@ public class Bagel implements ReadOnlyBagel {
      * The information of {@code editedFlashcard} must not be the same as another existing flashcard in the
      * list of flashcards.
      */
-    public void setPerson(Flashcard target, Flashcard editedFlashcard) {
+    public void setFlashcard(Flashcard target, Flashcard editedFlashcard) {
         requireNonNull(editedFlashcard);
 
         flashcards.setPerson(target, editedFlashcard);
