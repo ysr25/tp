@@ -27,7 +27,7 @@ class JsonSerializableBagel {
      * Constructs a {@code JsonSerializableBagel} with the given flashcards.
      */
     @JsonCreator
-    public JsonSerializableBagel(@JsonProperty("persons") List<JsonAdaptedFlashcard> flashcards) {
+    public JsonSerializableBagel(@JsonProperty("flashcards") List<JsonAdaptedFlashcard> flashcards) {
         this.flashcards.addAll(flashcards);
     }
 
