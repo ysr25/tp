@@ -1,9 +1,7 @@
 package seedu.address.testutil;
 
-import static seedu.address.logic.commands.CommandTestUtil.VALID_DESCRIPTION_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_DESCRIPTION_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TITLE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TITLE_BOB;
 
@@ -44,10 +42,9 @@ public class TypicalFlashcards {
 
     // Manually added - Flashcard's details found in {@code CommandTestUtil}
     public static final Flashcard AMY = new FlashcardBuilder().withTitle(VALID_TITLE_AMY)
-            .withDescription(VALID_DESCRIPTION_AMY).withTags(VALID_TAG_FRIEND).build();
+            .withDescription(VALID_DESC_AMY).build();
     public static final Flashcard BOB = new FlashcardBuilder().withTitle(VALID_TITLE_BOB)
-            .withDescription(VALID_DESCRIPTION_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
-            .build();
+            .withDescription(VALID_DESC_BOB).build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 
