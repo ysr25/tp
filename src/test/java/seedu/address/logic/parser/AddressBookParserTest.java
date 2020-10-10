@@ -23,11 +23,19 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+<<<<<<< HEAD
 import seedu.address.model.flashcard.NameContainsKeywordsPredicate;
 import seedu.address.model.flashcard.Person;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonUtil;
+=======
+import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.model.person.Person;
+import seedu.address.testutil.EditFlashcardDescriptorBuilder;
+import seedu.address.testutil.FlashcardBuilder;
+import seedu.address.testutil.FlashcardUtil;
+>>>>>>> a0f1560e2c1a16498aa44176cfb5d7df4e027f0f
 
 public class AddressBookParserTest {
 
@@ -35,9 +43,15 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_add() throws Exception {
+<<<<<<< HEAD
         Person flashcard = new PersonBuilder().build();
         AddCommand command = (AddCommand) parser.parseCommand(PersonUtil.getAddCommand(flashcard));
         assertEquals(new AddCommand(flashcard), command);
+=======
+        Person person = new FlashcardBuilder().build();
+        AddCommand command = (AddCommand) parser.parseCommand(FlashcardUtil.getAddCommand(person));
+        assertEquals(new AddCommand(person), command);
+>>>>>>> a0f1560e2c1a16498aa44176cfb5d7df4e027f0f
     }
 
     @Test
@@ -55,10 +69,15 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_edit() throws Exception {
+<<<<<<< HEAD
         Person flashcard = new PersonBuilder().build();
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(flashcard).build();
+=======
+        Person person = new FlashcardBuilder().build();
+        EditPersonDescriptor descriptor = new EditFlashcardDescriptorBuilder(person).build();
+>>>>>>> a0f1560e2c1a16498aa44176cfb5d7df4e027f0f
         EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_PERSON.getOneBased() + " " + PersonUtil.getEditPersonDescriptorDetails(descriptor));
+                + INDEX_FIRST_PERSON.getOneBased() + " " + FlashcardUtil.getEditPersonDescriptorDetails(descriptor));
         assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);
     }
 

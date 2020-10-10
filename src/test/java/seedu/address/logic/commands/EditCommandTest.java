@@ -19,13 +19,18 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
-import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+<<<<<<< HEAD
 import seedu.address.model.flashcard.Person;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
+=======
+import seedu.address.model.person.Person;
+import seedu.address.testutil.EditFlashcardDescriptorBuilder;
+import seedu.address.testutil.FlashcardBuilder;
+>>>>>>> a0f1560e2c1a16498aa44176cfb5d7df4e027f0f
 
 /**
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for EditCommand.
@@ -36,8 +41,13 @@ public class EditCommandTest {
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
+<<<<<<< HEAD
         Person editedFlashcard = new PersonBuilder().build();
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(editedFlashcard).build();
+=======
+        Person editedPerson = new FlashcardBuilder().build();
+        EditPersonDescriptor descriptor = new EditFlashcardDescriptorBuilder(editedPerson).build();
+>>>>>>> a0f1560e2c1a16498aa44176cfb5d7df4e027f0f
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedFlashcard);
@@ -53,11 +63,16 @@ public class EditCommandTest {
         Index indexLastPerson = Index.fromOneBased(model.getFilteredPersonList().size());
         Person lastFlashcard = model.getFilteredPersonList().get(indexLastPerson.getZeroBased());
 
+<<<<<<< HEAD
         PersonBuilder personInList = new PersonBuilder(lastFlashcard);
         Person editedFlashcard = personInList.withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
+=======
+        FlashcardBuilder personInList = new FlashcardBuilder(lastPerson);
+        Person editedPerson = personInList.withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
+>>>>>>> a0f1560e2c1a16498aa44176cfb5d7df4e027f0f
                 .withTags(VALID_TAG_HUSBAND).build();
 
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
+        EditPersonDescriptor descriptor = new EditFlashcardDescriptorBuilder().withName(VALID_NAME_BOB)
                 .withPhone(VALID_PHONE_BOB).withTags(VALID_TAG_HUSBAND).build();
         EditCommand editCommand = new EditCommand(indexLastPerson, descriptor);
 
@@ -85,10 +100,15 @@ public class EditCommandTest {
     public void execute_filteredList_success() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
 
+<<<<<<< HEAD
         Person flashcardInFilteredList = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person editedFlashcard = new PersonBuilder(flashcardInFilteredList).withName(VALID_NAME_BOB).build();
+=======
+        Person personInFilteredList = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Person editedPerson = new FlashcardBuilder(personInFilteredList).withName(VALID_NAME_BOB).build();
+>>>>>>> a0f1560e2c1a16498aa44176cfb5d7df4e027f0f
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON,
-                new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB).build());
+                new EditFlashcardDescriptorBuilder().withName(VALID_NAME_BOB).build());
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedFlashcard);
 
@@ -100,8 +120,13 @@ public class EditCommandTest {
 
     @Test
     public void execute_duplicatePersonUnfilteredList_failure() {
+<<<<<<< HEAD
         Person firstFlashcard = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(firstFlashcard).build();
+=======
+        Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        EditPersonDescriptor descriptor = new EditFlashcardDescriptorBuilder(firstPerson).build();
+>>>>>>> a0f1560e2c1a16498aa44176cfb5d7df4e027f0f
         EditCommand editCommand = new EditCommand(INDEX_SECOND_PERSON, descriptor);
 
         assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_PERSON);
@@ -114,7 +139,11 @@ public class EditCommandTest {
         // edit person in filtered list into a duplicate in address book
         Person flashcardInList = model.getAddressBook().getPersonList().get(INDEX_SECOND_PERSON.getZeroBased());
         EditCommand editCommand = new EditCommand(INDEX_FIRST_PERSON,
+<<<<<<< HEAD
                 new EditPersonDescriptorBuilder(flashcardInList).build());
+=======
+                new EditFlashcardDescriptorBuilder(personInList).build());
+>>>>>>> a0f1560e2c1a16498aa44176cfb5d7df4e027f0f
 
         assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_PERSON);
     }
@@ -122,7 +151,7 @@ public class EditCommandTest {
     @Test
     public void execute_invalidPersonIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB).build();
+        EditPersonDescriptor descriptor = new EditFlashcardDescriptorBuilder().withName(VALID_NAME_BOB).build();
         EditCommand editCommand = new EditCommand(outOfBoundIndex, descriptor);
 
         assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
@@ -140,7 +169,7 @@ public class EditCommandTest {
         assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getPersonList().size());
 
         EditCommand editCommand = new EditCommand(outOfBoundIndex,
-                new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB).build());
+                new EditFlashcardDescriptorBuilder().withName(VALID_NAME_BOB).build());
 
         assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
