@@ -16,56 +16,44 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.Bagel;
 import seedu.address.model.Model;
+import seedu.address.model.ReadOnlyBagel;
 import seedu.address.model.ReadOnlyUserPrefs;
-<<<<<<< HEAD
-import seedu.address.model.flashcard.Person;
-=======
-import seedu.address.model.person.Person;
+import seedu.address.model.flashcard.Flashcard;
 import seedu.address.testutil.FlashcardBuilder;
->>>>>>> a0f1560e2c1a16498aa44176cfb5d7df4e027f0f
 
 public class AddCommandTest {
 
     @Test
-    public void constructor_nullPerson_throwsNullPointerException() {
+    public void constructor_nullFlashcard_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new AddCommand(null));
     }
 
     @Test
-    public void execute_personAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingPersonAdded modelStub = new ModelStubAcceptingPersonAdded();
-<<<<<<< HEAD
-        Person validFlashcard = new PersonBuilder().build();
-=======
-        Person validPerson = new FlashcardBuilder().build();
->>>>>>> a0f1560e2c1a16498aa44176cfb5d7df4e027f0f
+    public void execute_flashcardAcceptedByModel_addSuccessful() throws Exception {
+        ModelStubAcceptingFlashcardsAdded modelStub = new ModelStubAcceptingFlashcardsAdded();
+        Flashcard validFlashcard = new FlashcardBuilder().build();
 
         CommandResult commandResult = new AddCommand(validFlashcard).execute(modelStub);
 
         assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validFlashcard), commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validFlashcard), modelStub.personsAdded);
+        assertEquals(Arrays.asList(validFlashcard), modelStub.flashcardsAdded);
     }
 
     @Test
     public void execute_duplicatePerson_throwsCommandException() {
-<<<<<<< HEAD
-        Person validFlashcard = new PersonBuilder().build();
+        Flashcard validFlashcard = new FlashcardBuilder().build();
         AddCommand addCommand = new AddCommand(validFlashcard);
-        ModelStub modelStub = new ModelStubWithPerson(validFlashcard);
-=======
-        Person validPerson = new FlashcardBuilder().build();
-        AddCommand addCommand = new AddCommand(validPerson);
-        ModelStub modelStub = new ModelStubWithPerson(validPerson);
->>>>>>> a0f1560e2c1a16498aa44176cfb5d7df4e027f0f
+        ModelStub modelStub = new ModelStubWithFlashcard(validFlashcard);
 
-        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_PERSON, () -> addCommand.execute(modelStub));
+        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_FLASHCARD, () -> addCommand.execute(modelStub));
     }
 
     @Test
     public void equals() {
-        Person alice = new FlashcardBuilder().withName("Alice").build();
-        Person bob = new FlashcardBuilder().withName("Bob").build();
+        Flashcard alice = new FlashcardBuilder().withTitle("Alice").build();
+        Flashcard bob = new FlashcardBuilder().withTitle("Bob").build();
         AddCommand addAliceCommand = new AddCommand(alice);
         AddCommand addBobCommand = new AddCommand(bob);
 
@@ -111,52 +99,52 @@ public class AddCommandTest {
         }
 
         @Override
-        public Path getAddressBookFilePath() {
+        public Path getBagelFilePath() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setAddressBookFilePath(Path addressBookFilePath) {
+        public void setBagelFilePath(Path addressBookFilePath) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void addPerson(Person flashcard) {
+        public void addFlashcard(Flashcard flashcard) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setAddressBook(ReadOnlyAddressBook newData) {
+        public void setBagel(ReadOnlyBagel newData) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ReadOnlyAddressBook getAddressBook() {
+        public ReadOnlyBagel getBagel() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public boolean hasPerson(Person flashcard) {
+        public boolean hasFlashcard(Flashcard flashcard) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void deletePerson(Person target) {
+        public void deleteFlashcard(Flashcard target) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setPerson(Person target, Person editedFlashcard) {
+        public void setFlashcard(Flashcard target, Flashcard editedFlashcard) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ObservableList<Person> getFilteredPersonList() {
+        public ObservableList<Flashcard> getFilteredFlashcardList() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void updateFilteredPersonList(Predicate<Person> predicate) {
+        public void updateFilteredFlashcardList(Predicate<Flashcard> predicate) {
             throw new AssertionError("This method should not be called.");
         }
     }
@@ -164,42 +152,42 @@ public class AddCommandTest {
     /**
      * A Model stub that contains a single person.
      */
-    private class ModelStubWithPerson extends ModelStub {
-        private final Person flashcard;
+    private class ModelStubWithFlashcard extends ModelStub {
+        private final Flashcard flashcard;
 
-        ModelStubWithPerson(Person flashcard) {
+        ModelStubWithFlashcard(Flashcard flashcard) {
             requireNonNull(flashcard);
             this.flashcard = flashcard;
         }
 
         @Override
-        public boolean hasPerson(Person flashcard) {
+        public boolean hasFlashcard(Flashcard flashcard) {
             requireNonNull(flashcard);
-            return this.flashcard.isSamePerson(flashcard);
+            return this.flashcard.isSameFlashcard(flashcard);
         }
     }
 
     /**
      * A Model stub that always accept the person being added.
      */
-    private class ModelStubAcceptingPersonAdded extends ModelStub {
-        final ArrayList<Person> personsAdded = new ArrayList<>();
+    private class ModelStubAcceptingFlashcardsAdded extends ModelStub {
+        final ArrayList<Flashcard> flashcardsAdded = new ArrayList<>();
 
         @Override
-        public boolean hasPerson(Person flashcard) {
+        public boolean hasFlashcard(Flashcard flashcard) {
             requireNonNull(flashcard);
-            return personsAdded.stream().anyMatch(flashcard::isSamePerson);
+            return flashcardsAdded.stream().anyMatch(flashcard::isSameFlashcard);
         }
 
         @Override
-        public void addPerson(Person flashcard) {
+        public void addFlashcard(Flashcard flashcard) {
             requireNonNull(flashcard);
-            personsAdded.add(flashcard);
+            flashcardsAdded.add(flashcard);
         }
 
         @Override
-        public ReadOnlyAddressBook getAddressBook() {
-            return new AddressBook();
+        public ReadOnlyBagel getBagel() {
+            return new Bagel();
         }
     }
 
