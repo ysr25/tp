@@ -1,6 +1,8 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DESC;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -30,10 +32,10 @@ public class EditCommand extends Command {
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_TITLE + "TITLE] "
-            + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] \n"
+            + "[" + PREFIX_DESC + "DESCRIPTION] \n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_TITLE + "91234567 "
-            + PREFIX_DESCRIPTION + "johndoe@example.com";
+            + PREFIX_DESC + "johndoe@example.com";
 
     public static final String MESSAGE_EDIT_FLASHCARD_SUCCESS = "Edited Flashcard: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
@@ -60,7 +62,7 @@ public class EditCommand extends Command {
         List<Flashcard> lastShownList = model.getFilteredFlashcardList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_FLASHCARD_DISPLAYED_INDEX);
         }
 
         Flashcard flashcardToEdit = lastShownList.get(index.getZeroBased());

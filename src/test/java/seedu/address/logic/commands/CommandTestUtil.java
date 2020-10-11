@@ -28,6 +28,9 @@ public class CommandTestUtil {
     public static final String VALID_DESC_AMY = "11111111";
     public static final String VALID_DESC_BOB = "22222222";
 
+    public static final String INVALID_TITLE_DESC = "  ";
+    public static final String INVALID_DESC_DESC = "   ";
+
     public static final String TITLE_DESC_AMY = " " + PREFIX_TITLE + VALID_TITLE_AMY;
     public static final String TITLE_DESC_BOB = " " + PREFIX_TITLE + VALID_TITLE_BOB;
     public static final String DESC_DESC_AMY = " " + PREFIX_DESC + VALID_DESC_AMY;
@@ -36,8 +39,8 @@ public class CommandTestUtil {
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
-    public static final EditCommand.EditPersonDescriptor DESC_AMY;
-    public static final EditCommand.EditPersonDescriptor DESC_BOB;
+    public static final EditCommand.EditFlashcardDescriptor DESC_AMY;
+    public static final EditCommand.EditFlashcardDescriptor DESC_BOB;
 
     static {
         DESC_AMY = new EditFlashcardDescriptorBuilder().withTitle(VALID_TITLE_AMY)
@@ -92,7 +95,7 @@ public class CommandTestUtil {
      * Updates {@code model}'s filtered list to show only the person at the given {@code targetIndex} in the
      * {@code model}'s bagel.
      */
-    public static void showPersonAtIndex(Model model, Index targetIndex) {
+    public static void showFlashcardAtIndex(Model model, Index targetIndex) {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredFlashcardList().size());
 
         Flashcard flashcard = model.getFilteredFlashcardList().get(targetIndex.getZeroBased());

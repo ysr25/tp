@@ -3,9 +3,9 @@ package seedu.address.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_DESCRIPTION_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DESC_BOB;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalFlashcards.getTypicalFlashcard;
+import static seedu.address.testutil.TypicalFlashcards.getTypicalBagel;
 import static seedu.address.testutil.TypicalFlashcards.ALICE;
 
 import java.util.Arrays;
@@ -17,8 +17,8 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.person.Flashcard;
-import seedu.address.model.person.exceptions.DuplicateFlashcardException;
+import seedu.address.model.flashcard.Flashcard;
+import seedu.address.model.flashcard.exceptions.DuplicateFlashcardException;
 import seedu.address.testutil.FlashcardBuilder;
 
 public class BagelTest {
@@ -45,7 +45,7 @@ public class BagelTest {
     @Test
     public void resetData_withDuplicateFlashcards_throwsDuplicatePersonException() {
         // Two flashcards with the same information fields
-        Flashcard editedAlice = new FlashcardBuilder(ALICE).withDescription(VALID_DESCRIPTION_BOB).withTags(VALID_TAG_HUSBAND)
+        Flashcard editedAlice = new FlashcardBuilder(ALICE).withDescription(VALID_DESC_BOB) //.withTags(VALID_TAG_HUSBAND)
                 .build();
         List<Flashcard> newFlashcards = Arrays.asList(ALICE, editedAlice);
         BagelStub newData = new BagelStub(newFlashcards);
@@ -72,8 +72,8 @@ public class BagelTest {
     @Test
     public void hasFlashcard_flashcardWithSameInformationFieldsInBagel_returnsTrue() {
         bagel.addFlashcard(ALICE);
-        Flashcard editedAlice = new FlashcardBuilder(ALICE).withDescription(VALID_DESCRIPTION_BOB)
-                .withTags(VALID_TAG_HUSBAND).build();
+        Flashcard editedAlice = new FlashcardBuilder(ALICE).withDescription(VALID_DESC_BOB).build();
+                //.withTags(VALID_TAG_HUSBAND)
         assertTrue(bagel.hasFlashcard(editedAlice));
     }
 
