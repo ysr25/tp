@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_FLASHCARD;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,14 +16,14 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
-import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.address.logic.commands.EditCommand.EditFlashcardDescriptor;
 import seedu.address.logic.commands.ExitCommand;
 //import seedu.address.logic.commands.FlipCommand;
 import seedu.address.logic.commands.ListCommand;
 //import seedu.address.logic.commands.ViewCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
-import seedu.address.model.flashcard.NameContainsKeywordsPredicate;
+import seedu.address.model.flashcard.TitleContainsKeywordsPredicate;
 import seedu.address.model.flashcard.Flashcard;
 
 import seedu.address.testutil.EditFlashcardDescriptorBuilder;
@@ -44,8 +44,8 @@ public class BagelParserTest {
     @Test
     public void parseCommand_delete() throws Exception {
         DeleteCommand command = (DeleteCommand) parser.parseCommand(
-                DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
-        assertEquals(new DeleteCommand(INDEX_FIRST_PERSON), command);
+                DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_FLASHCARD.getOneBased());
+        assertEquals(new DeleteCommand(INDEX_FIRST_FLASHCARD), command);
     }
 
     @Test
@@ -53,8 +53,8 @@ public class BagelParserTest {
         Flashcard flashcard = new FlashcardBuilder().build();
         EditFlashcardDescriptor descriptor = new EditFlashcardDescriptorBuilder(flashcard).build();
         EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_PERSON.getOneBased() + " " + FlashcardUtil.getEditFlashcardDescriptorDetails(descriptor));
-        assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);
+                + INDEX_FIRST_FLASHCARD.getOneBased() + " " + FlashcardUtil.getEditFlashcardDescriptorDetails(descriptor));
+        assertEquals(new EditCommand(INDEX_FIRST_FLASHCARD, descriptor), command);
     }
 
     @Test
