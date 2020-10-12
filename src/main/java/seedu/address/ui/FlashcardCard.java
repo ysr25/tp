@@ -1,4 +1,4 @@
-package seedu.bagel.ui;
+package seedu.address.ui;
 
 import java.util.Comparator;
 
@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import seedu.bagel.model.flashcard.Flashcard;
+import seedu.address.model.flashcard.Flashcard;
 
 /**
  * An UI component that displays information of a {@code Flashcard}.
@@ -44,11 +44,11 @@ public class FlashcardCard extends UiPart<Region> {
         super(FXML);
         this.flashcard = flashcard;
         id.setText(displayedIndex + ". ");
-        title.setText(flashcard.getTitle().fullName);
+        title.setText(flashcard.getTitle().fullTitle);
         description.setText(flashcard.getDescription().value);
-        flashcard.getTags().stream()
-                .sorted(Comparator.comparing(tag -> tag.tagName))
-                .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+//        flashcard.getTags().stream()
+//                .sorted(Comparator.comparing(tag -> tag.tagName))
+//                .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
 
     @Override

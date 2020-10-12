@@ -1,7 +1,7 @@
 package seedu.address.testutil;
 
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DESC;
+// import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 
 import java.util.Set;
@@ -29,10 +29,10 @@ public class FlashcardUtil {
     public static String getFlashcardDetails(Flashcard flashcard) {
         StringBuilder sb = new StringBuilder();
         sb.append(PREFIX_TITLE + flashcard.getTitle().fullTitle + " ");
-        sb.append(PREFIX_DESCRIPTION + flashcard.getDescription().value + " ");
-        flashcard.getTags().stream().forEach(
-            s -> sb.append(PREFIX_TAG + s.tagName + " ")
-        );
+        sb.append(PREFIX_DESC + flashcard.getDescription().value + " ");
+        // flashcard.getTags().stream().forEach(
+        //     s -> sb.append(PREFIX_TAG + s.tagName + " ")
+        // );
         return sb.toString();
     }
 
@@ -42,16 +42,16 @@ public class FlashcardUtil {
     public static String getEditFlashcardDescriptorDetails(EditFlashcardDescriptor descriptor) {
         StringBuilder sb = new StringBuilder();
         descriptor.getTitle().ifPresent(title -> sb.append(PREFIX_TITLE).append(title.fullTitle).append(" "));
-        descriptor.getDescription().ifPresent(description -> sb.append(PREFIX_DESCRIPTION).append(description.value)
+        descriptor.getDescription().ifPresent(description -> sb.append(PREFIX_DESC).append(description.value)
                 .append(" "));
-        if (descriptor.getTags().isPresent()) {
-            Set<Tag> tags = descriptor.getTags().get();
-            if (tags.isEmpty()) {
-                sb.append(PREFIX_TAG);
-            } else {
-                tags.forEach(s -> sb.append(PREFIX_TAG).append(s.tagName).append(" "));
-            }
-        }
+        // if (descriptor.getTags().isPresent()) {
+        //     Set<Tag> tags = descriptor.getTags().get();
+        //     if (tags.isEmpty()) {
+        //         sb.append(PREFIX_TAG);
+        //     } else {
+        //         tags.forEach(s -> sb.append(PREFIX_TAG).append(s.tagName).append(" "));
+        //     }
+        // }
         return sb.toString();
     }
 }

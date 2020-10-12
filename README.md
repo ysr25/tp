@@ -2,6 +2,7 @@
 
 ![Ui](docs/images/Ui.png)
 
+
 * This is a project for CS2103T, an NUS module. Its intended usage is for making flashcards for GER1000, another NUS module.
 
 * It is named `Bagel` because we thought it was catchy.

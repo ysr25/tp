@@ -12,6 +12,6 @@ public interface ReadOnlyBagel {
      * Returns an unmodifiable view of the flashcards list.
      * This list will not contain any duplicate flashcards.
      */
-    ObservableList<Flashcard> getFlashcarcList();
+    ObservableList<Flashcard> getFlashcardList();
 
 }
