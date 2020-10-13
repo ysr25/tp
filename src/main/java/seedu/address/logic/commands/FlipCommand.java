@@ -36,7 +36,7 @@ public class FlipCommand extends Command {
         } else if ((flashcards.size() - 1) <= current_index) {
             next_index = 0;
         } else {
-            next_index += 1;
+            next_index = current_index + 1;
         }
 
         Predicate<Flashcard> NEXT_FLASHCARD = flashcard -> flashcards.indexOf(flashcard) == next_index;
