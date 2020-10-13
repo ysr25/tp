@@ -53,8 +53,8 @@ public class BagelParser {
         case DeleteCommand.COMMAND_WORD:
             return new DeleteCommandParser().parse(arguments);
 
-//        case FlipCommand.COMMAND_WORD:
-////            return new FlipCommand();
+        //case FlipCommand.COMMAND_WORD:
+        //    return new FlipCommand();
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
@@ -62,8 +62,8 @@ public class BagelParser {
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
 
-//        case ViewCommand.COMMAND_WORD:
-//            return new ViewCommand();
+        //case ViewCommand.COMMAND_WORD:
+        //    return new ViewCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

@@ -4,11 +4,11 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 
-import java.util.Collections;
-import java.util.HashSet;
+//import java.util.Collections;
+//import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
+//import java.util.Set;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -18,7 +18,7 @@ import seedu.address.model.Model;
 import seedu.address.model.flashcard.Description;
 import seedu.address.model.flashcard.Flashcard;
 import seedu.address.model.flashcard.Title;
-import seedu.address.model.tag.Tag;
+//import seedu.address.model.tag.Tag;
 
 /**
  * Edits the details of an existing person in the address book.
@@ -81,11 +81,13 @@ public class EditCommand extends Command {
      * Creates and returns a {@code Person} with the details of {@code personToEdit}
      * edited with {@code editFlashcardDescriptor}.
      */
-    private static Flashcard createEditedFlashcard(Flashcard flashcardToEdit, EditFlashcardDescriptor editFlashcardDescriptor) {
+    private static Flashcard createEditedFlashcard(Flashcard flashcardToEdit,
+                                                   EditFlashcardDescriptor editFlashcardDescriptor) {
         assert flashcardToEdit != null;
 
         Title updatedTitle = editFlashcardDescriptor.getTitle().orElse(flashcardToEdit.getTitle());
-        Description updatedDescription = editFlashcardDescriptor.getDescription().orElse(flashcardToEdit.getDescription());
+        Description updatedDescription = editFlashcardDescriptor.getDescription()
+                .orElse(flashcardToEdit.getDescription());
         // Set<Tag> updatedTags = editFlashcardDescriptor.getTags().orElse(flashcardToEdit.getTags());
 
         return new Flashcard(updatedTitle, updatedDescription);
@@ -153,19 +155,19 @@ public class EditCommand extends Command {
             return Optional.ofNullable(description);
         }
 
-        /**
-         * Sets {@code tags} to this object's {@code tags}.
-         * A defensive copy of {@code tags} is used internally.
-         */
+        ///**
+        // * Sets {@code tags} to this object's {@code tags}.
+        // * A defensive copy of {@code tags} is used internally.
+        // */
         // public void setTags(Set<Tag> tags) {
         //     this.tags = (tags != null) ? new HashSet<>(tags) : null;
         // }
 
-        /**
-         * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
-         * if modification is attempted.
-         * Returns {@code Optional#empty()} if {@code tags} is null.
-         */
+        ///**
+        // * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
+        // * if modification is attempted.
+        // * Returns {@code Optional#empty()} if {@code tags} is null.
+        // */
         // public Optional<Set<Tag>> getTags() {
         //     return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
         // }
@@ -187,7 +189,7 @@ public class EditCommand extends Command {
 
             return getTitle().equals(e.getTitle())
                     && getDescription().equals(e.getDescription());
-                    // && getTags().equals(e.getTags());
+            // && getTags().equals(e.getTags());
         }
     }
 }
