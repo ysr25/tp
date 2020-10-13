@@ -12,7 +12,7 @@ import seedu.address.model.flashcard.Title;
 import seedu.address.model.tag.Tag;
 
 /**
- * Contains utility methods for populating {@code AddressBook} with sample data.
+ * Contains utility methods for populating {@code Bagel} with sample data.
  */
 public class SampleDataUtil {
     public static Flashcard[] getSampleFlashcards() {
@@ -20,7 +20,7 @@ public class SampleDataUtil {
             new Flashcard(new Title("Types of Observational Studies"),
                 new Description("Prospective, Retrospective, Cross-sectional")),
             new Flashcard(new Title("Types of Sampling Plan"),
-                new Description("Probabililty Sampling: simple random, systematic, stratified, cluster\n"
+                new Description("Probability Sampling: simple random, systematic, stratified, cluster\n"
                         + "Non-probability sampling: volunteer/self-selected, convenience, judgemental, quota")),
             new Flashcard(new Title("Ecological Fallacy"),
                 new Description("Ecological fallacy is thinking that relationships observed for groups "
