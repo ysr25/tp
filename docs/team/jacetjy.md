@@ -11,7 +11,7 @@ Given below are my contributions to the project.
 
 * **New Feature**: Added a list command that allows the user to view the list of flashcards.
 
-* **Code contributed**: [RepoSense link]()
+* **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true)
 
 * **Project management**:
   * Managed release `v1.2` on GitHub

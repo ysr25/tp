@@ -83,7 +83,7 @@ public class Bagel implements ReadOnlyBagel {
     public void setFlashcard(Flashcard target, Flashcard editedFlashcard) {
         requireNonNull(editedFlashcard);
 
-        flashcards.setPerson(target, editedFlashcard);
+        flashcards.setFlashcard(target, editedFlashcard);
     }
 
     /**
