@@ -9,6 +9,7 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_FLASHCARD;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_FLASHCARD;
 import static seedu.address.testutil.TypicalFlashcards.getTypicalBagel;
 
+import javafx.collections.ObservableList;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.Messages;
@@ -26,39 +27,31 @@ public class FlipCommandTest {
 
     private Model model = new ModelManager(getTypicalBagel(), new UserPrefs());
 
-    // change test cases for flip command
+    @Test
+    public void execute_flipOnce_success() {
+        ObservableList<Flashcard> flashcards = model.getBagel().getFlashcardList();
+        FlipCommand flipCommand = new FlipCommand();
+
+        String expectedMessage = String.format(FlipCommand.MESSAGE_SUCCESS);
+
+        ModelManager expectedModel = new ModelManager(model.getBagel(), new UserPrefs());
+        expectedModel.viewFlashcard(flashcard -> flashcards.indexOf(flashcard) == 1);
+
+        assertCommandSuccess(flipCommand, model, expectedMessage, expectedModel);
+    }
+
 //    @Test
-//    public void execute_invalidIndexUnfilteredList_throwsCommandException() {
-//        Index outOfBoundIndex = Index.fromOneBased(model.getFilteredFlashcardList().size() + 1);
-//        ViewCommand viewCommand = new ViewCommand(outOfBoundIndex);
+//    public void execute_flipForWholeList_success() {
+//        FlipCommand.setIndex(0);
+//        ObservableList<Flashcard> flashcards = model.getBagel().getFlashcardList();
+//        FlipCommand flipCommand = new FlipCommand();
 //
-//        assertCommandFailure(viewCommand, model, Messages.MESSAGE_INVALID_FLASHCARD_DISPLAYED_INDEX);
-//    }
-//
-//    @Test
-//    public void execute_validIndexFilteredList_success() {
-//        Flashcard flashcardToView = model.getFilteredFlashcardList().get(INDEX_FIRST_FLASHCARD.getZeroBased());
-//        ViewCommand viewCommand = new ViewCommand(INDEX_FIRST_FLASHCARD);
-//
-//        String expectedMessage = String.format(ViewCommand.MESSAGE_VIEW_FLASHCARD_SUCCESS, flashcardToView);
+//        String expectedMessage = String.format(FlipCommand.MESSAGE_SUCCESS);
 //
 //        ModelManager expectedModel = new ModelManager(model.getBagel(), new UserPrefs());
-//        expectedModel.viewFlashcard(flashcard -> flashcard.equals(flashcardToView));
+//        expectedModel.viewFlashcard(flashcard -> flashcards.indexOf(flashcard) == 1);
 //
-//        assertCommandSuccess(viewCommand, model, expectedMessage, expectedModel);
-//    }
-//
-//    @Test
-//    public void execute_invalidIndexFilteredList_throwsCommandException() {
-//        showFlashcardAtIndex(model, INDEX_FIRST_FLASHCARD);
-//
-//        Index outOfBoundIndex = INDEX_SECOND_FLASHCARD;
-//        // ensures that outOfBoundIndex is still in bounds of bagel (flashcards) list
-//        assertTrue(outOfBoundIndex.getZeroBased() < model.getBagel().getFlashcardList().size());
-//
-//        ViewCommand viewCommand = new ViewCommand(outOfBoundIndex);
-//
-//        assertCommandFailure(viewCommand, model, Messages.MESSAGE_INVALID_FLASHCARD_DISPLAYED_INDEX);
+//        assertCommandSuccess(flipCommand, model, expectedMessage, expectedModel);
 //    }
 
 }
