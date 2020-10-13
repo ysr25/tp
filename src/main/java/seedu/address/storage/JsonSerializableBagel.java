@@ -37,7 +37,8 @@ class JsonSerializableBagel {
      * @param source future changes to this will not affect the created {@code JsonSerializableBagel}.
      */
     public JsonSerializableBagel(ReadOnlyBagel source) {
-        flashcards.addAll(source.getFlashcardList().stream().map(JsonAdaptedFlashcard::new).collect(Collectors.toList()));
+        flashcards.addAll(source.getFlashcardList().stream().map(JsonAdaptedFlashcard::new)
+                .collect(Collectors.toList()));
     }
 
     /**

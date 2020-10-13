@@ -1,6 +1,6 @@
 package seedu.address.ui;
 
-import java.util.Comparator;
+//import java.util.Comparator;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -14,7 +14,7 @@ import seedu.address.model.flashcard.Flashcard;
  */
 public class FlashcardCard extends UiPart<Region> {
 
-    private static final String FXML = "FlashcardListCard.fxml";
+    private static final String FXML = "FlashcardList.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -34,8 +34,8 @@ public class FlashcardCard extends UiPart<Region> {
     private Label title;
     @FXML
     private Label description;
-    @FXML
-    private FlowPane tags;
+//    @FXML
+//    private FlowPane tags;
 
     /**
      * Creates a {@code FlashcardCode} with the given {@code Flashcard} and index to display.
@@ -46,9 +46,9 @@ public class FlashcardCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         title.setText(flashcard.getTitle().fullTitle);
         description.setText(flashcard.getDescription().value);
-//        flashcard.getTags().stream()
-//                .sorted(Comparator.comparing(tag -> tag.tagName))
-//                .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+        //flashcard.getTags().stream()
+        //        .sorted(Comparator.comparing(tag -> tag.tagName))
+        //        .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
 
     @Override
