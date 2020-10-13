@@ -21,10 +21,10 @@ If you can type fast, Bagel can manage your flashcards faster than traditional G
 2. Download the latest flashcard.jar from [here](https://github.com/AY2021S1-CS2103T-W13-2/tp/releases).
 3. Copy the file to the folder you want to use as the home folder for Bagel.
 4. Double-click the file to start the app. The GUI should appear in a few seconds. Note how the app contains some sample data.
-5. Type the command in the command box and press Enter to execute it.
+5. Type the command in the command box and press Enter to execute it. e.g. typing help and pressing Enter will open the help window.
     Some example commands you can try:
     * `list` : Lists all flashcards.
-    * `add t/Data Analysis d/Definition of data analysis: xxxxxx`  : Adds a flashcard with the title
+    * `add t/Data Analysis d/Definition of data analysis: xxxxxx` : Adds a flashcard with the title
         'Data Analysis' and description of 'Definition of data analysis: xxxxxx' to the list of flashcards
     * `delete 3` : Deletes the 3rd flashcard shown in the current flashcards set.
     * `view 3` : Shows the 3rd flashcard shown in the current flashcards set.
@@ -42,10 +42,10 @@ Refer to the Features below for details of each command.
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add t/TITLE`, TITLE is the parameter which can be used.
+  e.g. in `add t/TITLE`, TITLE is the parameter which can be used
 
 * User should supply the number of the flashcard behind commands.<br>
-  e.g. `add 1`, `delete 10`.
+  e.g. `add 1`, `delete 10`
 </div>
 
 ### Adding a flashcard: `add`
@@ -66,7 +66,7 @@ Deletes the specified flashcard from the total list of flashcards.
 
 Format: `delete INDEX`
 
-* Deletes the person at the specified `INDEX`.
+* Deletes the flashcard at the specified `INDEX`.
 * The index refers to the index number shown in the displayed flashcards list.
 * The index **must be a positive integer** 1, 2, 3, …
 
@@ -76,8 +76,8 @@ Edits an existing flashcard.
 
 Format: `edit INDEX [t/TITLE] [d/DESCRIPTION]`
 
-* Edits the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
+* Edits the flashcard at the specified `INDEX`.
+* The index refers to the index number shown in the displayed flashcard list.
 * The index **must be a positive integer** 1, 2, 3, ...
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.

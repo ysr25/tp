@@ -4,48 +4,51 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
+import seedu.address.model.Bagel;
+import seedu.address.model.ReadOnlyBagel;
+import seedu.address.model.flashcard.Description;
+import seedu.address.model.flashcard.Flashcard;
+import seedu.address.model.flashcard.Title;
 import seedu.address.model.tag.Tag;
 
 /**
  * Contains utility methods for populating {@code AddressBook} with sample data.
  */
 public class SampleDataUtil {
-    public static Person[] getSamplePersons() {
-        return new Person[] {
-            new Person(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),
-                new Address("Blk 30 Geylang Street 29, #06-40"),
-                getTagSet("friends")),
-            new Person(new Name("Bernice Yu"), new Phone("99272758"), new Email("berniceyu@example.com"),
-                new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"),
-                getTagSet("colleagues", "friends")),
-            new Person(new Name("Charlotte Oliveiro"), new Phone("93210283"), new Email("charlotte@example.com"),
-                new Address("Blk 11 Ang Mo Kio Street 74, #11-04"),
-                getTagSet("neighbours")),
-            new Person(new Name("David Li"), new Phone("91031282"), new Email("lidavid@example.com"),
-                new Address("Blk 436 Serangoon Gardens Street 26, #16-43"),
-                getTagSet("family")),
-            new Person(new Name("Irfan Ibrahim"), new Phone("92492021"), new Email("irfan@example.com"),
-                new Address("Blk 47 Tampines Street 20, #17-35"),
-                getTagSet("classmates")),
-            new Person(new Name("Roy Balakrishnan"), new Phone("92624417"), new Email("royb@example.com"),
-                new Address("Blk 45 Aljunied Street 85, #11-31"),
-                getTagSet("colleagues"))
+    public static Flashcard[] getSampleFlashcards() {
+        return new Flashcard[] {
+            new Flashcard(new Title("Types of Observational Studies"),
+                new Description("Prospective, Retrospective, Cross-sectional")),
+            new Flashcard(new Title("Types of Sampling Plan"),
+                new Description("Probabililty Sampling: simple random, systematic, stratified, cluster\n" +
+                        "Non-probability sampling: volunteer/self-selected, convenience, judgemental, quota")),
+            new Flashcard(new Title("Ecological Fallacy"),
+                new Description("Ecological fallacy is thinking that relationships observed for groups " +
+                        "will hold for individuals. E.g. if countries with more fat in the diet have higher rates " +
+                        "of breast cancer, then women who eat fatty foods must be more likely to get breast cancer.")),
+            new Flashcard(new Title("Atomistic fallacy"),
+                new Description("Atomistic fallacy is thinking that relation observed for individuals" +
+                        "will hold for groups. The atomistic fallacy arises because associations between two " +
+                        "variables at the individual level may differ from associations between analogous " +
+                        "variables measured at the group level. ")),
+            new Flashcard(new Title("Types of association"),
+                new Description("r = 0: no linear association\n" +
+                        "r > 0: positive association\n" +
+                        "r < 0: negative association\n" +
+                        "r = 1: perfect positive association\n" +
+                        "r = -1: perfect negative association")),
+            new Flashcard(new Title("Odds Ratio(OR) and Risk Ratio(RR)"),
+                new Description("OR: odds(exp)/odds(unexp)\n" +
+                        "RR: risk(exp)/risk(unexp)"))
         };
     }
 
-    public static ReadOnlyAddressBook getSampleAddressBook() {
-        AddressBook sampleAb = new AddressBook();
-        for (Person samplePerson : getSamplePersons()) {
-            sampleAb.addPerson(samplePerson);
+    public static ReadOnlyBagel getSampleBagel() {
+        Bagel sampleBagel = new Bagel();
+        for (Flashcard sampleFlashcard : getSampleFlashcards()) {
+            sampleBagel.addFlashcard(sampleFlashcard);
         }
-        return sampleAb;
+        return sampleBagel;
     }
 
     /**
