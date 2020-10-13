@@ -26,7 +26,7 @@ public class FlashcardBuilder {
      */
     public FlashcardBuilder() {
         title = new Title(DEFAULT_TITLE);
-        description = new Decription(DEFAULT_DESCRIPTION);
+        description = new Description(DEFAULT_DESCRIPTION);
         tags = new HashSet<>();
     }
 
@@ -36,14 +36,14 @@ public class FlashcardBuilder {
     public FlashcardBuilder(Flashcard flashcardToCopy) {
         title =flashcardToCopy.getTitle();
         description = flashcardToCopy.getDescription();
-        tags = new HashSet<>(flashcardToCopy.getTags());
+        // tags = new HashSet<>(flashcardToCopy.getTags());
     }
 
     /**
      * Sets the {@code Title} of the {@code Flashcard} that we are building.
      */
     public FlashcardBuilder withTitle(String title) {
-        this.title = new Title(name);
+        this.title = new Title(title);
         return this;
     }
 
@@ -64,7 +64,7 @@ public class FlashcardBuilder {
     }
 
     public Flashcard build() {
-        return new Flashcard(title, description, tags);
+        return new Flashcard(title, description);
     }
 
 }

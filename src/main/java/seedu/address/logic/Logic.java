@@ -31,7 +31,7 @@ public interface Logic {
     ReadOnlyBagel getBagel();
 
     /** Returns an unmodifiable view of the filtered list of flashcard */
-    ObservableList<Flashcard> getFilteredPersonList();
+    ObservableList<Flashcard> getFilteredFlashcardList();
 
     /**
      * Returns the user prefs' bagel file path.

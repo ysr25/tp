@@ -76,7 +76,7 @@ public class ModelManager implements Model {
         userPrefs.setBagelFilePath(bagelFilePath);
     }
 
-    //=========== AddressBook ================================================================================
+    //=========== Bagel ================================================================================
 
     @Override
     public void setBagel(ReadOnlyBagel bagel) {
@@ -109,6 +109,11 @@ public class ModelManager implements Model {
     public void setFlashcard(Flashcard target, Flashcard editedFlashcard) {
         requireAllNonNull(target, editedFlashcard);
         bagel.setFlashcard(target, editedFlashcard);
+    }
+
+    @Override
+    public void viewFlashcard(Predicate<Flashcard> predicate) {
+        updateFilteredFlashcardList(predicate);
     }
 
     //=========== Filtered Flashcard List Accessors =============================================================

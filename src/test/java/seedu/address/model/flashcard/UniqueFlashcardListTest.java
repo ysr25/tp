@@ -3,8 +3,7 @@ package seedu.address.model.flashcard;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DESC_BOB;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalFlashcards.ALICE;
 import static seedu.address.testutil.TypicalFlashcards.BOB;
@@ -42,7 +41,7 @@ public class UniqueFlashcardListTest {
     @Test
     public void contains_flashcardWithSameIdentityFieldsInList_returnsTrue() {
         uniqueFlashcardList.add(ALICE);
-        Flashcard editedAlice = new FlashcardBuilder(ALICE).withDescription(VALID_ADDRESS_BOB)
+        Flashcard editedAlice = new FlashcardBuilder(ALICE).withDescription(VALID_DESC_BOB)
                 .build();
         assertTrue(uniqueFlashcardList.contains(editedAlice));
     }
@@ -65,7 +64,7 @@ public class UniqueFlashcardListTest {
 
     @Test
     public void setFlashcard_nullEditedFlashcard_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniqueFlashcardList.Flashcard(ALICE, null));
+        assertThrows(NullPointerException.class, () -> uniqueFlashcardList.setFlashcard(ALICE, null));
     }
 
     @Test
@@ -85,7 +84,7 @@ public class UniqueFlashcardListTest {
     @Test
     public void setFlashcard_editedFlashcardHasSameIdentity_success() {
         uniqueFlashcardList.add(ALICE);
-        Flashcard editedAlice = new FlashcardBuilder(ALICE).withTitle(VALID_ADDRESS_BOB)
+        Flashcard editedAlice = new FlashcardBuilder(ALICE).withTitle(VALID_DESC_BOB)
                 .build();
         uniqueFlashcardList.setFlashcard(ALICE, editedAlice);
         UniqueFlashcardList expectedUniqueFlashcardList = new UniqueFlashcardList();

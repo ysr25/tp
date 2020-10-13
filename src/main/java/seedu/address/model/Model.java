@@ -72,9 +72,15 @@ public interface Model {
     /**
      * Replaces the given flashcard {@code target} with {@code editedFlashcard}.
      * {@code target} must exist in the list of flashcards.
-     * The flashcard information of {@code editedFlashcard} must not be the same as another existing flashcard in the Bagel.
+     * The flashcard information of {@code editedFlashcard} must not be the same as another existing flashcard
+     * in the Bagel.
      */
     void setFlashcard(Flashcard target, Flashcard editedFlashcard);
+
+    /**
+     * Displays the required flashcard by updating the filter flashcard list.
+     */
+    void viewFlashcard(Predicate<Flashcard> predicate);
 
     /** Returns an unmodifiable view of the filtered flashcard list */
     ObservableList<Flashcard> getFilteredFlashcardList();
