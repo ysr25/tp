@@ -1,14 +1,14 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.DESC_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_TITLE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.DESC_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_DESC_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_TITLE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
-import static seedu.address.logic.commands.CommandTestUtil.TITLE_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.TITLE_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.TITLE_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TITLE_BOB;
 
@@ -19,8 +19,8 @@ import static seedu.address.testutil.TypicalFlashcards.BOB;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.AddCommand;
-import seedu.address.model.flashcard.Flashcard;
 import seedu.address.model.flashcard.Description;
+import seedu.address.model.flashcard.Flashcard;
 import seedu.address.model.flashcard.Title;
 import seedu.address.testutil.FlashcardBuilder;
 
@@ -32,7 +32,8 @@ public class AddCommandParserTest {
         Flashcard expectedFlashcard = new FlashcardBuilder(BOB).build(); //.withTags(VALID_TAG_FRIEND).build();
 
         // whitespace only preamble
-        assertParseSuccess(parser, PREAMBLE_WHITESPACE + TITLE_DESC_BOB + DESC_DESC_BOB, new AddCommand(expectedFlashcard));
+        assertParseSuccess(parser, PREAMBLE_WHITESPACE + TITLE_DESC_BOB + DESC_DESC_BOB,
+                new AddCommand(expectedFlashcard));
 
         // multiple word titles accepted
         assertParseSuccess(parser, TITLE_DESC_AMY + TITLE_DESC_BOB + DESC_DESC_BOB, new AddCommand(expectedFlashcard));
