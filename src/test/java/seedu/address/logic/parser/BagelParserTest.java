@@ -21,6 +21,7 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FlipCommand;
 import seedu.address.logic.commands.ListCommand;
 //import seedu.address.logic.commands.ViewCommand;
+import seedu.address.logic.commands.ViewCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 import seedu.address.model.flashcard.TitleContainsKeywordsPredicate;
@@ -72,6 +73,13 @@ public class BagelParserTest {
     @Test
     public void parseCommand_flip() throws Exception {
         assertTrue(parser.parseCommand(FlipCommand.COMMAND_WORD) instanceof FlipCommand);
+    }
+
+    @Test
+    public void parseCommand_view() throws Exception {
+        ViewCommand command = (ViewCommand) parser.parseCommand(
+                ViewCommand.COMMAND_WORD + " " + INDEX_FIRST_FLASHCARD.getOneBased());
+        assertEquals(new ViewCommand(INDEX_FIRST_FLASHCARD), command);
     }
 
 //    @Test
