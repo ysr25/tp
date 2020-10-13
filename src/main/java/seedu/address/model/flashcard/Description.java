@@ -15,7 +15,7 @@ public class Description {
      * The first character of the description must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String VALIDATION_REGEX = "[^\\s].*";
+    public static final String VALIDATION_REGEX = "(?s)[^\\s].*";
 
     public final String value;
 
@@ -34,8 +34,7 @@ public class Description {
      * Returns true if a given string is a valid description.
      */
     public static boolean isValidDescription(String test) {
-        //return test.matches(VALIDATION_REGEX);
-        return true;
+        return test.matches(VALIDATION_REGEX);
     }
 
     @Override
