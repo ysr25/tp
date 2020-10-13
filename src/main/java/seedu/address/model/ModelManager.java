@@ -111,6 +111,11 @@ public class ModelManager implements Model {
         bagel.setFlashcard(target, editedFlashcard);
     }
 
+    @Override
+    public void viewFlashcard(Predicate<Flashcard> predicate) {
+        updateFilteredFlashcardList(predicate);
+    }
+
     //=========== Filtered Flashcard List Accessors =============================================================
 
     /**
