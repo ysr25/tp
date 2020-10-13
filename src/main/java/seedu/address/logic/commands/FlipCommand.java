@@ -19,23 +19,30 @@ public class FlipCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Flipped flashcard";
 
     // added ----
-    public int index = 0;
+    private static int current_index;
+    private static int next_index;
 
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
 
-        ObservableList<Flashcard> filteredFlashcards =  model.getFilteredFlashcardList();
-        Predicate<Flashcard> PREDICATE_NEXT_FLASHCARD = flashcard ->
-                filteredFlashcards.indexOf(flashcard) == index? true: false;
-        model.updateFilteredFlashcardList(PREDICATE_NEXT_FLASHCARD);
-
-        if ((filteredFlashcards.size()-1) <= index) {
-            index = 0;
+        ObservableList<Flashcard> flashcards =  model.getBagel().getFlashcardList();
+        ObservableList<Flashcard> filteredFlashcards = model.getFilteredFlashcardList();
+        // find the index of flashcard currently shown
+        current_index = flashcards.indexOf(filteredFlashcards.get(0));
+        // find index of next flashcard
+        if (filteredFlashcards.size() != 1) {
+            next_index = current_index;
+        } else if ((flashcards.size() - 1) <= current_index) {
+            next_index = 0;
         } else {
-            index += 1;
+            next_index += 1;
         }
+
+        Predicate<Flashcard> NEXT_FLASHCARD = flashcard -> flashcards.indexOf(flashcard) == next_index;
+        model.updateFilteredFlashcardList(NEXT_FLASHCARD);
 
         return new CommandResult(MESSAGE_SUCCESS);
     }
+
 }
