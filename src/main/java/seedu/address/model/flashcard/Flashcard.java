@@ -2,12 +2,12 @@ package seedu.address.model.flashcard;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.Collections;
-import java.util.HashSet;
+//import java.util.Collections;
+//import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
+//import java.util.Set;
 
-import seedu.address.model.tag.Tag;
+//import seedu.address.model.tag.Tag;
 
 /**
  * Represents a Flashcard in Bagel list.
@@ -17,14 +17,14 @@ public class Flashcard {
 
     // Identity fields
     private final Title title;
-//    private final Name name;
-//    private final Phone phone;
-//    private final Email email;
+    //private final Name name;
+    //private final Phone phone;
+    //private final Email email;
 
     // Data fields
     private final Description description;
-//    private final Address address;
-//    private final Set<Tag> tags = new HashSet<>();
+    //private final Address address;
+    //private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
@@ -43,13 +43,13 @@ public class Flashcard {
         return this.description;
     }
 
-//    /**
-//     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
-//     * if modification is attempted.
-//     */
-//    public Set<Tag> getTags() {
-//        return Collections.unmodifiableSet(tags);
-//    }
+    ///**
+    // * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
+    // * if modification is attempted.
+    // */
+    //public Set<Tag> getTags() {
+    //   return Collections.unmodifiableSet(tags);
+    //}
 
     /**
      * Returns true if both flashcards of the same title have at least one other identity field that is the same.

@@ -62,6 +62,9 @@ public class BagelParser {
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
 
+        case ViewCommand.COMMAND_WORD:
+            return new ViewCommand();
+
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
