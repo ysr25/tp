@@ -3,10 +3,10 @@ package seedu.address.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalPersons.ALICE;
-import static seedu.address.testutil.TypicalPersons.HOON;
-import static seedu.address.testutil.TypicalPersons.IDA;
-import static seedu.address.testutil.TypicalPersons.getTypicalBagel;
+import static seedu.address.testutil.TypicalFlashcards.ALICE;
+import static seedu.address.testutil.TypicalFlashcards.HOON;
+import static seedu.address.testutil.TypicalFlashcards.IDA;
+import static seedu.address.testutil.TypicalFlashcards.getTypicalBagel;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -72,14 +72,14 @@ public class JsonBagelStorageTest {
         assertEquals(original, new Bagel(readBack));
 
         // Modify data, overwrite exiting file, and read back
-        original.addPerson(HOON);
-        original.removePerson(ALICE);
+        original.addFlashcard(HOON);
+        original.removeFlashcard(ALICE);
         jsonBagelStorage.saveBagel(original, filePath);
         readBack = jsonBagelStorage.readBagel(filePath).get();
         assertEquals(original, new Bagel(readBack));
 
         // Save and read without specifying file path
-        original.addPerson(IDA);
+        original.addFlashcard(IDA);
         jsonBagelStorage.saveBagel(original); // file path not specified
         readBack = jsonBagelStorage.readBagel().get(); // file path not specified
         assertEquals(original, new Bagel(readBack));

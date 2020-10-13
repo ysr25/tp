@@ -7,7 +7,8 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.flashcard.Person;
+import seedu.address.model.ReadOnlyBagel;
+import seedu.address.model.flashcard.Flashcard;
 
 /**
  * API of the Logic component
@@ -25,17 +26,17 @@ public interface Logic {
     /**
      * Returns the AddressBook.
      *
-     * @see seedu.address.model.Model#getAddressBook()
+     * @see seedu.address.model.Model#getBagel()
      */
-    ReadOnlyAddressBook getAddressBook();
+    ReadOnlyBagel getBagel();
 
-    /** Returns an unmodifiable view of the filtered list of persons */
-    ObservableList<Person> getFilteredPersonList();
+    /** Returns an unmodifiable view of the filtered list of flashcard */
+    ObservableList<Flashcard> getFilteredFlashcardList();
 
     /**
-     * Returns the user prefs' address book file path.
+     * Returns the user prefs' bagel file path.
      */
-    Path getAddressBookFilePath();
+    Path getBagelFilePath();
 
     /**
      * Returns the user prefs' GUI settings.
