@@ -11,7 +11,6 @@ import static seedu.address.logic.commands.CommandTestUtil.TITLE_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.TITLE_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TITLE_BOB;
-
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalFlashcards.BOB;
@@ -42,13 +41,13 @@ public class AddCommandParserTest {
         assertParseSuccess(parser, TITLE_DESC_BOB + DESC_DESC_AMY + DESC_DESC_BOB, new AddCommand(expectedFlashcard));
     }
 
-//    @Test
-//    public void parse_optionalFieldsMissing_success() {
-//        // zero tags
-//        Flashcard expectedFlashcard = new FlashcardBuilder(AMY).withTags().build();
-//        assertParseSuccess(parser, TITLE_DESC_AMY + DESC_DESC_AMY,
-//                new AddCommand(expectedFlashcard));
-//    }
+    //@Test
+    //public void parse_optionalFieldsMissing_success() {
+    //    // zero tags
+    //    Flashcard expectedFlashcard = new FlashcardBuilder(AMY).withTags().build();
+    //   assertParseSuccess(parser, TITLE_DESC_AMY + DESC_DESC_AMY,
+    //            new AddCommand(expectedFlashcard));
+    //}
 
     @Test
     public void parse_compulsoryFieldMissing_failure() {
