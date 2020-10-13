@@ -16,7 +16,7 @@ public class FlipCommand extends Command {
 
     public static final String COMMAND_WORD = "flip";
 
-    public static final String MESSAGE_SUCCESS = "flipped flashcard";
+    public static final String MESSAGE_SUCCESS = "Flipped flashcard";
 
     // added ----
     public int index = 0;
@@ -26,8 +26,9 @@ public class FlipCommand extends Command {
         requireNonNull(model);
 
         ObservableList<Flashcard> filteredFlashcards =  model.getFilteredFlashcardList();
-        Predicate<Flashcard> NEXT_FLASHCARD = flashcard -> filteredFlashcards.indexOf(flashcard) == index? true: false;
-        model.updateFilteredFlashcardList(NEXT_FLASHCARD);
+        Predicate<Flashcard> PREDICATE_NEXT_FLASHCARD = flashcard ->
+                filteredFlashcards.indexOf(flashcard) == index? true: false;
+        model.updateFilteredFlashcardList(PREDICATE_NEXT_FLASHCARD);
 
         if ((filteredFlashcards.size()-1) <= index) {
             index = 0;

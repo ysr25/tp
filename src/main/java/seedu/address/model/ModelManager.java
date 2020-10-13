@@ -76,7 +76,7 @@ public class ModelManager implements Model {
         userPrefs.setBagelFilePath(bagelFilePath);
     }
 
-    //=========== AddressBook ================================================================================
+    //=========== Bagel ================================================================================
 
     @Override
     public void setBagel(ReadOnlyBagel bagel) {
