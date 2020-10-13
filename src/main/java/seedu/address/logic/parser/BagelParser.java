@@ -13,7 +13,7 @@ import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
 //import seedu.address.logic.commands.FlipCommand;
 import seedu.address.logic.commands.ListCommand;
-//import seedu.address.logic.commands.ViewCommand;
+import seedu.address.logic.commands.ViewCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -53,6 +53,9 @@ public class BagelParser {
         case DeleteCommand.COMMAND_WORD:
             return new DeleteCommandParser().parse(arguments);
 
+        case ViewCommand.COMMAND_WORD:
+            return new ViewCommandParser().parse(arguments);
+
 //        case FlipCommand.COMMAND_WORD:
 ////            return new FlipCommand();
 
@@ -61,9 +64,6 @@ public class BagelParser {
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
-
-//        case ViewCommand.COMMAND_WORD:
-//            return new ViewCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
