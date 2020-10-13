@@ -25,8 +25,7 @@ public class FlipCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
 
-
-        ObservableList<Flashcard> filteredFlashcards =  model.getFilteredFlashcardList();
+        ObservableList<Flashcard> filteredFlashcards =  model.getBagel().getFlashcardList();;
         Predicate<Flashcard> NEXT_FLASHCARD = flashcard -> filteredFlashcards.indexOf(flashcard) == index? true: false;
         model.updateFilteredFlashcardList(NEXT_FLASHCARD);
 
