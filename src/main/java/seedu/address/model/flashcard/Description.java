@@ -46,8 +46,8 @@ public class Description {
 
     @Override
     public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof Description) ; // instanceof handles nulls
+        // short circuit if same object, instanceof handles nulls
+        return other == this || (other instanceof Description);
         // removed state check originally here
     }
 

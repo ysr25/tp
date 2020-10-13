@@ -6,16 +6,15 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DESC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 //import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Optional;
-import java.util.Set;
-
+//import java.util.Collection;
+//import java.util.Collections;
+//import java.util.Optional;
+//import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditFlashcardDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.tag.Tag;
+//import seedu.address.model.tag.Tag;
 
 /**
  * Parses input arguments and creates a new EditCommand object
@@ -45,7 +44,8 @@ public class EditCommandParser implements Parser<EditCommand> {
             editFlashcardDescriptor.setTitle(ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get()));
         }
         if (argMultimap.getValue(PREFIX_DESC).isPresent()) {
-            editFlashcardDescriptor.setDescription(ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESC).get()));
+            editFlashcardDescriptor
+                    .setDescription(ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESC).get()));
         }
         // parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editFlashcardDescriptor::setTags);
 
@@ -56,11 +56,11 @@ public class EditCommandParser implements Parser<EditCommand> {
         return new EditCommand(index, editFlashcardDescriptor);
     }
 
-    /**
-     * Parses {@code Collection<String> tags} into a {@code Set<Tag>} if {@code tags} is non-empty.
-     * If {@code tags} contain only one element which is an empty string, it will be parsed into a
-     * {@code Set<Tag>} containing zero tags.
-     */
+    ///**
+    // * Parses {@code Collection<String> tags} into a {@code Set<Tag>} if {@code tags} is non-empty.
+    // * If {@code tags} contain only one element which is an empty string, it will be parsed into a
+    // * {@code Set<Tag>} containing zero tags.
+    // */
     // private Optional<Set<Tag>> parseTagsForEdit(Collection<String> tags) throws ParseException {
     //     assert tags != null;
     //

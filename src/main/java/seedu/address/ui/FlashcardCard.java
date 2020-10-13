@@ -1,6 +1,6 @@
 package seedu.address.ui;
 
-import java.util.Comparator;
+//import java.util.Comparator;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -46,9 +46,9 @@ public class FlashcardCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         title.setText(flashcard.getTitle().fullTitle);
         description.setText(flashcard.getDescription().value);
-//        flashcard.getTags().stream()
-//                .sorted(Comparator.comparing(tag -> tag.tagName))
-//                .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+        //flashcard.getTags().stream()
+        //        .sorted(Comparator.comparing(tag -> tag.tagName))
+        //        .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
 
     @Override

@@ -41,10 +41,10 @@ public class LogicManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonBagelStorage addressBookStorage =
-                new JsonBagelStorage(temporaryFolder.resolve("addressBook.json"));
+        JsonBagelStorage bagelStorage =
+                new JsonBagelStorage(temporaryFolder.resolve("bagel.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        StorageManager storage = new StorageManager(bagelStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
     }
 
@@ -69,11 +69,11 @@ public class LogicManagerTest {
     @Test
     public void execute_storageThrowsIoException_throwsCommandException() {
         // Setup LogicManager with JsonAddressBookIoExceptionThrowingStub
-        JsonBagelStorage addressBookStorage =
-                new JsonAddressBookIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionAddressBook.json"));
+        JsonBagelStorage bagelStorage =
+                new JsonBagelIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionBagel.json"));
         JsonUserPrefsStorage userPrefsStorage =
                 new JsonUserPrefsStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        StorageManager storage = new StorageManager(bagelStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
 
         // Execute add command
@@ -146,8 +146,8 @@ public class LogicManagerTest {
     /**
      * A stub class to throw an {@code IOException} when the save method is called.
      */
-    private static class JsonAddressBookIoExceptionThrowingStub extends JsonBagelStorage {
-        private JsonAddressBookIoExceptionThrowingStub(Path filePath) {
+    private static class JsonBagelIoExceptionThrowingStub extends JsonBagelStorage {
+        private JsonBagelIoExceptionThrowingStub(Path filePath) {
             super(filePath);
         }
 
