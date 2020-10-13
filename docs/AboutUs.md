@@ -43,3 +43,12 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/ysr25.md)]
 
 * Role: Documentation, Scheduling and Tracking
+
+### Yuki Akizuki
+
+<img src="images/yuki-cell.png" width="200px">
+
+[[github](http://github.com/yuki-cell)]
+[[portfolio](team/yuki-cell.md)]
+
+* Role: Testing, Code Quality
