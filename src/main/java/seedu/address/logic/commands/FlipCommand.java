@@ -1,13 +1,12 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_FLASHCARDS;
+//import static seedu.address.model.Model.PREDICATE_SHOW_ALL_FLASHCARDS;
 
+import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.model.Model;
 import seedu.address.model.flashcard.Flashcard;
-
-import java.util.function.Predicate;
 
 /**
  * Flip and show next flashcard in the list.

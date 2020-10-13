@@ -4,7 +4,7 @@ package seedu.address.ui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.layout.FlowPane;
+//import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.flashcard.Flashcard;
@@ -34,8 +34,6 @@ public class FlashcardCard extends UiPart<Region> {
     private Label title;
     @FXML
     private Label description;
-//    @FXML
-//    private FlowPane tags;
 
     /**
      * Creates a {@code FlashcardCode} with the given {@code Flashcard} and index to display.
