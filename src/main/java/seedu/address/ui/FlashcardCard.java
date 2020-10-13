@@ -14,7 +14,7 @@ import seedu.address.model.flashcard.Flashcard;
  */
 public class FlashcardCard extends UiPart<Region> {
 
-    private static final String FXML = "FlashcardListCard.fxml";
+    private static final String FXML = "FlashcardList.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -34,8 +34,8 @@ public class FlashcardCard extends UiPart<Region> {
     private Label title;
     @FXML
     private Label description;
-    @FXML
-    private FlowPane tags;
+//    @FXML
+//    private FlowPane tags;
 
     /**
      * Creates a {@code FlashcardCode} with the given {@code Flashcard} and index to display.

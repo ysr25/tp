@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -22,7 +23,7 @@ public class ViewCommand extends Command {
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_VIEW_FLASHCARD_SUCCESS = "Showing flashcard: %1$s";
+    public static final String MESSAGE_VIEW_FLASHCARD_SUCCESS = "Displaying flashcard: ";
 
     private final Index targetIndex;
 
@@ -40,7 +41,8 @@ public class ViewCommand extends Command {
         }
 
         Flashcard flashcardToView = lastShownList.get(targetIndex.getZeroBased());
-        model.viewFlashcard(flashcard -> flashcard.equals(flashcardToView));
+        Predicate<Flashcard> PREDICATE_VIEW_FLASHCARD = flashcard -> flashcard == flashcardToView;
+        model.viewFlashcard(PREDICATE_VIEW_FLASHCARD);
         return new CommandResult(String.format(MESSAGE_VIEW_FLASHCARD_SUCCESS));
     }
 
