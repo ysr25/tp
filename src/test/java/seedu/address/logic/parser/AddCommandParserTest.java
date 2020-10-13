@@ -34,8 +34,8 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.model.flashcard.Flashcard;
-import seedu.address.model.flashcard.Name;
-import seedu.address.model.flashcard.Person;
+import seedu.address.model.flashcard.Description;
+import seedu.address.model.flashcard.Flashcard;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.FlashcardBuilder;
 
