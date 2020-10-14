@@ -45,8 +45,11 @@ public class Description {
     @Override
     public boolean equals(Object other) {
         // short circuit if same object, instanceof handles nulls
-        return other == this || (other instanceof Description);
+        //return other == this || (other instanceof Description);
         // removed state check originally here
+        return other == this // short circuit if same object
+                || (other instanceof Description // instanceof handles nulls
+                && value.equals(((Description) other).value)); // state check
     }
 
     @Override

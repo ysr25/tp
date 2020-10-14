@@ -27,10 +27,10 @@ public class TitleTest {
         // invalid title
         assertFalse(Title.isValidTitle("")); // empty string
         assertFalse(Title.isValidTitle(" ")); // spaces only
-        assertFalse(Title.isValidTitle("^")); // only non-alphanumeric characters
-        assertFalse(Title.isValidTitle("peter*")); // contains non-alphanumeric characters
 
         // valid title
+        assertTrue(Title.isValidTitle("^")); // only non-alphanumeric characters
+        assertTrue(Title.isValidTitle("peter*")); // contains non-alphanumeric characters
         assertTrue(Title.isValidTitle("peter jack")); // alphabets only
         assertTrue(Title.isValidTitle("12345")); // numbers only
         assertTrue(Title.isValidTitle("peter the 2nd")); // alphanumeric characters
