@@ -12,7 +12,7 @@ import seedu.address.model.flashcard.Title;
 import seedu.address.model.tag.Tag;
 
 /**
- * Contains utility methods for populating {@code AddressBook} with sample data.
+ * Contains utility methods for populating {@code Bagel} with sample data.
  */
 public class SampleDataUtil {
     public static Flashcard[] getSampleFlashcards() {
