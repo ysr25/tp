@@ -1,6 +1,5 @@
 package seedu.address.logic.commands;
 
-import static javax.swing.text.html.HTML.Tag.HEAD;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY;
@@ -10,9 +9,9 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TITLE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showFlashcardAtIndex;
+import static seedu.address.testutil.TypicalFlashcards.getTypicalBagel;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_FLASHCARD;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_FLASHCARD;
-import static seedu.address.testutil.TypicalFlashcards.getTypicalBagel;
 
 import org.junit.jupiter.api.Test;
 
@@ -55,11 +54,11 @@ public class EditCommandTest {
 
         FlashcardBuilder flashcardInList = new FlashcardBuilder(lastFlashcard);
         Flashcard editedFlashcard = flashcardInList.withTitle(VALID_TITLE_BOB).withDescription(VALID_DESC_BOB).build();
-//                .withTags(VALID_TAG_HUSBAND).build();
+        //        .withTags(VALID_TAG_HUSBAND).build();
 
         EditFlashcardDescriptor descriptor = new EditFlashcardDescriptorBuilder().withTitle(VALID_TITLE_BOB)
                 .withDescription(VALID_DESC_BOB).build();
-//                .withTags(VALID_TAG_HUSBAND).build();
+        //        .withTags(VALID_TAG_HUSBAND).build();
         EditCommand editCommand = new EditCommand(indexLastFlashcard, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_FLASHCARD_SUCCESS, editedFlashcard);
@@ -160,8 +159,8 @@ public class EditCommandTest {
         // null -> returns false
         assertFalse(standardCommand.equals(null));
 
-//        // different types -> returns false
-//        assertFalse(standardCommand.equals(new ClearCommand()));
+        // different types -> returns false
+        //assertFalse(standardCommand.equals(new ClearCommand()));
 
         // different index -> returns false
         assertFalse(standardCommand.equals(new EditCommand(INDEX_SECOND_FLASHCARD, DESC_AMY)));

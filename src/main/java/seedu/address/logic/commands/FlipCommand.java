@@ -1,13 +1,12 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_FLASHCARDS;
+
+import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.Model;
 import seedu.address.model.flashcard.Flashcard;
-
-import java.util.function.Predicate;
 
 /**
  * Flip and show next flashcard in the list.
@@ -19,23 +18,30 @@ public class FlipCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Flipped flashcard";
 
     // added ----
-    public int index = 0;
+    private static int currentIndex;
+    private static int nextIndex;
 
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
 
-        ObservableList<Flashcard> filteredFlashcards =  model.getFilteredFlashcardList();
-        Predicate<Flashcard> PREDICATE_NEXT_FLASHCARD = flashcard ->
-                filteredFlashcards.indexOf(flashcard) == index? true: false;
-        model.updateFilteredFlashcardList(PREDICATE_NEXT_FLASHCARD);
-
-        if ((filteredFlashcards.size()-1) <= index) {
-            index = 0;
+        ObservableList<Flashcard> flashcards = model.getBagel().getFlashcardList();
+        ObservableList<Flashcard> filteredFlashcards = model.getFilteredFlashcardList();
+        // find the index of flashcard currently shown
+        currentIndex = flashcards.indexOf(filteredFlashcards.get(0));
+        // find index of next flashcard
+        if (filteredFlashcards.size() != 1) {
+            nextIndex = currentIndex;
+        } else if ((flashcards.size() - 1) <= currentIndex) {
+            nextIndex = 0;
         } else {
-            index += 1;
+            nextIndex = currentIndex + 1;
         }
+
+        Predicate<Flashcard> nextFlashcard = flashcard -> flashcards.indexOf(flashcard) == nextIndex;
+        model.updateFilteredFlashcardList(nextFlashcard);
 
         return new CommandResult(MESSAGE_SUCCESS);
     }
+
 }

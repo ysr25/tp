@@ -33,7 +33,8 @@ public class EditFlashcardDescriptorTest {
         assertFalse(DESC_AMY.equals(DESC_BOB));
 
         // different title -> returns false
-        EditFlashcardDescriptor editedAmy = new EditFlashcardDescriptorBuilder(DESC_AMY).withTitle(VALID_TITLE_BOB).build();
+        EditFlashcardDescriptor editedAmy = new EditFlashcardDescriptorBuilder(DESC_AMY).withTitle(VALID_TITLE_BOB)
+                .build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different description -> returns false
