@@ -25,7 +25,8 @@ public class TitleContainsKeywordsPredicateTest {
         assertTrue(firstPredicate.equals(firstPredicate));
 
         // same values -> returns true
-        TitleContainsKeywordsPredicate firstPredicateCopy = new TitleContainsKeywordsPredicate(firstPredicateKeywordList);
+        TitleContainsKeywordsPredicate firstPredicateCopy =
+                new TitleContainsKeywordsPredicate(firstPredicateKeywordList);
         assertTrue(firstPredicate.equals(firstPredicateCopy));
 
         // different types -> returns false
@@ -39,9 +40,10 @@ public class TitleContainsKeywordsPredicateTest {
     }
 
     @Test
-    public void test_TitleContainsKeywords_returnsTrue() {
+    public void test_titleContainsKeywords_returnsTrue() {
         // One keyword
-        TitleContainsKeywordsPredicate predicate = new TitleContainsKeywordsPredicate(Collections.singletonList("Alice"));
+        TitleContainsKeywordsPredicate predicate =
+                new TitleContainsKeywordsPredicate(Collections.singletonList("Alice"));
         assertTrue(predicate.test(new FlashcardBuilder().withTitle("Alice Bob").build()));
 
         // Multiple keywords
@@ -58,7 +60,7 @@ public class TitleContainsKeywordsPredicateTest {
     }
 
     @Test
-    public void test_TitleDoesNotContainKeywords_returnsFalse() {
+    public void test_titleDoesNotContainKeywords_returnsFalse() {
         // Zero keywords
         TitleContainsKeywordsPredicate predicate = new TitleContainsKeywordsPredicate(Collections.emptyList());
         assertFalse(predicate.test(new FlashcardBuilder().withTitle("Alice").build()));

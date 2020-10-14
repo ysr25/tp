@@ -41,8 +41,8 @@ public class ViewCommand extends Command {
         }
 
         Flashcard flashcardToView = lastShownList.get(targetIndex.getZeroBased());
-        Predicate<Flashcard> PREDICATE_VIEW_FLASHCARD = flashcard -> flashcard == flashcardToView;
-        model.viewFlashcard(PREDICATE_VIEW_FLASHCARD);
+        Predicate<Flashcard> predicateViewFlashcard = flashcard -> flashcard == flashcardToView;
+        model.viewFlashcard(predicateViewFlashcard);
         return new CommandResult(String.format(MESSAGE_VIEW_FLASHCARD_SUCCESS));
     }
 
