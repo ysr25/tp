@@ -28,7 +28,7 @@ public class TypicalFlashcards {
     public static final Flashcard DANIEL = new FlashcardBuilder().withTitle("Daniel Meier")
             .withDescription("10th street").build();
     public static final Flashcard ELLE = new FlashcardBuilder().withTitle("Elle Meyer")
-            .withDescription("werner@example.com").build();
+            .withDescription("michegan ave").build();
     public static final Flashcard FIONA = new FlashcardBuilder().withTitle("Fiona Kunz")
             .withDescription("little tokyo").build();
     public static final Flashcard GEORGE = new FlashcardBuilder().withTitle("George Best")
