@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DESC_BOB;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalFlashcards.getTypicalBagel;
 import static seedu.address.testutil.TypicalFlashcards.ALICE;
+import static seedu.address.testutil.TypicalFlashcards.getTypicalBagel;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -45,7 +45,8 @@ public class BagelTest {
     @Test
     public void resetData_withDuplicateFlashcards_throwsDuplicatePersonException() {
         // Two flashcards with the same information fields
-        Flashcard editedAlice = new FlashcardBuilder(ALICE).withDescription(VALID_DESC_BOB) //.withTags(VALID_TAG_HUSBAND)
+        Flashcard editedAlice = new FlashcardBuilder(ALICE).withDescription(VALID_DESC_BOB)
+                //.withTags(VALID_TAG_HUSBAND)
                 .build();
         List<Flashcard> newFlashcards = Arrays.asList(ALICE, editedAlice);
         BagelStub newData = new BagelStub(newFlashcards);
@@ -73,7 +74,7 @@ public class BagelTest {
     public void hasFlashcard_flashcardWithSameInformationFieldsInBagel_returnsTrue() {
         bagel.addFlashcard(ALICE);
         Flashcard editedAlice = new FlashcardBuilder(ALICE).withDescription(VALID_DESC_BOB).build();
-                //.withTags(VALID_TAG_HUSBAND)
+        //.withTags(VALID_TAG_HUSBAND)
         assertTrue(bagel.hasFlashcard(editedAlice));
     }
 

@@ -34,7 +34,7 @@ public class FlashcardBuilder {
      * Initializes the FlashcardBuilder with the data of {@code flashcardToCopy}.
      */
     public FlashcardBuilder(Flashcard flashcardToCopy) {
-        title =flashcardToCopy.getTitle();
+        title = flashcardToCopy.getTitle();
         description = flashcardToCopy.getDescription();
         // tags = new HashSet<>(flashcardToCopy.getTags());
     }
