@@ -20,7 +20,7 @@ public class SampleDataUtil {
             new Flashcard(new Title("Types of Observational Studies"),
                 new Description("Prospective, Retrospective, Cross-sectional")),
             new Flashcard(new Title("Types of Sampling Plan"),
-                new Description("Probabililty Sampling: simple random, systematic, stratified, cluster\n"
+                new Description("Probability Sampling: simple random, systematic, stratified, cluster\n"
                         + "Non-probability sampling: volunteer/self-selected, convenience, judgemental, quota")),
             new Flashcard(new Title("Ecological Fallacy"),
                 new Description("Ecological fallacy is thinking that relationships observed for groups "
