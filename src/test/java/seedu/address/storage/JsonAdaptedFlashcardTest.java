@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.storage.JsonAdaptedFlashcard.MISSING_FIELD_MESSAGE_FORMAT;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalFlashcards.BENSON;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -62,12 +63,11 @@ public class JsonAdaptedFlashcardTest {
         assertThrows(IllegalValueException.class, expectedMessage, flashcard::toModelType);
     }
 
-     @Test
-     public void toModelType_invalidTags_throwsIllegalValueException() {
+    @Test
+    public void toModelType_invalidTags_throwsIllegalValueException() {
         List<JsonAdaptedTag> invalidTags = new ArrayList<>(VALID_TAGS);
-         invalidTags.add(new JsonAdaptedTag(INVALID_TAG));
-         JsonAdaptedFlashcard flashcard =
-                 new JsonAdaptedFlashcard(VALID_TITLE, VALID_DESC, invalidTags);
-         assertThrows(IllegalValueException.class, flashcard::toModelType);
-     }
+        invalidTags.add(new JsonAdaptedTag(INVALID_TAG));
+        JsonAdaptedFlashcard flashcard = new JsonAdaptedFlashcard(VALID_TITLE, VALID_DESC, invalidTags);
+        assertThrows(IllegalValueException.class, flashcard::toModelType);
+    }
 }

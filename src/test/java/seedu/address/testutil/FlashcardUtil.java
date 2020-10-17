@@ -5,6 +5,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 
 import java.util.Set;
+
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.EditCommand.EditFlashcardDescriptor;
 import seedu.address.model.flashcard.Flashcard;
@@ -30,7 +31,7 @@ public class FlashcardUtil {
         sb.append(PREFIX_TITLE + flashcard.getTitle().fullTitle + " ");
         sb.append(PREFIX_DESC + flashcard.getDescription().value + " ");
         flashcard.getTags().stream().forEach(
-         s -> sb.append(PREFIX_TAG + s.tagName + " ")
+                s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );
         return sb.toString();
     }
@@ -44,12 +45,12 @@ public class FlashcardUtil {
         descriptor.getDescription().ifPresent(description -> sb.append(PREFIX_DESC).append(description.value)
                 .append(" "));
         if (descriptor.getTags().isPresent()) {
-         Set<Tag> tags = descriptor.getTags().get();
-         if (tags.isEmpty()) {
-             sb.append(PREFIX_TAG);
-         } else {
-             tags.forEach(s -> sb.append(PREFIX_TAG).append(s.tagName).append(" "));
-         }
+            Set<Tag> tags = descriptor.getTags().get();
+            if (tags.isEmpty()) {
+                sb.append(PREFIX_TAG);
+            } else {
+                tags.forEach(s -> sb.append(PREFIX_TAG).append(s.tagName).append(" "));
+            }
         }
         return sb.toString();
     }

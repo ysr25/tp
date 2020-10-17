@@ -74,7 +74,7 @@ public class BagelTest {
     public void hasFlashcard_flashcardWithSameInformationFieldsInBagel_returnsTrue() {
         bagel.addFlashcard(ALICE);
         Flashcard editedAlice = new FlashcardBuilder(ALICE)
-        .withTags(VALID_TAG_HUSBAND).build();
+                .withTags(VALID_TAG_HUSBAND).build();
         assertTrue(bagel.hasFlashcard(editedAlice));
     }
 

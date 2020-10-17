@@ -35,7 +35,7 @@ import seedu.address.testutil.EditFlashcardDescriptorBuilder;
 
 public class EditCommandParserTest {
 
-     private static final String TAG_EMPTY = " " + PREFIX_TAG;
+    private static final String TAG_EMPTY = " " + PREFIX_TAG;
 
     private static final String MESSAGE_INVALID_FORMAT =
             String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE);
@@ -80,9 +80,9 @@ public class EditCommandParserTest {
 
         // while parsing {@code PREFIX_TAG} alone will reset the tags of the {@code Person} being edited,
         // parsing it together with a valid tag results in error
-         assertParseFailure(parser, "1" + TAG_DESC_FRIEND + TAG_DESC_HUSBAND + TAG_EMPTY, Tag.MESSAGE_CONSTRAINTS);
-         assertParseFailure(parser, "1" + TAG_DESC_FRIEND + TAG_EMPTY + TAG_DESC_HUSBAND, Tag.MESSAGE_CONSTRAINTS);
-         assertParseFailure(parser, "1" + TAG_EMPTY + TAG_DESC_FRIEND + TAG_DESC_HUSBAND, Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + TAG_DESC_FRIEND + TAG_DESC_HUSBAND + TAG_EMPTY, Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + TAG_DESC_FRIEND + TAG_EMPTY + TAG_DESC_HUSBAND, Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + TAG_EMPTY + TAG_DESC_FRIEND + TAG_DESC_HUSBAND, Tag.MESSAGE_CONSTRAINTS);
 
         // multiple invalid values, but only the first invalid value is captured
         assertParseFailure(parser, "1" + INVALID_TITLE_DESC + VALID_DESC_AMY + INVALID_TITLE_DESC,
@@ -119,10 +119,10 @@ public class EditCommandParserTest {
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // tags
-         userInput = targetIndex.getOneBased() + TAG_DESC_FRIEND;
-         descriptor = new EditFlashcardDescriptorBuilder().withTags(VALID_TAG_FRIEND).build();
-         expectedCommand = new EditCommand(targetIndex, descriptor);
-         assertParseSuccess(parser, userInput, expectedCommand);
+        userInput = targetIndex.getOneBased() + TAG_DESC_FRIEND;
+        descriptor = new EditFlashcardDescriptorBuilder().withTags(VALID_TAG_FRIEND).build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
     }
 
     @Test
@@ -157,14 +157,14 @@ public class EditCommandParserTest {
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 
-     @Test
-     public void parse_resetTags_success() {
-         Index targetIndex = INDEX_THIRD_FLASHCARD;
-         String userInput = targetIndex.getOneBased() + TAG_EMPTY;
+    @Test
+    public void parse_resetTags_success() {
+        Index targetIndex = INDEX_THIRD_FLASHCARD;
+        String userInput = targetIndex.getOneBased() + TAG_EMPTY;
 
-         EditFlashcardDescriptor descriptor = new EditFlashcardDescriptorBuilder().withTags().build();
-         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
+        EditFlashcardDescriptor descriptor = new EditFlashcardDescriptorBuilder().withTags().build();
+        EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
-         assertParseSuccess(parser, userInput, expectedCommand);
-     }
+        assertParseSuccess(parser, userInput, expectedCommand);
+    }
 }

@@ -50,8 +50,8 @@ public class AddCommandParserTest {
                 new AddCommand(expectedFlashcard));
 
         // multiple tags - all accepted
-        Flashcard expectedFlashcardMultipleTags = new FlashcardBuilder(BOB).withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND)
-                .build();
+        Flashcard expectedFlashcardMultipleTags = new FlashcardBuilder(BOB)
+                .withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND).build();
         assertParseSuccess(parser, TITLE_DESC_BOB + DESC_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
                 new AddCommand(expectedFlashcardMultipleTags));
     }
