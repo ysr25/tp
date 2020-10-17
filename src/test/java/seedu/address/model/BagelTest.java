@@ -3,6 +3,7 @@ package seedu.address.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalFlashcards.ALICE;
 import static seedu.address.testutil.TypicalFlashcards.getTypicalBagel;
@@ -45,7 +46,7 @@ public class BagelTest {
     public void resetData_withDuplicateFlashcards_throwsDuplicatePersonException() {
         // Two flashcards with the same information fields
         Flashcard editedAlice = new FlashcardBuilder(ALICE)
-                //.withTags(VALID_TAG_HUSBAND)
+                .withTags(VALID_TAG_HUSBAND)
                 .build();
         List<Flashcard> newFlashcards = Arrays.asList(ALICE, editedAlice);
         BagelStub newData = new BagelStub(newFlashcards);
@@ -72,8 +73,8 @@ public class BagelTest {
     @Test
     public void hasFlashcard_flashcardWithSameInformationFieldsInBagel_returnsTrue() {
         bagel.addFlashcard(ALICE);
-        Flashcard editedAlice = new FlashcardBuilder(ALICE).build();
-        //.withTags(VALID_TAG_HUSBAND)
+        Flashcard editedAlice = new FlashcardBuilder(ALICE)
+        .withTags(VALID_TAG_HUSBAND).build();
         assertTrue(bagel.hasFlashcard(editedAlice));
     }
 

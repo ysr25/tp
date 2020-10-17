@@ -2,13 +2,7 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TITLE_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.commands.CommandTestUtil.showFlashcardAtIndex;
+import static seedu.address.logic.commands.CommandTestUtil.*;
 import static seedu.address.testutil.TypicalFlashcards.getTypicalBagel;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_FLASHCARD;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_FLASHCARD;
@@ -53,12 +47,11 @@ public class EditCommandTest {
         Flashcard lastFlashcard = model.getFilteredFlashcardList().get(indexLastFlashcard.getZeroBased());
 
         FlashcardBuilder flashcardInList = new FlashcardBuilder(lastFlashcard);
-        Flashcard editedFlashcard = flashcardInList.withTitle(VALID_TITLE_BOB).withDescription(VALID_DESC_BOB).build();
-        //        .withTags(VALID_TAG_HUSBAND).build();
+        Flashcard editedFlashcard = flashcardInList.withTitle(VALID_TITLE_BOB).withDescription(VALID_DESC_BOB)
+                .withTags(VALID_TAG_HUSBAND).build();
 
         EditFlashcardDescriptor descriptor = new EditFlashcardDescriptorBuilder().withTitle(VALID_TITLE_BOB)
-                .withDescription(VALID_DESC_BOB).build();
-        //        .withTags(VALID_TAG_HUSBAND).build();
+                .withDescription(VALID_DESC_BOB).withTags(VALID_TAG_HUSBAND).build();
         EditCommand editCommand = new EditCommand(indexLastFlashcard, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_FLASHCARD_SUCCESS, editedFlashcard);

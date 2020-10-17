@@ -1,13 +1,13 @@
 package seedu.address.model.flashcard;
 
+import seedu.address.model.tag.Tag;
+
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-//import java.util.Collections;
-//import java.util.HashSet;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Objects;
-//import java.util.Set;
-
-//import seedu.address.model.tag.Tag;
+import java.util.Set;
 
 /**
  * Represents a Flashcard in Bagel list.
@@ -24,15 +24,16 @@ public class Flashcard {
     // Data fields
     private final Description description;
     //private final Address address;
-    //private final Set<Tag> tags = new HashSet<>();
+    private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Flashcard(Title title, Description description) {
+    public Flashcard(Title title, Description description, Set<Tag> tags) {
         requireAllNonNull(title, description);
         this.title = title;
         this.description = description;
+        this.tags.addAll(tags);
     }
 
     public Title getTitle() {
@@ -43,13 +44,13 @@ public class Flashcard {
         return this.description;
     }
 
-    ///**
-    // * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
-    // * if modification is attempted.
-    // */
-    //public Set<Tag> getTags() {
-    //   return Collections.unmodifiableSet(tags);
-    //}
+    /**
+     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
+     * if modification is attempted.
+     */
+    public Set<Tag> getTags() {
+        return Collections.unmodifiableSet(tags);
+    }
 
     /**
      * Returns true if both flashcards of the same title have at least one other identity field that is the same.
@@ -84,13 +85,14 @@ public class Flashcard {
         Flashcard otherFlashcard = (Flashcard) other;
         return otherFlashcard.getTitle().equals(getTitle())
                 // temporarily uses Description to check for same flashcard.
-                && otherFlashcard.getDescription().equals(getDescription());
+                && otherFlashcard.getDescription().equals(getDescription())
+                && otherFlashcard.getTags().equals(getTags());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(title, description);
+        return Objects.hash(title, description, tags);
     }
 
     @Override
@@ -98,7 +100,9 @@ public class Flashcard {
         final StringBuilder builder = new StringBuilder();
         builder.append(getTitle())
                 .append(" Description: ")
-                .append(getDescription());
+                .append(getDescription())
+                .append(" Tags: ");
+        getTags().forEach(builder::append);
         return builder.toString();
     }
 
