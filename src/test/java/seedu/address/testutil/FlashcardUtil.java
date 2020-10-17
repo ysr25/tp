@@ -31,7 +31,7 @@ public class FlashcardUtil {
         sb.append(PREFIX_TITLE + flashcard.getTitle().fullTitle + " ");
         sb.append(PREFIX_DESC + flashcard.getDescription().value + " ");
         flashcard.getTags().stream().forEach(
-                s -> sb.append(PREFIX_TAG + s.tagName + " ")
+            s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );
         return sb.toString();
     }
