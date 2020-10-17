@@ -1,13 +1,13 @@
 package seedu.address.model.flashcard;
 
-import seedu.address.model.tag.Tag;
-
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+
+import seedu.address.model.tag.Tag;
 
 /**
  * Represents a Flashcard in Bagel list.
@@ -17,13 +17,9 @@ public class Flashcard {
 
     // Identity fields
     private final Title title;
-    //private final Name name;
-    //private final Phone phone;
-    //private final Email email;
 
     // Data fields
     private final Description description;
-    //private final Address address;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
