@@ -15,8 +15,8 @@ import seedu.address.model.flashcard.Description;
 import seedu.address.model.flashcard.Title;
 
 public class JsonAdaptedFlashcardTest {
-    private static final String INVALID_TITLE = "R@chel";
-    // private static final String INVALID_DESC = "+651234";
+    private static final String INVALID_TITLE = "";
+    private static final String INVALID_DESC = "";
     // private static final String INVALID_TAG = "#friend";
 
     private static final String VALID_TITLE = BENSON.getTitle().toString();
@@ -32,7 +32,7 @@ public class JsonAdaptedFlashcardTest {
     }
 
     @Test
-    public void toModelType_invalidName_throwsIllegalValueException() {
+    public void toModelType_invalidTitle_throwsIllegalValueException() {
         JsonAdaptedFlashcard flashcard =
                 new JsonAdaptedFlashcard(INVALID_TITLE, VALID_DESC);
         String expectedMessage = Title.MESSAGE_CONSTRAINTS;
@@ -40,9 +40,17 @@ public class JsonAdaptedFlashcardTest {
     }
 
     @Test
-    public void toModelType_nullName_throwsIllegalValueException() {
+    public void toModelType_nullTitle_throwsIllegalValueException() {
         JsonAdaptedFlashcard flashcard = new JsonAdaptedFlashcard(null, VALID_DESC);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Title.class.getSimpleName());
+        assertThrows(IllegalValueException.class, expectedMessage, flashcard::toModelType);
+    }
+
+    @Test
+    public void toModelType_invalidDescription_throwsIllegalValueException() {
+        JsonAdaptedFlashcard flashcard =
+                new JsonAdaptedFlashcard(VALID_TITLE, INVALID_DESC);
+        String expectedMessage = Description.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, flashcard::toModelType);
     }
 

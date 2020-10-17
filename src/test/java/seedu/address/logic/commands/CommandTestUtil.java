@@ -28,13 +28,13 @@ public class CommandTestUtil {
     public static final String VALID_DESC_AMY = "11111111";
     public static final String VALID_DESC_BOB = "22222222";
 
-    public static final String INVALID_TITLE_DESC = "  ";
-    public static final String INVALID_DESC_DESC = "   ";
-
     public static final String TITLE_DESC_AMY = " " + PREFIX_TITLE + VALID_TITLE_AMY;
     public static final String TITLE_DESC_BOB = " " + PREFIX_TITLE + VALID_TITLE_BOB;
     public static final String DESC_DESC_AMY = " " + PREFIX_DESC + VALID_DESC_AMY;
     public static final String DESC_DESC_BOB = " " + PREFIX_DESC + VALID_DESC_BOB;
+
+    public static final String INVALID_TITLE_DESC = " " + PREFIX_TITLE + "  ";
+    public static final String INVALID_DESC_DESC = " " + PREFIX_DESC + "   ";
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";

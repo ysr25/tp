@@ -52,12 +52,12 @@ public class JsonBagelStorageTest {
 
     @Test
     public void readBagel_invalidPersonBagel_throwDataConversionException() {
-        assertThrows(DataConversionException.class, () -> readBagel("invalidPersonBagel.json"));
+        assertThrows(DataConversionException.class, () -> readBagel("invalidFlashcardBagel.json"));
     }
 
     @Test
     public void readBagel_invalidAndValidPersonBagel_throwDataConversionException() {
-        assertThrows(DataConversionException.class, () -> readBagel("invalidAndValidPersonBagel.json"));
+        assertThrows(DataConversionException.class, () -> readBagel("invalidAndValidFlashcardBagel.json"));
     }
 
     @Test
