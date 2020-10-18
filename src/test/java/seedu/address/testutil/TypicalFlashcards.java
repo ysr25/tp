@@ -2,6 +2,8 @@ package seedu.address.testutil;
 
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DESC_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TITLE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TITLE_BOB;
 
@@ -19,14 +21,14 @@ public class TypicalFlashcards {
 
     public static final Flashcard ALICE = new FlashcardBuilder().withTitle("Alice Pauline")
             .withDescription("123, Jurong West Ave 6, #08-111")
-            .build();
+            .withTags("friends").build();
     public static final Flashcard BENSON = new FlashcardBuilder().withTitle("Benson Meier")
             .withDescription("311, Clementi Ave 2, #02-25")
-            .build();
+            .withTags("owesMoney", "friends").build();
     public static final Flashcard CARL = new FlashcardBuilder().withTitle("Carl Kurz")
             .withDescription("wall street").build();
     public static final Flashcard DANIEL = new FlashcardBuilder().withTitle("Daniel Meier")
-            .withDescription("10th street").build();
+            .withDescription("10th street").withTags("friends").build();
     public static final Flashcard ELLE = new FlashcardBuilder().withTitle("Elle Meyer")
             .withDescription("michegan ave").build();
     public static final Flashcard FIONA = new FlashcardBuilder().withTitle("Fiona Kunz")
@@ -42,9 +44,9 @@ public class TypicalFlashcards {
 
     // Manually added - Flashcard's details found in {@code CommandTestUtil}
     public static final Flashcard AMY = new FlashcardBuilder().withTitle(VALID_TITLE_AMY)
-            .withDescription(VALID_DESC_AMY).build();
+            .withDescription(VALID_DESC_AMY).withTags(VALID_TAG_FRIEND).build();
     public static final Flashcard BOB = new FlashcardBuilder().withTitle(VALID_TITLE_BOB)
-            .withDescription(VALID_DESC_BOB).build();
+            .withDescription(VALID_DESC_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 

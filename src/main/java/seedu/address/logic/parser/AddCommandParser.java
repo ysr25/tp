@@ -2,9 +2,10 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESC;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
-//import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
+import java.util.Set;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddCommand;
@@ -12,7 +13,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.flashcard.Description;
 import seedu.address.model.flashcard.Flashcard;
 import seedu.address.model.flashcard.Title;
-//import seedu.address.model.tag.Tag;
+import seedu.address.model.tag.Tag;
 
 /**
  * Parses input arguments and creates a new AddCommand object
@@ -26,7 +27,7 @@ public class AddCommandParser implements Parser<AddCommand> {
      */
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_TITLE, PREFIX_DESC);
+                ArgumentTokenizer.tokenize(args, PREFIX_TITLE, PREFIX_DESC, PREFIX_TAG);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_TITLE, PREFIX_DESC)
                 || !argMultimap.getPreamble().isEmpty()) {
@@ -35,10 +36,10 @@ public class AddCommandParser implements Parser<AddCommand> {
 
         Title title = ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get());
         Description description = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESC).get());
-        // Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
+        Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        Flashcard flashcard = new Flashcard(title, description);
-
+        Flashcard flashcard = new Flashcard(title, description, tagList);
+        System.out.println(flashcard.getTags());
         return new AddCommand(flashcard);
     }
 
