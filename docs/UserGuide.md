@@ -65,6 +65,12 @@ Examples:
 * `add t/Data Analysis d/Definition of data analysis: xxxxxx tag/Defintion`
 * `add t/Types of Association d/Example of Types: Blahblah, etc; Blah, etc etc tag/Types tag/Association`
 
+### Clearing all flashcard entries: `clear`
+
+Clear all flashcard entries from Bagel
+
+Format: `clear`
+
 ### Deleting a flashcard : `delete`
 
 Deletes the specified flashcard from the total list of flashcards.
@@ -136,6 +142,7 @@ Format: `exit`
 Action | Format, Examples
 --------|------------------
 **Add** | `add t/TITLE d/DESCRIPTION`<br> e.g., `add t/Data Analysis d/The definition of Data Analysis is ...`
+**Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit** | `edit INDEX t/TITLE d/DESCRIPTION`<br> e.g.,`edit 1 t/Data analysis`
 **View** | `view INDEX`<br> e.g., `view 1`
