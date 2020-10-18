@@ -36,7 +36,7 @@ public class FlashcardBuilder {
     public FlashcardBuilder(Flashcard flashcardToCopy) {
         title = flashcardToCopy.getTitle();
         description = flashcardToCopy.getDescription();
-        // tags = new HashSet<>(flashcardToCopy.getTags());
+        tags = new HashSet<>(flashcardToCopy.getTags());
     }
 
     /**
@@ -64,7 +64,7 @@ public class FlashcardBuilder {
     }
 
     public Flashcard build() {
-        return new Flashcard(title, description);
+        return new Flashcard(title, description, tags);
     }
 
 }

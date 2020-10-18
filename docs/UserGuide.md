@@ -26,6 +26,7 @@ If you can type fast, Bagel can manage your flashcards faster than traditional G
     * `list` : Lists all flashcards.
     * `add t/Data Analysis d/Definition of data analysis: xxxxxx` : Adds a flashcard with the title
         'Data Analysis' and description of 'Definition of data analysis: xxxxxx' to the list of flashcards
+    * `clear` : Clears all flashcard entries.
     * `delete 3` : Deletes the 3rd flashcard shown in the current flashcards set.
     * `view 3` : Shows the 3rd flashcard shown in the current flashcards set.
     * `edit 2 t/New description` : Edits the title of 2nd existing flashcard of the current set to become 'New description'
@@ -44,6 +45,9 @@ Refer to the Features below for details of each command.
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add t/TITLE`, TITLE is the parameter which can be used
 
+* Items with `…​` after them can be used multiple times including zero times.<br>
+  e.g. in `[tag/TAG]…`, can be used as ` ` (i.e. 0 times), t/Definition, t/Formula t/Important etc.
+
 * User should supply the number of the flashcard behind commands.<br>
   e.g. `add 1`, `delete 10`
 </div>
@@ -54,11 +58,12 @@ Adds a flashcard to the total list of flashcards.
 * Adds a flashcard with a title and description
 * Title and description must be entered
 
-Format: `add t/TITLE d/DESCRIPTION`
+Format: `add t/TITLE d/DESCRIPTION [tag/TAG]…​`
 
 Examples:
-* `add t/Data Analysis d/Definition of data analysis: xxxxxx`
 * `add t/p-value d/If p value < 0.05, xxxx; Else, xxxx`
+* `add t/Data Analysis d/Definition of data analysis: xxxxxx tag/Defintion`
+* `add t/Types of Association d/Example of Types: Blahblah, etc; Blah, etc etc tag/Types tag/Association`
 
 ### Deleting a flashcard : `delete`
 
@@ -74,17 +79,21 @@ Format: `delete INDEX`
 
 Edits an existing flashcard.
 
-Format: `edit INDEX [t/TITLE] [d/DESCRIPTION]`
+Format: `edit INDEX [t/TITLE] [d/DESCRIPTION] [tag/TAG]…​`
 
 * Edits the flashcard at the specified `INDEX`.
 * The index refers to the index number shown in the displayed flashcard list.
 * The index **must be a positive integer** 1, 2, 3, ...
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
+* When editing tags, the existing tags of the flashcard will be removed i.e adding of tags is not cumulative.
+* You can remove all the flashcard’s tags by typing t/ without specifying any tags after it.
 
 Examples:
 *  `edit 1 t/Data analysis` Edits the title of the 1st flashcard to be `Data analysis`.
-*  `edit 1 t/p-value d/probability of ...` Edits the title and the description of the 1st flashcard to be `p-value` and `probability of ...` respectively.
+*  `edit 1 t/p-value d/probability of ...` Edits the title and the description of the 1st flashcard to be `p-value`
+and `probability of ...` respectively.
+*  `edit 1 t/p-value tag/` Edits the title of the 1st flashcard to be `p-value` and clears all existing tags.
 
 ### Viewing a flashcard: `view`
 
