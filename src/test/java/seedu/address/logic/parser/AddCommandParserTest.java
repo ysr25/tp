@@ -4,6 +4,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.logic.commands.CommandTestUtil.DESC_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_DESC_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_LINK_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TITLE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
@@ -26,6 +27,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.model.flashcard.Description;
 import seedu.address.model.flashcard.Flashcard;
+import seedu.address.model.flashcard.Link;
 import seedu.address.model.flashcard.Title;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.FlashcardBuilder;
@@ -91,6 +93,10 @@ public class AddCommandParserTest {
         // invalid desc
         assertParseFailure(parser, TITLE_DESC_BOB + INVALID_DESC_DESC + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
                 Description.MESSAGE_CONSTRAINTS);
+
+        // invalid link
+        assertParseFailure(parser, TITLE_DESC_BOB + DESC_DESC_BOB + INVALID_LINK_DESC + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
+                Link.MESSAGE_CONSTRAINTS);
 
         // invalid tag
         assertParseFailure(parser, TITLE_DESC_BOB + DESC_DESC_BOB
