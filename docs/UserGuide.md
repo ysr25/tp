@@ -150,10 +150,10 @@ Format: `exit`
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add t/TITLE d/DESCRIPTION`<br> e.g., `add t/Data Analysis d/The definition of Data Analysis is ...`
+**Add** | `add t/TITLE d/DESCRIPTION [s/SET] [l/LINK] [tag/TAG]…`<br> e.g., `add t/Data Analysis d/The definition of Data Analysis is ...`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX t/TITLE d/DESCRIPTION`<br> e.g.,`edit 1 t/Data analysis`
+**Edit** | `edit INDEX [t/TITLE] [d/DESCRIPTION] [s/SET] [l/LINK] [tag/TAG]`<br> e.g.,`edit 1 t/Data analysis`
 **View** | `view INDEX`<br> e.g., `view 1`
 **List** | `list`
 **Flip** | `flip`
