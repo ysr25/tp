@@ -42,7 +42,6 @@ public class AddCommandParser implements Parser<AddCommand> {
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
         Flashcard flashcard = new Flashcard(title, description, link, tagList);
-        System.out.println(flashcard.getTags());
         return new AddCommand(flashcard);
     }
 
