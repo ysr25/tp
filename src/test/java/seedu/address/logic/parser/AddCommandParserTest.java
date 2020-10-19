@@ -95,8 +95,8 @@ public class AddCommandParserTest {
                 Description.MESSAGE_CONSTRAINTS);
 
         // invalid link
-        assertParseFailure(parser, TITLE_DESC_BOB + DESC_DESC_BOB + INVALID_LINK_DESC + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
-                Link.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, TITLE_DESC_BOB + DESC_DESC_BOB + INVALID_LINK_DESC + TAG_DESC_HUSBAND
+                        + TAG_DESC_FRIEND, Link.MESSAGE_CONSTRAINTS);
 
         // invalid tag
         assertParseFailure(parser, TITLE_DESC_BOB + DESC_DESC_BOB

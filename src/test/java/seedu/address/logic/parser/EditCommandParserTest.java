@@ -13,7 +13,6 @@ import static seedu.address.logic.commands.CommandTestUtil.TITLE_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.TITLE_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_LINK_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TITLE_AMY;
