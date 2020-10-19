@@ -43,7 +43,6 @@ public class FlashcardTest {
         assertTrue(ALICE.isSameFlashcard(editedAlice));
 
         // same title, same description, different attributes -> returns true
-        // leave for when tags are implemented
         editedAlice = new FlashcardBuilder(ALICE).withTags(VALID_TAG_HUSBAND).withLink(VALID_LINK_BOB).build();
         assertTrue(ALICE.isSameFlashcard(editedAlice));
     }
@@ -79,7 +78,6 @@ public class FlashcardTest {
         assertFalse(ALICE.equals(editedAlice));
 
         // different tags -> returns false
-        // leave for when tags are implemented
         editedAlice = new FlashcardBuilder(ALICE).withTags(VALID_TAG_HUSBAND).build();
         assertFalse(ALICE.equals(editedAlice));
     }

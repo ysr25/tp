@@ -13,12 +13,14 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.flashcard.Description;
+import seedu.address.model.flashcard.Link;
 import seedu.address.model.flashcard.Title;
 
 
 public class JsonAdaptedFlashcardTest {
     private static final String INVALID_TITLE = "";
     private static final String INVALID_DESC = "";
+    private static final String INVALID_LINK = "h";
     private static final String INVALID_TAG = "#friend";
 
     private static final String VALID_TITLE = BENSON.getTitle().toString();
@@ -61,6 +63,21 @@ public class JsonAdaptedFlashcardTest {
     public void toModelType_nullDescription_throwsIllegalValueException() {
         JsonAdaptedFlashcard flashcard = new JsonAdaptedFlashcard(VALID_TITLE, null, null, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Description.class.getSimpleName());
+        assertThrows(IllegalValueException.class, expectedMessage, flashcard::toModelType);
+    }
+
+    @Test
+    public void toModelType_invalidLink_throwsIllegalValueException() {
+        JsonAdaptedFlashcard flashcard =
+                new JsonAdaptedFlashcard(VALID_TITLE, VALID_DESC, INVALID_LINK, VALID_TAGS);
+        String expectedMessage = Link.MESSAGE_CONSTRAINTS;
+        assertThrows(IllegalValueException.class, expectedMessage, flashcard::toModelType);
+    }
+
+    @Test
+    public void toModelType_nullLink_throwsIllegalValueException() {
+        JsonAdaptedFlashcard flashcard = new JsonAdaptedFlashcard(VALID_TITLE, VALID_DESC, null, VALID_TAGS);
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Link.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, flashcard::toModelType);
     }
 
