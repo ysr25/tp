@@ -17,7 +17,7 @@ public class Link {
     public final String value;
 
     /**
-     * Constructs an {@code Description}.
+     * Constructs an {@code Link}.
      *
      * @param link A valid link.
      */
@@ -28,7 +28,7 @@ public class Link {
     }
 
     /**
-     * Returns true if a given string is a valid description.
+     * Returns true if a given string is a valid link.
      */
     public static boolean isValidLink(String test) {
         if (test.isEmpty()) {

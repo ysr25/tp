@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import seedu.address.model.flashcard.Flashcard;
 
 /**
@@ -38,9 +39,9 @@ public class FlashcardCard extends UiPart<Region> {
     @FXML
     private Label description;
     @FXML
-    private Hyperlink link;
-    @FXML
     private FlowPane tags;
+    @FXML
+    private VBox vBox;
 
     /**
      * Creates a {@code FlashcardCode} with the given {@code Flashcard} and index to display.
@@ -52,15 +53,19 @@ public class FlashcardCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         title.setText(flashcard.getTitle().fullTitle);
         description.setText(flashcard.getDescription().value);
-        link.setText(flashcard.getLink().value);
+
+        String link = flashcard.getLink().value;
+        if (!link.isEmpty()) {
+            Hyperlink hyperlink = new Hyperlink();
+            hyperlink.setText(link);
+            hyperlink.getStyleClass().add("cell_small_hyperlink");
+            hyperlink.setOnMouseClicked(t -> hostServices.showDocument(hyperlink.getText()));
+            vBox.getChildren().add(hyperlink);
+        }
+
         flashcard.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
-    }
-
-    @FXML
-    private void handleClick() {
-        hostServices.showDocument(link.getText());
     }
 
     @Override
