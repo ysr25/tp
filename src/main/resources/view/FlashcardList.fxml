@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
-
+<?import javafx.scene.control.Hyperlink?>
 <HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
   <GridPane HBox.hgrow="ALWAYS">
     <columnConstraints>
@@ -29,7 +29,7 @@
       </HBox>
       <FlowPane fx:id="tags" />
       <Label fx:id="description" styleClass="cell_small_label" text="\$description" />
-<!--      <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />-->
+      <Hyperlink fx:id="link" styleClass="cell_small_hyperlink" text="\$link" onMouseClicked="#handleClick" />
 <!--      <Label fx:id="address" styleClass="cell_small_label" text="\$address" />-->
 <!--      <Label fx:id="email" styleClass="cell_small_label" text="\$email" />-->
     </VBox>

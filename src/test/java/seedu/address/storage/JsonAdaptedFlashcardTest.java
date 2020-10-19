@@ -23,6 +23,7 @@ public class JsonAdaptedFlashcardTest {
 
     private static final String VALID_TITLE = BENSON.getTitle().toString();
     private static final String VALID_DESC = BENSON.getDescription().toString();
+    private static final String VALID_LINK = "";
     private static final List<JsonAdaptedTag> VALID_TAGS = BENSON.getTags().stream()
             .map(JsonAdaptedTag::new)
             .collect(Collectors.toList());
@@ -36,14 +37,14 @@ public class JsonAdaptedFlashcardTest {
     @Test
     public void toModelType_invalidTitle_throwsIllegalValueException() {
         JsonAdaptedFlashcard flashcard =
-                new JsonAdaptedFlashcard(INVALID_TITLE, VALID_DESC, VALID_TAGS);
+                new JsonAdaptedFlashcard(INVALID_TITLE, VALID_DESC, null, VALID_TAGS);
         String expectedMessage = Title.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, flashcard::toModelType);
     }
 
     @Test
     public void toModelType_nullTitle_throwsIllegalValueException() {
-        JsonAdaptedFlashcard flashcard = new JsonAdaptedFlashcard(null, VALID_DESC, VALID_TAGS);
+        JsonAdaptedFlashcard flashcard = new JsonAdaptedFlashcard(null, VALID_DESC, null, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Title.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, flashcard::toModelType);
     }
@@ -51,14 +52,14 @@ public class JsonAdaptedFlashcardTest {
     @Test
     public void toModelType_invalidDescription_throwsIllegalValueException() {
         JsonAdaptedFlashcard flashcard =
-                new JsonAdaptedFlashcard(VALID_TITLE, INVALID_DESC, VALID_TAGS);
+                new JsonAdaptedFlashcard(VALID_TITLE, INVALID_DESC, null, VALID_TAGS);
         String expectedMessage = Description.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, flashcard::toModelType);
     }
 
     @Test
     public void toModelType_nullDescription_throwsIllegalValueException() {
-        JsonAdaptedFlashcard flashcard = new JsonAdaptedFlashcard(VALID_TITLE, null, VALID_TAGS);
+        JsonAdaptedFlashcard flashcard = new JsonAdaptedFlashcard(VALID_TITLE, null, null, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Description.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, flashcard::toModelType);
     }
@@ -67,7 +68,7 @@ public class JsonAdaptedFlashcardTest {
     public void toModelType_invalidTags_throwsIllegalValueException() {
         List<JsonAdaptedTag> invalidTags = new ArrayList<>(VALID_TAGS);
         invalidTags.add(new JsonAdaptedTag(INVALID_TAG));
-        JsonAdaptedFlashcard flashcard = new JsonAdaptedFlashcard(VALID_TITLE, VALID_DESC, invalidTags);
+        JsonAdaptedFlashcard flashcard = new JsonAdaptedFlashcard(VALID_TITLE, VALID_DESC, null, invalidTags);
         assertThrows(IllegalValueException.class, flashcard::toModelType);
     }
 }

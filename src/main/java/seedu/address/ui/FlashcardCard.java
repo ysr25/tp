@@ -2,7 +2,9 @@ package seedu.address.ui;
 
 import java.util.Comparator;
 
+import javafx.application.HostServices;
 import javafx.fxml.FXML;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
@@ -25,6 +27,7 @@ public class FlashcardCard extends UiPart<Region> {
      */
 
     public final Flashcard flashcard;
+    private HostServices hostServices;
 
     @FXML
     private HBox cardPane;
@@ -35,20 +38,29 @@ public class FlashcardCard extends UiPart<Region> {
     @FXML
     private Label description;
     @FXML
+    private Hyperlink link;
+    @FXML
     private FlowPane tags;
 
     /**
      * Creates a {@code FlashcardCode} with the given {@code Flashcard} and index to display.
      */
-    public FlashcardCard(Flashcard flashcard, int displayedIndex) {
+    public FlashcardCard(Flashcard flashcard, int displayedIndex, HostServices hostServices) {
         super(FXML);
         this.flashcard = flashcard;
+        this.hostServices = hostServices;
         id.setText(displayedIndex + ". ");
         title.setText(flashcard.getTitle().fullTitle);
         description.setText(flashcard.getDescription().value);
+        link.setText(flashcard.getLink().value);
         flashcard.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+    }
+
+    @FXML
+    private void handleClick() {
+        hostServices.showDocument(link.getText());
     }
 
     @Override
