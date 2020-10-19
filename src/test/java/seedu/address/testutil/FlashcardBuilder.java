@@ -17,6 +17,7 @@ public class FlashcardBuilder {
 
     public static final String DEFAULT_TITLE = "Alice Pauline";
     public static final String DEFAULT_DESCRIPTION = "456, Jurong West Ave 6, #08-111";
+    public static final String DEFAULT_LINK = "";
 
     private Title title;
     private Description description;
@@ -29,7 +30,7 @@ public class FlashcardBuilder {
     public FlashcardBuilder() {
         title = new Title(DEFAULT_TITLE);
         description = new Description(DEFAULT_DESCRIPTION);
-        link = new Link("");
+        link = new Link(DEFAULT_LINK);
         tags = new HashSet<>();
     }
 
@@ -39,6 +40,7 @@ public class FlashcardBuilder {
     public FlashcardBuilder(Flashcard flashcardToCopy) {
         title = flashcardToCopy.getTitle();
         description = flashcardToCopy.getDescription();
+        link = flashcardToCopy.getLink();
         tags = new HashSet<>(flashcardToCopy.getTags());
     }
 
