@@ -41,8 +41,7 @@ public class UniqueFlashcardListTest {
     @Test
     public void contains_flashcardWithSameIdentityFieldsInList_returnsTrue() {
         uniqueFlashcardList.add(ALICE);
-        Flashcard editedAlice = new FlashcardBuilder(ALICE).withDescription(VALID_DESC_BOB)
-                .build();
+        Flashcard editedAlice = new FlashcardBuilder(ALICE).build();
         assertTrue(uniqueFlashcardList.contains(editedAlice));
     }
 

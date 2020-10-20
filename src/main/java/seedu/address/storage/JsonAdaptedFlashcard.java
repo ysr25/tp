@@ -1,10 +1,10 @@
 package seedu.address.storage;
 
 import java.util.ArrayList;
-//import java.util.HashSet;
+import java.util.HashSet;
 import java.util.List;
-//import java.util.Set;
-//import java.util.stream.Collectors;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,13 +30,13 @@ class JsonAdaptedFlashcard {
      * Constructs a {@code JsonAdaptedFlashcard} with the given flashcard details.
      */
     @JsonCreator
-    public JsonAdaptedFlashcard(@JsonProperty("title") String title, @JsonProperty("description") String description) {
-        //@JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
+    public JsonAdaptedFlashcard(@JsonProperty("title") String title, @JsonProperty("description") String description,
+        @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
         this.title = title;
         this.description = description;
-        //if (tagged != null) {
-        //    this.tagged.addAll(tagged);
-        //}
+        if (tagged != null) {
+            this.tagged.addAll(tagged);
+        }
     }
 
     /**
@@ -45,9 +45,9 @@ class JsonAdaptedFlashcard {
     public JsonAdaptedFlashcard(Flashcard source) {
         title = source.getTitle().fullTitle;
         description = source.getDescription().value;
-        //tagged.addAll(source.getTags().stream()
-        //        .map(JsonAdaptedTag::new)
-        //        .collect(Collectors.toList()));
+        tagged.addAll(source.getTags().stream()
+                .map(JsonAdaptedTag::new)
+                .collect(Collectors.toList()));
     }
 
     /**
@@ -78,8 +78,8 @@ class JsonAdaptedFlashcard {
         }
         final Description modelDescription = new Description(description);
 
-        // final Set<Tag> modelTags = new HashSet<>(flashcardTags);
-        return new Flashcard(modelTitle, modelDescription);
+        final Set<Tag> modelTags = new HashSet<>(flashcardTags);
+        return new Flashcard(modelTitle, modelDescription, modelTags);
     }
 
 }
