@@ -21,7 +21,7 @@ public class JsonSerializableBagelTest {
     private static final Path DUPLICATE_FLASHCARD_FILE = TEST_DATA_FOLDER.resolve("duplicateFlashcardBagel.json");
 
     @Test
-    public void toModelType_typicalPersonsFile_success() throws Exception {
+    public void toModelType_typicalFlashcardsFile_success() throws Exception {
         JsonSerializableBagel dataFromFile = JsonUtil.readJsonFile(TYPICAL_FLASHCARDS_FILE,
                 JsonSerializableBagel.class).get();
         Bagel bagelFromFile = dataFromFile.toModelType();
@@ -30,14 +30,14 @@ public class JsonSerializableBagelTest {
     }
 
     @Test
-    public void toModelType_invalidPersonFile_throwsIllegalValueException() throws Exception {
+    public void toModelType_invalidFlashcardFile_throwsIllegalValueException() throws Exception {
         JsonSerializableBagel dataFromFile = JsonUtil.readJsonFile(INVALID_FLASHCARD_FILE,
                 JsonSerializableBagel.class).get();
         assertThrows(IllegalValueException.class, dataFromFile::toModelType);
     }
 
     @Test
-    public void toModelType_duplicatePersons_throwsIllegalValueException() throws Exception {
+    public void toModelType_duplicateFlashcards_throwsIllegalValueException() throws Exception {
         JsonSerializableBagel dataFromFile = JsonUtil.readJsonFile(DUPLICATE_FLASHCARD_FILE,
                 JsonSerializableBagel.class).get();
         assertThrows(IllegalValueException.class, JsonSerializableBagel.MESSAGE_DUPLICATE_FLASHCARD,

@@ -15,7 +15,7 @@ import seedu.address.model.util.SampleDataUtil;
 public class FlashcardBuilder {
 
     public static final String DEFAULT_TITLE = "Alice Pauline";
-    public static final String DEFAULT_DESCRIPTION = "123, Jurong West Ave 6, #08-111";
+    public static final String DEFAULT_DESCRIPTION = "456, Jurong West Ave 6, #08-111";
 
     private Title title;
     private Description description;
@@ -36,7 +36,7 @@ public class FlashcardBuilder {
     public FlashcardBuilder(Flashcard flashcardToCopy) {
         title = flashcardToCopy.getTitle();
         description = flashcardToCopy.getDescription();
-        // tags = new HashSet<>(flashcardToCopy.getTags());
+        tags = new HashSet<>(flashcardToCopy.getTags());
     }
 
     /**
@@ -64,7 +64,7 @@ public class FlashcardBuilder {
     }
 
     public Flashcard build() {
-        return new Flashcard(title, description);
+        return new Flashcard(title, description, tags);
     }
 
 }
