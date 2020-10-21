@@ -106,9 +106,8 @@ The `Model`,
 * exposes an unmodifiable `ObservableList<Flashcard>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
 
-
-**Note:** An alternative (arguably, a more OOP) model is given below. 
-It has a `Tag` list in the `Bagel`, which `Flashcard` references. 
+**Note:** An alternative (arguably, a more OOP) model is given below.
+It has a `Tag` list in the `Bagel`, which `Flashcard` references.
 This allows `Bagel` to only require one `Tag` object per unique `Tag`, instead of each 
 `Flashcard` needing their own `Tag` object.
 ![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
@@ -134,7 +133,7 @@ This section describes some noteworthy details on how certain features are imple
 
 ### View feature
 This mechanism makes use of the unmodifiable `ObservableList<Flashcard>` in `Model`. It filters the given list by searching 
-for the flashcard that matches the given index. 
+for the flashcard that matches the given index.
 
 *diagram to be included*
 

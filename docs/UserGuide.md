@@ -31,7 +31,7 @@ If you can type fast, Bagel can manage your flashcards faster than traditional G
     * `view 3` : Shows the 3rd flashcard shown in the current flashcards set.
     * `edit 2 t/New title` : Edits the title of 2nd existing flashcard of the current set to become 'New title'
     * `flip` : Flips from the current flashcard to next flashcard in the list.
-    * `sort`: Sorts the flashcard list according to title. 
+    * `sort`: Sorts the flashcard list according to title.
     * `exit` : Exits the app.
 Refer to the Features below for details of each command.
 
@@ -49,13 +49,13 @@ Refer to the Features below for details of each command.
 * Items in square brackets are optional.<br>
   e.g. `t/TITLE [tag/TAG]` can be used as `t/p-value tag/Definition` or as `t/p-value`.<br>
   e.g. `[s/1]` is optional.
-  
+
 * Items with `…​` after them can be used multiple times including zero times.<br>
   e.g. in `[tag/TAG]…`, can be used as ` ` (i.e. 0 times), `tag/Definition, tag/Formula tag/Important` etc.
 
 * User should supply the number of the flashcard behind commands.<br>
   e.g. `view 1`, `delete 10`
-  
+
 * Parameters can be in any order.<br>
   e.g. if the command specifies `t/TITLE d/DESCRIPTION`, `d/DESCRIPTION t/TITLE` is also acceptable.
 </div>
