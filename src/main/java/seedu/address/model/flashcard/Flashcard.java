@@ -2,12 +2,10 @@ package seedu.address.model.flashcard;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-//import java.util.Collections;
-//import java.util.HashSet;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Objects;
-//import java.util.Set;
-
-//import seedu.address.model.tag.Tag;
+import java.util.Set;
 
 /**
  * Represents a Flashcard in Bagel list.
@@ -17,22 +15,19 @@ public class Flashcard {
 
     // Identity fields
     private final Title title;
-    //private final Name name;
-    //private final Phone phone;
-    //private final Email email;
 
     // Data fields
     private final Description description;
-    //private final Address address;
-    //private final Set<Tag> tags = new HashSet<>();
+    private final Set<FlashcardSet> flashcardSets = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Flashcard(Title title, Description description) {
+    public Flashcard(Title title, Description description, Set<FlashcardSet> flashcardSets) {
         requireAllNonNull(title, description);
         this.title = title;
         this.description = description;
+        this.flashcardSets.addAll(flashcardSets);
     }
 
     public Title getTitle() {
@@ -43,13 +38,13 @@ public class Flashcard {
         return this.description;
     }
 
-    ///**
-    // * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
-    // * if modification is attempted.
-    // */
-    //public Set<Tag> getTags() {
-    //   return Collections.unmodifiableSet(tags);
-    //}
+    /**
+     * Returns an immutable set of FlashcardSets the flashcard belongs to, which throws
+     * {@code UnsupportedOperationException} if modification is attempted.
+     */
+    public Set<FlashcardSet> getFlashcardSets() {
+        return Collections.unmodifiableSet(flashcardSets);
+    }
 
     /**
      * Returns true if both flashcards of the same title have at least one other identity field that is the same.
@@ -98,7 +93,9 @@ public class Flashcard {
         final StringBuilder builder = new StringBuilder();
         builder.append(getTitle())
                 .append(" Description: ")
-                .append(getDescription());
+                .append(getDescription())
+                .append(" Set: ");
+        getFlashcardSets().forEach(builder::append);
         return builder.toString();
     }
 

@@ -1,10 +1,10 @@
 package seedu.address.storage;
 
 import java.util.ArrayList;
-//import java.util.HashSet;
+import java.util.HashSet;
 import java.util.List;
-//import java.util.Set;
-//import java.util.stream.Collectors;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -12,8 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.flashcard.Description;
 import seedu.address.model.flashcard.Flashcard;
+import seedu.address.model.flashcard.FlashcardSet;
 import seedu.address.model.flashcard.Title;
-import seedu.address.model.tag.Tag;
 
 /**
  * Jackson-friendly version of {@link Flashcard}.
@@ -24,19 +24,19 @@ class JsonAdaptedFlashcard {
 
     private final String title;
     private final String description;
-    private final List<JsonAdaptedTag> tagged = new ArrayList<>();
+    private final List<JsonAdaptedSet> flashcardSet = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedFlashcard} with the given flashcard details.
      */
     @JsonCreator
-    public JsonAdaptedFlashcard(@JsonProperty("title") String title, @JsonProperty("description") String description) {
-        //@JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
+    public JsonAdaptedFlashcard(@JsonProperty("title") String title, @JsonProperty("description") String description,
+        @JsonProperty("flashcardSet") List<JsonAdaptedSet> flashcardSet) {
         this.title = title;
         this.description = description;
-        //if (tagged != null) {
-        //    this.tagged.addAll(tagged);
-        //}
+        if (flashcardSet != null) {
+            this.flashcardSet.addAll(flashcardSet);
+        }
     }
 
     /**
@@ -45,9 +45,9 @@ class JsonAdaptedFlashcard {
     public JsonAdaptedFlashcard(Flashcard source) {
         title = source.getTitle().fullTitle;
         description = source.getDescription().value;
-        //tagged.addAll(source.getTags().stream()
-        //        .map(JsonAdaptedTag::new)
-        //        .collect(Collectors.toList()));
+        flashcardSet.addAll(source.getFlashcardSets().stream()
+                .map(JsonAdaptedSet::new)
+                .collect(Collectors.toList()));
     }
 
     /**
@@ -56,9 +56,10 @@ class JsonAdaptedFlashcard {
      * @throws IllegalValueException if there were any data constraints violated in the adapted flashcard.
      */
     public Flashcard toModelType() throws IllegalValueException {
-        final List<Tag> flashcardTags = new ArrayList<>();
-        for (JsonAdaptedTag tag : tagged) {
-            flashcardTags.add(tag.toModelType());
+
+        final List<FlashcardSet> sets = new ArrayList<>();
+        for (JsonAdaptedSet flashcardSet : flashcardSet) {
+            sets.add(flashcardSet.toModelType());
         }
 
         if (title == null) {
@@ -78,8 +79,8 @@ class JsonAdaptedFlashcard {
         }
         final Description modelDescription = new Description(description);
 
-        // final Set<Tag> modelTags = new HashSet<>(flashcardTags);
-        return new Flashcard(modelTitle, modelDescription);
+        final Set<FlashcardSet> modelFlashcardSets = new HashSet<>(sets);
+        return new Flashcard(modelTitle, modelDescription, modelFlashcardSets);
     }
 
 }

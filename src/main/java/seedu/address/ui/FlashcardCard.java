@@ -1,9 +1,10 @@
 package seedu.address.ui;
 
-//import java.util.Comparator;
+import java.util.Comparator;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-// import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.flashcard.Flashcard;
@@ -33,11 +34,11 @@ public class FlashcardCard extends UiPart<Region> {
     private Label title;
     @FXML
     private Label description;
-    // @FXML
-    // private FlowPane tags;
+    @FXML
+    private FlowPane sets;
 
     /**
-     * Creates a {@code FlashcardCode} with the given {@code Flashcard} and index to display.
+     * Creates a {@code FlashcardCard} with the given {@code Flashcard} and index to display.
      */
     public FlashcardCard(Flashcard flashcard, int displayedIndex) {
         super(FXML);
@@ -45,9 +46,9 @@ public class FlashcardCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         title.setText(flashcard.getTitle().fullTitle);
         description.setText(flashcard.getDescription().value);
-        //flashcard.getTags().stream()
-        //        .sorted(Comparator.comparing(tag -> tag.tagName))
-        //        .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+        flashcard.getFlashcardSets().stream()
+                .sorted(Comparator.comparing(set -> set.setNumber))
+                .forEach(set -> sets.getChildren().add(new Label(set.setNumber)));
     }
 
     @Override

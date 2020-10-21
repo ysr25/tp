@@ -21,7 +21,7 @@ public class TypicalFlashcards {
             .withDescription("123, Jurong West Ave 6, #08-111")
             .build();
     public static final Flashcard BENSON = new FlashcardBuilder().withTitle("Benson Meier")
-            .withDescription("311, Clementi Ave 2, #02-25")
+            .withDescription("311, Clementi Ave 2, #02-25").withSets("2")
             .build();
     public static final Flashcard CARL = new FlashcardBuilder().withTitle("Carl Kurz")
             .withDescription("wall street").build();

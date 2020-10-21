@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TITLE_BOB;
-// import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalFlashcards.ALICE;
 import static seedu.address.testutil.TypicalFlashcards.BOB;
 
@@ -67,7 +66,7 @@ public class FlashcardTest {
 
         // different tags -> returns false
         // leave for when tags are implemented
-        // editedAlice = new PersonBuilder(ALICE).withTags(VALID_TAG_HUSBAND).build();
-        // assertFalse(ALICE.equals(editedAlice));
+        editedAlice = new FlashcardBuilder(ALICE).withSets("3").build();
+        assertFalse(ALICE.equals(editedAlice));
     }
 }

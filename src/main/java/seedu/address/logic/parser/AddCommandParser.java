@@ -2,17 +2,18 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESC;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SET;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
-//import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
+import java.util.Set;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.flashcard.Description;
 import seedu.address.model.flashcard.Flashcard;
+import seedu.address.model.flashcard.FlashcardSet;
 import seedu.address.model.flashcard.Title;
-//import seedu.address.model.tag.Tag;
 
 /**
  * Parses input arguments and creates a new AddCommand object
@@ -26,7 +27,7 @@ public class AddCommandParser implements Parser<AddCommand> {
      */
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_TITLE, PREFIX_DESC);
+                ArgumentTokenizer.tokenize(args, PREFIX_TITLE, PREFIX_DESC, PREFIX_SET);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_TITLE, PREFIX_DESC)
                 || !argMultimap.getPreamble().isEmpty()) {
@@ -35,9 +36,13 @@ public class AddCommandParser implements Parser<AddCommand> {
 
         Title title = ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get());
         Description description = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESC).get());
-        // Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
+        Set<FlashcardSet> setList = ParserUtil.parseSets(argMultimap.getAllValues(PREFIX_SET));
+        //if no set number is added, default set that the flashcard belongs to is 1
+        if (setList.size() == 0) {
+            setList.add(new FlashcardSet("1"));
+        }
 
-        Flashcard flashcard = new Flashcard(title, description);
+        Flashcard flashcard = new Flashcard(title, description, setList);
 
         return new AddCommand(flashcard);
     }

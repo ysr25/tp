@@ -2,8 +2,8 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESC;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SET;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
-//import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -20,12 +20,12 @@ public class AddCommand extends Command {
             + "Parameters: "
             + PREFIX_TITLE + "TITLE "
             + PREFIX_DESC + "DESCRIPTION "
-            //+ "[" + PREFIX_TAG + "TAG]...\n"
+            + "[" + PREFIX_SET + "SET]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_TITLE + "Definition of p-value "
-            + PREFIX_DESC + "P-value is xxxdsfajksdnf ";
-    //        + PREFIX_TAG + "friends "
-    //        + PREFIX_TAG + "owesMoney";
+            + PREFIX_DESC + "P-value is  the probability of obtaining results at least as extreme as the observed "
+            + "results of a statistical hypothesis test, assuming that the null hypothesis is correct "
+            + PREFIX_SET + "1";
 
     public static final String MESSAGE_SUCCESS = "New flashcard added: %1$s";
     public static final String MESSAGE_DUPLICATE_FLASHCARD = "This flashcard already exists in bagel";

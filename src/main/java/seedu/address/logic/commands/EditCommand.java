@@ -4,11 +4,11 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 
-//import java.util.Collections;
-//import java.util.HashSet;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-//import java.util.Set;
+import java.util.Set;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -17,8 +17,8 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.flashcard.Description;
 import seedu.address.model.flashcard.Flashcard;
+import seedu.address.model.flashcard.FlashcardSet;
 import seedu.address.model.flashcard.Title;
-//import seedu.address.model.tag.Tag;
 
 /**
  * Edits the details of an existing person in the address book.
@@ -88,9 +88,10 @@ public class EditCommand extends Command {
         Title updatedTitle = editFlashcardDescriptor.getTitle().orElse(flashcardToEdit.getTitle());
         Description updatedDescription = editFlashcardDescriptor.getDescription()
                 .orElse(flashcardToEdit.getDescription());
-        // Set<Tag> updatedTags = editFlashcardDescriptor.getTags().orElse(flashcardToEdit.getTags());
+        Set<FlashcardSet> updatedFlashcardSets = editFlashcardDescriptor.getFlashcardSets()
+                .orElse(flashcardToEdit.getFlashcardSets());
 
-        return new Flashcard(updatedTitle, updatedDescription);
+        return new Flashcard(updatedTitle, updatedDescription, updatedFlashcardSets);
     }
 
     @Override
@@ -118,7 +119,7 @@ public class EditCommand extends Command {
     public static class EditFlashcardDescriptor {
         private Title title;
         private Description description;
-        // private Set<Tag> tags;
+        private Set<FlashcardSet> flashcardSets;
 
         public EditFlashcardDescriptor() {}
 
@@ -129,14 +130,14 @@ public class EditCommand extends Command {
         public EditFlashcardDescriptor(EditFlashcardDescriptor toCopy) {
             setTitle(toCopy.title);
             setDescription(toCopy.description);
-            // setTags(toCopy.tags);
+            setFlashcardSets(toCopy.flashcardSets);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(title, description);
+            return CollectionUtil.isAnyNonNull(title, description, flashcardSets);
         }
 
         public void setTitle(Title title) {
@@ -155,22 +156,24 @@ public class EditCommand extends Command {
             return Optional.ofNullable(description);
         }
 
-        ///**
-        // * Sets {@code tags} to this object's {@code tags}.
-        // * A defensive copy of {@code tags} is used internally.
-        // */
-        // public void setTags(Set<Tag> tags) {
-        //     this.tags = (tags != null) ? new HashSet<>(tags) : null;
-        // }
+        /**
+        * Sets {@code flashcardSets} to this object's {@code flashcardSets}.
+        * A defensive copy of {@code flashcardSets} is used internally.
+        */
+        public void setFlashcardSets(Set<FlashcardSet> flashcardSets) {
+            this.flashcardSets = (flashcardSets != null) ? new HashSet<>(flashcardSets) : null;
+        }
 
-        ///**
-        // * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
-        // * if modification is attempted.
-        // * Returns {@code Optional#empty()} if {@code tags} is null.
-        // */
-        // public Optional<Set<Tag>> getTags() {
-        //     return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
-        // }
+        /**
+        * Returns an unmodifiable set of flashcardSets, which throws {@code UnsupportedOperationException}
+        * if modification is attempted.
+        * Returns {@code Optional#empty()} if {@code flashcardSets} is null.
+        */
+        public Optional<Set<FlashcardSet>> getFlashcardSets() {
+            return (flashcardSets != null)
+                 ? Optional.of(Collections.unmodifiableSet(flashcardSets))
+                 : Optional.empty();
+        }
 
         @Override
         public boolean equals(Object other) {
@@ -188,8 +191,8 @@ public class EditCommand extends Command {
             EditFlashcardDescriptor e = (EditFlashcardDescriptor) other;
 
             return getTitle().equals(e.getTitle())
-                    && getDescription().equals(e.getDescription());
-            // && getTags().equals(e.getTags());
+                    && getDescription().equals(e.getDescription())
+                    && getFlashcardSets().equals(e.getFlashcardSets());
         }
     }
 }

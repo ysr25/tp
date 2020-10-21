@@ -5,8 +5,8 @@ import java.util.Set;
 
 import seedu.address.model.flashcard.Description;
 import seedu.address.model.flashcard.Flashcard;
+import seedu.address.model.flashcard.FlashcardSet;
 import seedu.address.model.flashcard.Title;
-import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
 /**
@@ -19,7 +19,7 @@ public class FlashcardBuilder {
 
     private Title title;
     private Description description;
-    private Set<Tag> tags;
+    private Set<FlashcardSet> flashcardSets;
 
     /**
      * Creates a {@code FlashcardBuilder} with the default details.
@@ -27,7 +27,8 @@ public class FlashcardBuilder {
     public FlashcardBuilder() {
         title = new Title(DEFAULT_TITLE);
         description = new Description(DEFAULT_DESCRIPTION);
-        tags = new HashSet<>();
+        flashcardSets = new HashSet<>();
+        flashcardSets.add(new FlashcardSet("1"));
     }
 
     /**
@@ -36,7 +37,7 @@ public class FlashcardBuilder {
     public FlashcardBuilder(Flashcard flashcardToCopy) {
         title = flashcardToCopy.getTitle();
         description = flashcardToCopy.getDescription();
-        // tags = new HashSet<>(flashcardToCopy.getTags());
+        flashcardSets = new HashSet<>(flashcardToCopy.getFlashcardSets());
     }
 
     /**
@@ -50,8 +51,8 @@ public class FlashcardBuilder {
     /**
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Flashcard} that we are building.
      */
-    public FlashcardBuilder withTags(String ... tags) {
-        this.tags = SampleDataUtil.getTagSet(tags);
+    public FlashcardBuilder withSets(String ... sets) {
+        this.flashcardSets = SampleDataUtil.getFlashcardSetSet(sets);
         return this;
     }
 
@@ -64,7 +65,7 @@ public class FlashcardBuilder {
     }
 
     public Flashcard build() {
-        return new Flashcard(title, description);
+        return new Flashcard(title, description, flashcardSets);
     }
 
 }
