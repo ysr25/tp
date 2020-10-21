@@ -41,12 +41,14 @@ public class FlashcardCard extends UiPart<Region> {
     @FXML
     private Label description;
     @FXML
+    private FlowPane sets;
+    @FXML
     private FlowPane tags;
     @FXML
     private VBox vBox;
 
     /**
-     * Creates a {@code FlashcardCode} with the given {@code Flashcard} and index to display.
+     * Creates a {@code FlashcardCard} with the given {@code Flashcard} and index to display.
      */
     public FlashcardCard(Flashcard flashcard, int displayedIndex, HostServices hostServices) {
         super(FXML);
@@ -60,6 +62,10 @@ public class FlashcardCard extends UiPart<Region> {
         if (!link.isEmpty()) {
             addLink(link);
         }
+      
+        flashcard.getFlashcardSets().stream()
+                .sorted(Comparator.comparing(set -> set.setNumber))
+                .forEach(set -> sets.getChildren().add(new Label(set.setNumber)));
 
         flashcard.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
