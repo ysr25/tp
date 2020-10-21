@@ -14,6 +14,7 @@ import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FlipCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.SearchCommand;
 import seedu.address.logic.commands.ViewCommand;
 import seedu.address.logic.commands.sort.SortCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -69,6 +70,9 @@ public class BagelParser {
 
         case SortCommand.COMMAND_WORD:
             return new SortCommand();
+
+        case SearchCommand.COMMAND_WORD:
+            return new SearchCommandParser().parse(arguments);
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();

@@ -2,6 +2,7 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
+import javafx.application.HostServices;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
@@ -16,6 +17,7 @@ import seedu.address.model.flashcard.Flashcard;
 public class FlashcardListPanel extends UiPart<Region> {
     private static final String FXML = "FlashcardListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(FlashcardListPanel.class);
+    private HostServices hostServices;
 
     @FXML
     private ListView<Flashcard> flashcardListView;
@@ -23,10 +25,11 @@ public class FlashcardListPanel extends UiPart<Region> {
     /**
      * Creates a {@code FlashcardListPanel} with the given {@code ObservableList}.
      */
-    public FlashcardListPanel(ObservableList<Flashcard> flashcardList) {
+    public FlashcardListPanel(ObservableList<Flashcard> flashcardList, HostServices hostServices) {
         super(FXML);
         flashcardListView.setItems(flashcardList);
         flashcardListView.setCellFactory(listView -> new FlashcardListViewCell());
+        this.hostServices = hostServices;
     }
 
     /**
@@ -41,7 +44,7 @@ public class FlashcardListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new FlashcardCard(flashcard, getIndex() + 1).getRoot());
+                setGraphic(new FlashcardCard(flashcard, getIndex() + 1, hostServices).getRoot());
             }
         }
     }
