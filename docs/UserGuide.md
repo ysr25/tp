@@ -31,6 +31,7 @@ If you can type fast, Bagel can manage your flashcards faster than traditional G
     * `view 3` : Shows the 3rd flashcard shown in the current flashcards set.
     * `edit 2 t/New title` : Edits the title of 2nd existing flashcard of the current set to become 'New title'
     * `flip` : Flips from the current flashcard to next flashcard in the list.
+    * `search k/Keyword`: Search flashcard that have matching title or description to keyword.
     * `sort`: Sorts the flashcard list according to title.
     * `exit` : Exits the app.
 Refer to the Features below for details of each command.
@@ -132,6 +133,14 @@ Flips from current flashcard to next flashcard in the list.
 
 Format: `flip`
 
+### Flipping through flashcards : `search`
+
+Search flashcard that has matching description or title to keyword from current displayed flashcard list.
+
+Format: `search [t/KEYWORD]`
+
+* Search the flashcard that matches with `KEYWORD`.
+
 ### Sorting flashcards: `sort`
 
 Sorts the current flashcard list by title, in alphabetical order.
@@ -164,5 +173,6 @@ Action | Format, Examples
 **View** | `view INDEX`<br> e.g., `view 1`
 **List** | `list`
 **Flip** | `flip`
+**Search** | `search [k/KEYWORD]`
 **Sort** | `sort`
 **Exit** | `exit`
