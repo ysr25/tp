@@ -108,7 +108,7 @@ The `Model`,
 
 **Note:** An alternative (arguably, a more OOP) model is given below.
 It has a `Tag` list in the `Bagel`, which `Flashcard` references.
-This allows `Bagel` to only require one `Tag` object per unique `Tag`, instead of each 
+This allows `Bagel` to only require one `Tag` object per unique `Tag`, instead of each
 `Flashcard` needing their own `Tag` object.
 ![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
 
@@ -132,7 +132,7 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 This section describes some noteworthy details on how certain features are implemented.
 
 ### View feature
-This mechanism makes use of the unmodifiable `ObservableList<Flashcard>` in `Model`. It filters the given list by searching 
+This mechanism makes use of the unmodifiable `ObservableList<Flashcard>` in `Model`. It filters the given list by searching
 for the flashcard that matches the given index.
 
 *diagram to be included*
