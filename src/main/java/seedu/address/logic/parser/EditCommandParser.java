@@ -58,7 +58,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
         parseFlashcardSetsForEdit(argMultimap.getAllValues(PREFIX_SET))
                 .ifPresent(editFlashcardDescriptor::setFlashcardSets);
-      
+
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editFlashcardDescriptor::setTags);
 
         if (!editFlashcardDescriptor.isAnyFieldEdited()) {
@@ -83,7 +83,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         Collection<String> setOfFlashcardSets = sets.size() == 1 && sets.contains("") ? Collections.emptySet() : sets;
         return Optional.of(ParserUtil.parseSets(setOfFlashcardSets));
     }
-  
+
     /**
      * Parses {@code Collection<String> tags} into a {@code Set<Tag>} if {@code tags} is non-empty.
      * If {@code tags} contain only one element which is an empty string, it will be parsed into a

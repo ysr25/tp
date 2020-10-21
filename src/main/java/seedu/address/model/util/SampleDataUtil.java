@@ -11,6 +11,7 @@ import seedu.address.model.flashcard.Flashcard;
 import seedu.address.model.flashcard.FlashcardSet;
 import seedu.address.model.flashcard.Link;
 import seedu.address.model.flashcard.Title;
+import seedu.address.model.tag.Tag;
 
 /**
  * Contains utility methods for populating {@code Bagel} with sample data.
@@ -26,7 +27,7 @@ public class SampleDataUtil {
             new Flashcard(new Title("Types of Sampling Plan"),
                 new Description("Probability Sampling: simple random, systematic, stratified, cluster\n"
                         + "Non-probability sampling: volunteer/self-selected, convenience, judgemental, quota"),
-                    new Link("file:///c:/GER1000/Tutorial%203%20Slides.pdf"),
+                    new Link("file:///c:/GER1000/Tutorial%203%20Slides.pdf"), getFlashcardSetSet("1"),
                     getTagSet("Types", "SamplingPlan")),
             new Flashcard(new Title("Ecological Fallacy"),
                 new Description("Ecological fallacy is thinking that relationships observed for groups "
@@ -49,13 +50,13 @@ public class SampleDataUtil {
                         + "r < 0: negative association\n"
                         + "r = 1: perfect positive association\n"
                         + "r = -1: perfect negative association"),
-                    new Link(""),
+                    new Link(""), getFlashcardSetSet("2"),
                     getTagSet("Identification", "Types", "Association")),
             new Flashcard(new Title("Odds Ratio(OR) and Risk Ratio(RR)"),
                 new Description("OR: odds(exp)/odds(unexp)\n"
                         + "RR: risk(exp)/risk(unexp)"),
                     new Link("file:///c:/GER1000/Tutorial%204%20Slides.pdf"),
-                    getFlashcardSetSet("3"),    
+                    getFlashcardSetSet("3"),
                     getTagSet("OddsRatio", "RiskRatio"))
         };
     }
@@ -77,4 +78,12 @@ public class SampleDataUtil {
                 .collect(Collectors.toSet());
     }
 
+    /**
+     * Returns a tag set containing the list of strings given.
+     */
+    public static Set<Tag> getTagSet(String... strings) {
+        return Arrays.stream(strings)
+                .map(Tag::new)
+                .collect(Collectors.toSet());
+    }
 }

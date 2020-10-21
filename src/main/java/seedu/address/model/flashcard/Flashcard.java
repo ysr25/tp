@@ -43,11 +43,11 @@ public class Flashcard {
     public Description getDescription() {
         return this.description;
     }
-  
+
     public Link getLink() {
         return this.link;
     }
-  
+
     /**
      * Returns an immutable set of FlashcardSets the flashcard belongs to, which throws
      * {@code UnsupportedOperationException} if modification is attempted.
@@ -97,6 +97,7 @@ public class Flashcard {
         return otherFlashcard.getTitle().equals(getTitle())
                 && otherFlashcard.getDescription().equals(getDescription())
                 && otherFlashcard.getLink().equals(getLink())
+                && otherFlashcard.getFlashcardSets().equals(getFlashcardSets())
                 && otherFlashcard.getTags().equals(getTags());
     }
 
@@ -118,7 +119,7 @@ public class Flashcard {
         getFlashcardSets().forEach(builder::append);
         builder.append(" Tags: ");
         getTags().forEach(builder::append);
-      
+
         return builder.toString();
     }
 

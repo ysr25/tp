@@ -41,7 +41,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         Title title = ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get());
         Description description = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESC).get());
         Link link = ParserUtil.parseLink(argMultimap.getValue(PREFIX_LINK).orElse(""));
-      
+
         Set<FlashcardSet> setList = ParserUtil.parseSets(argMultimap.getAllValues(PREFIX_SET));
         //if no set number is added, default set that the flashcard belongs to is 1
         if (setList.size() == 0) {

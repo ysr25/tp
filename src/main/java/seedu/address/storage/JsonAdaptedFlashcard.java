@@ -15,6 +15,7 @@ import seedu.address.model.flashcard.Flashcard;
 import seedu.address.model.flashcard.FlashcardSet;
 import seedu.address.model.flashcard.Link;
 import seedu.address.model.flashcard.Title;
+import seedu.address.model.tag.Tag;
 
 /**
  * Jackson-friendly version of {@link Flashcard}.
@@ -42,6 +43,7 @@ class JsonAdaptedFlashcard {
         this.link = link;
         if (flashcardSet != null) {
             this.flashcardSet.addAll(flashcardSet);
+        }
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
@@ -74,6 +76,11 @@ class JsonAdaptedFlashcard {
             sets.add(flashcardSet.toModelType());
         }
 
+        final List<Tag> flashcardTags = new ArrayList<>();
+        for (JsonAdaptedTag tag : tagged) {
+            flashcardTags.add(tag.toModelType());
+        }
+
         if (title == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Title.class.getSimpleName()));
         }
@@ -98,13 +105,11 @@ class JsonAdaptedFlashcard {
         if (!Link.isValidLink(link)) {
             throw new IllegalValueException(Link.MESSAGE_CONSTRAINTS);
         }
-        final Link modelLink = new Link(link);
-      
-        final Set<FlashcardSet> modelFlashcardSets = new HashSet<>(sets);
-        return new Flashcard(modelTitle, modelDescription, modelFlashcardSets);
 
+        final Link modelLink = new Link(link);
+        final Set<FlashcardSet> modelFlashcardSets = new HashSet<>(sets);
         final Set<Tag> modelTags = new HashSet<>(flashcardTags);
-        return new Flashcard(modelTitle, modelDescription, modelLink, modelTags);
+        return new Flashcard(modelTitle, modelDescription, modelLink, modelFlashcardSets, modelTags);
     }
 
 }

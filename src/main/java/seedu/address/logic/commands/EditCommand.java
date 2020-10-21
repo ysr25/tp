@@ -191,7 +191,7 @@ public class EditCommand extends Command {
                  ? Optional.of(Collections.unmodifiableSet(flashcardSets))
                  : Optional.empty();
         }
-      
+
         public void setLink(Link link) {
             this.link = link;
         }
@@ -235,7 +235,7 @@ public class EditCommand extends Command {
             return getTitle().equals(e.getTitle())
                     && getDescription().equals(e.getDescription())
                     && getLink().equals(e.getLink())
-                    && getFlashcardSets().equals(e.getFlashcardSets());
+                    && getFlashcardSets().equals(e.getFlashcardSets())
                     && getTags().equals(e.getTags());
         }
     }

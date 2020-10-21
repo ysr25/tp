@@ -8,6 +8,7 @@ import seedu.address.model.flashcard.Flashcard;
 import seedu.address.model.flashcard.FlashcardSet;
 import seedu.address.model.flashcard.Link;
 import seedu.address.model.flashcard.Title;
+import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
 /**
@@ -58,6 +59,15 @@ public class FlashcardBuilder {
 
     /**
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Flashcard} that we are building.
+     */
+    public FlashcardBuilder withTags(String ... tags) {
+        this.tags = SampleDataUtil.getTagSet(tags);
+        return this;
+    }
+
+    /**
+     * Parses the {@code flashcardSet} into a {@code Set<FlashcardSet>} and set it to the {@code Flashcard} that
+     * we are building.
      */
     public FlashcardBuilder withSets(String ... sets) {
         this.flashcardSets = SampleDataUtil.getFlashcardSetSet(sets);

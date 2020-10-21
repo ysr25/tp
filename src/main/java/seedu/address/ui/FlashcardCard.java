@@ -62,7 +62,7 @@ public class FlashcardCard extends UiPart<Region> {
         if (!link.isEmpty()) {
             addLink(link);
         }
-      
+
         flashcard.getFlashcardSets().stream()
                 .sorted(Comparator.comparing(set -> set.setNumber))
                 .forEach(set -> sets.getChildren().add(new Label(set.setNumber)));
