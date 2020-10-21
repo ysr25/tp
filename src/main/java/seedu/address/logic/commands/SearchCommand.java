@@ -2,11 +2,8 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.List;
 import java.util.function.Predicate;
 
-import seedu.address.commons.core.Messages;
-import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.flashcard.Flashcard;
@@ -25,7 +22,7 @@ public class SearchCommand extends Command {
 
     public static final String MESSAGE_SEARCH_FLASHCARD_SUCCESS = "Result of search: %s";
 
-//    private final Index targetIndex;
+    //    private final Index targetIndex;
     private final String keyword;
 
 
@@ -44,10 +41,10 @@ public class SearchCommand extends Command {
         return new CommandResult(String.format(MESSAGE_SEARCH_FLASHCARD_SUCCESS, keyword));
     }
 
-//    @Override
-//    public boolean equals(Object other) {
-//        return other == this // short circuit if same object
-//                || (other instanceof DeleteCommand // instanceof handles nulls
-//                && targetIndex.equals(((DeleteCommand) other).targetIndex)); // state check
-//    }
+    //    @Override
+    //    public boolean equals(Object other) {
+    //        return other == this // short circuit if same object
+    //                || (other instanceof DeleteCommand // instanceof handles nulls
+    //                && targetIndex.equals(((DeleteCommand) other).targetIndex)); // state check
+    //    }
 }
