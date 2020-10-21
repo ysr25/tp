@@ -3,20 +3,21 @@ package seedu.address.logic.parser;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_DESC_BOB;
-// import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_DESC_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_LINK_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TITLE_DESC;
-// import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_FRIEND;
-// import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_FRIEND;
+import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.TITLE_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.TITLE_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DESC_BOB;
-// import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
-// import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TITLE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TITLE_BOB;
-// import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_FLASHCARD;
@@ -29,13 +30,14 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditFlashcardDescriptor;
 import seedu.address.model.flashcard.Description;
+import seedu.address.model.flashcard.Link;
 import seedu.address.model.flashcard.Title;
-// import seedu.address.model.tag.Tag;
+import seedu.address.model.tag.Tag;
 import seedu.address.testutil.EditFlashcardDescriptorBuilder;
 
 public class EditCommandParserTest {
 
-    // private static final String TAG_EMPTY = " " + PREFIX_TAG;
+    private static final String TAG_EMPTY = " " + PREFIX_TAG;
 
     private static final String MESSAGE_INVALID_FORMAT =
             String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE);
@@ -71,18 +73,19 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_invalidValue_failure() {
-        assertParseFailure(parser, "1" + INVALID_TITLE_DESC, Title.MESSAGE_CONSTRAINTS); // invalid name
-        assertParseFailure(parser, "1" + INVALID_DESC_DESC, Description.MESSAGE_CONSTRAINTS); // invalid address
-        // assertParseFailure(parser, "1" + INVALID_TAG_DESC, Tag.MESSAGE_CONSTRAINTS); // invalid tag
+        assertParseFailure(parser, "1" + INVALID_TITLE_DESC, Title.MESSAGE_CONSTRAINTS); // invalid title
+        assertParseFailure(parser, "1" + INVALID_DESC_DESC, Description.MESSAGE_CONSTRAINTS); // invalid desc
+        assertParseFailure(parser, "1" + INVALID_LINK_DESC, Link.MESSAGE_CONSTRAINTS); // invalid link
+        assertParseFailure(parser, "1" + INVALID_TAG_DESC, Tag.MESSAGE_CONSTRAINTS); // invalid tag
 
         // invalid title followed by valid description
         assertParseFailure(parser, "1" + INVALID_TITLE_DESC + DESC_DESC_AMY, Title.MESSAGE_CONSTRAINTS);
 
         // while parsing {@code PREFIX_TAG} alone will reset the tags of the {@code Person} being edited,
         // parsing it together with a valid tag results in error
-        // assertParseFailure(parser, "1" + TAG_DESC_FRIEND + TAG_DESC_HUSBAND + TAG_EMPTY, Tag.MESSAGE_CONSTRAINTS);
-        // assertParseFailure(parser, "1" + TAG_DESC_FRIEND + TAG_EMPTY + TAG_DESC_HUSBAND, Tag.MESSAGE_CONSTRAINTS);
-        // assertParseFailure(parser, "1" + TAG_EMPTY + TAG_DESC_FRIEND + TAG_DESC_HUSBAND, Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + TAG_DESC_FRIEND + TAG_DESC_HUSBAND + TAG_EMPTY, Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + TAG_DESC_FRIEND + TAG_EMPTY + TAG_DESC_HUSBAND, Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + TAG_EMPTY + TAG_DESC_FRIEND + TAG_DESC_HUSBAND, Tag.MESSAGE_CONSTRAINTS);
 
         // multiple invalid values, but only the first invalid value is captured
         assertParseFailure(parser, "1" + INVALID_TITLE_DESC + VALID_DESC_AMY + INVALID_TITLE_DESC,
@@ -92,11 +95,11 @@ public class EditCommandParserTest {
     @Test
     public void parse_allFieldsSpecified_success() {
         Index targetIndex = INDEX_SECOND_FLASHCARD;
-        String userInput = targetIndex.getOneBased() // + TAG_DESC_HUSBAND
-                + DESC_DESC_AMY + TITLE_DESC_AMY; // + TAG_DESC_FRIEND;
+        String userInput = targetIndex.getOneBased() + TAG_DESC_HUSBAND
+                + DESC_DESC_AMY + TITLE_DESC_AMY + TAG_DESC_FRIEND;
 
         EditFlashcardDescriptor descriptor = new EditFlashcardDescriptorBuilder().withTitle(VALID_TITLE_AMY)
-                .withDescription(VALID_DESC_AMY) //.withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
+                .withDescription(VALID_DESC_AMY).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
                 .build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
@@ -119,21 +122,21 @@ public class EditCommandParserTest {
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // tags
-        // userInput = targetIndex.getOneBased() + TAG_DESC_FRIEND;
-        // descriptor = new EditFlashcardDescriptorBuilder().withTags(VALID_TAG_FRIEND).build();
-        // expectedCommand = new EditCommand(targetIndex, descriptor);
-        // assertParseSuccess(parser, userInput, expectedCommand);
+        userInput = targetIndex.getOneBased() + TAG_DESC_FRIEND;
+        descriptor = new EditFlashcardDescriptorBuilder().withTags(VALID_TAG_FRIEND).build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
     }
 
     @Test
     public void parse_multipleRepeatedFields_acceptsLast() {
         Index targetIndex = INDEX_FIRST_FLASHCARD;
-        String userInput = targetIndex.getOneBased() + DESC_DESC_AMY // + TAG_DESC_FRIEND
-                + DESC_DESC_AMY // + TAG_DESC_FRIEND
-                + DESC_DESC_BOB; // + TAG_DESC_HUSBAND;
+        String userInput = targetIndex.getOneBased() + DESC_DESC_AMY + TAG_DESC_FRIEND
+                + DESC_DESC_AMY + TAG_DESC_FRIEND
+                + DESC_DESC_BOB + TAG_DESC_HUSBAND;
 
         EditFlashcardDescriptor descriptor = new EditFlashcardDescriptorBuilder().withDescription(VALID_DESC_BOB)
-                //.withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND)
+                .withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND)
                 .build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
@@ -157,14 +160,14 @@ public class EditCommandParserTest {
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 
-    // @Test
-    // public void parse_resetTags_success() {
-    //     Index targetIndex = INDEX_THIRD_FLASHCARD;
-    //     String userInput = targetIndex.getOneBased() + TAG_EMPTY;
-    //
-    //     EditFlashcardDescriptor descriptor = new EditFlashcardDescriptorBuilder().build(); //.withTags().build();
-    //     EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
+    @Test
+    public void parse_resetTags_success() {
+        Index targetIndex = INDEX_THIRD_FLASHCARD;
+        String userInput = targetIndex.getOneBased() + TAG_EMPTY;
 
-    //     assertParseSuccess(parser, userInput, expectedCommand);
-    // }
+        EditFlashcardDescriptor descriptor = new EditFlashcardDescriptorBuilder().withTags().build();
+        EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
+
+        assertParseSuccess(parser, userInput, expectedCommand);
+    }
 }

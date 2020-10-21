@@ -1,12 +1,17 @@
 package seedu.address.ui;
 
 import java.util.Comparator;
+import java.util.logging.Logger;
 
+import javafx.application.HostServices;
 import javafx.fxml.FXML;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.flashcard.Flashcard;
 
 /**
@@ -15,7 +20,6 @@ import seedu.address.model.flashcard.Flashcard;
 public class FlashcardCard extends UiPart<Region> {
 
     private static final String FXML = "FlashcardList.fxml";
-
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
      * As a consequence, UI elements' variable names cannot be set to such keywords
@@ -25,6 +29,8 @@ public class FlashcardCard extends UiPart<Region> {
      */
 
     public final Flashcard flashcard;
+    private final Logger logger = LogsCenter.getLogger(FlashcardCard.class);
+    private HostServices hostServices;
 
     @FXML
     private HBox cardPane;
@@ -36,19 +42,50 @@ public class FlashcardCard extends UiPart<Region> {
     private Label description;
     @FXML
     private FlowPane sets;
+    @FXML
+    private FlowPane tags;
+    @FXML
+    private VBox vBox;
 
     /**
      * Creates a {@code FlashcardCard} with the given {@code Flashcard} and index to display.
      */
-    public FlashcardCard(Flashcard flashcard, int displayedIndex) {
+    public FlashcardCard(Flashcard flashcard, int displayedIndex, HostServices hostServices) {
         super(FXML);
         this.flashcard = flashcard;
+        this.hostServices = hostServices;
         id.setText(displayedIndex + ". ");
         title.setText(flashcard.getTitle().fullTitle);
         description.setText(flashcard.getDescription().value);
+
+        String link = flashcard.getLink().value;
+        if (!link.isEmpty()) {
+            addLink(link);
+        }
+      
         flashcard.getFlashcardSets().stream()
                 .sorted(Comparator.comparing(set -> set.setNumber))
                 .forEach(set -> sets.getChildren().add(new Label(set.setNumber)));
+
+        flashcard.getTags().stream()
+                .sorted(Comparator.comparing(tag -> tag.tagName))
+                .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+    }
+
+    /**
+     * Adds a {@code Hyperlink} with value {@code link} to display.
+     */
+    public void addLink(String link) {
+        Hyperlink hyperlink = new Hyperlink();
+        hyperlink.setText(link);
+        hyperlink.getStyleClass().add("cell_small_hyperlink");
+        hyperlink.setOnMouseClicked(t -> {
+            String linkText = hyperlink.getText();
+            assert !linkText.isEmpty();
+            logger.info("Link clicked: " + linkText);
+            hostServices.showDocument(linkText);
+        });
+        vBox.getChildren().add(hyperlink);
     }
 
     @Override

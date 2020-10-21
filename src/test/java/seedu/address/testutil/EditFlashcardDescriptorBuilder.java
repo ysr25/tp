@@ -1,13 +1,14 @@
 package seedu.address.testutil;
-//import java.util.Set;
-//import java.util.stream.Collectors;
-//import java.util.stream.Stream;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import seedu.address.logic.commands.EditCommand.EditFlashcardDescriptor;
 import seedu.address.model.flashcard.Description;
 import seedu.address.model.flashcard.Flashcard;
+import seedu.address.model.flashcard.Link;
 import seedu.address.model.flashcard.Title;
-// import seedu.address.model.tag.Tag;
+import seedu.address.model.tag.Tag;
 
 /**
  * A utility class to help with building EditFlashcardDescriptor objects.
@@ -31,7 +32,8 @@ public class EditFlashcardDescriptorBuilder {
         descriptor = new EditFlashcardDescriptor();
         descriptor.setTitle(flashcard.getTitle());
         descriptor.setDescription(flashcard.getDescription());
-        // descriptor.setTags(flashcard.getTags());
+        descriptor.setLink(flashcard.getLink());
+        descriptor.setTags(flashcard.getTags());
     }
 
     /**
@@ -51,14 +53,22 @@ public class EditFlashcardDescriptorBuilder {
     }
 
     /**
+     * Sets the {@code Link} of the {@code EditFlashcardDescriptor} that we are building.
+     */
+    public EditFlashcardDescriptorBuilder withLink(String link) {
+        descriptor.setLink(new Link(link));
+        return this;
+    }
+
+    /**
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code EditPersonDescriptor}
      * that we are building.
      */
-    // public EditFlashcardDescriptorBuilder withTags(String... tags) {
-    //     Set<Tag> tagSet = Stream.of(tags).map(Tag::new).collect(Collectors.toSet());
-    //     descriptor.setTags(tagSet);
-    //     return this;
-    // }
+    public EditFlashcardDescriptorBuilder withTags(String... tags) {
+        Set<Tag> tagSet = Stream.of(tags).map(Tag::new).collect(Collectors.toSet());
+        descriptor.setTags(tagSet);
+        return this;
+    }
 
     public EditFlashcardDescriptor build() {
         return descriptor;

@@ -13,6 +13,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.flashcard.Description;
 import seedu.address.model.flashcard.Flashcard;
 import seedu.address.model.flashcard.FlashcardSet;
+import seedu.address.model.flashcard.Link;
 import seedu.address.model.flashcard.Title;
 
 /**
@@ -24,18 +25,25 @@ class JsonAdaptedFlashcard {
 
     private final String title;
     private final String description;
+    private final String link;
     private final List<JsonAdaptedSet> flashcardSet = new ArrayList<>();
+    private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedFlashcard} with the given flashcard details.
      */
     @JsonCreator
     public JsonAdaptedFlashcard(@JsonProperty("title") String title, @JsonProperty("description") String description,
-        @JsonProperty("flashcardSet") List<JsonAdaptedSet> flashcardSet) {
+                                @JsonProperty("link") String link,
+                                @JsonProperty("flashcardSet") List<JsonAdaptedSet> flashcardSet,
+                                @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
         this.title = title;
         this.description = description;
+        this.link = link;
         if (flashcardSet != null) {
             this.flashcardSet.addAll(flashcardSet);
+        if (tagged != null) {
+            this.tagged.addAll(tagged);
         }
     }
 
@@ -45,8 +53,12 @@ class JsonAdaptedFlashcard {
     public JsonAdaptedFlashcard(Flashcard source) {
         title = source.getTitle().fullTitle;
         description = source.getDescription().value;
+        link = source.getLink().value;
         flashcardSet.addAll(source.getFlashcardSets().stream()
                 .map(JsonAdaptedSet::new)
+                .collect(Collectors.toList()));
+        tagged.addAll(source.getTags().stream()
+                .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
     }
 
@@ -79,8 +91,20 @@ class JsonAdaptedFlashcard {
         }
         final Description modelDescription = new Description(description);
 
+        if (link == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Link.class.getSimpleName()));
+        }
+        if (!Link.isValidLink(link)) {
+            throw new IllegalValueException(Link.MESSAGE_CONSTRAINTS);
+        }
+        final Link modelLink = new Link(link);
+      
         final Set<FlashcardSet> modelFlashcardSets = new HashSet<>(sets);
         return new Flashcard(modelTitle, modelDescription, modelFlashcardSets);
+
+        final Set<Tag> modelTags = new HashSet<>(flashcardTags);
+        return new Flashcard(modelTitle, modelDescription, modelLink, modelTags);
     }
 
 }

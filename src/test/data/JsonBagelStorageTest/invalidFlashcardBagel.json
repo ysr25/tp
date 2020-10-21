@@ -1,6 +1,7 @@
 {
   "flashcards": [ {
-    "title": "Flashcard with invalid title field: Ha!ns Mu@ster",
-    "description": "4th street"
+    "title": "",
+    "description": "4th street",
+    "link": ""
   } ]
 }

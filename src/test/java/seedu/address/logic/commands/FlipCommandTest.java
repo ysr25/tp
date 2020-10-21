@@ -27,7 +27,7 @@ public class FlipCommandTest {
         String expectedMessage = String.format(FlipCommand.MESSAGE_SUCCESS);
 
         ModelManager expectedModel = new ModelManager(model.getBagel(), new UserPrefs());
-        expectedModel.viewFlashcard(flashcard -> flashcards.indexOf(flashcard) == 1);
+        expectedModel.viewFlashcard(flashcard -> flashcards.indexOf(flashcard) == 0);
 
         assertCommandSuccess(flipCommand, model, expectedMessage, expectedModel);
     }

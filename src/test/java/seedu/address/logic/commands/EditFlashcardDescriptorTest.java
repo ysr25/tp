@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DESC_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_LINK_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TITLE_BOB;
 
 import org.junit.jupiter.api.Test;
@@ -41,8 +43,12 @@ public class EditFlashcardDescriptorTest {
         editedAmy = new EditFlashcardDescriptorBuilder(DESC_AMY).withDescription(VALID_DESC_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
+        // different link -> returns false
+        editedAmy = new EditFlashcardDescriptorBuilder(DESC_AMY).withLink(VALID_LINK_BOB).build();
+        assertFalse(DESC_AMY.equals(editedAmy));
+
         // different tags -> returns false
-        // editedAmy = new EditFlashcardDescriptorBuilder(DESC_AMY).withTags(VALID_TAG_HUSBAND).build();
-        // assertFalse(DESC_AMY.equals(editedAmy));
+        editedAmy = new EditFlashcardDescriptorBuilder(DESC_AMY).withTags(VALID_TAG_HUSBAND).build();
+        assertFalse(DESC_AMY.equals(editedAmy));
     }
 }

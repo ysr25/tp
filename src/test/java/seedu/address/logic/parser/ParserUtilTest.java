@@ -14,8 +14,8 @@ import seedu.address.model.flashcard.Title;
 // import seedu.address.model.tag.Tag;
 
 public class ParserUtilTest {
-    private static final String INVALID_TITLE = "R@chel";
-    // private static final String INVALID_DESC = "+651234";
+    private static final String INVALID_TITLE = "";
+    private static final String INVALID_DESC = "";
 
     private static final String VALID_TITLE = "Rachel Walker";
     private static final String VALID_DESC = "123 Main Street #0505";
@@ -65,6 +65,11 @@ public class ParserUtilTest {
         String nameWithWhitespace = WHITESPACE + VALID_TITLE + WHITESPACE;
         Title expectedName = new Title(VALID_TITLE);
         assertEquals(expectedName, ParserUtil.parseTitle(nameWithWhitespace));
+    }
+
+    @Test
+    public void parseDescription_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseTitle(INVALID_DESC));
     }
 
     @Test

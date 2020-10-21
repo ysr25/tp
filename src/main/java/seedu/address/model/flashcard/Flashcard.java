@@ -7,6 +7,8 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import seedu.address.model.tag.Tag;
+
 /**
  * Represents a Flashcard in Bagel list.
  * Guarantees: details are present and not null, field values are validated, immutable.
@@ -18,16 +20,20 @@ public class Flashcard {
 
     // Data fields
     private final Description description;
+    private final Link link;
     private final Set<FlashcardSet> flashcardSets = new HashSet<>();
+    private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Flashcard(Title title, Description description, Set<FlashcardSet> flashcardSets) {
-        requireAllNonNull(title, description);
+    public Flashcard(Title title, Description description, Link link, Set<FlashcardSet> flashcardSets, Set<Tag> tags) {
+        requireAllNonNull(title, description, link, flashcardSets, tags);
         this.title = title;
         this.description = description;
+        this.link = link;
         this.flashcardSets.addAll(flashcardSets);
+        this.tags.addAll(tags);
     }
 
     public Title getTitle() {
@@ -37,13 +43,25 @@ public class Flashcard {
     public Description getDescription() {
         return this.description;
     }
-
+  
+    public Link getLink() {
+        return this.link;
+    }
+  
     /**
      * Returns an immutable set of FlashcardSets the flashcard belongs to, which throws
      * {@code UnsupportedOperationException} if modification is attempted.
      */
     public Set<FlashcardSet> getFlashcardSets() {
         return Collections.unmodifiableSet(flashcardSets);
+    }
+
+    /**
+     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
+     * if modification is attempted.
+     */
+    public Set<Tag> getTags() {
+        return Collections.unmodifiableSet(tags);
     }
 
     /**
@@ -61,7 +79,6 @@ public class Flashcard {
                 && (otherFlashcard.getDescription().equals(getDescription()));
     }
 
-    // temporarily the same as isSameFlashcard
     /**
      * Returns true if both persons have the same identity and data fields.
      * This defines a stronger notion of equality between two persons.
@@ -78,14 +95,15 @@ public class Flashcard {
 
         Flashcard otherFlashcard = (Flashcard) other;
         return otherFlashcard.getTitle().equals(getTitle())
-                // temporarily uses Description to check for same flashcard.
-                && otherFlashcard.getDescription().equals(getDescription());
+                && otherFlashcard.getDescription().equals(getDescription())
+                && otherFlashcard.getLink().equals(getLink())
+                && otherFlashcard.getTags().equals(getTags());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(title, description);
+        return Objects.hash(title, description, link, tags);
     }
 
     @Override
@@ -94,8 +112,13 @@ public class Flashcard {
         builder.append(getTitle())
                 .append(" Description: ")
                 .append(getDescription())
+                .append(" Link: ")
+                .append(getLink())
                 .append(" Set: ");
         getFlashcardSets().forEach(builder::append);
+        builder.append(" Tags: ");
+        getTags().forEach(builder::append);
+      
         return builder.toString();
     }
 

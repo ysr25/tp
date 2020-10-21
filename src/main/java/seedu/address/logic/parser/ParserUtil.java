@@ -11,7 +11,9 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.flashcard.Description;
 import seedu.address.model.flashcard.FlashcardSet;
+import seedu.address.model.flashcard.Link;
 import seedu.address.model.flashcard.Title;
+import seedu.address.model.tag.Tag;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -35,10 +37,10 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String name} into a {@code Name}.
+     * Parses a {@code String title} into a {@code Title}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code name} is invalid.
+     * @throws ParseException if the given {@code title} is invalid.
      */
     public static Title parseTitle(String title) throws ParseException {
         requireNonNull(title);
@@ -50,10 +52,10 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String phone} into a {@code Phone}.
+     * Parses a {@code String description} into a {@code Description}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code phone} is invalid.
+     * @throws ParseException if the given {@code description} is invalid.
      */
     public static Description parseDescription(String description) throws ParseException {
         requireNonNull(description);
@@ -90,5 +92,47 @@ public class ParserUtil {
         }
         return setOfFlashcardSets;
     }
-}
 
+
+    /**
+     * Parses a {@code String link} into a {@code Link}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code link} is invalid.
+     */
+    public static Link parseLink(String link) throws ParseException {
+        requireNonNull(link);
+        String trimmedLink = link.trim();
+        if (!Link.isValidLink(trimmedLink)) {
+            throw new ParseException(Link.MESSAGE_CONSTRAINTS);
+        }
+        return new Link(trimmedLink);
+    }
+
+    /**
+     * Parses a {@code String tag} into a {@code Tag}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code tag} is invalid.
+     */
+    public static Tag parseTag(String tag) throws ParseException {
+        requireNonNull(tag);
+        String trimmedTag = tag.trim();
+        if (!Tag.isValidTagName(trimmedTag)) {
+            throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
+        }
+        return new Tag(trimmedTag);
+    }
+
+    /**
+     * Parses {@code Collection<String> tags} into a {@code Set<Tag>}.
+     */
+    public static Set<Tag> parseTags(Collection<String> tags) throws ParseException {
+        requireNonNull(tags);
+        final Set<Tag> tagSet = new HashSet<>();
+        for (String tagName : tags) {
+            tagSet.add(parseTag(tagName));
+        }
+        return tagSet;
+    }
+}

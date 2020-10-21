@@ -6,6 +6,7 @@ import java.util.Set;
 import seedu.address.model.flashcard.Description;
 import seedu.address.model.flashcard.Flashcard;
 import seedu.address.model.flashcard.FlashcardSet;
+import seedu.address.model.flashcard.Link;
 import seedu.address.model.flashcard.Title;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -15,11 +16,14 @@ import seedu.address.model.util.SampleDataUtil;
 public class FlashcardBuilder {
 
     public static final String DEFAULT_TITLE = "Alice Pauline";
-    public static final String DEFAULT_DESCRIPTION = "123, Jurong West Ave 6, #08-111";
+    public static final String DEFAULT_DESCRIPTION = "456, Jurong West Ave 6, #08-111";
+    public static final String DEFAULT_LINK = "";
 
     private Title title;
     private Description description;
+    private Link link;
     private Set<FlashcardSet> flashcardSets;
+    private Set<Tag> tags;
 
     /**
      * Creates a {@code FlashcardBuilder} with the default details.
@@ -27,8 +31,10 @@ public class FlashcardBuilder {
     public FlashcardBuilder() {
         title = new Title(DEFAULT_TITLE);
         description = new Description(DEFAULT_DESCRIPTION);
+        link = new Link(DEFAULT_LINK);
         flashcardSets = new HashSet<>();
         flashcardSets.add(new FlashcardSet("1"));
+        tags = new HashSet<>();
     }
 
     /**
@@ -37,7 +43,9 @@ public class FlashcardBuilder {
     public FlashcardBuilder(Flashcard flashcardToCopy) {
         title = flashcardToCopy.getTitle();
         description = flashcardToCopy.getDescription();
+        link = flashcardToCopy.getLink();
         flashcardSets = new HashSet<>(flashcardToCopy.getFlashcardSets());
+        tags = new HashSet<>(flashcardToCopy.getTags());
     }
 
     /**
@@ -64,8 +72,16 @@ public class FlashcardBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code Link} of the {@code Flashcard} that we are building.
+     */
+    public FlashcardBuilder withLink(String link) {
+        this.link = new Link(link);
+        return this;
+    }
+
     public Flashcard build() {
-        return new Flashcard(title, description, flashcardSets);
+        return new Flashcard(title, description, link, flashcardSets, tags);
     }
 
 }
