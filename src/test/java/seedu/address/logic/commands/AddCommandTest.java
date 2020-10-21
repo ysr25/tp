@@ -159,7 +159,6 @@ public class AddCommandTest {
         public void sortFlashcardList(Comparator<Flashcard> comparator) {
             throw new AssertionError("This method should not be called.");
         }
-
     }
 
     /**
