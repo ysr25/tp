@@ -70,7 +70,7 @@ public class BagelParser {
 
         case SortCommand.COMMAND_WORD:
             return new SortCommand();
-            
+
         case SearchCommand.COMMAND_WORD:
             return new SearchCommandParser().parse(arguments);
 
