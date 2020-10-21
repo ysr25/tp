@@ -20,15 +20,17 @@ public class Flashcard {
 
     // Data fields
     private final Description description;
+    private final Link link;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Flashcard(Title title, Description description, Set<Tag> tags) {
-        requireAllNonNull(title, description);
+    public Flashcard(Title title, Description description, Link link, Set<Tag> tags) {
+        requireAllNonNull(title, description, link, tags);
         this.title = title;
         this.description = description;
+        this.link = link;
         this.tags.addAll(tags);
     }
 
@@ -38,6 +40,10 @@ public class Flashcard {
 
     public Description getDescription() {
         return this.description;
+    }
+
+    public Link getLink() {
+        return this.link;
     }
 
     /**
@@ -63,7 +69,6 @@ public class Flashcard {
                 && (otherFlashcard.getDescription().equals(getDescription()));
     }
 
-    // temporarily the same as isSameFlashcard
     /**
      * Returns true if both persons have the same identity and data fields.
      * This defines a stronger notion of equality between two persons.
@@ -80,15 +85,15 @@ public class Flashcard {
 
         Flashcard otherFlashcard = (Flashcard) other;
         return otherFlashcard.getTitle().equals(getTitle())
-                // temporarily uses Description to check for same flashcard.
                 && otherFlashcard.getDescription().equals(getDescription())
+                && otherFlashcard.getLink().equals(getLink())
                 && otherFlashcard.getTags().equals(getTags());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(title, description, tags);
+        return Objects.hash(title, description, link, tags);
     }
 
     @Override
@@ -97,6 +102,8 @@ public class Flashcard {
         builder.append(getTitle())
                 .append(" Description: ")
                 .append(getDescription())
+                .append(" Link: ")
+                .append(getLink())
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();

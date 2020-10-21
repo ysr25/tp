@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESC;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_LINK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 
@@ -18,6 +19,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.flashcard.Description;
 import seedu.address.model.flashcard.Flashcard;
+import seedu.address.model.flashcard.Link;
 import seedu.address.model.flashcard.Title;
 import seedu.address.model.tag.Tag;
 
@@ -33,12 +35,13 @@ public class EditCommand extends Command {
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_TITLE + "TITLE] "
-            + "[" + PREFIX_DESC + "DESCRIPTION] \n"
+            + "[" + PREFIX_DESC + "DESCRIPTION] "
+            + "[" + PREFIX_LINK + "LINK] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_TITLE + "91234567 "
             + PREFIX_DESC + "johndoe@example.com"
-            + "[" + PREFIX_TAG + "TAG]...\n";
+            + PREFIX_TAG + "friend\n";
 
     public static final String MESSAGE_EDIT_FLASHCARD_SUCCESS = "Edited Flashcard: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
@@ -91,9 +94,10 @@ public class EditCommand extends Command {
         Title updatedTitle = editFlashcardDescriptor.getTitle().orElse(flashcardToEdit.getTitle());
         Description updatedDescription = editFlashcardDescriptor.getDescription()
                 .orElse(flashcardToEdit.getDescription());
+        Link updatedLink = editFlashcardDescriptor.getLink().orElse(flashcardToEdit.getLink());
         Set<Tag> updatedTags = editFlashcardDescriptor.getTags().orElse(flashcardToEdit.getTags());
 
-        return new Flashcard(updatedTitle, updatedDescription, updatedTags);
+        return new Flashcard(updatedTitle, updatedDescription, updatedLink, updatedTags);
     }
 
     @Override
@@ -115,12 +119,13 @@ public class EditCommand extends Command {
     }
 
     /**
-     * Stores the details to edit the person with. Each non-empty field value will replace the
-     * corresponding field value of the person.
+     * Stores the details to edit the flashcard with. Each non-empty field value will replace the
+     * corresponding field value of the flashcard.
      */
     public static class EditFlashcardDescriptor {
         private Title title;
         private Description description;
+        private Link link;
         private Set<Tag> tags;
 
         public EditFlashcardDescriptor() {}
@@ -132,6 +137,7 @@ public class EditCommand extends Command {
         public EditFlashcardDescriptor(EditFlashcardDescriptor toCopy) {
             setTitle(toCopy.title);
             setDescription(toCopy.description);
+            setLink(toCopy.link);
             setTags(toCopy.tags);
         }
 
@@ -139,7 +145,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(title, description, tags);
+            return CollectionUtil.isAnyNonNull(title, description, link, tags);
         }
 
         public void setTitle(Title title) {
@@ -156,6 +162,14 @@ public class EditCommand extends Command {
 
         public Optional<Description> getDescription() {
             return Optional.ofNullable(description);
+        }
+
+        public void setLink(Link link) {
+            this.link = link;
+        }
+
+        public Optional<Link> getLink() {
+            return Optional.ofNullable(link);
         }
 
         /**
@@ -175,7 +189,6 @@ public class EditCommand extends Command {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
         }
 
-
         @Override
         public boolean equals(Object other) {
             // short circuit if same object
@@ -193,6 +206,7 @@ public class EditCommand extends Command {
 
             return getTitle().equals(e.getTitle())
                     && getDescription().equals(e.getDescription())
+                    && getLink().equals(e.getLink())
                     && getTags().equals(e.getTags());
         }
     }
