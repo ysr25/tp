@@ -3,6 +3,8 @@ package seedu.address.logic.parser;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESC;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_LINK;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SET;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 
@@ -15,6 +17,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditFlashcardDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.flashcard.FlashcardSet;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -30,7 +33,7 @@ public class EditCommandParser implements Parser<EditCommand> {
     public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_TITLE, PREFIX_DESC, PREFIX_TAG);
+                ArgumentTokenizer.tokenize(args, PREFIX_TITLE, PREFIX_DESC, PREFIX_LINK, PREFIX_SET, PREFIX_TAG);
 
         Index index;
 
@@ -48,6 +51,14 @@ public class EditCommandParser implements Parser<EditCommand> {
             editFlashcardDescriptor
                     .setDescription(ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESC).get()));
         }
+
+        if (argMultimap.getValue(PREFIX_LINK).isPresent()) {
+            editFlashcardDescriptor
+                    .setLink(ParserUtil.parseLink(argMultimap.getValue(PREFIX_LINK).orElse("")));
+        }
+        parseFlashcardSetsForEdit(argMultimap.getAllValues(PREFIX_SET))
+                .ifPresent(editFlashcardDescriptor::setFlashcardSets);
+      
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editFlashcardDescriptor::setTags);
 
         if (!editFlashcardDescriptor.isAnyFieldEdited()) {
@@ -57,6 +68,22 @@ public class EditCommandParser implements Parser<EditCommand> {
         return new EditCommand(index, editFlashcardDescriptor);
     }
 
+    /**
+    * Parses {@code Collection<String> flashcardSets} into a {@code Set<FlashcardSet>} if {@code flashcardSets} is
+    * non-empty.
+    * If {@code flashcardSets} contain only one element which is an empty string, it will be parsed into a
+    * {@code Set<FlashcardSet>} containing zero tags.
+    */
+    private Optional<Set<FlashcardSet>> parseFlashcardSetsForEdit(Collection<String> sets) throws ParseException {
+        assert sets != null;
+
+        if (sets.isEmpty()) {
+            return Optional.empty();
+        }
+        Collection<String> setOfFlashcardSets = sets.size() == 1 && sets.contains("") ? Collections.emptySet() : sets;
+        return Optional.of(ParserUtil.parseSets(setOfFlashcardSets));
+    }
+  
     /**
      * Parses {@code Collection<String> tags} into a {@code Set<Tag>} if {@code tags} is non-empty.
      * If {@code tags} contain only one element which is an empty string, it will be parsed into a

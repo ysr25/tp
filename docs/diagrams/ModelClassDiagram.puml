@@ -5,23 +5,24 @@ skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
 
 Package Model <<Rectangle>>{
-Interface ReadOnlyAddressBook <<Interface>>
+Interface ReadOnlyBagel <<Interface>>
 Interface Model <<Interface>>
 Interface ObservableList <<Interface>>
-Class AddressBook
-Class ReadOnlyAddressBook
+Class Bagel
+Class ReadOnlyBagel
 Class Model
 Class ModelManager
 Class UserPrefs
 Class ReadOnlyUserPrefs
 
-Package Person {
-Class Person
-Class Address
-Class Email
-Class Name
-Class Phone
-Class UniquePersonList
+Package Flashcard {
+Class Flashcard
+Class Title
+Class Description
+Class Tag
+Class Set
+Class Link
+Class UniqueFlashcardList
 }
 
 Package Tag {
@@ -32,25 +33,25 @@ Class Tag
 Class HiddenOutside #FFFFFF
 HiddenOutside ..> Model
 
-AddressBook .up.|> ReadOnlyAddressBook
+Bagel .up.|> ReadOnlyBagel
 
 ModelManager .up.|> Model
 Model .right.> ObservableList
-ModelManager o--> "1" AddressBook
+ModelManager o--> "1" Bagel
 ModelManager o-left-> "1" UserPrefs
 UserPrefs .up.|> ReadOnlyUserPrefs
 
-AddressBook *--> "1" UniquePersonList
-UniquePersonList o--> "*" Person
-Person *--> Name
-Person *--> Phone
-Person *--> Email
-Person *--> Address
-Person *--> "*" Tag
+Bagel *--> "1" UniqueFlashcardList
+UniqueFlashcardList o--> "*" Flashcard
+Flashcard *--> Title
+Flashcard *--> Description
+Flashcard *--> Set
+Flashcard *--> Link
+Flashcard *--> "*" Tag
 
-Name -[hidden]right-> Phone
-Phone -[hidden]right-> Address
-Address -[hidden]right-> Email
+Title -[hidden]right-> Description
+Description -[hidden]right-> Set
+Set -[hidden]right-> Link
 
-ModelManager -->"1" Person : filtered list
+ModelManager -->"1" Flashcard : filtered list
 @enduml

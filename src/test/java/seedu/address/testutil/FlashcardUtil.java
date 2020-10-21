@@ -1,6 +1,7 @@
 package seedu.address.testutil;
 
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESC;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_LINK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 
@@ -30,6 +31,7 @@ public class FlashcardUtil {
         StringBuilder sb = new StringBuilder();
         sb.append(PREFIX_TITLE + flashcard.getTitle().fullTitle + " ");
         sb.append(PREFIX_DESC + flashcard.getDescription().value + " ");
+        sb.append(PREFIX_LINK + flashcard.getLink().value + " ");
         flashcard.getTags().stream().forEach(
             s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );
@@ -44,6 +46,7 @@ public class FlashcardUtil {
         descriptor.getTitle().ifPresent(title -> sb.append(PREFIX_TITLE).append(title.fullTitle).append(" "));
         descriptor.getDescription().ifPresent(description -> sb.append(PREFIX_DESC).append(description.value)
                 .append(" "));
+        descriptor.getLink().ifPresent(link -> sb.append(PREFIX_LINK).append(link.value).append(" "));
         if (descriptor.getTags().isPresent()) {
             Set<Tag> tags = descriptor.getTags().get();
             if (tags.isEmpty()) {

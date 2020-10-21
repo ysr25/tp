@@ -78,7 +78,7 @@ public class LogicManagerTest {
 
         // Execute add command
         String addCommand = AddCommand.COMMAND_WORD + TITLE_DESC_AMY + DESC_DESC_AMY;
-        Flashcard expectedFlashcard = new FlashcardBuilder(AMY).withTags().build();
+        Flashcard expectedFlashcard = new FlashcardBuilder(AMY).withSets().build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addFlashcard(expectedFlashcard);
         String expectedMessage = LogicManager.FILE_OPS_ERROR_MESSAGE + DUMMY_IO_EXCEPTION;
