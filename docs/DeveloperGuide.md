@@ -131,6 +131,12 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Search feature
+This mechanism makes use of the unmodifiable `ObservableList<Flashcard>` in `Model`. It filters the given list by searching
+for the flashcard that matches the given keyword.
+
+*diagram to be included*
+
 ### View feature
 This mechanism makes use of the unmodifiable `ObservableList<Flashcard>` in `Model`. It filters the given list by searching
 for the flashcard that matches the given index.

@@ -3,6 +3,8 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import java.util.function.Predicate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -33,7 +35,9 @@ public class SearchCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-
+        assert false; // required for week 10 tP
+        Logger logger = Logger.getLogger("logger"); // required for week 10 tP
+        logger.log(Level.INFO, "log test"); // required for week 10 tP
         Predicate<Flashcard> searchFlashcard = flashcard -> flashcard.getDescription().toString().contains(keyword)
                 || flashcard.getTitle().toString().contains(keyword);
         model.updateFilteredFlashcardList(searchFlashcard);
