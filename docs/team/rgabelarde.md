@@ -17,16 +17,27 @@ Given below are my contributions to the project.
   * What it does: allows the user to delete a flashcard from the list of flashcards.
   * Justification: This feature is a basic critical function for Bagel, without this function, there will be no way to remove any flashcards.
 
-* **Code contributed**: [RepoSense link]()
+* **New Feature**: Added a tag command that allows the user to add, edit and delete tags of a flashcard.
+  * What it does: allows the user to tag a flashcard (can tag during adding, can edit tag and delete tag.)
+  * Justification: This feature is a good enhancement for flashcards as users can tag them by keywords, looking for them using those tags later on (mix sets)
+
+* **New Feature**: Added a clear command that allows the user to clear out all the current flashcards.
+  * What it does: allows the user to clear flashcards that are currently in the system.
+  * Justification: This feature is a useful as users can restart from scratch upon getting familiar with the app, removing sample flashcards used to familiarise themselves with the app.
+
+* **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true)
 
 * **Project management**:
-  * Managed release `v1.2` on GitHub
+  * Managed releases `v1.1` - `v1.3` (3 releases) on GitHub
+  
+* **Enhancements to existing features**:
+  * Replaced the original files in AB3 to Flashcard files (Folders: Ui, AddressBookParser). (Pull request [\#45, #40]())
 
 * **Documentation**:
   * User Guide:
-    * Added documentation for the features `add` and `delete` [\#00]()
+    * Added documentation for the features `add`, `delete`, `tag` and `clear`.
   * Developer Guide:
-    * Added implementation details of the `add` and `delete` feature.
+    * Added implementation details of the `add`, `delete`, `tag` and `clear` features.
 
 * **Community**:
   * PRs reviewed (with non-trivial review comments): [\#269](https://github.com/nus-cs2103-AY2021S1/ip/pull/269), [\#326](https://github.com/nus-cs2103-AY2021S1/ip/pull/326)
