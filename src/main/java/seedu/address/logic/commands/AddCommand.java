@@ -2,6 +2,8 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESC;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_LINK;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SET;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TITLE;
 
@@ -20,10 +22,14 @@ public class AddCommand extends Command {
             + "Parameters: "
             + PREFIX_TITLE + "TITLE "
             + PREFIX_DESC + "DESCRIPTION "
+            + PREFIX_LINK + "LINK "
+            + "[" + PREFIX_SET + "SET]"
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_TITLE + "Definition of p-value "
-            + PREFIX_DESC + "P-value is xxxdsfajksdnf "
+            + PREFIX_DESC + "P-value is  the probability of obtaining results at least as extreme as the observed "
+            + "results of a statistical hypothesis test, assuming that the null hypothesis is correct "
+            + PREFIX_SET + "1"
             + PREFIX_TAG + "friends "
             + PREFIX_TAG + "owesMoney";
 

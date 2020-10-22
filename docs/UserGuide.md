@@ -29,8 +29,10 @@ If you can type fast, Bagel can manage your flashcards faster than traditional G
     * `clear` : Clears all flashcard entries.
     * `delete 3` : Deletes the 3rd flashcard shown in the current flashcards set.
     * `view 3` : Shows the 3rd flashcard shown in the current flashcards set.
-    * `edit 2 t/New description` : Edits the title of 2nd existing flashcard of the current set to become 'New description'
+    * `edit 2 t/New title` : Edits the title of 2nd existing flashcard of the current set to become 'New title'
     * `flip` : Flips from the current flashcard to next flashcard in the list.
+    * `search k/Keyword`: Search flashcard that have matching title or description to keyword.
+    * `sort`: Sorts the flashcard list according to title.
     * `exit` : Exits the app.
 Refer to the Features below for details of each command.
 
@@ -45,11 +47,18 @@ Refer to the Features below for details of each command.
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add t/TITLE`, TITLE is the parameter which can be used
 
+* Items in square brackets are optional.<br>
+  e.g. `t/TITLE [tag/TAG]` can be used as `t/p-value tag/Definition` or as `t/p-value`.<br>
+  e.g. `[s/1]` is optional.
+
 * Items with `…​` after them can be used multiple times including zero times.<br>
-  e.g. in `[tag/TAG]…`, can be used as ` ` (i.e. 0 times), t/Definition, t/Formula t/Important etc.
+  e.g. in `[tag/TAG]…`, can be used as ` ` (i.e. 0 times), `tag/Definition, tag/Formula tag/Important` etc.
 
 * User should supply the number of the flashcard behind commands.<br>
-  e.g. `add 1`, `delete 10`
+  e.g. `view 1`, `delete 10`
+
+* Parameters can be in any order.<br>
+  e.g. if the command specifies `t/TITLE d/DESCRIPTION`, `d/DESCRIPTION t/TITLE` is also acceptable.
 </div>
 
 ### Adding a flashcard: `add`
@@ -57,10 +66,12 @@ Refer to the Features below for details of each command.
 Adds a flashcard to the total list of flashcards.
 * Adds a flashcard with a title and description
 * Title and description must be entered
+* An optional set number (a positive integer between 1 to 99) can be added
 
-Format: `add t/TITLE d/DESCRIPTION [tag/TAG]…​`
+Format: `add t/TITLE d/DESCRIPTION [s/SET] [l/LINK] [tag/TAG]…​`
 
 Examples:
+* `add t/Data Analysis d/Definition of data analysis: xxxxxx, s/1`
 * `add t/p-value d/If p value < 0.05, xxxx; Else, xxxx`
 * `add t/Data Analysis d/Definition of data analysis: xxxxxx tag/Defintion`
 * `add t/Types of Association d/Example of Types: Blahblah, etc; Blah, etc etc tag/Types tag/Association`
@@ -85,7 +96,7 @@ Format: `delete INDEX`
 
 Edits an existing flashcard.
 
-Format: `edit INDEX [t/TITLE] [d/DESCRIPTION] [tag/TAG]…​`
+Format: `edit INDEX [t/TITLE] [d/DESCRIPTION] [s/SET] [l/LINK] [tag/TAG]…​`
 
 * Edits the flashcard at the specified `INDEX`.
 * The index refers to the index number shown in the displayed flashcard list.
@@ -93,12 +104,12 @@ Format: `edit INDEX [t/TITLE] [d/DESCRIPTION] [tag/TAG]…​`
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing tags, the existing tags of the flashcard will be removed i.e adding of tags is not cumulative.
-* You can remove all the flashcard’s tags by typing t/ without specifying any tags after it.
+* You can remove all the flashcard’s tags by typing tag/ without specifying any tags after it.
 
 Examples:
 *  `edit 1 t/Data analysis` Edits the title of the 1st flashcard to be `Data analysis`.
-*  `edit 1 t/p-value d/probability of ...` Edits the title and the description of the 1st flashcard to be `p-value`
-and `probability of ...` respectively.
+*  `edit 1 t/p-value d/probability of ...` Edits the title and the description of the 1st flashcard to be `p-value` and `probability of ...` respectively.
+*  `edit 1 s/2` Edits the set number which this flashcard is in, to `2`.
 *  `edit 1 t/p-value tag/` Edits the title of the 1st flashcard to be `p-value` and clears all existing tags.
 
 ### Viewing a flashcard: `view`
@@ -122,6 +133,20 @@ Flips from current flashcard to next flashcard in the list.
 
 Format: `flip`
 
+### Flipping through flashcards : `search`
+
+Search flashcard that has matching description or title to keyword from current displayed flashcard list.
+
+Format: `search [t/KEYWORD]`
+
+* Search the flashcard that matches with `KEYWORD`.
+
+### Sorting flashcards: `sort`
+
+Sorts the current flashcard list by title, in alphabetical order.
+
+Format: `sort`
+
 ### Exiting the program : `exit`
 
 Exits the program.
@@ -141,11 +166,13 @@ Format: `exit`
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add t/TITLE d/DESCRIPTION`<br> e.g., `add t/Data Analysis d/The definition of Data Analysis is ...`
+**Add** | `add t/TITLE d/DESCRIPTION [s/SET] [l/LINK] [tag/TAG]…`<br> e.g., `add t/Data Analysis d/The definition of Data Analysis is ...`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX t/TITLE d/DESCRIPTION`<br> e.g.,`edit 1 t/Data analysis`
+**Edit** | `edit INDEX [t/TITLE] [d/DESCRIPTION] [s/SET] [l/LINK] [tag/TAG]`<br> e.g.,`edit 1 t/Data analysis`
 **View** | `view INDEX`<br> e.g., `view 1`
 **List** | `list`
 **Flip** | `flip`
+**Search** | `search [k/KEYWORD]`
+**Sort** | `sort`
 **Exit** | `exit`
