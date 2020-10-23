@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -131,6 +132,13 @@ public class ModelManager implements Model {
     public void updateFilteredFlashcardList(Predicate<Flashcard> predicate) {
         requireNonNull(predicate);
         filteredFlashcards.setPredicate(predicate);
+    }
+
+    @Override
+    public void sortFlashcardList(Comparator<Flashcard> comparator) {
+        requireNonNull(comparator);
+        ObservableList<Flashcard> sortedList = getFilteredFlashcardList().sorted(comparator);
+        bagel.setFlashcards(sortedList);
     }
 
     @Override

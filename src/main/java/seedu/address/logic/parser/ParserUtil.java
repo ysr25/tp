@@ -10,6 +10,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.flashcard.Description;
+import seedu.address.model.flashcard.FlashcardSet;
 import seedu.address.model.flashcard.Link;
 import seedu.address.model.flashcard.Title;
 import seedu.address.model.tag.Tag;
@@ -66,6 +67,34 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String set} into a {@code set}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code set} is invalid.
+     */
+    public static FlashcardSet parseSet(String setNumber) throws ParseException {
+        requireNonNull(setNumber);
+        String trimmedSetNumber = setNumber.trim();
+        if (!FlashcardSet.isValidSetNumber(trimmedSetNumber)) {
+            throw new ParseException(FlashcardSet.MESSAGE_CONSTRAINTS);
+        }
+        return new FlashcardSet(trimmedSetNumber);
+    }
+
+    /**
+     * Parses {@code Collection<String> flashcardSets} into a {@code Set<FlashcardSet>}.
+     */
+    public static Set<FlashcardSet> parseSets(Collection<String> flashcardSets) throws ParseException {
+        requireNonNull(flashcardSets);
+        final Set<FlashcardSet> setOfFlashcardSets = new HashSet<>();
+        for (String setNumber : flashcardSets) {
+            setOfFlashcardSets.add(parseSet(setNumber));
+        }
+        return setOfFlashcardSets;
+    }
+
+
+    /**
      * Parses a {@code String link} into a {@code Link}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -106,5 +135,4 @@ public class ParserUtil {
         }
         return tagSet;
     }
-
 }

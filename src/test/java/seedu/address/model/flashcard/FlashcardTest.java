@@ -77,6 +77,10 @@ public class FlashcardTest {
         editedAlice = new FlashcardBuilder(ALICE).withLink(VALID_LINK_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
+        // different sets -> returns false
+        editedAlice = new FlashcardBuilder(ALICE).withSets("3").build();
+        assertFalse(ALICE.equals(editedAlice));
+
         // different tags -> returns false
         editedAlice = new FlashcardBuilder(ALICE).withTags(VALID_TAG_HUSBAND).build();
         assertFalse(ALICE.equals(editedAlice));

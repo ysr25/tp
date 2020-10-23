@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -90,4 +91,9 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredFlashcardList(Predicate<Flashcard> predicate);
+
+    /**
+     * Sorts the flashcard list with the given comparator.
+     */
+    void sortFlashcardList(Comparator<Flashcard> comparator);
 }

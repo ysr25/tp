@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.flashcard.Description;
 import seedu.address.model.flashcard.Flashcard;
+import seedu.address.model.flashcard.FlashcardSet;
 import seedu.address.model.flashcard.Link;
 import seedu.address.model.flashcard.Title;
 import seedu.address.model.tag.Tag;
@@ -26,6 +27,7 @@ class JsonAdaptedFlashcard {
     private final String title;
     private final String description;
     private final String link;
+    private final List<JsonAdaptedSet> flashcardSet = new ArrayList<>();
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
     /**
@@ -34,10 +36,14 @@ class JsonAdaptedFlashcard {
     @JsonCreator
     public JsonAdaptedFlashcard(@JsonProperty("title") String title, @JsonProperty("description") String description,
                                 @JsonProperty("link") String link,
+                                @JsonProperty("flashcardSet") List<JsonAdaptedSet> flashcardSet,
                                 @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
         this.title = title;
         this.description = description;
         this.link = link;
+        if (flashcardSet != null) {
+            this.flashcardSet.addAll(flashcardSet);
+        }
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
@@ -50,6 +56,9 @@ class JsonAdaptedFlashcard {
         title = source.getTitle().fullTitle;
         description = source.getDescription().value;
         link = source.getLink().value;
+        flashcardSet.addAll(source.getFlashcardSets().stream()
+                .map(JsonAdaptedSet::new)
+                .collect(Collectors.toList()));
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -61,6 +70,12 @@ class JsonAdaptedFlashcard {
      * @throws IllegalValueException if there were any data constraints violated in the adapted flashcard.
      */
     public Flashcard toModelType() throws IllegalValueException {
+
+        final List<FlashcardSet> sets = new ArrayList<>();
+        for (JsonAdaptedSet flashcardSet : flashcardSet) {
+            sets.add(flashcardSet.toModelType());
+        }
+
         final List<Tag> flashcardTags = new ArrayList<>();
         for (JsonAdaptedTag tag : tagged) {
             flashcardTags.add(tag.toModelType());
@@ -90,10 +105,11 @@ class JsonAdaptedFlashcard {
         if (!Link.isValidLink(link)) {
             throw new IllegalValueException(Link.MESSAGE_CONSTRAINTS);
         }
-        final Link modelLink = new Link(link);
 
+        final Link modelLink = new Link(link);
+        final Set<FlashcardSet> modelFlashcardSets = new HashSet<>(sets);
         final Set<Tag> modelTags = new HashSet<>(flashcardTags);
-        return new Flashcard(modelTitle, modelDescription, modelLink, modelTags);
+        return new Flashcard(modelTitle, modelDescription, modelLink, modelFlashcardSets, modelTags);
     }
 
 }
