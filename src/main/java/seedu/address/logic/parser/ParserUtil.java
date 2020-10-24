@@ -82,19 +82,6 @@ public class ParserUtil {
     }
 
     /**
-     * Parses {@code Collection<String> flashcardSets} into a {@code Set<FlashcardSet>}.
-     */
-    public static Set<FlashcardSet> parseSets(Collection<String> flashcardSets) throws ParseException {
-        requireNonNull(flashcardSets);
-        final Set<FlashcardSet> setOfFlashcardSets = new HashSet<>();
-        for (String setNumber : flashcardSets) {
-            setOfFlashcardSets.add(parseSet(setNumber));
-        }
-        return setOfFlashcardSets;
-    }
-
-
-    /**
      * Parses a {@code String link} into a {@code Link}.
      * Leading and trailing whitespaces will be trimmed.
      *

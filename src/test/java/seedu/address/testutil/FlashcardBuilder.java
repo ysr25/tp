@@ -19,11 +19,12 @@ public class FlashcardBuilder {
     public static final String DEFAULT_TITLE = "Alice Pauline";
     public static final String DEFAULT_DESCRIPTION = "456, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_LINK = "";
+    public static final String DEFAULT_SET = "1";
 
     private Title title;
     private Description description;
     private Link link;
-    private Set<FlashcardSet> flashcardSets;
+    private FlashcardSet flashcardSet;
     private Set<Tag> tags;
 
     /**
@@ -33,8 +34,7 @@ public class FlashcardBuilder {
         title = new Title(DEFAULT_TITLE);
         description = new Description(DEFAULT_DESCRIPTION);
         link = new Link(DEFAULT_LINK);
-        flashcardSets = new HashSet<>();
-        flashcardSets.add(new FlashcardSet("1"));
+        flashcardSet = new FlashcardSet(DEFAULT_SET);
         tags = new HashSet<>();
     }
 
@@ -45,7 +45,7 @@ public class FlashcardBuilder {
         title = flashcardToCopy.getTitle();
         description = flashcardToCopy.getDescription();
         link = flashcardToCopy.getLink();
-        flashcardSets = new HashSet<>(flashcardToCopy.getFlashcardSets());
+        flashcardSet = flashcardToCopy.getFlashcardSet();
         tags = new HashSet<>(flashcardToCopy.getTags());
     }
 
@@ -66,11 +66,10 @@ public class FlashcardBuilder {
     }
 
     /**
-     * Parses the {@code flashcardSet} into a {@code Set<FlashcardSet>} and set it to the {@code Flashcard} that
-     * we are building.
+     * Parses the {@code flashcardSet} of the {@code Flashcard} that we are building.
      */
-    public FlashcardBuilder withSets(String ... sets) {
-        this.flashcardSets = SampleDataUtil.getFlashcardSetSet(sets);
+    public FlashcardBuilder withSets(String flashcardSet) {
+        this.flashcardSet = new FlashcardSet(flashcardSet);
         return this;
     }
 
@@ -91,7 +90,7 @@ public class FlashcardBuilder {
     }
 
     public Flashcard build() {
-        return new Flashcard(title, description, link, flashcardSets, tags);
+        return new Flashcard(title, description, link, flashcardSet, tags);
     }
 
 }

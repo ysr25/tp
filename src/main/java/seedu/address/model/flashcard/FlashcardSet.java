@@ -3,11 +3,15 @@ package seedu.address.model.flashcard;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+/**
+ * Represents a Flashcard's set in Bagel.
+ * Guarantees: immutable; is valid as declared in {@link #isValidSetNumber(String)}
+ */
 public class FlashcardSet {
     public static final String MESSAGE_CONSTRAINTS = "Set number should only contain numbers between 1 to 9.";
     public static final String VALIDATION_REGEX = "[1-9]";
 
-    public final String setNumber;
+    public final String value;
 
     /**
      * Constructs a {@code FlashcardSet}.
@@ -17,7 +21,7 @@ public class FlashcardSet {
     public FlashcardSet(String setNumber) {
         requireNonNull(setNumber);
         checkArgument(isValidSetNumber(setNumber), MESSAGE_CONSTRAINTS);
-        this.setNumber = setNumber;
+        value = setNumber;
     }
 
     /**
@@ -31,18 +35,16 @@ public class FlashcardSet {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof FlashcardSet // instanceof handles nulls
-                && setNumber.equals(((FlashcardSet) other).setNumber)); // state check
+                && value.equals(((FlashcardSet) other).value)); // state check
     }
 
     @Override
     public int hashCode() {
-        return setNumber.hashCode();
+        return value.hashCode();
     }
 
-    /**
-     * Format state as text for viewing.
-     */
+    @Override
     public String toString() {
-        return '[' + setNumber + ']';
+        return value;
     }
 }
