@@ -63,9 +63,7 @@ public class FlashcardCard extends UiPart<Region> {
             addLink(link);
         }
 
-        flashcard.getFlashcardSets().stream()
-                .sorted(Comparator.comparing(set -> set.setNumber))
-                .forEach(set -> sets.getChildren().add(new Label(set.setNumber)));
+        sets.getChildren().add(new Label(flashcard.getFlashcardSet().value));
 
         flashcard.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))

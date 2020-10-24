@@ -2,6 +2,7 @@
   "flashcards": [ {
     "title": "Hans Muster",
     "description": "",
-    "link": ""
+    "link": "",
+    "set": "1"
   } ]
 }

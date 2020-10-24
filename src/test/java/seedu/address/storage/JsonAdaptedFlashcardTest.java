@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.flashcard.Description;
+import seedu.address.model.flashcard.FlashcardSet;
 import seedu.address.model.flashcard.Link;
 import seedu.address.model.flashcard.Title;
 
@@ -28,9 +29,7 @@ public class JsonAdaptedFlashcardTest {
     private static final String VALID_TITLE = BENSON.getTitle().toString();
     private static final String VALID_DESC = BENSON.getDescription().toString();
     private static final String VALID_LINK = "";
-    private static final List<JsonAdaptedSet> VALID_SET = BENSON.getFlashcardSets().stream()
-            .map(JsonAdaptedSet::new)
-            .collect(Collectors.toList());
+    private static final String VALID_SET = "1";
     private static final List<JsonAdaptedTag> VALID_TAGS = BENSON.getTags().stream()
             .map(JsonAdaptedTag::new)
             .collect(Collectors.toList());
@@ -82,18 +81,26 @@ public class JsonAdaptedFlashcardTest {
 
     @Test
     public void toModelType_nullLink_throwsIllegalValueException() {
-        JsonAdaptedFlashcard flashcard = new JsonAdaptedFlashcard(VALID_TITLE, VALID_DESC, null, VALID_SET, VALID_TAGS);
+        JsonAdaptedFlashcard flashcard =
+                new JsonAdaptedFlashcard(VALID_TITLE, VALID_DESC, null, VALID_SET, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Link.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, flashcard::toModelType);
     }
 
     @Test
-    public void toModelType_invalidSets_throwsIllegalValueException() {
-        List<JsonAdaptedSet> invalidSet = new ArrayList<>(VALID_SET);
-        invalidSet.add(new JsonAdaptedSet(INVALID_SET));
+    public void toModelType_invalidSet_throwsIllegalValueException() {
         JsonAdaptedFlashcard flashcard =
-             new JsonAdaptedFlashcard(VALID_TITLE, VALID_DESC, VALID_LINK, invalidSet, VALID_TAGS);
-        assertThrows(IllegalValueException.class, flashcard::toModelType);
+                new JsonAdaptedFlashcard(VALID_TITLE, VALID_DESC, VALID_LINK, INVALID_SET, VALID_TAGS);
+        String expectedMessage = FlashcardSet.MESSAGE_CONSTRAINTS;
+        assertThrows(IllegalValueException.class, expectedMessage, flashcard::toModelType);
+    }
+
+    @Test
+    public void toModelType_nullSet_throwsIllegalValueException() {
+        JsonAdaptedFlashcard flashcard =
+                new JsonAdaptedFlashcard(VALID_TITLE, VALID_DESC, VALID_LINK, null, VALID_TAGS);
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, FlashcardSet.class.getSimpleName());
+        assertThrows(IllegalValueException.class, expectedMessage, flashcard::toModelType);
     }
 
     @Test

@@ -21,18 +21,18 @@ public class Flashcard {
     // Data fields
     private final Description description;
     private final Link link;
-    private final Set<FlashcardSet> flashcardSets = new HashSet<>();
+    private final FlashcardSet flashcardSet;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Flashcard(Title title, Description description, Link link, Set<FlashcardSet> flashcardSets, Set<Tag> tags) {
-        requireAllNonNull(title, description, link, flashcardSets, tags);
+    public Flashcard(Title title, Description description, Link link, FlashcardSet flashcardSet, Set<Tag> tags) {
+        requireAllNonNull(title, description, link, flashcardSet, tags);
         this.title = title;
         this.description = description;
         this.link = link;
-        this.flashcardSets.addAll(flashcardSets);
+        this.flashcardSet = flashcardSet;
         this.tags.addAll(tags);
     }
 
@@ -52,8 +52,8 @@ public class Flashcard {
      * Returns an immutable set of FlashcardSets the flashcard belongs to, which throws
      * {@code UnsupportedOperationException} if modification is attempted.
      */
-    public Set<FlashcardSet> getFlashcardSets() {
-        return Collections.unmodifiableSet(flashcardSets);
+    public FlashcardSet getFlashcardSet() {
+        return this.flashcardSet;
     }
 
     /**
@@ -97,7 +97,7 @@ public class Flashcard {
         return otherFlashcard.getTitle().equals(getTitle())
                 && otherFlashcard.getDescription().equals(getDescription())
                 && otherFlashcard.getLink().equals(getLink())
-                && otherFlashcard.getFlashcardSets().equals(getFlashcardSets())
+                && otherFlashcard.getFlashcardSet().equals(getFlashcardSet())
                 && otherFlashcard.getTags().equals(getTags());
     }
 
@@ -115,9 +115,9 @@ public class Flashcard {
                 .append(getDescription())
                 .append(" Link: ")
                 .append(getLink())
-                .append(" Set: ");
-        getFlashcardSets().forEach(builder::append);
-        builder.append(" Tags: ");
+                .append(" Set: ")
+                .append(getFlashcardSet())
+                .append(" Tags: ");
         getTags().forEach(builder::append);
 
         return builder.toString();

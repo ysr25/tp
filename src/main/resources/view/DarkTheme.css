@@ -361,3 +361,17 @@
     -fx-background-radius: 2;
     -fx-font-size: 11;
 }
+
+#sets {
+    -fx-hgap: 7;
+    -fx-vgap: 4;
+}
+
+#sets .label {
+    -fx-text-fill: white;
+    -fx-background-color: #1C9B8E;
+    -fx-padding: 1 3 1 3;
+    -fx-border-radius: 2;
+    -fx-background-radius: 2;
+    -fx-font-size: 11;
+}

@@ -17,7 +17,6 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditFlashcardDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.flashcard.FlashcardSet;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -56,9 +55,11 @@ public class EditCommandParser implements Parser<EditCommand> {
             editFlashcardDescriptor
                     .setLink(ParserUtil.parseLink(argMultimap.getValue(PREFIX_LINK).orElse("")));
         }
-        parseFlashcardSetsForEdit(argMultimap.getAllValues(PREFIX_SET))
-                .ifPresent(editFlashcardDescriptor::setFlashcardSets);
 
+        if (argMultimap.getValue(PREFIX_SET).isPresent()) {
+            editFlashcardDescriptor
+                    .setFlashcardSet(ParserUtil.parseSet(argMultimap.getValue(PREFIX_SET).orElse("1")));
+        }
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editFlashcardDescriptor::setTags);
 
         if (!editFlashcardDescriptor.isAnyFieldEdited()) {
@@ -66,22 +67,6 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
 
         return new EditCommand(index, editFlashcardDescriptor);
-    }
-
-    /**
-    * Parses {@code Collection<String> flashcardSets} into a {@code Set<FlashcardSet>} if {@code flashcardSets} is
-    * non-empty.
-    * If {@code flashcardSets} contain only one element which is an empty string, it will be parsed into a
-    * {@code Set<FlashcardSet>} containing zero tags.
-    */
-    private Optional<Set<FlashcardSet>> parseFlashcardSetsForEdit(Collection<String> sets) throws ParseException {
-        assert sets != null;
-
-        if (sets.isEmpty()) {
-            return Optional.empty();
-        }
-        Collection<String> setOfFlashcardSets = sets.size() == 1 && sets.contains("") ? Collections.emptySet() : sets;
-        return Optional.of(ParserUtil.parseSets(setOfFlashcardSets));
     }
 
     /**

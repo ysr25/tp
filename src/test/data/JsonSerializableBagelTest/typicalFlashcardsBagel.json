@@ -4,43 +4,43 @@
     "title" : "Alice Pauline",
     "description" : "123, Jurong West Ave 6, #08-111",
     "link": "",
-    "set" : ["1"],
+    "set" : "1",
     "tagged" : [ "friends" ]
   }, {
     "title" : "Benson Meier",
     "description" : "311, Clementi Ave 2, #02-25",
     "link": "",
-    "set" : ["2"],
+    "set" : "2",
     "tagged" : [ "owesMoney", "friends" ]
   }, {
     "title" : "Carl Kurz",
     "description" : "wall street",
     "link": "",
-    "set" : ["1"],
+    "set" : "1",
     "tagged" : [ ]
   }, {
     "title" : "Daniel Meier",
     "description" : "10th street",
     "link": "",
-    "set" : ["2"],
+    "set" : "2",
     "tagged" : [ "friends" ]
   }, {
     "title" : "Elle Meyer",
     "description" : "michegan ave",
     "link": "",
-    "set" : ["1"],
+    "set" : "1",
     "tagged" : [ ]
   }, {
     "title" : "Fiona Kunz",
     "description" : "little tokyo",
     "link": "",
-    "set" : ["1"],
+    "set" : "1",
     "tagged" : [ ]
   }, {
     "title" : "George Best",
     "description" : "4th street",
     "link": "",
-    "set" : ["3"],
+    "set" : "3",
     "tagged" : [ ]
   } ]
 }
