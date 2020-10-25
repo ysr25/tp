@@ -66,6 +66,8 @@ Refer to the Features below for details of each command.
 
 Shows a message for link to available commands that you can use, with format and examples (i.e. User Guide).
 
+![help message](images/helpMessage.png)
+
 Format: `help`
 
 
@@ -155,6 +157,10 @@ Searches for flashcards that have a matching title or description with `KEYWORD`
 Format: `search [k/KEYWORD]`
 
 * Searches for flashcards that match with `KEYWORD`.
+
+Examples:
+*  `search k/testing` returns `testing1`, `testing2` and `testing23` 
+![search example](images/searchExample.png)
 
 
 ### Sorting flashcards: `sort`
