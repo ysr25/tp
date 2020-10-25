@@ -64,7 +64,7 @@ Refer to the Features below for details of each command.
 
 ### View help: `help`
 
-Shows a message for link to available commands that you can use, with format and examples (i.e. User Guide). 
+Shows a message for link to available commands that you can use, with format and examples (i.e. User Guide).
 
 Format: `help`
 

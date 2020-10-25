@@ -5,7 +5,9 @@ title: Rachel Gina's Project Portfolio Page
 
 ## Project: Bagel
 
-Bagel is a desktop flashcard application used for studying and memorisation purposes. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
+Bagel is a desktop flashcard application used for studying and memorisation purposes.
+The user interacts with it using a CLI, and it has a GUI created with JavaFX.
+It is written in Java, and has about 10 kLoC.
 
 Given below are my contributions to the project.
 
@@ -33,7 +35,7 @@ Given below are my contributions to the project.
 
 * **Project management**:
   * Managed releases `v1.1` - `v1.3` (3 releases) on GitHub
-  
+
 * **Enhancements to existing features**:
   * Replaced the original files in AB3 to Flashcard files (Folders: Ui, AddressBookParser). (Pull request [\#45, #40]())
 
