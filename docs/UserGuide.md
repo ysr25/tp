@@ -64,21 +64,22 @@ Refer to the Features below for details of each command.
 ### Adding a flashcard: `add`
 
 Adds a flashcard to the total list of flashcards.
-* Adds a flashcard with a title and description
-* Title and description must be entered
-* An optional set number (a positive integer between 1 to 99) can be added
 
 Format: `add t/TITLE d/DESCRIPTION [s/SET] [l/LINK] [tag/TAG]…​`
 
+* Adds a flashcard with a title and description.
+* Title and description must be entered.
+* An optional set number (a positive integer between 1 and 9) can be added.
+
 Examples:
-* `add t/Data Analysis d/Definition of data analysis: xxxxxx, s/1`
+* `add t/Data Analysis d/Definition of data analysis: xxxxxx s/1`
 * `add t/p-value d/If p value < 0.05, xxxx; Else, xxxx`
 * `add t/Data Analysis d/Definition of data analysis: xxxxxx tag/Defintion`
 * `add t/Types of Association d/Example of Types: Blahblah, etc; Blah, etc etc tag/Types tag/Association`
 
 ### Clearing all flashcard entries: `clear`
 
-Clear all flashcard entries from Bagel
+Clears all flashcard entries from Bagel.
 
 Format: `clear`
 
@@ -114,7 +115,7 @@ Examples:
 
 ### Viewing a flashcard: `view`
 
-Show an existing flashcard in the current list.
+Shows an existing flashcard in the current list.
 
 Format: `view INDEX`
 
@@ -129,17 +130,17 @@ Format: `list`
 
 ### Flipping through flashcards : `flip`
 
-Flips from current flashcard to next flashcard in the list.
+Flips from the current flashcard to the next flashcard in the list.
 
 Format: `flip`
 
-### Flipping through flashcards : `search`
+### Searching through flashcards : `search`
 
-Search flashcard that has matching description or title to keyword from current displayed flashcard list.
+Searches for flashcards that have a matching title or description with `KEYWORD` from all flashcards.
 
-Format: `search [t/KEYWORD]`
+Format: `search [k/KEYWORD]`
 
-* Search the flashcard that matches with `KEYWORD`.
+* Searches for flashcards that match with `KEYWORD`.
 
 ### Sorting flashcards: `sort`
 
