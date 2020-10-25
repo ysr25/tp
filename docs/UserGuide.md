@@ -61,6 +61,14 @@ Refer to the Features below for details of each command.
   e.g. if the command specifies `t/TITLE d/DESCRIPTION`, `d/DESCRIPTION t/TITLE` is also acceptable.
 </div>
 
+
+### View help: `help`
+
+Shows a message for link to available commands that you can use, with format and examples (i.e. User Guide). 
+
+Format: `help`
+
+
 ### Adding a flashcard: `add`
 
 Adds a flashcard to the total list of flashcards.
@@ -77,6 +85,7 @@ Examples:
 * `add t/Data Analysis d/Definition of data analysis: xxxxxx tag/Defintion`
 * `add t/Types of Association d/Example of Types: Blahblah, etc; Blah, etc etc tag/Types tag/Association`
 
+
 ### Clearing all flashcard entries: `clear`
 
 Clears all flashcard entries from Bagel.
@@ -92,6 +101,7 @@ Format: `delete INDEX`
 * Deletes the flashcard at the specified `INDEX`.
 * The index refers to the index number shown in the displayed flashcards list.
 * The index **must be a positive integer** 1, 2, 3, …
+
 
 ### Editing a flashcard : `edit`
 
@@ -113,6 +123,7 @@ Examples:
 *  `edit 1 s/2` Edits the set number which this flashcard is in, to `2`.
 *  `edit 1 t/p-value tag/` Edits the title of the 1st flashcard to be `p-value` and clears all existing tags.
 
+
 ### Viewing a flashcard: `view`
 
 Shows an existing flashcard in the current list.
@@ -122,17 +133,20 @@ Format: `view INDEX`
 * The index refers to the index number shown in the displayed flashcards list.
 * The index **must be a positive integer** 1, 2, 3, ...
 
+
 ### Viewing all flashcards : `list`
 
 Shows a list of all flashcards.
 
 Format: `list`
 
+
 ### Flipping through flashcards : `flip`
 
 Flips from the current flashcard to the next flashcard in the list.
 
 Format: `flip`
+
 
 ### Searching through flashcards : `search`
 
@@ -142,11 +156,13 @@ Format: `search [k/KEYWORD]`
 
 * Searches for flashcards that match with `KEYWORD`.
 
+
 ### Sorting flashcards: `sort`
 
 Sorts the current flashcard list by title, in alphabetical order.
 
 Format: `sort`
+
 
 ### Exiting the program : `exit`
 

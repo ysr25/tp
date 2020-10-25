@@ -13,6 +13,7 @@ import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FlipCommand;
+import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.SearchCommand;
 import seedu.address.logic.commands.ViewCommand;
@@ -61,6 +62,9 @@ public class BagelParser {
 
         case FlipCommand.COMMAND_WORD:
             return new FlipCommand();
+
+        case HelpCommand.COMMAND_WORD:
+            return new HelpCommand();
 
         case ViewCommand.COMMAND_WORD:
             return new ViewCommandParser().parse(arguments);

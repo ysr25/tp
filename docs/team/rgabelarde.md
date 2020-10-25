@@ -25,6 +25,10 @@ Given below are my contributions to the project.
   * What it does: allows the user to clear flashcards that are currently in the system.
   * Justification: This feature is a useful as users can restart from scratch upon getting familiar with the app, removing sample flashcards used to familiarise themselves with the app.
 
+* **New Feature**: Added a help command that helps users learn the commands available for Bagel.
+  * What it does: shows the user a message explaining how to access the help page.
+  * Justification: This feature is a useful as users access the User Guide easily to find out about available commands they can use.
+
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true)
 
 * **Project management**:
@@ -35,9 +39,9 @@ Given below are my contributions to the project.
 
 * **Documentation**:
   * User Guide:
-    * Added documentation for the features `add`, `delete`, `tag` and `clear`.
+    * Added documentation for the features `add`, `delete`, `tag`, `clear` and `help`.
   * Developer Guide:
-    * Added implementation details of the `add`, `delete`, `tag` and `clear` features.
+    * Added implementation details of the `add`, `delete`, `tag`, `clear` and `help` features.
 
 * **Community**:
   * PRs reviewed (with non-trivial review comments): [\#269](https://github.com/nus-cs2103-AY2021S1/ip/pull/269), [\#326](https://github.com/nus-cs2103-AY2021S1/ip/pull/326)
