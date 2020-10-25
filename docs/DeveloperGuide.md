@@ -124,7 +124,7 @@ The `Storage` component,
 
 ### Common classes
 
-Classes used by multiple components are in the `seedu.address.commons` package.
+Classes used by multiple components are in the `seedu.bagel.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
 ## **Implementation**
@@ -147,15 +147,15 @@ for the flashcard that matches the given index.
 
 #### Implementation
 
-The edit mechanism involves an additional `EditFlashcardDescriptor` class to pass the content of the fields to be edited into `EditCommand`. 
+The edit mechanism involves an additional `EditFlashcardDescriptor` class to pass the content of the fields to be edited into `EditCommand`.
 
 The following sequence diagrams show how the edit operation works.
 
 ![Sequence Diagram for Edit Command in Logic Component](images/EditSequenceDiagram.png)
 
-1. The user executes `edit 1 t/New Title` to edit the title of the first flashcard in the list currently shown. 
+1. The user executes `edit 1 t/New Title` to edit the title of the first flashcard in the list currently shown.
 2. `BagelParser` creates an `EditCommandParser` and calls its parse method with the arguments passed in by the user.
-3. `EditCommandParser` creates an `EditFlashcardDescriptor`. 
+3. `EditCommandParser` creates an `EditFlashcardDescriptor`.
 4. For each field in the flashcard, `EditCommandParser` checks if there is an updated version provided by the user. If there is, the new content is added into the `EditFlashcardDescriptor`.
 5. `EditCommandParser` returns a new `EditCommand` with the index of the `Flashcard` to be edited and the `EditFlashcardDescriptor`.
 
