@@ -27,7 +27,7 @@ class JsonAdaptedFlashcard {
     private final String title;
     private final String description;
     private final String link;
-    private final List<JsonAdaptedSet> flashcardSet = new ArrayList<>();
+    private final String flashcardSet;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
     /**
@@ -36,14 +36,12 @@ class JsonAdaptedFlashcard {
     @JsonCreator
     public JsonAdaptedFlashcard(@JsonProperty("title") String title, @JsonProperty("description") String description,
                                 @JsonProperty("link") String link,
-                                @JsonProperty("flashcardSet") List<JsonAdaptedSet> flashcardSet,
+                                @JsonProperty("flashcardSet") String flashcardSet,
                                 @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
         this.title = title;
         this.description = description;
         this.link = link;
-        if (flashcardSet != null) {
-            this.flashcardSet.addAll(flashcardSet);
-        }
+        this.flashcardSet = flashcardSet;
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
@@ -56,9 +54,7 @@ class JsonAdaptedFlashcard {
         title = source.getTitle().fullTitle;
         description = source.getDescription().value;
         link = source.getLink().value;
-        flashcardSet.addAll(source.getFlashcardSets().stream()
-                .map(JsonAdaptedSet::new)
-                .collect(Collectors.toList()));
+        flashcardSet = source.getFlashcardSet().value;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -70,11 +66,6 @@ class JsonAdaptedFlashcard {
      * @throws IllegalValueException if there were any data constraints violated in the adapted flashcard.
      */
     public Flashcard toModelType() throws IllegalValueException {
-
-        final List<FlashcardSet> sets = new ArrayList<>();
-        for (JsonAdaptedSet flashcardSet : flashcardSet) {
-            sets.add(flashcardSet.toModelType());
-        }
 
         final List<Tag> flashcardTags = new ArrayList<>();
         for (JsonAdaptedTag tag : tagged) {
@@ -105,11 +96,19 @@ class JsonAdaptedFlashcard {
         if (!Link.isValidLink(link)) {
             throw new IllegalValueException(Link.MESSAGE_CONSTRAINTS);
         }
-
         final Link modelLink = new Link(link);
-        final Set<FlashcardSet> modelFlashcardSets = new HashSet<>(sets);
+
+        if (flashcardSet == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    FlashcardSet.class.getSimpleName()));
+        }
+        if (!FlashcardSet.isValidSetNumber(flashcardSet)) {
+            throw new IllegalValueException(FlashcardSet.MESSAGE_CONSTRAINTS);
+        }
+        final FlashcardSet modelFlashcardSet = new FlashcardSet(flashcardSet);
+
         final Set<Tag> modelTags = new HashSet<>(flashcardTags);
-        return new Flashcard(modelTitle, modelDescription, modelLink, modelFlashcardSets, modelTags);
+        return new Flashcard(modelTitle, modelDescription, modelLink, modelFlashcardSet, modelTags);
     }
 
 }

@@ -100,11 +100,11 @@ public class EditCommand extends Command {
                 .orElse(flashcardToEdit.getDescription());
 
         Link updatedLink = editFlashcardDescriptor.getLink().orElse(flashcardToEdit.getLink());
-        Set<FlashcardSet> updatedFlashcardSets = editFlashcardDescriptor.getFlashcardSets()
-                .orElse(flashcardToEdit.getFlashcardSets());
+        FlashcardSet updatedFlashcardSet = editFlashcardDescriptor.getFlashcardSet()
+                .orElse(flashcardToEdit.getFlashcardSet());
         Set<Tag> updatedTags = editFlashcardDescriptor.getTags().orElse(flashcardToEdit.getTags());
 
-        return new Flashcard(updatedTitle, updatedDescription, updatedLink, updatedFlashcardSets, updatedTags);
+        return new Flashcard(updatedTitle, updatedDescription, updatedLink, updatedFlashcardSet, updatedTags);
     }
 
     @Override
@@ -133,7 +133,7 @@ public class EditCommand extends Command {
         private Title title;
         private Description description;
         private Link link;
-        private Set<FlashcardSet> flashcardSets;
+        private FlashcardSet flashcardSet;
         private Set<Tag> tags;
 
         public EditFlashcardDescriptor() {}
@@ -146,7 +146,7 @@ public class EditCommand extends Command {
             setTitle(toCopy.title);
             setDescription(toCopy.description);
             setLink(toCopy.link);
-            setFlashcardSets(toCopy.flashcardSets);
+            setFlashcardSet(toCopy.flashcardSet);
             setTags(toCopy.tags);
         }
 
@@ -154,7 +154,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(title, description, link, flashcardSets, tags);
+            return CollectionUtil.isAnyNonNull(title, description, link, flashcardSet, tags);
         }
 
         public void setTitle(Title title) {
@@ -174,22 +174,20 @@ public class EditCommand extends Command {
         }
 
         /**
-        * Sets {@code flashcardSets} to this object's {@code flashcardSets}.
-        * A defensive copy of {@code flashcardSets} is used internally.
+        * Sets {@code flashcardSet} to this object's {@code flashcardSet}.
+        * A defensive copy of {@code flashcardSet} is used internally.
         */
-        public void setFlashcardSets(Set<FlashcardSet> flashcardSets) {
-            this.flashcardSets = (flashcardSets != null) ? new HashSet<>(flashcardSets) : null;
+        public void setFlashcardSet(FlashcardSet flashcardSet) {
+            this.flashcardSet = flashcardSet;
         }
 
         /**
-        * Returns an unmodifiable set of flashcardSets, which throws {@code UnsupportedOperationException}
+        * Returns an unmodifiable flashcardSet, which throws {@code UnsupportedOperationException}
         * if modification is attempted.
-        * Returns {@code Optional#empty()} if {@code flashcardSets} is null.
+        * Returns {@code Optional#empty()} if {@code flashcardSet} is null.
         */
-        public Optional<Set<FlashcardSet>> getFlashcardSets() {
-            return (flashcardSets != null)
-                 ? Optional.of(Collections.unmodifiableSet(flashcardSets))
-                 : Optional.empty();
+        public Optional<FlashcardSet> getFlashcardSet() {
+            return Optional.ofNullable(flashcardSet);
         }
 
         public void setLink(Link link) {
@@ -235,7 +233,7 @@ public class EditCommand extends Command {
             return getTitle().equals(e.getTitle())
                     && getDescription().equals(e.getDescription())
                     && getLink().equals(e.getLink())
-                    && getFlashcardSets().equals(e.getFlashcardSets())
+                    && getFlashcardSet().equals(e.getFlashcardSet())
                     && getTags().equals(e.getTags());
         }
     }
