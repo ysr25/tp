@@ -36,7 +36,7 @@ public class SampleDataUtil {
                     new Link("https://en.wikipedia.org/wiki/Ecological_fallacy"),
                     new FlashcardSet("2"),
                     getTagSet("Definition", "EcologicalFallacy")),
-            new Flashcard(new Title("Atomistic fallacy"),
+            new Flashcard(new Title("Atomistic Fallacy"),
                 new Description("Atomistic fallacy is thinking that relation observed for individuals"
                         + "will hold for groups. The atomistic fallacy arises because associations between two "
                         + "variables at the individual level may differ from associations between analogous "

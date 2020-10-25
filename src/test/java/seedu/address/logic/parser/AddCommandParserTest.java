@@ -62,7 +62,6 @@ public class AddCommandParserTest {
     public void parse_optionalFieldsMissing_success() {
         // zero tags
         Flashcard expectedFlashcard = new FlashcardBuilder(AMY).withTags().build();
-        System.out.println(expectedFlashcard);
         assertParseSuccess(parser, TITLE_DESC_AMY + DESC_DESC_AMY,
                 new AddCommand(expectedFlashcard));
     }

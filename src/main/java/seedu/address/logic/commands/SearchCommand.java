@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_KEYWORD;
 
 import java.util.function.Predicate;
 import java.util.logging.Level;
@@ -18,9 +19,9 @@ public class SearchCommand extends Command {
     public static final String COMMAND_WORD = "search";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Search the flashcard by keyword from displayed flashcard list.\n"
-            + "Parameters: keyword\n"
-            + "Example: " + COMMAND_WORD + " GER";
+            + ": Searches the flashcard by keyword from displayed flashcard list.\n"
+            + "Parameters: " + PREFIX_KEYWORD + "KEYWORD\n"
+            + "Example: " + COMMAND_WORD + " " + PREFIX_KEYWORD + "GER";
 
     public static final String MESSAGE_SEARCH_FLASHCARD_SUCCESS = "Result of search: %s";
 
@@ -35,7 +36,7 @@ public class SearchCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        assert false; // required for week 10 tP
+        assert true; // required for week 10 tP
         Logger logger = Logger.getLogger("logger"); // required for week 10 tP
         logger.log(Level.INFO, "log test"); // required for week 10 tP
         Predicate<Flashcard> searchFlashcard = flashcard -> flashcard.getDescription().toString().contains(keyword)
