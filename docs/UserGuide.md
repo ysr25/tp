@@ -18,7 +18,7 @@ If you can type fast, Bagel can manage your flashcards faster than traditional G
 ## Quick start
 
 1. Ensure you have Java 11 or above installed in your computer.
-2. Download the latest flashcard.jar from [here](https://github.com/AY2021S1-CS2103T-W13-2/tp/releases).
+2. Download the latest bagel.jar from [here](https://github.com/AY2021S1-CS2103T-W13-2/tp/releases).
 3. Copy the file to the folder you want to use as the home folder for Bagel.
 4. Double-click the file to start the app. The GUI should appear in a few seconds. Note how the app contains some sample data.
 5. Type the command in the command box and press Enter to execute it. e.g. typing help and pressing Enter will open the help window.
@@ -113,7 +113,7 @@ Format: `edit INDEX [t/TITLE] [d/DESCRIPTION] [s/SET] [l/LINK] [tag/TAG]…​`
 
 * Edits the flashcard at the specified `INDEX`.
 * The index refers to the index number shown in the displayed flashcard list.
-* The index **must be a positive integer** 1, 2, 3, ...
+* The index **must be a positive integer** 1, 2, 3, …
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing tags, the existing tags of the flashcard will be removed i.e adding of tags is not cumulative.
@@ -121,7 +121,7 @@ Format: `edit INDEX [t/TITLE] [d/DESCRIPTION] [s/SET] [l/LINK] [tag/TAG]…​`
 
 Examples:
 *  `edit 1 t/Data analysis` Edits the title of the 1st flashcard to be `Data analysis`.
-*  `edit 1 t/p-value d/probability of ...` Edits the title and the description of the 1st flashcard to be `p-value` and `probability of ...` respectively.
+*  `edit 1 t/p-value d/probability of…` Edits the title and the description of the 1st flashcard to be `p-value` and `probability of…` respectively.
 *  `edit 1 s/2` Edits the set number which this flashcard is in, to `2`.
 *  `edit 1 t/p-value tag/` Edits the title of the 1st flashcard to be `p-value` and clears all existing tags.
 
@@ -133,7 +133,7 @@ Shows an existing flashcard in the current list.
 Format: `view INDEX`
 
 * The index refers to the index number shown in the displayed flashcards list.
-* The index **must be a positive integer** 1, 2, 3, ...
+* The index **must be a positive integer** 1, 2, 3, …
 
 
 ### Viewing all flashcards : `list`
@@ -189,7 +189,7 @@ Format: `exit`
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add t/TITLE d/DESCRIPTION [s/SET] [l/LINK] [tag/TAG]…`<br> e.g., `add t/Data Analysis d/The definition of Data Analysis is ...`
+**Add** | `add t/TITLE d/DESCRIPTION [s/SET] [l/LINK] [tag/TAG]…`<br> e.g., `add t/Data Analysis d/The definition of Data Analysis is…`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit** | `edit INDEX [t/TITLE] [d/DESCRIPTION] [s/SET] [l/LINK] [tag/TAG]`<br> e.g.,`edit 1 t/Data analysis`
