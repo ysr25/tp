@@ -79,7 +79,9 @@ Format: `add t/TITLE d/DESCRIPTION [s/SET] [l/LINK] [tag/TAG]…​`
 
 * Adds a flashcard with a title and description.
 * Title and description must be entered.
-* An optional set number (a positive integer between 1 and 9) can be added.
+* An optional set number (a positive integer between 1 and 99) can be added. By default (i.e. without `s/SET`),
+all flashcards are added into set `1`.
+
 
 Examples:
 * `add t/Data Analysis d/Definition of data analysis: xxxxxx s/1`
@@ -138,9 +140,14 @@ Format: `view INDEX`
 
 ### Viewing all flashcards : `list`
 
-Shows a list of all flashcards.
+Shows a list of all flashcards created, or shows a list of all flashcards in a chosen set.
 
-Format: `list`
+Format: 
+* `list` to show all flashcards created
+* `list s/[SET_NUMBER]` to show all flashcards in set `SET_NUMBER`
+
+Example:
+* `list s/2` displays all flashcards in set `2`.
 
 
 ### Flipping through flashcards : `flip`
