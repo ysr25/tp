@@ -16,9 +16,9 @@ import seedu.bagel.model.flashcard.Flashcard;
  */
 public class FlashcardListPanel extends UiPart<Region> {
     private static final String FXML = "FlashcardListPanel.fxml";
+    private static boolean isSingle;
     private final Logger logger = LogsCenter.getLogger(FlashcardListPanel.class);
     private HostServices hostServices;
-    private static boolean isSingle;
 
     @FXML
     private ListView<Flashcard> flashcardListView;
@@ -56,7 +56,8 @@ public class FlashcardListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new FlashcardCard(flashcard, getIndex() + 1, hostServices, FlashcardListPanel.isSingle).getRoot());
+                setGraphic(new FlashcardCard(flashcard, getIndex() + 1, hostServices,
+                        FlashcardListPanel.isSingle).getRoot());
             }
         }
     }
