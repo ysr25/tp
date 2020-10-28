@@ -39,6 +39,8 @@ public class SortCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        requireNonNull(this.req);
+
         model.sortFlashcardList(this.req.getSortComparator());
         return new CommandResult(String.format(MESSAGE_SUCCESS));
     }
