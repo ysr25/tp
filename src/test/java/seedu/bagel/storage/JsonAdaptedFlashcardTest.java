@@ -23,7 +23,7 @@ public class JsonAdaptedFlashcardTest {
     private static final String INVALID_TITLE = "";
     private static final String INVALID_DESC = "";
     private static final String INVALID_LINK = "h";
-    private static final String INVALID_SET = "22";
+    private static final String INVALID_SET = "101";
     private static final String INVALID_TAG = "#friend";
 
     private static final String VALID_TITLE = BENSON.getTitle().toString();

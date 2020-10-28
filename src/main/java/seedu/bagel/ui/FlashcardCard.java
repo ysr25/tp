@@ -50,13 +50,17 @@ public class FlashcardCard extends UiPart<Region> {
     /**
      * Creates a {@code FlashcardCard} with the given {@code Flashcard} and index to display.
      */
-    public FlashcardCard(Flashcard flashcard, int displayedIndex, HostServices hostServices) {
+    public FlashcardCard(Flashcard flashcard, int displayedIndex, HostServices hostServices, boolean isSingle) {
         super(FXML);
         this.flashcard = flashcard;
         this.hostServices = hostServices;
         id.setText(displayedIndex + ". ");
         title.setText(flashcard.getTitle().fullTitle);
-        description.setText(flashcard.getDescription().value);
+        if (isSingle) {
+            description.setText(flashcard.getDescription().value);
+        } else {
+            description.setText("");
+        }
 
         String link = flashcard.getLink().value;
         if (!link.isEmpty()) {
