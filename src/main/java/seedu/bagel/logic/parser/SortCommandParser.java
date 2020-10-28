@@ -1,9 +1,7 @@
 package seedu.bagel.logic.parser;
 
 import static seedu.bagel.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.bagel.logic.parser.CliSyntax.PREFIX_DESC;
 import static seedu.bagel.logic.parser.CliSyntax.PREFIX_REQ;
-import static seedu.bagel.logic.parser.CliSyntax.PREFIX_TITLE;
 
 import java.util.stream.Stream;
 
