@@ -172,9 +172,18 @@ Examples:
 
 ### Sorting flashcards: `sort`
 
-Sorts the current flashcard list by title, in alphabetical order.
+Sorts the current flashcard list. 
 
-Format: `sort`
+Format: `sort [r/REQUIREMENT]`
+
+* Sorts the list by the specified requirement. 
+* The requirement **must be one of the following**:
+    * title
+    * tag
+    
+Examples:
+* `sort r/title` returns the list of flashcards, sorted in ascending alphabetical order.
+* `sort r/tag` returns the list of flashcards, sorted according to each flashcard's first tag.
 
 
 ### Exiting the program : `exit`
@@ -204,5 +213,5 @@ Action | Format, Examples
 **List** | `list`
 **Flip** | `flip`
 **Search** | `search [k/KEYWORD]`
-**Sort** | `sort`
+**Sort** | `sort r/REQUIREMENT`
 **Exit** | `exit`
