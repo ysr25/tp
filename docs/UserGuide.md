@@ -174,7 +174,7 @@ Examples:
 
 Sorts the current flashcard list. 
 
-Format: `sort [r/REQUIREMENT]`
+Format: `sort r/REQUIREMENT`
 
 * Sorts the list by the specified requirement. 
 * The requirement **must be one of the following**:
