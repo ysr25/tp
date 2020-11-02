@@ -118,7 +118,6 @@ Format: `edit INDEX [t/TITLE] [d/DESCRIPTION] [s/SET] [l/LINK] [tag/TAG]…​`
 * The index **must be a positive integer** 1, 2, 3, …
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-* When editing tags, the existing tags of the flashcard will be removed i.e adding of tags is not cumulative.
 * You can remove all the flashcard’s tags by typing tag/ without specifying any tags after it.
 
 Examples:
