@@ -22,7 +22,7 @@ public class AddCommand extends Command {
             + "Parameters: "
             + PREFIX_TITLE + "TITLE "
             + PREFIX_DESC + "DESCRIPTION "
-            + PREFIX_LINK + "LINK "
+            + "[" + PREFIX_LINK + "LINK] "
             + "[" + PREFIX_SET + "SET]"
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
