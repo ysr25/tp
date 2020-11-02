@@ -32,7 +32,7 @@ If you can type fast, Bagel can manage your flashcards faster than traditional G
     * `edit 2 t/New title` : Edits the title of 2nd existing flashcard of the current set to become 'New title'
     * `flip` : Flips from the current flashcard to next flashcard in the list.
     * `search k/Keyword`: Search flashcard that have matching title or description to keyword.
-    * `sort`: Sorts the flashcard list according to title.
+    * `sort r/title`: Sorts the flashcard list according to title.
     * `exit` : Exits the app.
 Refer to the Features below for details of each command.
 
@@ -79,7 +79,9 @@ Format: `add t/TITLE d/DESCRIPTION [s/SET] [l/LINK] [tag/TAG]…​`
 
 * Adds a flashcard with a title and description.
 * Title and description must be entered.
-* An optional set number (a positive integer between 1 and 9) can be added.
+* An optional set number (a positive integer between 1 and 99) can be added. By default (i.e. without `s/SET`),
+all flashcards are added into set `1`.
+
 
 Examples:
 * `add t/Data Analysis d/Definition of data analysis: xxxxxx s/1`
@@ -138,9 +140,14 @@ Format: `view INDEX`
 
 ### Viewing all flashcards : `list`
 
-Shows a list of all flashcards.
+Shows a list of all flashcards created, or shows a list of all flashcards in a chosen set.
 
-Format: `list`
+Format: 
+* `list` to show all flashcards created
+* `list s/[SET_NUMBER]` to show all flashcards in set `SET_NUMBER`
+
+Example:
+* `list s/2` displays all flashcards in set `2`.
 
 
 ### Flipping through flashcards : `flip`
@@ -165,9 +172,18 @@ Examples:
 
 ### Sorting flashcards: `sort`
 
-Sorts the current flashcard list by title, in alphabetical order.
+Sorts the current flashcard list. 
 
-Format: `sort`
+Format: `sort r/REQUIREMENT`
+
+* Sorts the list by the specified requirement. 
+* The requirement **must be one of the following**:
+    * title
+    * tag
+    
+Examples:
+* `sort r/title` returns the list of flashcards, sorted in ascending alphabetical order.
+* `sort r/tag` returns the list of flashcards, sorted according to each flashcard's first tag.
 
 
 ### Exiting the program : `exit`
@@ -197,5 +213,5 @@ Action | Format, Examples
 **List** | `list`
 **Flip** | `flip`
 **Search** | `search [k/KEYWORD]`
-**Sort** | `sort`
+**Sort** | `sort r/REQUIREMENT`
 **Exit** | `exit`
