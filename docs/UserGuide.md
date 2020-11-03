@@ -41,7 +41,6 @@ Refer to the Features below for details of each command.
 ## Features
 
 <div markdown="block" class="alert alert-info">
-
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
@@ -86,13 +85,24 @@ all flashcards are added into set `1`.
   * Be absolute e.g. `file:///GER1000/example.png` instead of `file://example.png`.
   * Even if a URL is valid, it may not open, e.g. if the file does not exist.
 
+<div markdown="block" class="alert alert-info">
+**:information_source: Notes about the command format:**<br>
+* Flashcards with different titles but same descriptions can still be added.
+* Flashcards that are identical can be added to different sets.
+</div>
 
 Examples:
-* `add t/Data Analysis d/Definition of data analysis: xxxxxx s/1`
-* `add t/p-value d/If p value < 0.05, xxxx; Else, xxxx`
-* `add t/Data Analysis d/Definition of data analysis: xxxxxx tag/Defintion`
-* `add t/Types of Association d/Example of Types: Blahblah, etc; Blah, etc etc tag/Types tag/Association`
-
+* `add t/p-value d/If p value < 0.05, xxxx; Else, xxxx` adds a new flashcard with the title `p-value`,
+description `If p value < 0.05, xxxx; Else, xxxx` into default set `1`.
+* `add t/Data Analysis d/Definition of data analysis: xxxxxx s/2` adds a new flashcard with the title `Data Analysis`,
+description `Definition of data analysis: xxxxxx` into set `2`.
+* `add t/dds Ratio(OR) and Risk Ratio(RR) d/R: odds(exp)/odds(unexp), RR: risk(exp)/risk(unexp) s/3 tag/OddsRatio`
+adds a new flashcard with the title `dds Ratio(OR) and Risk Ratio(RR)`, description `R: odds(exp)/odds(unexp), RR: risk(exp)/risk(unexp)`
+with the tag `OddsRatio` into set `3`.
+* `add t/Types of Observational Studies d/Prospective, Retrospective, Cross-sectional
+l/https://en.wikipedia.org/wiki/Observational_study tag/Types tag/ObservationalStudies s/2` adds a new flashcard with 
+the title `Types of Observational Studies`, description `Prospective, Retrospective, Cross-sectional`,
+link `https://en.wikipedia.org/wiki/Observational_study tag/Types` with the tags `Types` and `ObservationalStudies` into set `2`.
 
 ### Clearing all flashcard entries: `clear`
 
@@ -126,10 +136,10 @@ Format: `edit INDEX [t/TITLE] [d/DESCRIPTION] [s/SET] [l/LINK] [tag/TAG]…​`
 * You can remove the flashcard's link by typing `l/`
 
 Examples:
-*  `edit 1 t/Data analysis` Edits the title of the 1st flashcard to be `Data analysis`.
-*  `edit 1 t/p-value d/probability of…` Edits the title and the description of the 1st flashcard to be `p-value` and `probability of…` respectively.
-*  `edit 1 s/2` Edits the set number which this flashcard is in, to `2`.
-*  `edit 1 t/p-value tag/` Edits the title of the 1st flashcard to be `p-value` and clears all existing tags.
+*  `edit 1 t/Data analysis` edits the title of the 1st flashcard to be `Data analysis`.
+*  `edit 1 t/p-value d/probability of…` edits the title and the description of the 1st flashcard to be `p-value` and `probability of…` respectively.
+*  `edit 1 s/2` edits the set number which this flashcard is in, to `2`.
+*  `edit 1 t/p-value tag/` edits the title of the 1st flashcard to be `p-value` and clears all existing tags.
 
 
 ### Viewing a flashcard: `view`
@@ -165,7 +175,7 @@ Format: `flip`
 
 Searches for flashcards that have a matching title or description with `KEYWORD` from all flashcards.
 
-Format: `search [k/KEYWORD]`
+Format: `search k/KEYWORD`
 
 * Searches for flashcards that match with `KEYWORD`.
 
@@ -216,6 +226,7 @@ Action | Format, Examples
 **View** | `view INDEX`<br> e.g., `view 1`
 **List** | `list`
 **Flip** | `flip`
-**Search** | `search [k/KEYWORD]`
-**Sort** | `sort r/REQUIREMENT`
+**Search** | `search [k/KEYWORD]` <br> e.g., `search k/Data`
+**Sort** | `sort r/REQUIREMENT` <br> e.g., `search r/tag`
+**Help** | `help`
 **Exit** | `exit`

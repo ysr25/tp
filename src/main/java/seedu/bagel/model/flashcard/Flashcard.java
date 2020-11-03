@@ -76,7 +76,8 @@ public class Flashcard {
         return otherFlashcard != null
                 && otherFlashcard.getTitle().equals(getTitle())
                 // temporarily uses Description to check for same flashcard.
-                && (otherFlashcard.getDescription().equals(getDescription()));
+                //  && (otherFlashcard.getDescription().equals(getDescription())
+                && otherFlashcard.getFlashcardSet().equals(getFlashcardSet());
     }
 
     /**
@@ -111,13 +112,13 @@ public class Flashcard {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getTitle())
-                .append(" Description: ")
+                .append("\nDescription: ")
                 .append(getDescription())
-                .append(" Link: ")
+                .append("\nLink: ")
                 .append(getLink())
-                .append(" Set: ")
+                .append("\nSet: ")
                 .append(getFlashcardSet())
-                .append(" Tags: ");
+                .append("\nTags: ");
         getTags().forEach(builder::append);
 
         return builder.toString();
