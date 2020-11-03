@@ -35,7 +35,7 @@ public class AddCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New flashcard added: %1$s";
     public static final String MESSAGE_DUPLICATE_FLASHCARD = "This flashcard already exists in the set you are "
-            + "adding it to.\nConsider using the search command instead.";
+            + "adding it to.\nConsider using the search/edit command instead.";
 
     private final Flashcard toAdd;
 

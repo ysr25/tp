@@ -112,7 +112,7 @@ public class EditCommandTest {
     public void execute_duplicateFlashcardFilteredList_failure() {
         showFlashcardAtIndex(model, INDEX_FIRST_FLASHCARD);
 
-        // edit person in filtered list into a duplicate in address book
+        // edit flashcard in filtered list into a duplicate in bagel
         Flashcard flashcardInList = model.getBagel().getFlashcardList().get(INDEX_SECOND_FLASHCARD.getZeroBased());
         EditCommand editCommand = new EditCommand(INDEX_FIRST_FLASHCARD,
                 new EditFlashcardDescriptorBuilder(flashcardInList).build());
