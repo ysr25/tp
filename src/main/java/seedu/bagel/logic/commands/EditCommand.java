@@ -109,7 +109,7 @@ public class EditCommand extends Command {
                 updatedTags.addAll(newTags);
                 updatedTags.addAll(flashcardToEdit.getTags());
             }
-            }, () -> updatedTags.addAll(flashcardToEdit.getTags()));
+        }, () -> updatedTags.addAll(flashcardToEdit.getTags()));
 
         return new Flashcard(updatedTitle, updatedDescription, updatedLink, updatedFlashcardSet, updatedTags);
     }

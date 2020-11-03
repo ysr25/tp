@@ -81,6 +81,10 @@ Format: `add t/TITLE d/DESCRIPTION [s/SET] [l/LINK] [tag/TAG]…​`
 * Title and description must be entered.
 * An optional set number (a positive integer between 1 and 99) can be added. By default (i.e. without `s/SET`),
 all flashcards are added into set `1`.
+* An optional link can be added. It should:
+  * Have a protocol e.g. `https://example.com` instead of `example.com`.
+  * Be absolute e.g. `file:///GER1000/example.png` instead of `file://example.png`.
+  * Even if a URL is valid, it may not open, e.g. if the file does not exist.
 
 
 Examples:
@@ -118,7 +122,8 @@ Format: `edit INDEX [t/TITLE] [d/DESCRIPTION] [s/SET] [l/LINK] [tag/TAG]…​`
 * The index **must be a positive integer** 1, 2, 3, …
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-* You can remove all the flashcard’s tags by typing tag/ without specifying any tags after it.
+* You can remove all the flashcard’s tags by typing `tag/` without specifying any tags after it.
+* You can remove the flashcard's link by typing `l/`
 
 Examples:
 *  `edit 1 t/Data analysis` Edits the title of the 1st flashcard to be `Data analysis`.

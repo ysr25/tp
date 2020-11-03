@@ -12,7 +12,10 @@ import java.net.URL;
  */
 public class Link {
 
-    public static final String MESSAGE_CONSTRAINTS = "Links should either be a valid URL or blank";
+    public static final String MESSAGE_CONSTRAINTS = "Links should either be a valid URL or blank\n"
+            + "A valid URL should:\n"
+            + "- have a protocol e.g. https://example.com instead of example.com\n"
+            + "- be absolute e.g. file:///GER1000/example.png instead of file://example.png";
 
     public final String value;
 
