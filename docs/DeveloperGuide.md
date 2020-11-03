@@ -12,6 +12,23 @@ title: Developer Guide
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
+## **Introduction**
+
+### Purpose
+This document specifies architecture and software design decisions for the desktop flashcard application, Bagel. It is
+a living document that evolves throughout the design and implementation for each release.
+
+### Scope
+This describes the software architecture and software decisions for the implementation of Bagel. The intended audience
+of this document is the developers, designers, and software testers of Bagel.
+
+### Overview
+This document focuses on 2 major parts: design and implementation. Under the Design section, you can find details of 
+the system architecture. Under the Implementation section, you can find details of the implementation of some of the 
+commands used in Bagel. In addition to the current document, separate documents and guides on how to use or test Bagel 
+have been included under the Documentation section of this document.
+
+--------------------------------------------------------------------------------------------------------------------
 
 ## **Design**
 
@@ -64,7 +81,7 @@ The sections below give more details of each component.
 **API** :
 [`Ui.java`](https://github.com/AY2021S1-CS2103T-W13-2/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `FlashcardListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
 The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-W13-2/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-W13-2/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
@@ -348,16 +365,17 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-   1. Download the jar file and copy into an empty folder
+   1. Download the jar file and copy into an empty folder.
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   1. Double-click the jar file.<br>
+      Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
 1. Saving window preferences
 
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
    1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+      Expected: The most recent window size and location is retained.
 
 ### Deleting a flashcard
 

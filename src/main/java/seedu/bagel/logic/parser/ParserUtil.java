@@ -8,6 +8,7 @@ import java.util.Set;
 
 import seedu.bagel.commons.core.index.Index;
 import seedu.bagel.commons.util.StringUtil;
+import seedu.bagel.logic.commands.sort.SortCommand.SortRequirement;
 import seedu.bagel.logic.parser.exceptions.ParseException;
 import seedu.bagel.model.flashcard.Description;
 import seedu.bagel.model.flashcard.FlashcardSet;
@@ -96,6 +97,20 @@ public class ParserUtil {
         return new Link(trimmedLink);
     }
 
+    /**
+     * Parses a {@code String requirement} into a {@code SortRequirement}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code requirement} is invalid.
+     */
+    public static SortRequirement parseRequirement(String req) throws ParseException {
+        requireNonNull(req);
+        String trimmedReq = req.trim();
+        if (!SortRequirement.isValidRequirement(trimmedReq)) {
+            throw new ParseException(SortRequirement.MESSAGE_CONSTRAINTS);
+        }
+        return new SortRequirement(trimmedReq);
+    }
     /**
      * Parses a {@code String tag} into a {@code Tag}.
      * Leading and trailing whitespaces will be trimmed.
