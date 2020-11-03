@@ -89,6 +89,10 @@ Examples:
 * `add t/Data Analysis d/Definition of data analysis: xxxxxx tag/Defintion`
 * `add t/Types of Association d/Example of Types: Blahblah, etc; Blah, etc etc tag/Types tag/Association`
 
+<div block="span" class="alert alert-info">Note:
+Duplicate flashcards with the same titles and descriptions cannot be added even if they are added to different sets.
+Flashcards with same titles and tags but different descriptions can still be added.
+</div>
 
 ### Clearing all flashcard entries: `clear`
 
@@ -212,6 +216,7 @@ Action | Format, Examples
 **View** | `view INDEX`<br> e.g., `view 1`
 **List** | `list`
 **Flip** | `flip`
-**Search** | `search [k/KEYWORD]`
-**Sort** | `sort r/REQUIREMENT`
+**Search** | `search [k/KEYWORD]` <br> e.g., `search k/Data`
+**Sort** | `sort r/REQUIREMENT` <br> e.g., `search r/tag`
+**Help** | `help`
 **Exit** | `exit`
