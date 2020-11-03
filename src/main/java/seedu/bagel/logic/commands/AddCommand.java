@@ -22,19 +22,20 @@ public class AddCommand extends Command {
             + "Parameters: "
             + PREFIX_TITLE + "TITLE "
             + PREFIX_DESC + "DESCRIPTION "
-            + PREFIX_LINK + "LINK "
-            + "[" + PREFIX_SET + "SET]"
+            + "[" + PREFIX_LINK + "LINK] "
+            + "[" + PREFIX_SET + "SET] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_TITLE + "Definition of p-value "
             + PREFIX_DESC + "P-value is  the probability of obtaining results at least as extreme as the observed "
             + "results of a statistical hypothesis test, assuming that the null hypothesis is correct "
-            + PREFIX_SET + "1"
-            + PREFIX_TAG + "friends "
-            + PREFIX_TAG + "owesMoney";
+            + PREFIX_SET + "1 "
+            + PREFIX_TAG + "pvalue "
+            + PREFIX_TAG + "definition";
 
     public static final String MESSAGE_SUCCESS = "New flashcard added: %1$s";
-    public static final String MESSAGE_DUPLICATE_FLASHCARD = "This flashcard already exists in bagel";
+    public static final String MESSAGE_DUPLICATE_FLASHCARD = "This flashcard already exists in the set you are "
+            + "adding it to.\nConsider using the search command instead.";
 
     private final Flashcard toAdd;
 
