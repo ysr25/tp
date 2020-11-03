@@ -28,7 +28,7 @@ public class AddCommandIntegrationTest {
 
     @Test
     public void execute_newFlashcard_success() {
-        Flashcard validFlashcard = new FlashcardBuilder().build();
+        Flashcard validFlashcard = new FlashcardBuilder().withTitle("pvalue").build();
 
         Model expectedModel = new ModelManager(model.getBagel(), new UserPrefs());
         expectedModel.addFlashcard(validFlashcard);
