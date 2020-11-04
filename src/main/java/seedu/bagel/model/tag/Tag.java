@@ -1,7 +1,5 @@
 package seedu.bagel.model.tag;
 
-import seedu.bagel.model.flashcard.UniqueFlashcardList;
-
 import static java.util.Objects.requireNonNull;
 import static seedu.bagel.commons.util.AppUtil.checkArgument;
 

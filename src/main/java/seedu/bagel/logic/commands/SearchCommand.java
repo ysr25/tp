@@ -8,7 +8,6 @@ import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import seedu.bagel.logic.commands.exceptions.CommandException;
 import seedu.bagel.model.Model;
 import seedu.bagel.model.flashcard.Flashcard;
 import seedu.bagel.model.tag.Tag;
@@ -41,8 +40,8 @@ public class SearchCommand extends Command {
         Logger logger = Logger.getLogger("logger"); // required for week 10 tP
         logger.log(Level.INFO, "log test"); // required for week 10 tP
 
-        Predicate<Flashcard> searchFlashcard =
-                flashcard -> flashcard.getDescription().toString().toLowerCase().contains(keyword.toLowerCase())
+        Predicate<Flashcard> searchFlashcard = flashcard ->
+                flashcard.getDescription().toString().toLowerCase().contains(keyword.toLowerCase())
                 || flashcard.getTitle().toString().toLowerCase().contains(keyword.toLowerCase())
                 || searchFlashcardTags(flashcard.getTags());
         model.updateFilteredFlashcardList(searchFlashcard);
@@ -51,7 +50,7 @@ public class SearchCommand extends Command {
     }
 
     private boolean searchFlashcardTags(Set<Tag> tags) {
-        for(Tag tag : tags) {
+        for (Tag tag : tags) {
             if (tag.getTagName().toLowerCase().contains(keyword.toLowerCase())) {
                 return true;
             }

@@ -2,7 +2,6 @@ package seedu.bagel.logic.parser;
 
 import static seedu.bagel.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.bagel.logic.parser.CliSyntax.PREFIX_KEYWORD;
-import static seedu.bagel.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.stream.Stream;
 
@@ -38,7 +37,7 @@ public class SearchCommandParser implements Parser<SearchCommand> {
         }
 
         String keyword = argMultimap.getValue(PREFIX_KEYWORD).get();
-        if(keyword.isEmpty()) {
+        if (keyword.isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SearchCommand.MESSAGE_USAGE));
         }
 
