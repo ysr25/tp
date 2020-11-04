@@ -2,6 +2,7 @@ package seedu.bagel.testutil;
 
 import static seedu.bagel.logic.parser.CliSyntax.PREFIX_DESC;
 import static seedu.bagel.logic.parser.CliSyntax.PREFIX_LINK;
+import static seedu.bagel.logic.parser.CliSyntax.PREFIX_SET;
 import static seedu.bagel.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.bagel.logic.parser.CliSyntax.PREFIX_TITLE;
 
@@ -47,6 +48,8 @@ public class FlashcardUtil {
         descriptor.getDescription().ifPresent(description -> sb.append(PREFIX_DESC).append(description.value)
                 .append(" "));
         descriptor.getLink().ifPresent(link -> sb.append(PREFIX_LINK).append(link.value).append(" "));
+        descriptor.getFlashcardSet().ifPresent(flashcardSet -> sb.append(PREFIX_SET).append(flashcardSet.value)
+                .append(" "));
         if (descriptor.getTags().isPresent()) {
             Set<Tag> tags = descriptor.getTags().get();
             if (tags.isEmpty()) {
