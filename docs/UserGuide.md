@@ -20,7 +20,8 @@ If you can type fast, Bagel can manage your flashcards faster than traditional G
 1. Ensure you have Java 11 or above installed in your computer.
 2. Download the latest bagel.jar from [here](https://github.com/AY2021S1-CS2103T-W13-2/tp/releases).
 3. Copy the file to the folder you want to use as the home folder for Bagel.
-4. Double-click the file to start the app. The GUI should appear in a few seconds. Note how the app contains some sample data.
+4. Double-click the file to start the app. The GUI should appear in a few seconds. Note how the app contains some sample data. It should look like this:
+![Starting up](images/startingUp.png)
 5. Type the command in the command box and press Enter to execute it. e.g. typing help and pressing Enter will open the help window.
     Some example commands you can try:
     * `list` : Lists all flashcards.
@@ -110,7 +111,7 @@ Clears all flashcard entries from Bagel.
 
 Format: `clear`
 
-### Deleting a flashcard : `delete`
+### Deleting a flashcard: `delete`
 
 Deletes the specified flashcard from the total list of flashcards.
 
@@ -121,7 +122,7 @@ Format: `delete INDEX`
 * The index **must be a positive integer** 1, 2, 3, …
 
 
-### Editing a flashcard : `edit`
+### Editing a flashcard: `edit`
 
 Edits an existing flashcard.
 
@@ -152,7 +153,7 @@ Format: `view INDEX`
 * The index **must be a positive integer** 1, 2, 3, …
 
 
-### Viewing all flashcards : `list`
+### Viewing all flashcards: `list`
 
 Shows a list of all flashcards created, or shows a list of all flashcards in a chosen set.
 
@@ -164,14 +165,14 @@ Example:
 * `list s/2` displays all flashcards in set `2`.
 
 
-### Flipping through flashcards : `flip`
+### Flipping through flashcards: `flip`
 
 Flips from the current flashcard to the next flashcard in the list.
 
 Format: `flip`
 
 
-### Searching through flashcards : `search`
+### Searching through flashcards: `search`
 
 Searches for flashcards that have a matching title or description with `KEYWORD` from all flashcards.
 
@@ -200,7 +201,7 @@ Examples:
 * `sort r/tag` returns the list of flashcards, sorted according to each flashcard's first tag.
 
 
-### Exiting the program : `exit`
+### Exiting the program: `exit`
 
 Exits the program.
 
@@ -215,6 +216,13 @@ Format: `exit`
 
 --------------------------------------------------------------------------------------------------------------------
 
+## Glossary
+
+* __Set__: It acts similarly to a folder in the real world. If you want to categorize your flashcards, you can make use of 
+the 'set' feature to place each flashcard into different sets. 
+
+
+--------------------------------------------------------------------------------------------------------------------
 ## Command summary
 
 Action | Format, Examples
