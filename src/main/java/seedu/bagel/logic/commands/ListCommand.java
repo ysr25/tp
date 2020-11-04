@@ -1,6 +1,7 @@
 package seedu.bagel.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.bagel.logic.parser.CliSyntax.PREFIX_SET;
 import static seedu.bagel.model.Model.PREDICATE_SHOW_ALL_FLASHCARDS;
 
 import java.util.function.Predicate;
@@ -17,12 +18,14 @@ public class ListCommand extends Command {
     public static final String COMMAND_WORD = "list";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Lists all flashcards by default. Use list with set number as a parameter to list all flashcards"
+            + ": Lists all flashcards by default. Use list with set number as a parameter to list all flashcards "
             + "of that set\n"
-            + "Parameters: SET_NUMBER (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " 1";
+            + "Parameters: s/SET_NUMBER (must be a positive integer)\n"
+            + "Example: " + COMMAND_WORD + " " + PREFIX_SET + "1";
 
     public static final String MESSAGE_SUCCESS = "Listed all flashcards";
+
+    public static final String MESSAGE_SUCCESS_SET = "Listed all flashcards in set";
 
     private final FlashcardSet flashcardSet;
 
@@ -46,6 +49,6 @@ public class ListCommand extends Command {
         Predicate<Flashcard> predicateShowFlashcardsInSet = flashcard ->
                 flashcard.getFlashcardSet().equals(flashcardSet);
         model.updateFilteredFlashcardList(predicateShowFlashcardsInSet);
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(MESSAGE_SUCCESS_SET + " " + flashcardSet.value);
     }
 }

@@ -27,7 +27,7 @@ public class AddCommand extends Command {
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_TITLE + "Definition of p-value "
-            + PREFIX_DESC + "P-value is  the probability of obtaining results at least as extreme as the observed "
+            + PREFIX_DESC + "P-value is the probability of obtaining results at least as extreme as the observed "
             + "results of a statistical hypothesis test, assuming that the null hypothesis is correct "
             + PREFIX_SET + "1 "
             + PREFIX_TAG + "pvalue "

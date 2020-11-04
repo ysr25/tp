@@ -1,5 +1,7 @@
 package seedu.bagel.model.tag;
 
+import seedu.bagel.model.flashcard.UniqueFlashcardList;
+
 import static java.util.Objects.requireNonNull;
 import static seedu.bagel.commons.util.AppUtil.checkArgument;
 
@@ -32,6 +34,10 @@ public class Tag {
         return test.matches(VALIDATION_REGEX);
     }
 
+    public String getTagName() {
+        return tagName;
+    }
+
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -50,5 +56,4 @@ public class Tag {
     public String toString() {
         return '[' + tagName + ']';
     }
-
 }
