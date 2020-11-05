@@ -102,7 +102,14 @@ public class EditCommand extends Command {
         Link updatedLink = editFlashcardDescriptor.getLink().orElse(flashcardToEdit.getLink());
         FlashcardSet updatedFlashcardSet = editFlashcardDescriptor.getFlashcardSet()
                 .orElse(flashcardToEdit.getFlashcardSet());
-        Set<Tag> updatedTags = editFlashcardDescriptor.getTags().orElse(flashcardToEdit.getTags());
+
+        Set<Tag> updatedTags = new HashSet<>();
+        editFlashcardDescriptor.getTags().ifPresentOrElse(newTags -> {
+            if (newTags.size() != 0) {
+                updatedTags.addAll(newTags);
+                updatedTags.addAll(flashcardToEdit.getTags());
+            }
+        }, () -> updatedTags.addAll(flashcardToEdit.getTags()));
 
         return new Flashcard(updatedTitle, updatedDescription, updatedLink, updatedFlashcardSet, updatedTags);
     }
