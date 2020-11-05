@@ -159,7 +159,7 @@ Shows a list of all flashcards created, or shows a list of all flashcards in a c
 
 Format: 
 * `list` to show all flashcards created
-* `list s/[SET_NUMBER]` to show all flashcards in set `SET_NUMBER`
+* `list [s/SET_NUMBER]` to show all flashcards in set `SET_NUMBER`
 
 Example:
 * `list s/2` displays all flashcards in set `2`.
