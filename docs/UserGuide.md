@@ -20,7 +20,8 @@ If you can type fast, Bagel can manage your flashcards faster than traditional G
 1. Ensure you have Java 11 or above installed in your computer.
 2. Download the latest bagel.jar from [here](https://github.com/AY2021S1-CS2103T-W13-2/tp/releases).
 3. Copy the file to the folder you want to use as the home folder for Bagel.
-4. Double-click the file to start the app. The GUI should appear in a few seconds. Note how the app contains some sample data.
+4. Double-click the file to start the app. The GUI should appear in a few seconds. Note how the app contains some sample data. It should look like this:
+![Starting up](images/startingUp.png)
 5. Type the command in the command box and press Enter to execute it. e.g. typing help and pressing Enter will open the help window.
     Some example commands you can try:
     * `list` : Lists all flashcards.
@@ -41,7 +42,6 @@ Refer to the Features below for details of each command.
 ## Features
 
 <div markdown="block" class="alert alert-info">
-
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
@@ -81,14 +81,29 @@ Format: `add t/TITLE d/DESCRIPTION [s/SET] [l/LINK] [tag/TAG]…​`
 * Title and description must be entered.
 * An optional set number (a positive integer between 1 and 99) can be added. By default (i.e. without `s/SET`),
 all flashcards are added into set `1`.
+* An optional link can be added. It should:
+  * Have a protocol e.g. `https://example.com` instead of `example.com`.
+  * Be absolute e.g. `file:///GER1000/example.png` instead of `file://example.png`.
+  * Even if a URL is valid, it may not open, e.g. if the file does not exist.
 
+<div markdown="block" class="alert alert-info">
+**:information_source: Notes about the command format:**<br>
+* Flashcards with different titles but same descriptions can still be added.
+* Flashcards that are identical can be added to different sets.
+</div>
 
 Examples:
-* `add t/Data Analysis d/Definition of data analysis: xxxxxx s/1`
-* `add t/p-value d/If p value < 0.05, xxxx; Else, xxxx`
-* `add t/Data Analysis d/Definition of data analysis: xxxxxx tag/Defintion`
-* `add t/Types of Association d/Example of Types: Blahblah, etc; Blah, etc etc tag/Types tag/Association`
-
+* `add t/p-value d/If p value < 0.05, xxxx; Else, xxxx` adds a new flashcard with the title `p-value`,
+description `If p value < 0.05, xxxx; Else, xxxx` into default set `1`.
+* `add t/Data Analysis d/Definition of data analysis: xxxxxx s/2` adds a new flashcard with the title `Data Analysis`,
+description `Definition of data analysis: xxxxxx` into set `2`.
+* `add t/dds Ratio(OR) and Risk Ratio(RR) d/R: odds(exp)/odds(unexp), RR: risk(exp)/risk(unexp) s/3 tag/OddsRatio`
+adds a new flashcard with the title `dds Ratio(OR) and Risk Ratio(RR)`, description `R: odds(exp)/odds(unexp), RR: risk(exp)/risk(unexp)`
+with the tag `OddsRatio` into set `3`.
+* `add t/Types of Observational Studies d/Prospective, Retrospective, Cross-sectional
+l/https://en.wikipedia.org/wiki/Observational_study tag/Types tag/ObservationalStudies s/2` adds a new flashcard with 
+the title `Types of Observational Studies`, description `Prospective, Retrospective, Cross-sectional`,
+link `https://en.wikipedia.org/wiki/Observational_study tag/Types` with the tags `Types` and `ObservationalStudies` into set `2`.
 
 ### Clearing all flashcard entries: `clear`
 
@@ -96,7 +111,7 @@ Clears all flashcard entries from Bagel.
 
 Format: `clear`
 
-### Deleting a flashcard : `delete`
+### Deleting a flashcard: `delete`
 
 Deletes the specified flashcard from the total list of flashcards.
 
@@ -107,7 +122,7 @@ Format: `delete INDEX`
 * The index **must be a positive integer** 1, 2, 3, …
 
 
-### Editing a flashcard : `edit`
+### Editing a flashcard: `edit`
 
 Edits an existing flashcard.
 
@@ -118,14 +133,14 @@ Format: `edit INDEX [t/TITLE] [d/DESCRIPTION] [s/SET] [l/LINK] [tag/TAG]…​`
 * The index **must be a positive integer** 1, 2, 3, …
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-* When editing tags, the existing tags of the flashcard will be removed i.e adding of tags is not cumulative.
-* You can remove all the flashcard’s tags by typing tag/ without specifying any tags after it.
+* You can remove all the flashcard’s tags by typing `tag/` without specifying any tags after it.
+* You can remove the flashcard's link by typing `l/`
 
 Examples:
-*  `edit 1 t/Data analysis` Edits the title of the 1st flashcard to be `Data analysis`.
-*  `edit 1 t/p-value d/probability of…` Edits the title and the description of the 1st flashcard to be `p-value` and `probability of…` respectively.
-*  `edit 1 s/2` Edits the set number which this flashcard is in, to `2`.
-*  `edit 1 t/p-value tag/` Edits the title of the 1st flashcard to be `p-value` and clears all existing tags.
+*  `edit 1 t/Data analysis` edits the title of the 1st flashcard to be `Data analysis`.
+*  `edit 1 t/p-value d/probability of…` edits the title and the description of the 1st flashcard to be `p-value` and `probability of…` respectively.
+*  `edit 1 s/2` edits the set number which this flashcard is in, to `2`.
+*  `edit 1 t/p-value tag/` edits the title of the 1st flashcard to be `p-value` and clears all existing tags.
 
 
 ### Viewing a flashcard: `view`
@@ -138,19 +153,19 @@ Format: `view INDEX`
 * The index **must be a positive integer** 1, 2, 3, …
 
 
-### Viewing all flashcards : `list`
+### Viewing all flashcards: `list`
 
 Shows a list of all flashcards created, or shows a list of all flashcards in a chosen set.
 
 Format: 
 * `list` to show all flashcards created
-* `list s/[SET_NUMBER]` to show all flashcards in set `SET_NUMBER`
+* `list [s/SET_NUMBER]` to show all flashcards in set `SET_NUMBER`
 
 Example:
 * `list s/2` displays all flashcards in set `2`.
 
 
-### Flipping through flashcards : `flip`
+### Flipping through flashcards: `flip`
 
 Flips from the current flashcard to the next flashcard in the sequence.
 * If multiple flashcards are shown, first flashcard at top will be shown
@@ -166,11 +181,11 @@ Examples:
 ![flip example](images/flipExample3.png)
 
 
-### Searching through flashcards : `search`
+### Searching through flashcards: `search`
 
 Searches for flashcards that have a matching title or description or tag with `KEYWORD` from all flashcards.
 
-Format: `search [k/KEYWORD]`
+Format: `search k/KEYWORD`
 
 * Searches for flashcards that match with `KEYWORD`.
 * Search is case insensitive. Ex) k/apple can search "apple" and "APPLe"
@@ -196,7 +211,7 @@ Examples:
 * `sort r/tag` returns the list of flashcards, sorted according to each flashcard's first tag.
 
 
-### Exiting the program : `exit`
+### Exiting the program: `exit`
 
 Exits the program.
 
@@ -211,6 +226,13 @@ Format: `exit`
 
 --------------------------------------------------------------------------------------------------------------------
 
+## Glossary
+
+* __Set__: It acts similarly to a folder in the real world. If you want to categorize your flashcards, you can make use of 
+the 'set' feature to place each flashcard into different sets. 
+
+
+--------------------------------------------------------------------------------------------------------------------
 ## Command summary
 
 Action | Format, Examples
@@ -222,6 +244,7 @@ Action | Format, Examples
 **View** | `view INDEX`<br> e.g., `view 1`
 **List** | `list`
 **Flip** | `flip`
-**Search** | `search [k/KEYWORD]`
-**Sort** | `sort r/REQUIREMENT`
+**Search** | `search [k/KEYWORD]` <br> e.g., `search k/Data`
+**Sort** | `sort r/REQUIREMENT` <br> e.g., `search r/tag`
+**Help** | `help`
 **Exit** | `exit`
