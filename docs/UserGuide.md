@@ -152,18 +152,28 @@ Example:
 
 ### Flipping through flashcards : `flip`
 
-Flips from the current flashcard to the next flashcard in the list.
+Flips from the current flashcard to the next flashcard in the sequence.
+* If multiple flashcards are shown, first flashcard at top will be shown
+* Go back to first flashcard once reach the end of the sequence.
 
 Format: `flip`
+Examples:
+1. Current flashcards in the sequence
+![flip example](images/flipExample1.png)
+2. type "flip" and show first flashcard in the sequence
+![flip example](images/flipExample2.png)
+3. type "flip" and show next flashcard in the sequence
+![flip example](images/flipExample3.png)
 
 
 ### Searching through flashcards : `search`
 
-Searches for flashcards that have a matching title or description with `KEYWORD` from all flashcards.
+Searches for flashcards that have a matching title or description or tag with `KEYWORD` from all flashcards.
 
 Format: `search [k/KEYWORD]`
 
 * Searches for flashcards that match with `KEYWORD`.
+* Search is case insensitive. Ex) k/apple can search "apple" and "APPLe"
 
 Examples:
 *  `search k/testing` returns `testing1`, `testing2` and `testing23` 
