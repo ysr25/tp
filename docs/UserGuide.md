@@ -266,6 +266,6 @@ Action | Format, Examples
 **List** | `list`
 **Flip** | `flip`
 **Search** | `search [k/KEYWORD]` <br> e.g., `search k/Data`
-**Sort** | `sort r/REQUIREMENT` <br> e.g., `search r/tag`
+**Sort** | `sort r/REQUIREMENT` <br> e.g., `sort r/tag`
 **Help** | `help`
 **Exit** | `exit`
