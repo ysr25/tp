@@ -46,7 +46,7 @@ Refer to the [Features](#features) below for details of each command.
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by you.<br>
-  e.g. in `add t/TITLE`, TITLE is the parameter which can be used
+  e.g. in `add t/TITLE`, TITLE is the parameter which can be used.
 
 * Items in square brackets are optional.<br>
   e.g. `t/TITLE [tag/TAG]` can be used as `t/p-value tag/Definition` or as `t/p-value`.<br>
@@ -56,7 +56,7 @@ Refer to the [Features](#features) below for details of each command.
   e.g. in `[tag/TAG]…`, can be used as ` ` (i.e. 0 times), `tag/Definition, tag/Formula tag/Important` etc.
 
 * User should supply the index of the flashcard behind commands.<br>
-  e.g. `view 1`, `delete 10`
+  e.g. `view 1`, `delete 10`.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `t/TITLE d/DESCRIPTION`, `d/DESCRIPTION t/TITLE` is also acceptable.
@@ -140,13 +140,13 @@ Format: `edit INDEX [t/TITLE] [d/DESCRIPTION] [s/SET] [l/LINK] [tag/TAG]…​`
 * The index refers to the index number shown in the displayed flashcard list.
 * The index **must be a positive integer** 1, 2, 3, …
 * At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
+* Existing values will be updated to the input values. New tags will be added without replacing any of the old tags.
 * You can remove all the flashcard’s tags by typing `tag/` without specifying any tags after it.
-* You can remove the flashcard's link by typing `l/`
+* Similarly, you can remove the flashcard's link by typing `l/`.
 
 Examples:
 *  `edit 1 t/Data analysis` edits the title of the 1st flashcard to be `Data analysis`.
-*  `edit 1 t/p-value d/probability of…` edits the title and the description of the 1st flashcard to be `p-value` and `probability of…` respectively.
+*  `edit 1 t/p-value d/probability of…` edits the title and description of the 1st flashcard to be `p-value` and `probability of…` respectively.
 *  `edit 1 s/2` edits the set number which this flashcard is in, to `2`.
 *  `edit 1 t/p-value tag/` edits the title of the 1st flashcard to be `p-value` and clears all existing tags.
 
@@ -167,7 +167,7 @@ Shows a list of all flashcards created, or shows a list of all flashcards in a c
 
 Format: 
 * `list` to show all flashcards created
-* `list [s/SET_NUMBER]` to show all flashcards in set `SET_NUMBER`
+* `list s/SET_NUMBER` to show all flashcards in set `SET_NUMBER`
 
 Example:
 * `list s/2` displays all flashcards in set `2`.
@@ -176,7 +176,7 @@ Example:
 ### Flipping through flashcards: `flip`
 
 Flips from the current flashcard to the next flashcard in the sequence.
-* If multiple flashcards are shown, first flashcard at top will be shown
+* If multiple flashcards are shown, first flashcard at top will be shown.
 * Go back to first flashcard once reach the end of the sequence.
 
 Format: `flip`
@@ -196,7 +196,7 @@ Searches for flashcards that have a matching title or description or tag with `K
 Format: `search k/KEYWORD`
 
 * Searches for flashcards that match with `KEYWORD`.
-* Search is case insensitive. Ex) k/apple can search "apple" and "APPLe"
+* Search is case insensitive. Ex) k/apple can search "apple" and "APPLe".
 
 Examples:
 *  `search k/testing` returns `testing1`, `testing2` and `testing23` 
@@ -261,9 +261,9 @@ Action | Format, Examples
 **Add** | `add t/TITLE d/DESCRIPTION [s/SET] [l/LINK] [tag/TAG]…`<br> e.g., `add t/Data Analysis d/The definition of Data Analysis is…`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [t/TITLE] [d/DESCRIPTION] [s/SET] [l/LINK] [tag/TAG]`<br> e.g.,`edit 1 t/Data analysis`
+**Edit** | `edit INDEX [t/TITLE] [d/DESCRIPTION] [s/SET] [l/LINK] [tag/TAG]`<br> e.g., `edit 1 t/Data analysis`
 **View** | `view INDEX`<br> e.g., `view 1`
-**List** | `list`
+**List** | `list`<br> `list s/SET`<br> e.g., `list s/2`
 **Flip** | `flip`
 **Search** | `search [k/KEYWORD]` <br> e.g., `search k/Data`
 **Sort** | `sort r/REQUIREMENT` <br> e.g., `search r/tag`
