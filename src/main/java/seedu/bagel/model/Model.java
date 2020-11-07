@@ -96,4 +96,6 @@ public interface Model {
      * Sorts the flashcard list with the given comparator.
      */
     void sortFlashcardList(Comparator<Flashcard> comparator);
+
+    boolean isEmpty();
 }
