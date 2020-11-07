@@ -57,6 +57,8 @@ public class FlashcardCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         title.setText(flashcard.getTitle().fullTitle);
         if (isSingle) {
+            id.setVisible(false);
+            id.setManaged(false);
             description.setText(flashcard.getDescription().value);
         } else {
             description.setText("");

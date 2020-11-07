@@ -18,7 +18,7 @@ If you can type fast, Bagel can manage your flashcards faster than traditional G
 ## Quick start
 
 1. Ensure you have Java 11 or above installed in your computer.
-2. Download the latest bagel.jar from [here](https://github.com/AY2021S1-CS2103T-W13-2/tp/releases).
+2. Download the latest `bagel.jar` from [here](https://github.com/AY2021S1-CS2103T-W13-2/tp/releases).
 3. Copy the file to the folder you want to use as the home folder for Bagel.
 4. Double-click the file to start the app. The GUI should appear in a few seconds. Note how the app contains some sample data. It should look like this:
 ![Starting up](images/startingUp.png)
@@ -26,16 +26,17 @@ If you can type fast, Bagel can manage your flashcards faster than traditional G
     Some example commands you can try:
     * `list` : Lists all flashcards.
     * `add t/Data Analysis d/Definition of data analysis: xxxxxx` : Adds a flashcard with the title
-        'Data Analysis' and description of 'Definition of data analysis: xxxxxx' to the list of flashcards
+        'Data Analysis' and description of 'Definition of data analysis: xxxxxx' to the list of flashcards.
     * `clear` : Clears all flashcard entries.
-    * `delete 3` : Deletes the 3rd flashcard shown in the current flashcards set.
-    * `view 3` : Shows the 3rd flashcard shown in the current flashcards set.
-    * `edit 2 t/New title` : Edits the title of 2nd existing flashcard of the current set to become 'New title'
+    * `delete 3` : Deletes the 3rd flashcard shown in the currently displayed flashcard list.
+    * `view 3` : Shows the 3rd flashcard shown in the currently displayed flashcard list.
+    * `edit 2 t/New title` : Edits the title of 2nd flashcard of the currently displayed flashcard list to become 'New title'.
     * `flip` : Flips from the current flashcard to next flashcard in the list.
-    * `search k/Keyword`: Search flashcard that have matching title or description to keyword.
-    * `sort r/title`: Sorts the flashcard list according to title.
-    * `exit` : Exits the app.
-Refer to the Features below for details of each command.
+    * `search k/Keyword`: Searches for flashcards that have the matching title or description.
+    * `sort r/atitle`: Sorts the flashcard list according to title, in ascending order.
+    * `exit` : Exits the app.<br>
+
+Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -44,7 +45,7 @@ Refer to the Features below for details of each command.
 <div markdown="block" class="alert alert-info">
 **:information_source: Notes about the command format:**<br>
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
+* Words in `UPPER_CASE` are the parameters to be supplied by you.<br>
   e.g. in `add t/TITLE`, TITLE is the parameter which can be used
 
 * Items in square brackets are optional.<br>
@@ -54,11 +55,16 @@ Refer to the Features below for details of each command.
 * Items with `…​` after them can be used multiple times including zero times.<br>
   e.g. in `[tag/TAG]…`, can be used as ` ` (i.e. 0 times), `tag/Definition, tag/Formula tag/Important` etc.
 
-* User should supply the number of the flashcard behind commands.<br>
+* User should supply the index of the flashcard behind commands.<br>
   e.g. `view 1`, `delete 10`
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `t/TITLE d/DESCRIPTION`, `d/DESCRIPTION t/TITLE` is also acceptable.
+  
+* Although it is not recommended to supply duplicate parameters, they will still be accepted. However,
+only the last parameter supplied will be considered. 
+  e.g. if the command entered is `add t/title 1 t/title 2 d/description`, the title of the flashcard added will be
+  `title 2`, as only `t/title 2` will be considered.
 </div>
 
 
@@ -105,11 +111,13 @@ l/https://en.wikipedia.org/wiki/Observational_study tag/Types tag/ObservationalS
 the title `Types of Observational Studies`, description `Prospective, Retrospective, Cross-sectional`,
 link `https://en.wikipedia.org/wiki/Observational_study tag/Types` with the tags `Types` and `ObservationalStudies` into set `2`.
 
+
 ### Clearing all flashcard entries: `clear`
 
 Clears all flashcard entries from Bagel.
 
 Format: `clear`
+
 
 ### Deleting a flashcard: `delete`
 
@@ -145,11 +153,11 @@ Examples:
 
 ### Viewing a flashcard: `view`
 
-Shows an existing flashcard in the current list.
+This command shows you an existing flashcard in the currently displayed list.
 
 Format: `view INDEX`
 
-* The index refers to the index number shown in the displayed flashcards list.
+* The index refers to the index number shown in the currently displayed flashcards list.
 * The index **must be a positive integer** 1, 2, 3, …
 
 
@@ -197,17 +205,18 @@ Examples:
 
 ### Sorting flashcards: `sort`
 
-Sorts the current flashcard list. 
+This command lets you sort the currently displayed flashcard according to a requirement. 
 
 Format: `sort r/REQUIREMENT`
 
 * Sorts the list by the specified requirement. 
 * The requirement **must be one of the following**:
-    * title
+    * atitle (ascending alphabetical order)
+    * dtitle (descending alphabetical order)
     * tag
     
 Examples:
-* `sort r/title` returns the list of flashcards, sorted in ascending alphabetical order.
+* `sort r/atitle` returns the list of flashcards, sorted in ascending alphabetical order.
 * `sort r/tag` returns the list of flashcards, sorted according to each flashcard's first tag.
 
 
@@ -221,8 +230,14 @@ Format: `exit`
 
 ## FAQ
 
-**Q**: Placeholder Question<br>
-**A**: Placeholder Answer
+**Q**: Where is the data from Bagel stored?<br>
+**A**: By default, a data folder will be created in the same folder as the `bagel.jar` file.
+After running the app for the first time, you can change the file path by editing preferences.json
+in the same folder directly.
+
+**Q**: How do I transfer my data to another computer?<br>
+**A**: Install Bagel in the other computer and copy-and-paste the data folder into the same folder
+as the `bagel.jar` file.
 
 --------------------------------------------------------------------------------------------------------------------
 
