@@ -41,8 +41,15 @@ public class SortCommand extends Command {
         requireNonNull(model);
         requireNonNull(this.req);
 
-        model.sortFlashcardList(this.req.getSortComparator());
-        return new CommandResult(String.format(MESSAGE_SUCCESS));
+        Comparator<Flashcard> comparator = this.req.getSortComparator();
+        model.sortFlashcardList(comparator);
+        String s = "";
+        if (comparator instanceof SortByTitle) {
+            s = " by title";
+        } else {
+            s = " by tag";
+        }
+        return new CommandResult(String.format(MESSAGE_SUCCESS + s));
     }
 
     public static class SortRequirement {
