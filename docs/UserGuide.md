@@ -197,17 +197,19 @@ Examples:
 
 ### Sorting flashcards: `sort`
 
-Sorts the current flashcard list. 
+This command lets you sort the currently displayed flashcard according to a requirement. 
 
 Format: `sort r/REQUIREMENT`
 
 * Sorts the list by the specified requirement. 
 * The requirement **must be one of the following**:
     * title
+        * atitle (ascending alphabetical order)
+        * dtitle (descending alphabetical order)
     * tag
     
 Examples:
-* `sort r/title` returns the list of flashcards, sorted in ascending alphabetical order.
+* `sort r/atitle` returns the list of flashcards, sorted in ascending alphabetical order.
 * `sort r/tag` returns the list of flashcards, sorted according to each flashcard's first tag.
 
 
@@ -221,8 +223,14 @@ Format: `exit`
 
 ## FAQ
 
-**Q**: Placeholder Question<br>
-**A**: Placeholder Answer
+**Q**: Where is the data from Bagel stored?<br>
+**A**: By default, a data folder will be created in the same folder as the `JAR` file.
+After running the app for the first time, you can change the file path by editing preferences.json
+in the same folder directly.
+
+**Q**: How do I transfer my data to another computer?<br>
+**A**: Install Bagel in the other computer and copy-and-paste the data folder into the same folder
+as Bagel's `JAR` file.
 
 --------------------------------------------------------------------------------------------------------------------
 
