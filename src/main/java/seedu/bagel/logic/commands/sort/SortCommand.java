@@ -25,7 +25,7 @@ public class SortCommand extends Command {
             + "sorting by tag sorts by the first tag of the flashcard.\n"
             + "Parameters: [" + PREFIX_REQ + "REQUIREMENT] \n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_REQ + "title\n";
+            + PREFIX_REQ + "atitle\n";
 
     public static final String MESSAGE_SUCCESS = "Sorted the list";
 
@@ -44,8 +44,10 @@ public class SortCommand extends Command {
         Comparator<Flashcard> comparator = this.req.getSortComparator();
         model.sortFlashcardList(comparator);
         String s = "";
-        if (comparator instanceof SortByTitle) {
-            s = " by title";
+        if (comparator instanceof SortByAscTitle) {
+            s = " by ascending title";
+        } else if (comparator instanceof SortByDescTitle) {
+            s = " by descending title";
         } else {
             s = " by tag";
         }
@@ -70,8 +72,10 @@ public class SortCommand extends Command {
 
         public Comparator<Flashcard> getSortComparator() throws CommandException {
             switch (this.req) {
-            case "title":
-                return new SortByTitle();
+            case "atitle":
+                return new SortByAscTitle();
+            case "dtitle":
+                return new SortByDescTitle();
             case "tag":
                 return new SortByTag();
             default:
