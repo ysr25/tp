@@ -2,14 +2,11 @@ package seedu.bagel.model;
 
 import java.nio.file.Path;
 import java.util.Comparator;
-import java.util.Set;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.bagel.commons.core.GuiSettings;
 import seedu.bagel.model.flashcard.Flashcard;
-import seedu.bagel.model.flashcard.FlashcardSet;
-import seedu.bagel.model.flashcard.SetOfFlashcardSets;
 
 /**
  * The API of the Model component.

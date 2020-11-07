@@ -6,7 +6,6 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.bagel.model.flashcard.Flashcard;
-import seedu.bagel.model.flashcard.FlashcardSet;
 import seedu.bagel.model.flashcard.SetOfFlashcardSets;
 import seedu.bagel.model.flashcard.UniqueFlashcardList;
 

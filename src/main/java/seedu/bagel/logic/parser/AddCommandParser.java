@@ -12,7 +12,11 @@ import java.util.stream.Stream;
 
 import seedu.bagel.logic.commands.AddCommand;
 import seedu.bagel.logic.parser.exceptions.ParseException;
-import seedu.bagel.model.flashcard.*;
+import seedu.bagel.model.flashcard.Description;
+import seedu.bagel.model.flashcard.Flashcard;
+import seedu.bagel.model.flashcard.FlashcardSet;
+import seedu.bagel.model.flashcard.Link;
+import seedu.bagel.model.flashcard.Title;
 import seedu.bagel.model.tag.Tag;
 
 /**

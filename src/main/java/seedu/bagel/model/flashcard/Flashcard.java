@@ -76,7 +76,7 @@ public class Flashcard {
         return otherFlashcard != null
                 && otherFlashcard.getTitle().equals(getTitle())
                 && otherFlashcard.getDescription().equals(getDescription());
-                // && otherFlashcard.getFlashcardSet().equals(getFlashcardSet());
+        // && otherFlashcard.getFlashcardSet().equals(getFlashcardSet());
     }
 
     /**
