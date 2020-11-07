@@ -219,10 +219,16 @@ Format: `exit`
 ## Glossary
 
 * __Set__: It acts similarly to a folder in the real world. If you want to categorize your flashcards, you can make use of 
-the 'set' feature to place each flashcard into different sets. 
+the 'set' feature to place each flashcard into different sets.
+
+* __Duplicate flashcard__: Two flashcards that have the same title and description are considered duplicate flashcards.
+Duplicate flashcards are disallowed, even if they have different links, set numbers, or tags. This is to ensure that users will not make a mistake
+while adding flashcards, and to prevent confusion.
+
 
 
 --------------------------------------------------------------------------------------------------------------------
+
 ## Command summary
 
 Action | Format, Examples

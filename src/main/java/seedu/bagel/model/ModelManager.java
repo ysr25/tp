@@ -5,6 +5,7 @@ import static seedu.bagel.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
 import java.util.Comparator;
+import java.util.Set;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -13,6 +14,8 @@ import javafx.collections.transformation.FilteredList;
 import seedu.bagel.commons.core.GuiSettings;
 import seedu.bagel.commons.core.LogsCenter;
 import seedu.bagel.model.flashcard.Flashcard;
+import seedu.bagel.model.flashcard.FlashcardSet;
+import seedu.bagel.model.flashcard.SetOfFlashcardSets;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -141,6 +144,8 @@ public class ModelManager implements Model {
         bagel.setFlashcards(sortedList);
     }
 
+    //=========== Set of FlashcardSets Accessors =============================================================
+
     @Override
     public boolean equals(Object obj) {
         // short circuit if same object
@@ -159,5 +164,4 @@ public class ModelManager implements Model {
                 && userPrefs.equals(other.userPrefs)
                 && filteredFlashcards.equals(other.filteredFlashcards);
     }
-
 }
