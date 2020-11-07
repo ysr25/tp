@@ -74,10 +74,10 @@ public class Flashcard {
         }
 
         return otherFlashcard != null
-                && otherFlashcard.getTitle().equals(getTitle())
+                && otherFlashcard.getTitle().equals(getTitle());
                 // temporarily uses Description to check for same flashcard.
                 //  && (otherFlashcard.getDescription().equals(getDescription())
-                && otherFlashcard.getFlashcardSet().equals(getFlashcardSet());
+                // && otherFlashcard.getFlashcardSet().equals(getFlashcardSet());
     }
 
     /**

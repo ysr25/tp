@@ -20,7 +20,8 @@ If you can type fast, Bagel can manage your flashcards faster than traditional G
 1. Ensure you have Java 11 or above installed in your computer.
 2. Download the latest bagel.jar from [here](https://github.com/AY2021S1-CS2103T-W13-2/tp/releases).
 3. Copy the file to the folder you want to use as the home folder for Bagel.
-4. Double-click the file to start the app. The GUI should appear in a few seconds. Note how the app contains some sample data.
+4. Double-click the file to start the app. The GUI should appear in a few seconds. Note how the app contains some sample data. It should look like this:
+![Starting up](images/startingUp.png)
 5. Type the command in the command box and press Enter to execute it. e.g. typing help and pressing Enter will open the help window.
     Some example commands you can try:
     * `list` : Lists all flashcards.
@@ -110,7 +111,7 @@ Clears all flashcard entries from Bagel.
 
 Format: `clear`
 
-### Deleting a flashcard : `delete`
+### Deleting a flashcard: `delete`
 
 Deletes the specified flashcard from the total list of flashcards.
 
@@ -121,7 +122,7 @@ Format: `delete INDEX`
 * The index **must be a positive integer** 1, 2, 3, …
 
 
-### Editing a flashcard : `edit`
+### Editing a flashcard: `edit`
 
 Edits an existing flashcard.
 
@@ -152,32 +153,42 @@ Format: `view INDEX`
 * The index **must be a positive integer** 1, 2, 3, …
 
 
-### Viewing all flashcards : `list`
+### Viewing all flashcards: `list`
 
 Shows a list of all flashcards created, or shows a list of all flashcards in a chosen set.
 
 Format: 
 * `list` to show all flashcards created
-* `list s/[SET_NUMBER]` to show all flashcards in set `SET_NUMBER`
+* `list [s/SET_NUMBER]` to show all flashcards in set `SET_NUMBER`
 
 Example:
 * `list s/2` displays all flashcards in set `2`.
 
 
-### Flipping through flashcards : `flip`
+### Flipping through flashcards: `flip`
 
-Flips from the current flashcard to the next flashcard in the list.
+Flips from the current flashcard to the next flashcard in the sequence.
+* If multiple flashcards are shown, first flashcard at top will be shown
+* Go back to first flashcard once reach the end of the sequence.
 
 Format: `flip`
+Examples:
+1. Current flashcards in the sequence
+![flip example](images/flipExample1.png)
+2. type "flip" and show first flashcard in the sequence
+![flip example](images/flipExample2.png)
+3. type "flip" and show next flashcard in the sequence
+![flip example](images/flipExample3.png)
 
 
-### Searching through flashcards : `search`
+### Searching through flashcards: `search`
 
-Searches for flashcards that have a matching title or description with `KEYWORD` from all flashcards.
+Searches for flashcards that have a matching title or description or tag with `KEYWORD` from all flashcards.
 
 Format: `search k/KEYWORD`
 
 * Searches for flashcards that match with `KEYWORD`.
+* Search is case insensitive. Ex) k/apple can search "apple" and "APPLe"
 
 Examples:
 *  `search k/testing` returns `testing1`, `testing2` and `testing23` 
@@ -200,7 +211,7 @@ Examples:
 * `sort r/tag` returns the list of flashcards, sorted according to each flashcard's first tag.
 
 
-### Exiting the program : `exit`
+### Exiting the program: `exit`
 
 Exits the program.
 
@@ -212,6 +223,19 @@ Format: `exit`
 
 **Q**: Placeholder Question<br>
 **A**: Placeholder Answer
+
+--------------------------------------------------------------------------------------------------------------------
+
+## Glossary
+
+* __Set__: It acts similarly to a folder in the real world. If you want to categorize your flashcards, you can make use of 
+the 'set' feature to place each flashcard into different sets.
+
+* __Duplicate flashcard__: Two flashcards that have the same title and description are considered duplicate flashcards.
+Duplicate flashcards are disallowed, even if they have different links, set numbers, or tags. This is to ensure that users will not make a mistake
+while adding flashcards, and to prevent confusion.
+
+
 
 --------------------------------------------------------------------------------------------------------------------
 

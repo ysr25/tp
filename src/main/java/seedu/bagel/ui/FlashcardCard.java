@@ -63,7 +63,7 @@ public class FlashcardCard extends UiPart<Region> {
         }
 
         String link = flashcard.getLink().value;
-        if (!link.isEmpty()) {
+        if (isSingle && !link.isEmpty()) {
             addLink(link);
         }
 
