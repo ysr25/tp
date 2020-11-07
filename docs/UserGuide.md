@@ -33,7 +33,7 @@ If you can type fast, Bagel can manage your flashcards faster than traditional G
     * `edit 2 t/New title` : Edits the title of 2nd existing flashcard of the current set to become 'New title'
     * `flip` : Flips from the current flashcard to next flashcard in the list.
     * `search k/Keyword`: Search flashcard that have matching title or description to keyword.
-    * `sort r/title`: Sorts the flashcard list according to title.
+    * `sort r/title`: Sorts the flashcard list according to title, in ascending order.
     * `exit` : Exits the app.
 Refer to the Features below for details of each command.
 
