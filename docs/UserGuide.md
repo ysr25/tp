@@ -231,13 +231,13 @@ Format: `exit`
 ## FAQ
 
 **Q**: Where is the data from Bagel stored?<br>
-**A**: By default, a data folder will be created in the same folder as the `JAR` file.
+**A**: By default, a data folder will be created in the same folder as the `bagel.jar` file.
 After running the app for the first time, you can change the file path by editing preferences.json
 in the same folder directly.
 
 **Q**: How do I transfer my data to another computer?<br>
 **A**: Install Bagel in the other computer and copy-and-paste the data folder into the same folder
-as Bagel's `JAR` file.
+as the `bagel.jar` file.
 
 --------------------------------------------------------------------------------------------------------------------
 
