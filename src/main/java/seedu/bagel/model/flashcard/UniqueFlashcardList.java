@@ -30,7 +30,7 @@ public class UniqueFlashcardList implements Iterable<Flashcard> {
             FXCollections.unmodifiableObservableList(internalList);
 
     /**
-     * Returns true if the list contains an equivalent person as the given argument.
+     * Returns true if the list contains an equivalent flashcard as the given argument.
      */
     public boolean contains(Flashcard toCheck) {
         requireNonNull(toCheck);
@@ -38,8 +38,8 @@ public class UniqueFlashcardList implements Iterable<Flashcard> {
     }
 
     /**
-     * Adds a person to the list.
-     * The person must not already exist in the list.
+     * Adds a flashcard to the list.
+     * The flashcard must not already exist in the list.
      */
     public void add(Flashcard toAdd) {
         requireNonNull(toAdd);
@@ -70,8 +70,8 @@ public class UniqueFlashcardList implements Iterable<Flashcard> {
     }
 
     /**
-     * Removes the equivalent person from the list.
-     * The person must exist in the list.
+     * Removes the equivalent flashcard from the list.
+     * The flashcard must exist in the list.
      */
     public void remove(Flashcard toRemove) {
         requireNonNull(toRemove);
