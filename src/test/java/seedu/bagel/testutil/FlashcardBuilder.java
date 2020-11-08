@@ -44,8 +44,8 @@ public class FlashcardBuilder {
     public FlashcardBuilder(Flashcard flashcardToCopy) {
         title = flashcardToCopy.getTitle();
         description = flashcardToCopy.getDescription();
-        link = flashcardToCopy.getLink();
         flashcardSet = flashcardToCopy.getFlashcardSet();
+        link = flashcardToCopy.getLink();
         tags = new HashSet<>(flashcardToCopy.getTags());
     }
 

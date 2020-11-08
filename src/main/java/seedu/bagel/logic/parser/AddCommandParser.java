@@ -33,7 +33,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_TITLE, PREFIX_DESC, PREFIX_LINK, PREFIX_SET, PREFIX_TAG);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_TITLE, PREFIX_DESC)
+        if (!arePrefixesPresent(argMultimap, PREFIX_TITLE, PREFIX_DESC, PREFIX_SET)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
@@ -41,7 +41,8 @@ public class AddCommandParser implements Parser<AddCommand> {
         Title title = ParserUtil.parseTitle(argMultimap.getValue(PREFIX_TITLE).get());
         Description description = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESC).get());
         Link link = ParserUtil.parseLink(argMultimap.getValue(PREFIX_LINK).orElse(""));
-        FlashcardSet flashcardSet = ParserUtil.parseSet(argMultimap.getValue(PREFIX_SET).orElse("1"));
+        FlashcardSet flashcardSet = ParserUtil.parseSet(argMultimap.getValue(PREFIX_SET).get());
+        // FlashcardSet flashcardSet = ParserUtil.parseSet(argMultimap.getValue(PREFIX_SET).orElse("1"));
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
         Flashcard flashcard = new Flashcard(title, description, link, flashcardSet, tagList);

@@ -33,6 +33,7 @@ public class EditFlashcardDescriptorBuilder {
         descriptor = new EditFlashcardDescriptor();
         descriptor.setTitle(flashcard.getTitle());
         descriptor.setDescription(flashcard.getDescription());
+        descriptor.setFlashcardSet(flashcard.getFlashcardSet());
         descriptor.setLink(flashcard.getLink());
         descriptor.setFlashcardSet(flashcard.getFlashcardSet());
         descriptor.setTags(flashcard.getTags());
@@ -51,6 +52,14 @@ public class EditFlashcardDescriptorBuilder {
      */
     public EditFlashcardDescriptorBuilder withDescription(String description) {
         descriptor.setDescription(new Description(description));
+        return this;
+    }
+
+    /**
+     * Sets the {@code Set} of the {@code EditFlashcardDescriptor} that we are building.
+     */
+    public EditFlashcardDescriptorBuilder withSet(String set) {
+        descriptor.setFlashcardSet(new FlashcardSet(set));
         return this;
     }
 
