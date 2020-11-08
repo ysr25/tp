@@ -9,7 +9,7 @@ import seedu.bagel.logic.commands.SearchCommand;
 import seedu.bagel.logic.parser.exceptions.ParseException;
 
 /**
- * Parses input arguments and creates a new DeleteCommand object
+ * Parses input arguments and creates a new SearchCommand object
  */
 public class SearchCommandParser implements Parser<SearchCommand> {
 
