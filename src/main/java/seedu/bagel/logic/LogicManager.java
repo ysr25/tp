@@ -2,6 +2,7 @@ package seedu.bagel.logic;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.Set;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
@@ -15,6 +16,7 @@ import seedu.bagel.logic.parser.exceptions.ParseException;
 import seedu.bagel.model.Model;
 import seedu.bagel.model.ReadOnlyBagel;
 import seedu.bagel.model.flashcard.Flashcard;
+import seedu.bagel.model.flashcard.FlashcardSet;
 import seedu.bagel.storage.Storage;
 
 /**
@@ -77,5 +79,15 @@ public class LogicManager implements Logic {
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);
+    }
+
+    @Override
+    public boolean hasSet() {
+        return !model.getBagel().getSetOfFlashcardSets().get().isEmpty();
+    }
+
+    @Override
+    public Set<FlashcardSet> getSets() {
+        return model.getBagel().getSetOfFlashcardSets().get();
     }
 }

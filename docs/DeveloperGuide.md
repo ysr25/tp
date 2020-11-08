@@ -40,8 +40,6 @@ The ***Architecture Diagram*** given above explains the high-level design of the
 
 <div markdown="span" class="alert alert-primary">
 
-:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/AY2021S1-CS2103T-W13-2/tp/tree/master/docs/diagrams) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
-
 </div>
 
 **`Main`** has two classes called [`Main`](https://github.com/AY2021S1-CS2103T-W13-2/tp/blob/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2021S1-CS2103T-W13-2/tp/blob/master/src/main/java/seedu/address/MainApp.java). It is responsible for,
@@ -152,13 +150,62 @@ This section describes some noteworthy details on how certain features are imple
 This mechanism makes use of the unmodifiable `ObservableList<Flashcard>` in `Model`. It filters the given list by searching
 for the flashcard that matches the given keyword.
 
-*diagram to be included*
+The following sequence diagrams show how the search operation works.
 
+![Sequence Diagram for Search Command in Logic Component](images/SearchSequenceDiagram.png)
+
+1. The user executes `search k/apple` to search flashcards that has matching title, description, or tag to the keyword in the list currently shown.
+2. `BagelParser` creates an `SearchCommandParser` and calls its parse method with the arguments passed in by the user.
+3. `SearchCommandParser` returns a new `SearchCommand` with the `keyword` to be searched.
+4. When its execute method is called, `SearchCommand` calls `updateFilteredFlashcardList()` with predicate, `searchFlashcard`.
+5. `Model` will update flashcards based on the predicate.
+7. The result of this command is returned.
+
+#### Design consideration
+
+##### Aspect: How to pass fields to be edited
+
+* **Alternative 1 (current choice):** Pass fields to be edited into `SearchCommand` directly
+  * Pros: Easier to implement.
+  * Cons: `SearchCommand` will have more responsibilities.
+* **Alternative 2:** Store fields in `SearchFlashcardDescriptor` and pass it into `SearchCommand`
+  * Pros: Better separation of concerns.
+  * Cons: More code to write.
+
+I chose alternative 1, because only field for search command is `keyword` and amount of responsibilities for `SearchCommand` will not increase a lot.
+  
 ### View feature
-This mechanism makes use of the unmodifiable `ObservableList<Flashcard>` in `Model`. It filters the given list by searching
+This mechanism makes use of the unmodifiable `ObservableList<Flashcard>` in `Model`. It filters the given list by searching for
 for the flashcard that matches the given index.
 
 *diagram to be included*
+
+### List feature
+
+This mechanism makes use of the unmodifiable `ObservableList<Flashcard>` in `Model`. It filters the list based on the parameters passed with the command word `list`.
+
+
+Its implementation is similar to that of the *Search* feature, with the difference being in point 4.
+* If there are no parameters passed with the command `list`, `ListCommand ` calls `updateFilteredFlashcardList()` with predicate `PREDICATE_SHOW_ALL_FLASHCARDS`.
+* If a parameter is passed with the command, for example `list s/2`, `ListCommand` calls `updateFilteredFlashcardList()` with predicate `predicateShowFlashcardsInSet`.
+
+The following sequence diagram shows how the list operation works with parameters.
+
+![Sequence Diagram for List Command in Logic Component](images/ListSequenceDiagram.png)
+
+#### Design consideration
+
+##### Aspect: How to parse the parameters passed with the `list` command
+* **Alternative 1:** Pass it into the ListCommand class directly.
+  * Pros: Easier to implement.
+  * Cons: `ListCommand` has more responsibilities, such as to parse the presence of parameters.
+
+* **Alternative 2 (current choice):** Create a `ListCommandParser` to parse parameters if there are any.
+  * Pros: Delegates the different responsibilities to each class.
+  * Cons: More code to write, as the original implementation of the `list` command in AB3 did not allow parameters to be passed.
+
+I chose alternative 2, because even though the increase in responsibility for `ListCommand` is rather minimal, parsing of parameters should still be separated from execution of commands.
+
 
 ### Edit Feature
 

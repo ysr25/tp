@@ -3,8 +3,7 @@ package seedu.bagel.logic;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.bagel.commons.core.Messages.MESSAGE_INVALID_FLASHCARD_DISPLAYED_INDEX;
 import static seedu.bagel.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.bagel.logic.commands.CommandTestUtil.DESC_DESC_AMY;
-import static seedu.bagel.logic.commands.CommandTestUtil.TITLE_DESC_AMY;
+import static seedu.bagel.logic.commands.CommandTestUtil.*;
 import static seedu.bagel.testutil.Assert.assertThrows;
 import static seedu.bagel.testutil.TypicalFlashcards.AMY;
 
@@ -17,7 +16,8 @@ import org.junit.jupiter.api.io.TempDir;
 
 import seedu.bagel.logic.commands.AddCommand;
 import seedu.bagel.logic.commands.CommandResult;
-import seedu.bagel.logic.commands.ListCommand;
+import seedu.bagel.logic.commands.FlipCommand;
+// import seedu.bagel.logic.commands.ListCommand;
 import seedu.bagel.logic.commands.exceptions.CommandException;
 import seedu.bagel.logic.parser.exceptions.ParseException;
 import seedu.bagel.model.Model;
@@ -62,8 +62,10 @@ public class LogicManagerTest {
 
     @Test
     public void execute_validCommand_success() throws Exception {
-        String listCommand = ListCommand.COMMAND_WORD;
-        assertCommandSuccess(listCommand, ListCommand.MESSAGE_SUCCESS, model);
+        // String listCommand = ListCommand.COMMAND_WORD;
+        // assertCommandSuccess(listCommand, ListCommand.MESSAGE_SUCCESS, model);
+        String flipCommand = FlipCommand.COMMAND_WORD;
+        assertCommandSuccess(flipCommand, FlipCommand.MESSAGE_SUCCESS, model);
     }
 
     @Test
@@ -77,7 +79,7 @@ public class LogicManagerTest {
         logic = new LogicManager(model, storage);
 
         // Execute add command
-        String addCommand = AddCommand.COMMAND_WORD + TITLE_DESC_AMY + DESC_DESC_AMY;
+        String addCommand = AddCommand.COMMAND_WORD + TITLE_DESC_AMY + DESC_DESC_AMY + SET_DESC_AMY;
         Flashcard expectedFlashcard = new FlashcardBuilder(AMY).withTags().build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addFlashcard(expectedFlashcard);

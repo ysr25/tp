@@ -44,8 +44,8 @@ public class FlashcardBuilder {
     public FlashcardBuilder(Flashcard flashcardToCopy) {
         title = flashcardToCopy.getTitle();
         description = flashcardToCopy.getDescription();
-        link = flashcardToCopy.getLink();
         flashcardSet = flashcardToCopy.getFlashcardSet();
+        link = flashcardToCopy.getLink();
         tags = new HashSet<>(flashcardToCopy.getTags());
     }
 
@@ -68,7 +68,7 @@ public class FlashcardBuilder {
     /**
      * Parses the {@code flashcardSet} of the {@code Flashcard} that we are building.
      */
-    public FlashcardBuilder withSets(String flashcardSet) {
+    public FlashcardBuilder withSet(String flashcardSet) {
         this.flashcardSet = new FlashcardSet(flashcardSet);
         return this;
     }

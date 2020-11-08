@@ -17,7 +17,6 @@ public class FlipCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Flipped flashcard";
 
-    // added ----
     private static int currentIndex;
     private static int nextIndex;
 
@@ -27,15 +26,25 @@ public class FlipCommand extends Command {
 
         ObservableList<Flashcard> flashcards = model.getBagel().getFlashcardList();
         ObservableList<Flashcard> filteredFlashcards = model.getFilteredFlashcardList();
-        // find the index of flashcard currently shown
-        currentIndex = flashcards.indexOf(filteredFlashcards.get(0));
-        // find index of next flashcard
-        if (filteredFlashcards.size() != 1) {
-            nextIndex = currentIndex;
-        } else if ((flashcards.size() - 1) <= currentIndex) {
+        // find index of flashcard displaying next
+        if (flashcards.size() == 0) {
+            // empty flashcard
             nextIndex = 0;
-        } else {
+        } else if (filteredFlashcards.size() == 0) {
+            // flashcard is deleted
+            nextIndex = currentIndex;
+        } else if (filteredFlashcards.size() > 1) {
+            // multiple flashcards are visible, show top flashcard
+            nextIndex = flashcards.indexOf(filteredFlashcards.get(0));
+        } else if (filteredFlashcards.size() == 1) {
+            // single flashcard is visible
+            currentIndex = flashcards.indexOf(filteredFlashcards.get(0));
             nextIndex = currentIndex + 1;
+        }
+
+        // go back to start of list when reached end
+        if ((flashcards.size() - 1) <= currentIndex) {
+            nextIndex = 0;
         }
 
         Predicate<Flashcard> nextFlashcard = flashcard -> flashcards.indexOf(flashcard) == nextIndex;

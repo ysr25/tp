@@ -3,7 +3,6 @@ package seedu.bagel.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.bagel.logic.parser.CliSyntax.PREFIX_KEYWORD;
 
-import java.util.Set;
 import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,7 +12,7 @@ import seedu.bagel.model.flashcard.Flashcard;
 import seedu.bagel.model.tag.Tag;
 
 /**
- * Deletes a flashcard identified using it's displayed index from Bagel.
+ * Search a flashcard that has matching title, description, or tag to a keyword.
  */
 public class SearchCommand extends Command {
 
@@ -28,9 +27,27 @@ public class SearchCommand extends Command {
 
     private final String keyword;
 
-
     public SearchCommand(String keyword) {
         this.keyword = keyword;
+    }
+
+    private boolean has_matching_tag(Flashcard flashcard, String keyword) {
+        for (Tag tag : flashcard.getTags()) {
+            if (tag.tagName.toLowerCase().contains(keyword.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean has_matching_title(Flashcard flashcard, String keyword) {
+        String title = flashcard.getTitle().fullTitle.toLowerCase();
+        return title.contains(keyword.toLowerCase());
+    }
+
+    private boolean has_matching_description(Flashcard flashcard, String keyword) {
+        String description = flashcard.getDescription().value.toLowerCase();
+        return description.contains(keyword.toLowerCase());
     }
 
     @Override
@@ -40,21 +57,13 @@ public class SearchCommand extends Command {
         Logger logger = Logger.getLogger("logger"); // required for week 10 tP
         logger.log(Level.INFO, "log test"); // required for week 10 tP
 
-        Predicate<Flashcard> searchFlashcard = flashcard ->
-                flashcard.getDescription().toString().toLowerCase().contains(keyword.toLowerCase())
-                || flashcard.getTitle().toString().toLowerCase().contains(keyword.toLowerCase())
-                || searchFlashcardTags(flashcard.getTags());
-        model.updateFilteredFlashcardList(searchFlashcard);
+        // search flashcard that have matching title, description or tag
+        Predicate<Flashcard> searchFlashcard = flashcard -> has_matching_title(flashcard, keyword)
+                || has_matching_description(flashcard, keyword)
+                || has_matching_tag(flashcard, keyword);
 
+        model.updateFilteredFlashcardList(searchFlashcard);
         return new CommandResult(String.format(MESSAGE_SEARCH_FLASHCARD_SUCCESS, keyword));
     }
 
-    private boolean searchFlashcardTags(Set<Tag> tags) {
-        for (Tag tag : tags) {
-            if (tag.getTagName().toLowerCase().contains(keyword.toLowerCase())) {
-                return true;
-            }
-        }
-        return false;
-    }
 }

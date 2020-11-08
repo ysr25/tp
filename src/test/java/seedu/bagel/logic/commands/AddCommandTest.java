@@ -22,6 +22,7 @@ import seedu.bagel.model.Model;
 import seedu.bagel.model.ReadOnlyBagel;
 import seedu.bagel.model.ReadOnlyUserPrefs;
 import seedu.bagel.model.flashcard.Flashcard;
+import seedu.bagel.model.flashcard.FlashcardSet;
 import seedu.bagel.testutil.FlashcardBuilder;
 
 public class AddCommandTest {
@@ -157,6 +158,16 @@ public class AddCommandTest {
 
         @Override
         public void sortFlashcardList(Comparator<Flashcard> comparator) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean isEmpty() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasFlashcardSet(FlashcardSet flashcardSet) {
             throw new AssertionError("This method should not be called.");
         }
     }
