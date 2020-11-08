@@ -17,7 +17,6 @@ public class FlipCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Flipped flashcard";
 
-    // added ----
     private static int currentIndex;
     private static int nextIndex;
 

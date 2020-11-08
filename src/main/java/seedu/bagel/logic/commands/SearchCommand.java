@@ -13,7 +13,7 @@ import seedu.bagel.model.flashcard.Flashcard;
 import seedu.bagel.model.tag.Tag;
 
 /**
- * Deletes a flashcard identified using it's displayed index from Bagel.
+ * Search a flashcard that has matching title, description, or tag to a keyword.
  */
 public class SearchCommand extends Command {
 
@@ -26,9 +26,7 @@ public class SearchCommand extends Command {
 
     public static final String MESSAGE_SEARCH_FLASHCARD_SUCCESS = "Result of search: %s";
 
-    //    private final Index targetIndex;
     private final String keyword;
-
 
     public SearchCommand(String keyword) {
         this.keyword = keyword;
@@ -79,10 +77,4 @@ public class SearchCommand extends Command {
         return new CommandResult(String.format(MESSAGE_SEARCH_FLASHCARD_SUCCESS, keyword));
     }
 
-    //    @Override
-    //    public boolean equals(Object other) {
-    //        return other == this // short circuit if same object
-    //                || (other instanceof DeleteCommand // instanceof handles nulls
-    //                && targetIndex.equals(((DeleteCommand) other).targetIndex)); // state check
-    //    }
 }
