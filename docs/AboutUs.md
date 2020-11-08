@@ -23,7 +23,7 @@ We are a team based in the [School of Computing, National University of Singapor
 [[github](http://github.com/rgabelarde)]
 [[portfolio](team/rgabelarde.md)]
 
-* Role: Deliverables and Deadlines
+* Role: Deliverables and Deadlines, Graphical User Interface
 
 ### Jace Tan
 
