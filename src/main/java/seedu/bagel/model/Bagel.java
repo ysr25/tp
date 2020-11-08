@@ -6,6 +6,7 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.bagel.model.flashcard.Flashcard;
+import seedu.bagel.model.flashcard.SetOfFlashcardSets;
 import seedu.bagel.model.flashcard.UniqueFlashcardList;
 
 /**
@@ -15,6 +16,7 @@ import seedu.bagel.model.flashcard.UniqueFlashcardList;
 public class Bagel implements ReadOnlyBagel {
 
     private final UniqueFlashcardList flashcards;
+    private SetOfFlashcardSets setOfFlashcardSets;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -25,6 +27,7 @@ public class Bagel implements ReadOnlyBagel {
      */
     {
         flashcards = new UniqueFlashcardList();
+        setOfFlashcardSets = new SetOfFlashcardSets();
     }
 
     public Bagel() {}
@@ -48,12 +51,22 @@ public class Bagel implements ReadOnlyBagel {
     }
 
     /**
+     * Replaces the contents of the flashcard list with {@code flashcards}.
+     * {@code flashcards} must not contain duplicate flashcards.
+     */
+    public void setFlashcardSets(SetOfFlashcardSets setOfFlashcardSets) {
+        this.setOfFlashcardSets = setOfFlashcardSets;
+        //TODO: to refine later (private final setOfFlashcardSets)
+    }
+
+    /**
      * Resets the existing data of this {@code Bagel} with {@code newData}.
      */
     public void resetData(ReadOnlyBagel newData) {
         requireNonNull(newData);
 
         setFlashcards(newData.getFlashcardList());
+        setFlashcardSets(newData.getSetOfFlashcardSets());
     }
 
     //// flashcard-level operations
@@ -72,6 +85,7 @@ public class Bagel implements ReadOnlyBagel {
      */
     public void addFlashcard(Flashcard f) {
         flashcards.add(f);
+        setOfFlashcardSets.add(f);
     }
 
     /**
@@ -84,6 +98,7 @@ public class Bagel implements ReadOnlyBagel {
         requireNonNull(editedFlashcard);
 
         flashcards.setFlashcard(target, editedFlashcard);
+        setOfFlashcardSets.edit(target, editedFlashcard);
     }
 
     /**
@@ -92,6 +107,7 @@ public class Bagel implements ReadOnlyBagel {
      */
     public void removeFlashcard(Flashcard key) {
         flashcards.remove(key);
+        setOfFlashcardSets.remove(key);
     }
 
     //// util methods
@@ -105,6 +121,14 @@ public class Bagel implements ReadOnlyBagel {
     @Override
     public ObservableList<Flashcard> getFlashcardList() {
         return flashcards.asUnmodifiableObservableList();
+    }
+
+    /**
+     * Returns an unmodifiable view of the set of flashcardSets.
+     */
+    @Override
+    public SetOfFlashcardSets getSetOfFlashcardSets() {
+        return setOfFlashcardSets;
     }
 
     @Override

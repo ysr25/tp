@@ -74,15 +74,14 @@ public class Flashcard {
         }
 
         return otherFlashcard != null
-                && otherFlashcard.getTitle().equals(getTitle());
-                // temporarily uses Description to check for same flashcard.
-                //  && (otherFlashcard.getDescription().equals(getDescription())
-                // && otherFlashcard.getFlashcardSet().equals(getFlashcardSet());
+                && otherFlashcard.getTitle().equals(getTitle())
+                && otherFlashcard.getDescription().equals(getDescription());
+        // && otherFlashcard.getFlashcardSet().equals(getFlashcardSet());
     }
 
     /**
-     * Returns true if both persons have the same identity and data fields.
-     * This defines a stronger notion of equality between two persons.
+     * Returns true if both flashcards have the same identity and data fields.
+     * This defines a stronger notion of equality between two flashcards.
      */
     @Override
     public boolean equals(Object other) {

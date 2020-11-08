@@ -43,20 +43,12 @@ public class SearchCommand extends Command {
 
     private boolean has_matching_title(Flashcard flashcard, String keyword) {
         String title = flashcard.getTitle().fullTitle.toLowerCase();
-        if (title.contains(keyword.toLowerCase())) {
-            return true;
-        } else {
-            return false;
-        }
+        return title.contains(keyword.toLowerCase());
     }
 
     private boolean has_matching_description(Flashcard flashcard, String keyword) {
         String description = flashcard.getDescription().value.toLowerCase();
-        if (description.contains(keyword.toLowerCase())) {
-            return true;
-        } else {
-            return false;
-        }
+        return description.contains(keyword.toLowerCase());
     }
 
     @Override
@@ -66,7 +58,7 @@ public class SearchCommand extends Command {
         Logger logger = Logger.getLogger("logger"); // required for week 10 tP
         logger.log(Level.INFO, "log test"); // required for week 10 tP
 
-        // search flaschard that have matching title, description or tag
+        // search flashcard that have matching title, description or tag
         Predicate<Flashcard> searchFlashcard = flashcard -> has_matching_title(flashcard, keyword)
                 || has_matching_description(flashcard, keyword)
                 || has_matching_tag(flashcard, keyword);

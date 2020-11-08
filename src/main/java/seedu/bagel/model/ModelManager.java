@@ -22,7 +22,7 @@ public class ModelManager implements Model {
 
     private final Bagel bagel;
     private final UserPrefs userPrefs;
-    private final FilteredList<Flashcard> filteredFlashcards;
+    private FilteredList<Flashcard> filteredFlashcards;
 
     /**
      * Initializes a ModelManager with the given Bagel and userPrefs.
@@ -137,9 +137,11 @@ public class ModelManager implements Model {
     @Override
     public void sortFlashcardList(Comparator<Flashcard> comparator) {
         requireNonNull(comparator);
-        ObservableList<Flashcard> sortedList = getFilteredFlashcardList().sorted(comparator);
+        ObservableList<Flashcard> sortedList = bagel.getFlashcardList().sorted(comparator);
         bagel.setFlashcards(sortedList);
     }
+
+    //=========== Set of FlashcardSets Accessors =============================================================
 
     @Override
     public boolean equals(Object obj) {
@@ -159,5 +161,4 @@ public class ModelManager implements Model {
                 && userPrefs.equals(other.userPrefs)
                 && filteredFlashcards.equals(other.filteredFlashcards);
     }
-
 }
