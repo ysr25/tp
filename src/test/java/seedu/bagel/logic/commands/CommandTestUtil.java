@@ -41,6 +41,7 @@ public class CommandTestUtil {
     public static final String DESC_DESC_AMY = " " + PREFIX_DESC + VALID_DESC_AMY;
     public static final String DESC_DESC_BOB = " " + PREFIX_DESC + VALID_DESC_BOB;
     public static final String LINK_DESC_BOB = " " + PREFIX_LINK + VALID_LINK_BOB;
+
     public static final String SET_DESC_AMY = " " + PREFIX_SET + VALID_SET_AMY;
     public static final String SET_DESC_BOB = " " + PREFIX_SET + VALID_SET_BOB;
     public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;

@@ -47,6 +47,7 @@ public class AddCommandParserTest {
         // multiple word titles accepted
         assertParseSuccess(parser, TITLE_DESC_AMY + TITLE_DESC_BOB + DESC_DESC_BOB + SET_DESC_BOB
                 + TAG_DESC_FRIEND, new AddCommand(expectedFlashcard));
+                        + TAG_DESC_FRIEND, new AddCommand(expectedFlashcard));
 
         // multiple word desc accepted
         assertParseSuccess(parser, TITLE_DESC_BOB + DESC_DESC_AMY + DESC_DESC_BOB + SET_DESC_BOB
@@ -57,6 +58,8 @@ public class AddCommandParserTest {
                 .withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND).build();
         assertParseSuccess(parser, TITLE_DESC_BOB + DESC_DESC_BOB + SET_DESC_BOB
                         + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, new AddCommand(expectedFlashcardMultipleTags));
+        assertParseSuccess(parser, TITLE_DESC_BOB + DESC_DESC_BOB + TAG_DESC_HUSBAND + SET_DESC_BOB
+                        + TAG_DESC_FRIEND, new AddCommand(expectedFlashcardMultipleTags));
     }
 
     @Test

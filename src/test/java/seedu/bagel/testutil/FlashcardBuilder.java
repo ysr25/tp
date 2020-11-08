@@ -68,7 +68,7 @@ public class FlashcardBuilder {
     /**
      * Parses the {@code flashcardSet} of the {@code Flashcard} that we are building.
      */
-    public FlashcardBuilder withSets(String flashcardSet) {
+    public FlashcardBuilder withSet(String flashcardSet) {
         this.flashcardSet = new FlashcardSet(flashcardSet);
         return this;
     }
