@@ -24,7 +24,7 @@ public class SetOfFlashcardSets {
      */
     public SetOfFlashcardSets() {
         setOfFlashcardSets = new HashSet<>();
-        numOfFlashcardsWithFSet = new int[10];
+        numOfFlashcardsWithFSet = new int[20];
     }
 
     /**
@@ -58,7 +58,7 @@ public class SetOfFlashcardSets {
 
         //updating Set of flashcardSets
         if (numOfFlashcardsWithFSet[targetFlashcardSetValue] == 0) {
-            setOfFlashcardSets.remove(editedFlashcardSet);
+            setOfFlashcardSets.remove(targetFlashcardSet);
         }
     }
 
