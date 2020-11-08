@@ -42,4 +42,8 @@ public class SideBar extends UiPart<Region> {
         return this.buttonBar.getChildren();
     }
 
+    public void clearAllButtons() {
+        this.buttonBar.getChildren().clear();
+    }
+
 }

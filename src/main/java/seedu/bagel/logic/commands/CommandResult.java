@@ -17,13 +17,26 @@ public class CommandResult {
     /** The application should exit. */
     private final boolean exit;
 
+    /** The application should add a button for a new set. */
+    private final boolean addSet;
+
+    /** The application should remove a button for a newly emptied set. */
+    private final boolean delSet;
+
+    /** The application should clear all buttons for sets created. */
+    private final boolean clearSets;
+
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
-    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit) {
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit,
+                         boolean addSet, boolean delSet, boolean clearSets) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
         this.exit = exit;
+        this.addSet = addSet;
+        this.delSet = delSet;
+        this.clearSets = clearSets;
     }
 
     /**
@@ -31,7 +44,7 @@ public class CommandResult {
      * and other fields set to their default value.
      */
     public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, false, false);
+        this(feedbackToUser, false, false, false, false, false);
     }
 
     public String getFeedbackToUser() {
@@ -44,6 +57,18 @@ public class CommandResult {
 
     public boolean isExit() {
         return exit;
+    }
+
+    public boolean isAddSet() {
+        return addSet;
+    }
+
+    public boolean isDelSet() {
+        return delSet;
+    }
+
+    public boolean isClear() {
+        return clearSets;
     }
 
     @Override
@@ -60,12 +85,15 @@ public class CommandResult {
         CommandResult otherCommandResult = (CommandResult) other;
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
                 && showHelp == otherCommandResult.showHelp
-                && exit == otherCommandResult.exit;
+                && exit == otherCommandResult.exit
+                && addSet == otherCommandResult.addSet
+                && delSet == otherCommandResult.delSet
+                && clearSets == otherCommandResult.clearSets;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(feedbackToUser, showHelp, exit);
+        return Objects.hash(feedbackToUser, showHelp, exit, addSet, delSet, clearSets);
     }
 
 }

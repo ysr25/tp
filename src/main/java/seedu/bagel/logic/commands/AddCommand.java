@@ -54,11 +54,13 @@ public class AddCommand extends Command {
         if (model.hasFlashcard(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_FLASHCARD);
         }
-
+        if (!model.hasFlashcardSet(toAdd.getFlashcardSet())) {
+            model.addFlashcard(toAdd);
+            return new CommandResult(String.format(toAdd.getFlashcardSet().value), false, false, true, false, false);
+        }
         model.addFlashcard(toAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
-
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

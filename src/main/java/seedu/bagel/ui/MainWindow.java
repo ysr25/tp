@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
@@ -148,7 +149,7 @@ public class MainWindow extends UiPart<Stage> {
     void loadSetButtons() {
         if (logic.hasSet()) {
             for (FlashcardSet set : logic.getSets()) {
-                handleAddSet(set.value.toString());
+                handleAddSet(set.value);
             }
         }
     }
@@ -160,6 +161,30 @@ public class MainWindow extends UiPart<Stage> {
     private void handleAddSet(String setValue) {
         Button setButton = new Button(setValue);
         setUpSetButton(setButton);
+    }
+
+    /**
+     * Deletes an existing set button.
+     */
+    @FXML
+    private void handleDelSet(String setValue) {
+        for (Node setButton : this.sideBar.getButtons()) {
+            // System.out.println("handle del set");
+            if (setButton.getId().equals(setValue)) {
+                // System.out.println(setButton.getId());
+                // System.out.println(setValue);
+                sideBar.deleteButton(setButton);
+                break;
+            }
+        }
+    }
+
+    /**
+     * Deletes all existing set buttons.
+     */
+    @FXML
+    private void handleClear() {
+        this.sideBar.clearAllButtons();
     }
 
     /**
@@ -212,6 +237,7 @@ public class MainWindow extends UiPart<Stage> {
         button.setMnemonicParsing(false);
         button.setPrefWidth(70);
         button.setId(button.getText());
+        //System.out.println(button.getText());
 
         Image image = new Image(imgUrl);
         ImageView imageView = new ImageView(image);
@@ -224,6 +250,7 @@ public class MainWindow extends UiPart<Stage> {
         VBox.setMargin(sidebarPlaceholder, new Insets(10));
         button.setOnAction(event);
         sideBar.addButton(button);
+
     }
 
     /**
@@ -242,6 +269,10 @@ public class MainWindow extends UiPart<Stage> {
         setUpButton(setButton, setImgUrl, setEvent);
     }
 
+    private String getSetValue(String commandText) {
+        return commandText.split(" ")[3].split("/")[1].toUpperCase();
+    }
+
     /**
      * Executes the command and returns the result.
      *
@@ -249,6 +280,8 @@ public class MainWindow extends UiPart<Stage> {
      */
     private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
         try {
+            String setValue;
+            commandText = commandText.replaceAll("\\s+", " ");
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
@@ -261,6 +294,20 @@ public class MainWindow extends UiPart<Stage> {
                 handleExit();
             }
 
+            if (commandResult.isAddSet()) {
+                setValue = getSetValue(commandText);
+                handleAddSet(setValue);
+            }
+
+            if (commandResult.isDelSet()) {
+                // System.out.println(commandResult.getFeedbackToUser());
+                handleDelSet(commandResult.getFeedbackToUser());
+            }
+
+            if (commandResult.isClear()) {
+                handleClear();
+            }
+
             return commandResult;
         } catch (CommandException | ParseException e) {
             logger.info("Invalid command: " + commandText);
@@ -268,4 +315,5 @@ public class MainWindow extends UiPart<Stage> {
             throw e;
         }
     }
+
 }

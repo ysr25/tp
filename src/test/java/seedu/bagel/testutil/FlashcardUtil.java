@@ -32,6 +32,7 @@ public class FlashcardUtil {
         StringBuilder sb = new StringBuilder();
         sb.append(PREFIX_TITLE + flashcard.getTitle().fullTitle + " ");
         sb.append(PREFIX_DESC + flashcard.getDescription().value + " ");
+        sb.append(PREFIX_SET + flashcard.getFlashcardSet().value + " ");
         sb.append(PREFIX_LINK + flashcard.getLink().value + " ");
         flashcard.getTags().stream().forEach(
             s -> sb.append(PREFIX_TAG + s.tagName + " ")
