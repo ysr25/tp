@@ -9,6 +9,7 @@ import static seedu.bagel.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.bagel.logic.commands.CommandTestUtil.INVALID_TITLE_DESC;
 import static seedu.bagel.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
 import static seedu.bagel.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
+import static seedu.bagel.logic.commands.CommandTestUtil.SET_DESC_BOB;
 import static seedu.bagel.logic.commands.CommandTestUtil.TAG_DESC_FRIEND;
 import static seedu.bagel.logic.commands.CommandTestUtil.TAG_DESC_HUSBAND;
 import static seedu.bagel.logic.commands.CommandTestUtil.TITLE_DESC_AMY;
@@ -40,22 +41,22 @@ public class AddCommandParserTest {
         Flashcard expectedFlashcard = new FlashcardBuilder(BOB).withTags(VALID_TAG_FRIEND).build();
 
         // whitespace only preamble
-        assertParseSuccess(parser, PREAMBLE_WHITESPACE + TITLE_DESC_BOB + DESC_DESC_BOB + TAG_DESC_FRIEND,
-                new AddCommand(expectedFlashcard));
+        assertParseSuccess(parser, PREAMBLE_WHITESPACE + TITLE_DESC_BOB + DESC_DESC_BOB + SET_DESC_BOB
+                        + TAG_DESC_FRIEND, new AddCommand(expectedFlashcard));
 
         // multiple word titles accepted
-        assertParseSuccess(parser, TITLE_DESC_AMY + TITLE_DESC_BOB + DESC_DESC_BOB + TAG_DESC_FRIEND,
-                new AddCommand(expectedFlashcard));
+        assertParseSuccess(parser, TITLE_DESC_AMY + TITLE_DESC_BOB + DESC_DESC_BOB + SET_DESC_BOB
+                        + TAG_DESC_FRIEND, new AddCommand(expectedFlashcard));
 
         // multiple word desc accepted
-        assertParseSuccess(parser, TITLE_DESC_BOB + DESC_DESC_AMY + DESC_DESC_BOB + TAG_DESC_FRIEND,
-                new AddCommand(expectedFlashcard));
+        assertParseSuccess(parser, TITLE_DESC_BOB + DESC_DESC_AMY + DESC_DESC_BOB + SET_DESC_BOB
+                        + TAG_DESC_FRIEND, new AddCommand(expectedFlashcard));
 
         // multiple tags - all accepted
         Flashcard expectedFlashcardMultipleTags = new FlashcardBuilder(BOB)
                 .withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND).build();
-        assertParseSuccess(parser, TITLE_DESC_BOB + DESC_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
-                new AddCommand(expectedFlashcardMultipleTags));
+        assertParseSuccess(parser, TITLE_DESC_BOB + DESC_DESC_BOB + TAG_DESC_HUSBAND + SET_DESC_BOB
+                        + TAG_DESC_FRIEND, new AddCommand(expectedFlashcardMultipleTags));
     }
 
     @Test
