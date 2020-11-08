@@ -37,6 +37,9 @@ public class SearchCommandParser implements Parser<SearchCommand> {
         }
 
         String keyword = argMultimap.getValue(PREFIX_KEYWORD).get();
+        if (keyword.isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SearchCommand.MESSAGE_USAGE));
+        }
 
         return new SearchCommand(keyword);
     }

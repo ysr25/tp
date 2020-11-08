@@ -43,12 +43,12 @@ public class EditCommand extends Command {
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_TITLE + "91234567 "
-            + PREFIX_DESC + "johndoe@example.com"
-            + PREFIX_SET + "1"
+            + PREFIX_DESC + "johndoe@example.com "
+            + PREFIX_SET + "1 "
             + PREFIX_TAG + "friend\n";
 
     public static final String MESSAGE_EDIT_FLASHCARD_SUCCESS = "Edited Flashcard: %1$s";
-    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
+    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.\n" + MESSAGE_USAGE;
     public static final String MESSAGE_DUPLICATE_FLASHCARD = "This flashcard already exists in Bagel.";
 
     private final Index index;
@@ -102,7 +102,14 @@ public class EditCommand extends Command {
         Link updatedLink = editFlashcardDescriptor.getLink().orElse(flashcardToEdit.getLink());
         FlashcardSet updatedFlashcardSet = editFlashcardDescriptor.getFlashcardSet()
                 .orElse(flashcardToEdit.getFlashcardSet());
-        Set<Tag> updatedTags = editFlashcardDescriptor.getTags().orElse(flashcardToEdit.getTags());
+
+        Set<Tag> updatedTags = new HashSet<>();
+        editFlashcardDescriptor.getTags().ifPresentOrElse(newTags -> {
+            if (newTags.size() != 0) {
+                updatedTags.addAll(newTags);
+                updatedTags.addAll(flashcardToEdit.getTags());
+            }
+        }, () -> updatedTags.addAll(flashcardToEdit.getTags()));
 
         return new Flashcard(updatedTitle, updatedDescription, updatedLink, updatedFlashcardSet, updatedTags);
     }

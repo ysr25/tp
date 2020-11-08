@@ -23,7 +23,7 @@ public class SortCommand extends Command {
             + "List can be sorted by title or by tag.\n"
             + "Sorting by title sorts via alphabetical order, while "
             + "sorting by tag sorts by the first tag of the flashcard.\n"
-            + "Parameters: [" + PREFIX_REQ + "REQUIREMENT] "
+            + "Parameters: [" + PREFIX_REQ + "REQUIREMENT] \n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_REQ + "title\n";
 

@@ -33,6 +33,7 @@ public class EditFlashcardDescriptorBuilder {
         descriptor.setTitle(flashcard.getTitle());
         descriptor.setDescription(flashcard.getDescription());
         descriptor.setLink(flashcard.getLink());
+        descriptor.setFlashcardSet(flashcard.getFlashcardSet());
         descriptor.setTags(flashcard.getTags());
     }
 

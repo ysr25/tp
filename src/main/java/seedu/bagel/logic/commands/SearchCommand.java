@@ -3,11 +3,11 @@ package seedu.bagel.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.bagel.logic.parser.CliSyntax.PREFIX_KEYWORD;
 
+import java.util.Set;
 import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import seedu.bagel.logic.commands.exceptions.CommandException;
 import seedu.bagel.model.Model;
 import seedu.bagel.model.flashcard.Flashcard;
 import seedu.bagel.model.tag.Tag;
@@ -22,7 +22,7 @@ public class SearchCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Searches the flashcard by keyword from displayed flashcard list.\n"
             + "Parameters: " + PREFIX_KEYWORD + "KEYWORD\n"
-            + "Example: " + COMMAND_WORD + " " + PREFIX_KEYWORD + "GER";
+            + "Example: " + COMMAND_WORD + " " + PREFIX_KEYWORD + "types";
 
     public static final String MESSAGE_SEARCH_FLASHCARD_SUCCESS = "Result of search: %s";
 
@@ -33,14 +33,12 @@ public class SearchCommand extends Command {
     }
 
     private boolean has_matching_tag(Flashcard flashcard, String keyword) {
-        boolean is_find = false;
         for (Tag tag : flashcard.getTags()) {
             if (tag.tagName.toLowerCase().contains(keyword.toLowerCase())) {
-                is_find = true;
-                break;
+                return true;
             }
         }
-        return is_find;
+        return false;
     }
 
     private boolean has_matching_title(Flashcard flashcard, String keyword) {
@@ -62,7 +60,7 @@ public class SearchCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model) throws CommandException {
+    public CommandResult execute(Model model) {
         requireNonNull(model);
         assert true; // required for week 10 tP
         Logger logger = Logger.getLogger("logger"); // required for week 10 tP
