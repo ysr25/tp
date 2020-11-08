@@ -1,11 +1,9 @@
 package seedu.bagel.logic.commands;
-//import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
+
 import static seedu.bagel.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.bagel.testutil.TypicalFlashcards.getTypicalBagel;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import javafx.collections.ObservableList;
 import seedu.bagel.model.Model;
