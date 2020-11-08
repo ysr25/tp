@@ -3,13 +3,12 @@ package seedu.bagel.ui;
 import java.util.List;
 
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 
-public class SideBar extends UiPart<ScrollPane> {
+public class SideBar extends UiPart<Region> {
 
     private static final String FXML = "SideBar.fxml";
 
@@ -21,9 +20,6 @@ public class SideBar extends UiPart<ScrollPane> {
      */
     public SideBar() {
         super(FXML);
-        this.buttonBar.setFillWidth(true);
-        this.buttonBar.setSpacing(10);
-        this.buttonBar.setPadding(new Insets(10, 0, 0, 0));
     }
 
     /**
