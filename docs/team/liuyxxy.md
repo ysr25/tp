@@ -24,7 +24,7 @@ Given below are my contributions to the project.
   * Managed releases `v1.1` - `v1.3` (3 releases) on GitHub
 
 * **Enhancements to existing features**:
-  * Replaced the original model in AB3 to Flashcard models. (Pull request [\#44]())
+  * Replaced the original model in AB3 to Flashcard models. (Pull request [\#42]())
 
 * **Documentation**:
   * User Guide:
