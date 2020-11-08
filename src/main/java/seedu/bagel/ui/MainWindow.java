@@ -139,6 +139,7 @@ public class MainWindow extends UiPart<Stage> {
 
         this.sideBar = new SideBar();
         sidebarPlaceholder.setContent(sideBar.getRoot());
+        loadSetButtons();
     }
 
     /**
@@ -206,8 +207,8 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     public void setUpButton(Button button, String imgUrl, EventHandler<ActionEvent> event) {
-        button.setLayoutX(20);
-        button.setLayoutY(65);
+        //button.setLayoutX(20);
+        //button.setLayoutY(65);
         button.setMnemonicParsing(false);
         button.setPrefWidth(70);
         button.setId(button.getText());
@@ -231,7 +232,7 @@ public class MainWindow extends UiPart<Stage> {
     public void setUpSetButton(Button setButton) {
         String setImgUrl = "images/set.png";
         EventHandler<ActionEvent> setEvent = event -> {
-            String commandText = "view s/" + setButton.getText();
+            String commandText = "list s/" + setButton.getText();
             try {
                 executeCommand(commandText);
             } catch (CommandException | ParseException e) {
