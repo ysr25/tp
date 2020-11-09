@@ -139,9 +139,6 @@ public class ModelManager implements Model {
     @Override
     public void sortFlashcardList(Comparator<Flashcard> comparator) {
         requireNonNull(comparator);
-        if (filteredFlashcards.size() < bagel.getFlashcardList().size()) {
-            System.out.println("HI");
-        }
         ObservableList<Flashcard> sortedList = bagel.getFlashcardList().sorted(comparator);
         bagel.setFlashcards(sortedList);
     }
