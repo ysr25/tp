@@ -6,7 +6,6 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.bagel.model.flashcard.Flashcard;
-import seedu.bagel.model.flashcard.FlashcardSet;
 import seedu.bagel.model.flashcard.SetOfFlashcardSets;
 import seedu.bagel.model.flashcard.UniqueFlashcardList;
 
@@ -31,7 +30,8 @@ public class Bagel implements ReadOnlyBagel {
         setOfFlashcardSets = new SetOfFlashcardSets();
     }
 
-    public Bagel() {}
+    public Bagel() {
+    }
 
     /**
      * Creates a Bagel using the Flashcards in the {@code toBeCopied}

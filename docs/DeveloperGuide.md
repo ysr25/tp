@@ -23,9 +23,9 @@ This describes the software architecture and software decisions for the implemen
 of this document is the developers, designers, and software testers of Bagel.
 
 ### Overview
-This document focuses on 2 major parts: design and implementation. Under the Design section, you can find details of 
-the system architecture. Under the Implementation section, you can find details of the implementation of some of the 
-commands used in Bagel. In addition to the current document, separate documents and guides on how to use or test Bagel 
+This document focuses on 2 major parts: design and implementation. Under the Design section, you can find details of
+the system architecture. Under the Implementation section, you can find details of the implementation of some of the
+commands used in Bagel. In addition to the current document, separate documents and guides on how to use or test Bagel
 have been included under the Documentation section of this document.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -37,12 +37,6 @@ have been included under the Documentation section of this document.
 <img src="images/ArchitectureDiagram.png" width="450" />
 
 The ***Architecture Diagram*** given above explains the high-level design of the App. Given below is a quick overview of each component.
-
-<div markdown="span" class="alert alert-primary">
-
-:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/AY2021S1-CS2103T-W13-2/tp/tree/master/docs/diagrams) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
-
-</div>
 
 **`Main`** has two classes called [`Main`](https://github.com/AY2021S1-CS2103T-W13-2/tp/blob/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2021S1-CS2103T-W13-2/tp/blob/master/src/main/java/seedu/address/MainApp.java). It is responsible for,
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
@@ -123,12 +117,6 @@ The `Model`,
 * exposes an unmodifiable `ObservableList<Flashcard>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
 
-**Note:** An alternative (arguably, a more OOP) model is given below.
-It has a `Tag` list in the `Bagel`, which `Flashcard` references.
-This allows `Bagel` to only require one `Tag` object per unique `Tag`, instead of each
-`Flashcard` needing their own `Tag` object.
-![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
-
 ### Storage component
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
@@ -149,10 +137,13 @@ Classes used by multiple components are in the `seedu.bagel.commons` package.
 This section describes some noteworthy details on how certain features are implemented.
 
 ### Search feature
+
+#### Implementation
+
 This mechanism makes use of the unmodifiable `ObservableList<Flashcard>` in `Model`. It filters the given list by searching
 for the flashcard that matches the given keyword.
 
-The following sequence diagrams show how the edit operation works.
+The following sequence diagrams show how the search operation works.
 
 ![Sequence Diagram for Search Command in Logic Component](images/SearchSequenceDiagram.png)
 
@@ -175,12 +166,44 @@ The following sequence diagrams show how the edit operation works.
   * Cons: More code to write.
 
 I chose alternative 1, because only field for search command is `keyword` and amount of responsibilities for `SearchCommand` will not increase a lot.
-  
+
 ### View feature
-This mechanism makes use of the unmodifiable `ObservableList<Flashcard>` in `Model`. It filters the given list by searching
+
+#### Implementation
+
+This mechanism makes use of the unmodifiable `ObservableList<Flashcard>` in `Model`. It filters the given list by searching for
 for the flashcard that matches the given index.
 
 *diagram to be included*
+
+### List feature
+
+#### Implementation
+
+This mechanism makes use of the unmodifiable `ObservableList<Flashcard>` in `Model`. It filters the list based on the parameters passed with the command word `list`.
+
+
+Its implementation is similar to that of the *Search* feature, with the difference being in point 4.
+* If there are no parameters passed with the command `list`, `ListCommand ` calls `updateFilteredFlashcardList()` with predicate `PREDICATE_SHOW_ALL_FLASHCARDS`.
+* If a parameter is passed with the command, for example `list s/2`, `ListCommand` calls `updateFilteredFlashcardList()` with predicate `predicateShowFlashcardsInSet`.
+
+The following sequence diagram shows how the list operation works with parameters.
+
+![Sequence Diagram for List Command in Logic Component](images/ListSequenceDiagram.png)
+
+#### Design consideration
+
+##### Aspect: How to parse the parameters passed with the `list` command
+* **Alternative 1:** Pass it into the ListCommand class directly.
+  * Pros: Easier to implement.
+  * Cons: `ListCommand` has more responsibilities, such as to parse the presence of parameters.
+
+* **Alternative 2 (current choice):** Create a `ListCommandParser` to parse parameters if there are any.
+  * Pros: Delegates the different responsibilities to each class.
+  * Cons: More code to write, as the original implementation of the `list` command in AB3 did not allow parameters to be passed.
+
+I chose alternative 2, because even though the increase in responsibility for `ListCommand` is rather minimal, parsing of parameters should still be separated from execution of commands.
+
 
 ### Edit Feature
 

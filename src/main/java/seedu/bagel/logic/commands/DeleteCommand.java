@@ -9,6 +9,7 @@ import seedu.bagel.commons.core.index.Index;
 import seedu.bagel.logic.commands.exceptions.CommandException;
 import seedu.bagel.model.Model;
 import seedu.bagel.model.flashcard.Flashcard;
+import seedu.bagel.model.flashcard.FlashcardSet;
 
 /**
  * Deletes a flashcard identified using it's displayed index from Bagel.
@@ -39,9 +40,18 @@ public class DeleteCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_FLASHCARD_DISPLAYED_INDEX);
         }
 
-        Flashcard flashcardToDelete = lastShownList.get(targetIndex.getZeroBased());
-        model.deleteFlashcard(flashcardToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_FLASHCARD_SUCCESS, flashcardToDelete));
+        Flashcard toDelete = lastShownList.get(targetIndex.getZeroBased());
+        FlashcardSet toDeleteSet = toDelete.getFlashcardSet();
+        String toDeleteSetVal = toDeleteSet.value;
+
+        model.deleteFlashcard(toDelete);
+
+        if (model.hasFlashcardSet(toDeleteSet)) {
+            // System.out.println("Set of deleted flashcard is not empty");
+            return new CommandResult(String.format(MESSAGE_DELETE_FLASHCARD_SUCCESS, toDelete));
+        }
+        // System.out.println("No more flashcards left in current set");
+        return new CommandResult(toDeleteSetVal, false, false, true);
     }
 
     @Override

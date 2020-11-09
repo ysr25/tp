@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.bagel.logic.parser.CliSyntax.PREFIX_DESC;
 import static seedu.bagel.logic.parser.CliSyntax.PREFIX_LINK;
+import static seedu.bagel.logic.parser.CliSyntax.PREFIX_SET;
 import static seedu.bagel.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.bagel.logic.parser.CliSyntax.PREFIX_TITLE;
 import static seedu.bagel.testutil.Assert.assertThrows;
@@ -29,6 +30,8 @@ public class CommandTestUtil {
     public static final String VALID_TITLE_BOB = "Bob Choo";
     public static final String VALID_DESC_AMY = "11111111";
     public static final String VALID_DESC_BOB = "22222222";
+    public static final String VALID_SET_AMY = "2";
+    public static final String VALID_SET_BOB = "1";
     public static final String VALID_LINK_BOB = "https://www.google.com/";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
@@ -38,11 +41,15 @@ public class CommandTestUtil {
     public static final String DESC_DESC_AMY = " " + PREFIX_DESC + VALID_DESC_AMY;
     public static final String DESC_DESC_BOB = " " + PREFIX_DESC + VALID_DESC_BOB;
     public static final String LINK_DESC_BOB = " " + PREFIX_LINK + VALID_LINK_BOB;
+
+    public static final String SET_DESC_AMY = " " + PREFIX_SET + VALID_SET_AMY;
+    public static final String SET_DESC_BOB = " " + PREFIX_SET + VALID_SET_BOB;
     public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
 
     public static final String INVALID_TITLE_DESC = " " + PREFIX_TITLE + "  ";
     public static final String INVALID_DESC_DESC = " " + PREFIX_DESC + "   ";
+    public static final String INVALID_SET_DESC = " " + PREFIX_SET + "abc*";
     public static final String INVALID_LINK_DESC = " " + PREFIX_LINK + "h";
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
 
@@ -54,9 +61,10 @@ public class CommandTestUtil {
 
     static {
         DESC_AMY = new EditFlashcardDescriptorBuilder().withTitle(VALID_TITLE_AMY)
-                .withDescription(VALID_DESC_AMY).withTags(VALID_TAG_FRIEND).build();
+                .withDescription(VALID_DESC_AMY).withSet(VALID_SET_AMY).withTags(VALID_TAG_FRIEND).build();
         DESC_BOB = new EditFlashcardDescriptorBuilder().withTitle(VALID_TITLE_BOB)
-                .withDescription(VALID_DESC_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
+                .withDescription(VALID_DESC_BOB).withSet(VALID_SET_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
+                .build();
     }
 
     /**
@@ -102,7 +110,7 @@ public class CommandTestUtil {
         assertEquals(expectedFilteredList, actualModel.getFilteredFlashcardList());
     }
     /**
-     * Updates {@code model}'s filtered list to show only the person at the given {@code targetIndex} in the
+     * Updates {@code model}'s filtered list to show only the flashcard at the given {@code targetIndex} in the
      * {@code model}'s bagel.
      */
     public static void showFlashcardAtIndex(Model model, Index targetIndex) {
