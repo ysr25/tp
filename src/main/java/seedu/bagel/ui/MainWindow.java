@@ -4,12 +4,20 @@ import java.util.logging.Logger;
 
 import javafx.application.HostServices;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextInputControl;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import seedu.bagel.commons.core.GuiSettings;
 import seedu.bagel.commons.core.LogsCenter;
@@ -17,6 +25,7 @@ import seedu.bagel.logic.Logic;
 import seedu.bagel.logic.commands.CommandResult;
 import seedu.bagel.logic.commands.exceptions.CommandException;
 import seedu.bagel.logic.parser.exceptions.ParseException;
+import seedu.bagel.model.flashcard.FlashcardSet;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -35,6 +44,7 @@ public class MainWindow extends UiPart<Stage> {
     // Independent Ui parts residing in this Ui container
     private FlashcardListPanel flashcardListPanel;
     private ResultDisplay resultDisplay;
+    private SideBar sideBar;
     private HelpWindow helpWindow;
 
     @FXML
@@ -42,6 +52,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private MenuItem helpMenuItem;
+
+    @FXML
+    private ScrollPane sidebarPlaceholder;
 
     @FXML
     private StackPane flashcardListPanelPlaceholder;
@@ -124,6 +137,54 @@ public class MainWindow extends UiPart<Stage> {
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+
+        this.sideBar = new SideBar();
+        sidebarPlaceholder.setContent(sideBar.getRoot());
+        loadSetButtons();
+    }
+
+    /**
+     * Adds set buttons for existing sets.
+     */
+    void loadSetButtons() {
+        if (logic.hasSet()) {
+            for (FlashcardSet set : logic.getSets()) {
+                handleAddSet(set.value);
+            }
+        }
+    }
+
+    /**
+     * Adds a new set button.
+     */
+    @FXML
+    private void handleAddSet(String setValue) {
+        Button setButton = new Button(setValue);
+        setUpSetButton(setButton);
+    }
+
+    /**
+     * Deletes an existing set button.
+     */
+    @FXML
+    private void handleDelSet(String setValue) {
+        for (Node setButton : this.sideBar.getButtons()) {
+            // System.out.println("handle del set");
+            if (setButton.getId().equals(setValue)) {
+                // System.out.println(setButton.getId());
+                // System.out.println(setValue);
+                sideBar.deleteButton(setButton);
+                break;
+            }
+        }
+    }
+
+    /**
+     * Deletes all existing set buttons.
+     */
+    @FXML
+    private void handleClear() {
+        this.sideBar.clearAllButtons();
     }
 
     /**
@@ -170,6 +231,48 @@ public class MainWindow extends UiPart<Stage> {
         return flashcardListPanel;
     }
 
+    public void setUpButton(Button button, String imgUrl, EventHandler<ActionEvent> event) {
+        //button.setLayoutX(20);
+        //button.setLayoutY(65);
+        button.setMnemonicParsing(false);
+        button.setPrefWidth(70);
+        button.setId(button.getText());
+        //System.out.println(button.getText());
+
+        Image image = new Image(imgUrl);
+        ImageView imageView = new ImageView(image);
+        imageView.setFitHeight(15);
+        imageView.setFitWidth(15);
+        imageView.setPickOnBounds(true);
+        imageView.setPreserveRatio(true);
+
+        button.setGraphic(imageView);
+        VBox.setMargin(sidebarPlaceholder, new Insets(10));
+        button.setOnAction(event);
+        sideBar.addButton(button);
+
+    }
+
+    /**
+     * Sets up the newly created set button.
+     */
+    public void setUpSetButton(Button setButton) {
+        String setImgUrl = "images/set.png";
+        EventHandler<ActionEvent> setEvent = event -> {
+            String commandText = "list s/" + setButton.getText();
+            try {
+                executeCommand(commandText);
+            } catch (CommandException | ParseException e) {
+                e.printStackTrace();
+            }
+        };
+        setUpButton(setButton, setImgUrl, setEvent);
+    }
+
+    private String getSetValue(String commandText) {
+        return commandText.split(" ")[3].split("/")[1].toUpperCase();
+    }
+
     /**
      * Executes the command and returns the result.
      *
@@ -177,6 +280,8 @@ public class MainWindow extends UiPart<Stage> {
      */
     private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
         try {
+            String setValue;
+            commandText = commandText.replaceAll("\\s+", " ");
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
@@ -189,6 +294,20 @@ public class MainWindow extends UiPart<Stage> {
                 handleExit();
             }
 
+            if (commandResult.isAddSet()) {
+                setValue = getSetValue(commandText);
+                handleAddSet(setValue);
+            }
+
+            if (commandResult.isDelSet()) {
+                // System.out.println(commandResult.getFeedbackToUser());
+                handleDelSet(commandResult.getFeedbackToUser());
+            }
+
+            if (commandResult.isClear()) {
+                handleClear();
+            }
+
             return commandResult;
         } catch (CommandException | ParseException e) {
             logger.info("Invalid command: " + commandText);
@@ -196,4 +315,5 @@ public class MainWindow extends UiPart<Stage> {
             throw e;
         }
     }
+
 }

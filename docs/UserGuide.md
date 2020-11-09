@@ -3,9 +3,9 @@ layout: page
 title: User Guide
 ---
 
-Bagel is a **desktop app for managing flashcards, optimized for use via a Command Line Interface** (CLI)
-while still having the benefits of a Graphical User Interface (GUI).
-If you can type fast, Bagel can manage your flashcards faster than traditional GUI apps.
+Bagel is a **desktop app for managing flashcards, optimized for your use via a Command Line Interface** (CLI)
+while still ensuring you the benefits of a Graphical User Interface (GUI).
+If you can type fast, Bagel will be sure to aid you in managing your flashcards faster than traditional GUI apps.
 
 ### Table of Contents
 {:.no_toc}
@@ -30,9 +30,9 @@ If you can type fast, Bagel can manage your flashcards faster than traditional G
     * `clear` : Clears all flashcard entries.
     * `delete 3` : Deletes the 3rd flashcard shown in the currently displayed flashcard list.
     * `view 3` : Shows the 3rd flashcard shown in the currently displayed flashcard list.
-    * `edit 2 t/New title` : Edits the title of 2nd flashcard of the currently displayed flashcard list to become 'New title'.
+    * `edit 2 t/new title` : Edits the title of 2nd flashcard of the currently displayed flashcard list to become 'New title'.
     * `flip` : Flips from the current flashcard to next flashcard in the list.
-    * `search k/Keyword`: Searches for flashcards that have the matching title or description.
+    * `search k/keyword`: Searches for flashcards that have the matching title or description.
     * `sort r/atitle`: Sorts the flashcard list according to title, in ascending order.
     * `exit` : Exits the app.<br>
 
@@ -70,7 +70,8 @@ only the last parameter supplied will be considered.
 
 ### View help: `help`
 
-Shows a message for link to available commands that you can use, with format and examples (i.e. User Guide).
+Entering help will show you a message for a link to available commands that you can use, with format and examples (i.e. User Guide). Be sure to enter
+this command first if you're new to Bagel to maximise your efficiency in using Bagel!
 
 ![help message](images/helpMessage.png)
 
@@ -79,28 +80,25 @@ Format: `help`
 
 ### Adding a flashcard: `add`
 
-Adds a flashcard to the total list of flashcards.
+This command will add a new flashcard to your current list of flashcards, into the set that you have specified.
 
-Format: `add t/TITLE d/DESCRIPTION [s/SET] [l/LINK] [tag/TAG]…​`
+Format: `add t/TITLE d/DESCRIPTION s/SET [l/LINK] [tag/TAG]…​`
 
-* Adds a flashcard with a title and description.
-* Title and description must be entered.
-* An optional set number (a positive integer between 1 and 99) can be added. By default (i.e. without `s/SET`),
-all flashcards are added into set `1`.
-* An optional link can be added. It should:
+* Adds a flashcard with a title, description into a set.
+* Title, description and set number (a positive integer between 1 and 99) must be entered.
+* You can even add an optional lin. It should:
   * Have a protocol e.g. `https://example.com` instead of `example.com`.
   * Be absolute e.g. `file:///GER1000/example.png` instead of `file://example.png`.
-  * Even if a URL is valid, it may not open, e.g. if the file does not exist.
+  * Beware! Even if a URL is valid, it may not open, e.g. if the file does not exist.
 
 <div markdown="block" class="alert alert-info">
-**:information_source: Notes about the command format:**<br>
-* Flashcards with different titles but same descriptions can still be added.
-* Flashcards that are identical can be added to different sets.
+**:information_source: Helpful notes about the command format:**<br>
+Flashcards with different titles but same descriptions can still be added.
 </div>
 
 Examples:
-* `add t/p-value d/If p value < 0.05, xxxx; Else, xxxx` adds a new flashcard with the title `p-value`,
-description `If p value < 0.05, xxxx; Else, xxxx` into default set `1`.
+* `add t/p-value d/If p value < 0.05, xxxx; Else, xxxx s/1` adds a new flashcard with the title `p-value`,
+description `If p value < 0.05, xxxx; Else, xxxx` into set `1`.
 * `add t/Data Analysis d/Definition of data analysis: xxxxxx s/2` adds a new flashcard with the title `Data Analysis`,
 description `Definition of data analysis: xxxxxx` into set `2`.
 * `add t/dds Ratio(OR) and Risk Ratio(RR) d/R: odds(exp)/odds(unexp), RR: risk(exp)/risk(unexp) s/3 tag/OddsRatio`
@@ -114,20 +112,32 @@ link `https://en.wikipedia.org/wiki/Observational_study tag/Types` with the tags
 
 ### Clearing all flashcard entries: `clear`
 
-Clears all flashcard entries from Bagel.
+This command will clear all the flashcards that you currently have stored in Bagel.
 
 Format: `clear`
+
+<div markdown="block" class="alert alert-info">
+**:information_source: Warning:**<br>
+Once you remove your flashcards, there is no way to undo this and retrieve your data! Be sure you kept a copy of your file somewhere else, or be sure
+that you would like to delete all your data!
+</div>
 
 
 ### Deleting a flashcard: `delete`
 
-Deletes the specified flashcard from the total list of flashcards.
+This command will deletes the specific flashcard that you specified from your list of flashcards.
 
 Format: `delete INDEX`
 
 * Deletes the flashcard at the specified `INDEX`.
 * The index refers to the index number shown in the displayed flashcards list.
 * The index **must be a positive integer** 1, 2, 3, …
+
+<div markdown="block" class="alert alert-info">
+**:information_source: Warning:**<br>
+Once you delete a flashcard, there is no way to undo this and retrieve it! Be sure you kept a copy of your file somewhere else, or be sure
+that you would like to delete this specific flashcard!
+</div>
 
 
 ### Editing a flashcard: `edit`
@@ -249,8 +259,8 @@ while adding flashcards, and to prevent confusion.
 
 * __Mainstream OS__: Windows, Linux, Unix, OS-X
 
-* __Set__: It acts similarly to a folder in the real world. If you want to categorize your flashcards, you can make use of 
-the 'set' feature to place each flashcard into different sets.
+* __Set__: It acts similarly to a folder in the real world. To categorize your flashcards, and maximise your efficiency,
+do be sure to make use of the 'set' feature to place flashcards into different sets.
 
 
 --------------------------------------------------------------------------------------------------------------------
