@@ -136,6 +136,52 @@ Classes used by multiple components are in the `seedu.bagel.commons` package.
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Add Feature
+
+#### Implementation
+
+The add feature is facilitated by LogicManager and ModelManager. The add command supports the following inputs from the user:
+* `t/TITLE`
+* `d/DESCRIPTION`
+* `s/SET`
+* `l/LINK`
+* `tag/TAG`
+
+Title and Description are mandatory inputs while the rest are optional inputs. When the user adds a flashcard, the user’s inputs
+will be passed on to ParserUtil. ParserUtil will conduct input validation and trim any leading and trailing whitespaces.
+If the user’s inputs are valid and there are no duplicate flashcard, a Flashcard object will be created and added to the UniqueFlashcardList and setOfFlashcardSets in Bagel.
+Otherwise ParseException will be thrown and the relevant error message will be displayed to the user.
+
+It implements the following operations:
+
+AddCommand#execute() - Add the flashcard to the ModelManager and setOfFlashcardSets
+AddCommandParser#parse(String args) - Conduct input validation and parse user’s input
+
+The following activity diagram summarizes what happens when a user executes the clear command.
+
+![ClearActivityDiagram](images/AddActivityDiagram.png)
+
+The following sequence diagrams show how the add operation works.
+
+![Sequence Diagram for Add Command in Logic Component](images/AddSequenceDiagram.png)
+
+Given below is an example usage scenario and how the add feature behaves at each step.
+
+1. The user executes `add t/New Title d/New Desc s/1` to add a flashcard of the title `New Title` and description `New Desc` into set `1`.
+2. `BagelParser` creates an `AddCommandParser` and calls its parse method, ParserUtil#parseTitle, ParserUtil#parseDescription,
+ParserUtil#parseSet, (ParserUtil#parseLink, ParserUtil#parseTags if necessary), with the arguments passed in by the user to check for input validation (no duplicate flashcard in Bagel).
+3. If validation is successful, `AddCommandParser` calls the constructor of Flashcard and creates a flashcard. Consequently, a new AddCommand with the flashcard as the parameter is created.
+4. LogicManager then calls AddCommand#execute(Model model).
+5. AddCommand then add a flashcard to the flashcard list by calling Model#addFlashcard.
+6. A CommandResult is generated and Model updates the filteredFlashcardList by adding the flashcard which is then updated in the UI.
+7. If the set that the newly created flashcard is empty, a button is created in the UI side bar.
+
+#### Design considerations
+
+* **Current implementation:** Flashcard is saved in Bagel upon creation.
+  * Pros: Easy to implement and CLI-optimized.
+  * Cons: Could become more complicated in the future as there will be too many prefixes for the `add` command to parse.
+  
 ### Search feature
 
 #### Implementation
@@ -181,7 +227,6 @@ for the flashcard that matches the given index.
 #### Implementation
 
 This mechanism makes use of the unmodifiable `ObservableList<Flashcard>` in `Model`. It filters the list based on the parameters passed with the command word `list`.
-
 
 Its implementation is similar to that of the *Search* feature, with the difference being in point 4.
 * If there are no parameters passed with the command `list`, `ListCommand ` calls `updateFilteredFlashcardList()` with predicate `PREDICATE_SHOW_ALL_FLASHCARDS`.
@@ -264,6 +309,7 @@ The following sequence diagram shows how the list operation works with parameter
 #### Design consideration
 
 ##### Aspect: How to parse the parameters passed with the `list` command
+
 * **Alternative 1:** Pass it into the ListCommand class directly.
   * Pros: Easier to implement.
   * Cons: `ListCommand` has more responsibilities, such as to parse the presence of parameters.
@@ -273,7 +319,6 @@ The following sequence diagram shows how the list operation works with parameter
   * Cons: More code to write, as the original implementation of the `list` command in AB3 did not allow parameters to be passed.
 
 I chose alternative 2, because even though the increase in responsibility for `ListCommand` is rather minimal, parsing of parameters should still be separated from execution of commands.
-
 
 #### Design consideration
 
@@ -286,6 +331,48 @@ I chose alternative 2, because even though the increase in responsibility for `L
   * Pros: Easier to implement.
   * Cons: `EditCommand` will have more responsibilities.
 
+### Clear feature
+
+#### Implementation
+
+The following activity diagram summarizes what happens when a user executes the clear command.
+
+![ClearActivityDiagram](images/ClearActivityDiagram.png)
+
+The Clear mechanism will allow the user to delete all flashcards in their local hard drive (local Bagel).
+
+The implementation makes use of the `Model#setBagel` and `Bagel`. A new instance of `Bagel` without any existing flashcards will replace the users current `Bagel` in `Model`.
+
+##### Usage
+
+Given below is an example usage scenario and how the Clear feature behaves at each step.
+
+Step 1. The user executes `clear` command to clear all flashcards in his local QuickCache.
+
+Step 2. `ClearCommand#execute` will replace the current instance of `QuickCache` with a new empty instance of `QuickCache` through the `Model#setQuickCache` method.
+
+Step 3. After execution, `CommandResult` will contain a message indicating that it has cleared QuickCache.
+
+1. The user executes `clear` to clear all flashcards in their local Bagel.
+2. `ClearCommand#execute` will replace the current instance of `Bagel` with a new empty instance of `Bagel` through the `Model#setBagel` method.
+3. After execution, a `CommandResult` is generated and will contain a message indicating that it has successfully cleared Bagel.
+
+The following sequence diagram shows how the Clear mechanism works:
+
+![ClearSequenceDiagram](images/ClearSequenceDiagram.png)
+
+#### Design Considerations:
+
+##### Aspect: How to clear all the current flashcards in Bagel
+
+* **Alternative 1 (current choice):** Replaces the existing `Bagel` in model with a new `Bagel` that is empty.
+  * Pros: Easy to implement - minimizes the occurrence of bugs or remnant flashcards that failed deletion.
+  * Cons: Waste of resources/inefficient as a new `Bagel` instance needs to be created when a user wants to clear Bagel.
+
+* **Alternative 2:** Delete all the flashcards currently in Bagel by reiteration
+  * Pros: More efficient than alternative 1 if there are only a few flashcards in Bagel at the moment of clearance.
+  * Cons: Rate of inefficiency increases exponentially with the number of flashcards added into Bagel.
+  
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**

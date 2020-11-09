@@ -31,9 +31,9 @@ Given below are my contributions to the project.
   * What it does: shows the user a message explaining how to access the help page.
   * Justification: This feature is a useful as users access the User Guide easily to find out about available commands they can use.
 
-  * **New Feature**: Added a side bar to the graphical user interface (GUI) that helps users navigate their flashcards by sets in Bagel.
-    * What it does: shows the user what sets they have added, buttons showing the sets will also vanish when sets are emptied or cleared.
-    * Justification: This feature is a useful as users view and navigate sets of flashcards they have added easily.
+* **New Feature**: Added a side bar to the graphical user interface (GUI) that helps users navigate their flashcards by sets in Bagel.
+  * What it does: shows the user what sets they have added, buttons showing the sets will also vanish when sets are emptied or cleared.
+  * Justification: This feature is a useful as users view and navigate sets of flashcards they have added easily.
 
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true)
 
