@@ -529,5 +529,9 @@ testers are expected to do more *exploratory* testing.
 
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-
+   1. Open the `bagel.json` file in `data` folder. If it does not exist, run the jar file and type `exit`.
+   
+   1. Edit the `bagel.json` file so that it contains invalid information. For example, add a space in a flashcard's tags.
+   
+   1. Re-launch the app.<br>
+      Expected: Bagel will start with no flashcards.
