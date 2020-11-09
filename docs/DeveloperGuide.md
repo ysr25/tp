@@ -228,7 +228,7 @@ This mechanism makes use of the modifiable `ObservableList` in `Bagel` itself, a
   * Pros: Better separation of concerns.
   * Cons: More code to write.
 
-I chose alternative 2, as this would lead to better separation of responsibilities and also leads to reduced repetitive code. 
+I chose alternative 2, as this would lead to better separation of responsibilities and also leads to reduced repetitive code.
 
 
 ### List feature
@@ -339,11 +339,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`    | user                                       | view a list of sets of flashcards that I currently have   | not mix them up                |
 | `* * *`      | user  | “flip” through a set of flashcards           | memorise them                                                 |
 | `* *`     |  user                             | tag flashcards        | revise a certain topic easily |
-| `* *` | forgetful user | search for flashcards | 
-| `* *` | user | sort my flashcards | keep the list organised | 
-| `* *` | user | add links to my flashcards | find the particular lecture slide/notes by clicking on it | 
-| `* *` | user | add flashcards to sets | memorise relevant flashcards together | 
-| `*` | first time user | view all possible commands | navigate the app easily | 
+| `* *` | forgetful user | search for flashcards |
+| `* *` | user | sort my flashcards | keep the list organised |
+| `* *` | user | add links to my flashcards | find the particular lecture slide/notes by clicking on it |
+| `* *` | user | add flashcards to sets | memorise relevant flashcards together |
+| `*` | first time user | view all possible commands | navigate the app easily |
 | `*` | user ready to start using the app | clear all flashcards | get rid of sample/experimental flashcards I used for exploring the app |
 
 ### Use cases
@@ -365,7 +365,7 @@ Use case ends.
     * 2a1. System requests for the correct data.
     * 2a2. User enters new details.<br>
     Steps 2a1-2a2 are repeated until the data entered are correct.
- 
+
 Use case resumes from step 3.
 
 
@@ -415,7 +415,7 @@ Use case resumes from step 4.
 
 Use case ends.
 
-**Extensions** 
+**Extensions**
 
 * 2a. Similar to extension of UC01.
 
@@ -426,7 +426,7 @@ Use case resumes from step 3.
 
 **MSS**
 
-Similar to UC04, except user enters relevant details for listing all flashcards. 
+Similar to UC04, except user enters relevant details for listing all flashcards.
 
 
 **Use case: UC06 - Flipping through flashcards**
@@ -453,23 +453,23 @@ Use case resumes from step 3/5.
 
 **MSS**
 
-Similar to UC04, except user enters relevant details for searching.  
+Similar to UC04, except user enters relevant details for searching.
 
 Use case resumes from step 3.
 
 
-**Use case: UC08 - Sorting flashcards** 
+**Use case: UC08 - Sorting flashcards**
 
-**MSS** 
+**MSS**
 
-Similar to UC04, except user enters relevant details for sort. 
+Similar to UC04, except user enters relevant details for sort.
 
 
 **Use case: UC09 - Clearing flashcards**
 
 **MSS**
 
-Similar to UC04, except user enters relevant details for clear. 
+Similar to UC04, except user enters relevant details for clear.
 
 
 ### Non-Functional Requirements
@@ -532,10 +532,3 @@ testers are expected to do more *exploratory* testing.
 
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
-
-### Saving data
-
-1. Dealing with missing/corrupted data files
-
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-
