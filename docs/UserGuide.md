@@ -70,7 +70,7 @@ only the last parameter supplied will be considered.
 
 ### Adding a flashcard: `add`
 
-This command will add a new flashcard to your current list of flashcards, into the set that you have specified.
+Want to make a new flashcard? This command will add a new flashcard to your current list of flashcards, into the set that you have specified.
 
 Format: `add t/TITLE d/DESCRIPTION s/SET [l/LINK] [tag/TAG]…​`
 
@@ -103,7 +103,7 @@ link `https://en.wikipedia.org/wiki/Observational_study` with the tags `Types` a
 
 ### Deleting a flashcard: `delete`
 
-This command will delete the specific flashcard that you specified from your list of flashcards.
+Don't want to see a flashcard anymore? This command will delete the specific flashcard that you specified from your list of flashcards.
 
 Format: `delete INDEX`
 
@@ -143,7 +143,7 @@ Examples:
 
 ### Viewing a flashcard: `view`
 
-This command shows you an existing flashcard in the currently displayed list.
+Want to memorise a flashcard? This command shows you an existing flashcard in the currently displayed list.
 
 Format: `view INDEX`
 
@@ -159,7 +159,7 @@ you would like to view.
 
 ### Listing all flashcards: `list`
 
-Shows a list of all flashcards created, or shows a list of all flashcards in a chosen set.
+Want to see all flashcards? This command shows you a list of all flashcards created, or shows a list of all flashcards in a chosen set.
 
 Format:
 * `list` to show all flashcards created
@@ -171,7 +171,7 @@ Example:
 
 ### Flipping through flashcards: `flip`
 
-Flips from the current flashcard to the next flashcard in the sequence.
+Want to flip through the list of flashcards? This command lets you flip from the current flashcard to the next flashcard in the sequence.
 * Flips through all flashcards in Bagel, one at a time.
 * If multiple flashcards are shown, the first flashcard at the top will be shown.
 * Once the end of the sequence is reached, the first flashcard will be shown again.
@@ -188,7 +188,7 @@ Examples:
 
 ### Searching through flashcards: `search`
 
-Searches for flashcards that have a matching title, description or tag with `KEYWORD` from all flashcards.
+Want to search for a flashcard? This command searches for flashcards that have a matching title, description or tag with `KEYWORD` from all flashcards.
 
 Format: `search k/KEYWORD`
 
@@ -202,7 +202,7 @@ Examples:
 
 ### Sorting flashcards: `sort`
 
-This command lets you sort the currently displayed flashcard according to a requirement.
+Don't like how your list looks? This command lets you sort the entire flashcard list according to a requirement.
 
 Format: `sort r/REQUIREMENT`
 
@@ -216,17 +216,22 @@ Examples:
 * `sort r/atitle` returns the list of flashcards, sorted in ascending alphabetical order.
 * `sort r/tag` returns the list of flashcards, sorted according to each flashcard's first tag.
 
+<div markdown="block" class="alert alert-info">
+**:information_source: Warning:**<br>
+This sorts all flashcards in Bagel! If you wish to view a set that is differently sorted
+from another set, `sort r/REQUIREMENT` again for that set.
+</div>
 
 ### Clearing all flashcard entries: `clear`
 
-Clears all flashcard entries from Bagel.
+Want to forget everything? This command clears all flashcard entries from Bagel.
 
 Format: `clear`
 
 
 ### View help: `help`
 
-Shows a message for link to available commands that you can use, with format and examples (i.e. User Guide).
+Need some help? This command shows a message for link to available commands that you can use, with format and examples (i.e. User Guide).
 
 ![help message](images/helpMessage.png)
 
@@ -235,7 +240,7 @@ Format: `help`
 
 ### Exiting the program: `exit`
 
-Exits the program.
+Say goodbye to Bagel! This command lets you exit the program.
 
 Format: `exit`
 
