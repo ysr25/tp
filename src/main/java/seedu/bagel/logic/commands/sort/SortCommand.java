@@ -28,6 +28,11 @@ public class SortCommand extends Command {
             + PREFIX_REQ + "atitle\n";
 
     public static final String MESSAGE_SUCCESS = "Sorted the list";
+    public static final String MESSAGE_SUCCESS_ASCENDING_TITLE = " by ascending title";
+    public static final String MESSAGE_SUCCESS_DESCENDING_TITLE = " by descending title";
+    public static final String MESSAGE_SUCCESS_TAG = " by tag";
+    public static final String MESSAGE_INVALID_REQUIREMENT = "This requirement does not exist.";
+
 
     private SortRequirement req;
 
@@ -46,11 +51,11 @@ public class SortCommand extends Command {
 
         String s = "";
         if (comparator instanceof SortByAscTitle) {
-            s = " by ascending title";
+            s = MESSAGE_SUCCESS_ASCENDING_TITLE;
         } else if (comparator instanceof SortByDescTitle) {
-            s = " by descending title";
+            s = MESSAGE_SUCCESS_DESCENDING_TITLE;
         } else {
-            s = " by tag";
+            s = MESSAGE_SUCCESS_TAG;
         }
 
         return new CommandResult(String.format(MESSAGE_SUCCESS + s));
@@ -81,8 +86,7 @@ public class SortCommand extends Command {
             case "tag":
                 return new SortByTag();
             default:
-                throw new CommandException(
-                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
+                throw new CommandException(MESSAGE_INVALID_REQUIREMENT);
             }
         }
     }
