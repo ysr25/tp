@@ -189,6 +189,7 @@ Example:
 ### Flipping through flashcards: `flip`
 
 Flips from the current flashcard to the next flashcard in the sequence.
+* Flips through all flashcards in Bagel, one at a time.
 * If multiple flashcards are shown, the first flashcard at the top will be shown.
 * Once the end of the sequence is reached, the first flashcard will be shown again.
 
