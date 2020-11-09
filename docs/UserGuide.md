@@ -68,14 +68,6 @@ only the last parameter supplied will be considered.
 </div>
 
 
-### View help: `help`
-
-Shows a message for link to available commands that you can use, with format and examples (i.e. User Guide).
-
-![help message](images/helpMessage.png)
-
-Format: `help`
-
 
 ### Adding a flashcard: `add`
 
@@ -110,13 +102,6 @@ with the tag `OddsRatio` into set `3`.
 l/https://en.wikipedia.org/wiki/Observational_study tag/Types tag/ObservationalStudies s/2` adds a new flashcard with 
 the title `Types of Observational Studies`, description `Prospective, Retrospective, Cross-sectional`,
 link `https://en.wikipedia.org/wiki/Observational_study tag/Types` with the tags `Types` and `ObservationalStudies` into set `2`.
-
-
-### Clearing all flashcard entries: `clear`
-
-Clears all flashcard entries from Bagel.
-
-Format: `clear`
 
 
 ### Deleting a flashcard: `delete`
@@ -160,8 +145,14 @@ Format: `view INDEX`
 * The index refers to the index number shown in the currently displayed flashcards list.
 * The index **must be a positive integer** 1, 2, 3, …
 
+<div markdown="block" class="alert alert-info">
+**:information_source: Notes about the command format:**<br>
+* To view another flashcard, enter `list` to go back to the entire list of flashcards. Then `view INDEX` of the next flashcard
+you would like to view. 
+</div>
 
-### Viewing all flashcards: `list`
+
+### Listing all flashcards: `list`
 
 Shows a list of all flashcards created, or shows a list of all flashcards in a chosen set.
 
@@ -220,6 +211,22 @@ Examples:
 * `sort r/tag` returns the list of flashcards, sorted according to each flashcard's first tag.
 
 
+### Clearing all flashcard entries: `clear`
+
+Clears all flashcard entries from Bagel.
+
+Format: `clear`
+
+
+### View help: `help`
+
+Shows a message for link to available commands that you can use, with format and examples (i.e. User Guide).
+
+![help message](images/helpMessage.png)
+
+Format: `help`
+
+
 ### Exiting the program: `exit`
 
 Exits the program.
@@ -251,7 +258,6 @@ Duplicate flashcards are disallowed, even if they have different links, set numb
 while adding flashcards, and to prevent confusion.
 
 
-
 --------------------------------------------------------------------------------------------------------------------
 
 ## Command summary
@@ -259,7 +265,6 @@ while adding flashcards, and to prevent confusion.
 Action | Format, Examples
 --------|------------------
 **Add** | `add t/TITLE d/DESCRIPTION [s/SET] [l/LINK] [tag/TAG]…`<br> e.g., `add t/Data Analysis d/The definition of Data Analysis is…`
-**Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit** | `edit INDEX [t/TITLE] [d/DESCRIPTION] [s/SET] [l/LINK] [tag/TAG]`<br> e.g.,`edit 1 t/Data analysis`
 **View** | `view INDEX`<br> e.g., `view 1`
@@ -267,5 +272,6 @@ Action | Format, Examples
 **Flip** | `flip`
 **Search** | `search [k/KEYWORD]` <br> e.g., `search k/Data`
 **Sort** | `sort r/REQUIREMENT` <br> e.g., `sort r/tag`
+**Clear** | `clear`
 **Help** | `help`
 **Exit** | `exit`
