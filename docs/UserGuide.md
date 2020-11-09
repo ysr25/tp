@@ -62,7 +62,7 @@ Refer to the [Features](#features) below for details of each command.
   e.g. if the command specifies `t/TITLE d/DESCRIPTION`, `d/DESCRIPTION t/TITLE` is also acceptable.
 
 * Although it is not recommended to supply duplicate parameters, they will still be accepted. However,
-only the last parameter supplied will be considered. 
+only the last parameter supplied will be considered.
   e.g. if the command entered is `add t/title 1 t/title 2 d/description`, the title of the flashcard added will be
   `title 2`, as only `t/title 2` will be considered.
 </div>
@@ -153,7 +153,7 @@ Format: `view INDEX`
 <div markdown="block" class="alert alert-info">
 **:information_source: Notes about the command format:**<br>
 * To view another flashcard, enter `list` to go back to the entire list of flashcards. Then `view INDEX` of the next flashcard
-you would like to view. 
+you would like to view.
 </div>
 
 
