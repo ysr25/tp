@@ -23,9 +23,9 @@ This describes the software architecture and software decisions for the implemen
 of this document is the developers, designers, and software testers of Bagel.
 
 ### Overview
-This document focuses on 2 major parts: design and implementation. Under the Design section, you can find details of 
-the system architecture. Under the Implementation section, you can find details of the implementation of some of the 
-commands used in Bagel. In addition to the current document, separate documents and guides on how to use or test Bagel 
+This document focuses on 2 major parts: design and implementation. Under the Design section, you can find details of
+the system architecture. Under the Implementation section, you can find details of the implementation of some of the
+commands used in Bagel. In addition to the current document, separate documents and guides on how to use or test Bagel
 have been included under the Documentation section of this document.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -166,7 +166,7 @@ The following sequence diagrams show how the search operation works.
   * Cons: More code to write.
 
 I chose alternative 1, because only field for search command is `keyword` and amount of responsibilities for `SearchCommand` will not increase a lot.
-  
+
 ### View feature
 
 #### Implementation

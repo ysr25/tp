@@ -60,7 +60,7 @@ Refer to the [Features](#features) below for details of each command.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `t/TITLE d/DESCRIPTION`, `d/DESCRIPTION t/TITLE` is also acceptable.
-  
+
 * Although it is not recommended to supply duplicate parameters, they will still be accepted. However,
 only the last parameter supplied will be considered. 
   e.g. if the command entered is `add t/title 1 t/title 2 d/description`, the title of the flashcard added will be
@@ -106,7 +106,7 @@ description `Definition of data analysis: xxxxxx` into set `2`.
 adds a new flashcard with the title `Odds Ratio(OR) and Risk Ratio(RR)`, description `R: odds(exp)/odds(unexp), RR: risk(exp)/risk(unexp)`
 with the tag `OddsRatio` into set `3`.
 * `add t/Types of Observational Studies d/Prospective, Retrospective, Cross-sectional
-l/https://en.wikipedia.org/wiki/Observational_study tag/Types tag/ObservationalStudies s/2` adds a new flashcard with 
+l/https://en.wikipedia.org/wiki/Observational_study tag/Types tag/ObservationalStudies s/2` adds a new flashcard with
 the title `Types of Observational Studies`, description `Prospective, Retrospective, Cross-sectional`,
 link `https://en.wikipedia.org/wiki/Observational_study` with the tags `Types` and `ObservationalStudies` into set `2`.
 
@@ -119,7 +119,7 @@ Format: `clear`
 
 <div markdown="block" class="alert alert-info">
 **:information_source: Warning:**<br>
-Once you remove your flashcards, there is no way to undo this and retrieve your data! Make sure that you have a copy of your file somewhere else, or 
+Once you remove your flashcards, there is no way to undo this and retrieve your data! Make sure that you have a copy of your file somewhere else, or
 that you would like to delete all your data!
 </div>
 
@@ -136,7 +136,7 @@ Format: `delete INDEX`
 
 <div markdown="block" class="alert alert-info">
 **:information_source: Warning:**<br>
-Once you delete a flashcard, there is no way to undo this and retrieve it! Make sure that you have a copy of your file somewhere else, or 
+Once you delete a flashcard, there is no way to undo this and retrieve it! Make sure that you have a copy of your file somewhere else, or
 that you would like to delete this specific flashcard!
 </div>
 
@@ -176,7 +176,7 @@ Format: `view INDEX`
 
 Shows a list of all flashcards created, or shows a list of all flashcards in a chosen set.
 
-Format: 
+Format:
 * `list` to show all flashcards created
 * `list s/SET_NUMBER` to show all flashcards in set `SET_NUMBER`
 
@@ -210,22 +210,22 @@ Format: `search k/KEYWORD`
 * The search is case-insensitive. For example, k/apple can search for "apple" and "APPLe".
 
 Examples:
-*  `search k/testing` returns `testing1`, `testing2` and `testing23` 
+*  `search k/testing` returns `testing1`, `testing2` and `testing23`
 ![search example](images/searchExample.png)
 
 
 ### Sorting flashcards: `sort`
 
-This command lets you sort the currently displayed flashcard according to a requirement. 
+This command lets you sort the currently displayed flashcard according to a requirement.
 
 Format: `sort r/REQUIREMENT`
 
-* Sorts the list by the specified requirement. 
+* Sorts the list by the specified requirement.
 * The requirement **must be one of the following**:
     * atitle (ascending alphabetical order)
     * dtitle (descending alphabetical order)
     * tag
-    
+
 Examples:
 * `sort r/atitle` returns the list of flashcards, sorted in ascending alphabetical order.
 * `sort r/tag` returns the list of flashcards, sorted according to each flashcard's first tag.
