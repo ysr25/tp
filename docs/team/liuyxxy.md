@@ -16,18 +16,25 @@ Given below are my contributions to the project.
   * Justification: This feature improves the product significantly because a user can focus on only one flashcard at a time, instead of being distracted by the entire list.
 
 * **New Feature**: Added the ability to sort flashcards.
-  * What it does: allows the user to sort the list of flashcards by title, in alphabetical order.
+  * What it does: allows the user to sort the list of flashcards by a given requirement.
+  * Justification: This feature allows users to be able to better organise the flashcards they have.
 
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true)
 
 * **Project management**:
-  * Managed releases `v1.1` - `v1.3` (3 releases) on GitHub
+  * Managed releases `v1.1` - `v1.4` (4 releases) on GitHub
 
 * **Enhancements to existing features**:
-  * Replaced the original model in AB3 to Flashcard models. (Pull request [\#42]())
+  * Replaced the original model in AB3 to Flashcard models. (Pull request [\#44](https://github.com/AY2021S1-CS2103T-W13-2/tp/pull/44))
 
 * **Documentation**:
   * User Guide:
-    * Added documentation for the features `view` and `sort`
+    * Added documentation for the features `view` and `sort` (Pull request [\#108](https://github.com/AY2021S1-CS2103T-W13-2/tp/pull/108))
+    * Added the FAQ section (Pull request [\#165](https://github.com/AY2021S1-CS2103T-W13-2/tp/pull/165))
   * Developer Guide:
-    * Added implementation details of the `view` and `sort` features.
+    * Added implementation details of the `view` and `sort` features. 
+    * Edited Use Case section in Appendix. [Commit](https://github.com/AY2021S1-CS2103T-W13-2/tp/commit/4a0e978adc7b0e4bb9cf558cdd3cca10b21f1c49#diff-1a95edf069a4136e9cb71bee758b0dc86996f6051f0d438ec2c424557de7160b)
+
+* **Community**:
+  * PRs reviewed (with non-trivial review comments): [\#279](https://github.com/nus-cs2103-AY2021S1/ip/pull/279), [\#169](https://github.com/nus-cs2103-AY2021S1/ip/pull/169),
+      [final iP peer evaluation #1](https://github.com/ChooJiaXin/ip/releases), [final iP peer evaluation #2](https://github.com/UncleGrandpa925/ip/releases)

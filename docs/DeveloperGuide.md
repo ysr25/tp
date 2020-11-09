@@ -238,6 +238,53 @@ The following sequence diagrams show how the edit operation works.
 * **Alternative 2:** Pass fields to be edited into `EditCommand` directly
   * Pros: Easier to implement.
   * Cons: `EditCommand` will have more responsibilities.
+  
+### View Feature
+
+#### Implementation
+
+This mechanism makes use of the unmodifiable `ObservableList<Flashcard>` in `Model`. It filters the list by making use of the predicate
+to filter out the desired flashcard.
+
+1. The user executes `search k/apple` to search flashcards that has matching title, description, or tag to the keyword in the list currently shown.
+2. `BagelParser` creates an `SearchCommandParser` and calls its parse method with the arguments passed in by the user.
+3. `SearchCommandParser` returns a new `SearchCommand` with the `keyword` to be searched.
+4. When its execute method is called, `SearchCommand` calls `updateFilteredFlashcardList()` with predicate, `searchFlashcard`.
+5. `Model` will update flashcards based on the predicate.
+7. The result of this command is returned.
+
+Its implementation is similar to that of the *Search* feature, with the difference being in point 4.
+* If there are no parameters passed with the command `list`, `ListCommand ` calls `updateFilteredFlashcardList()` with predicate `PREDICATE_SHOW_ALL_FLASHCARDS`.
+* If a parameter is passed with the command, for example `list s/2`, `ListCommand` calls `updateFilteredFlashcardList()` with predicate `predicateShowFlashcardsInSet`.
+
+The following sequence diagram shows how the list operation works with parameters.
+
+![Sequence Diagram for List Command in Logic Component](images/ListSequenceDiagram.png)
+
+#### Design consideration
+
+##### Aspect: How to parse the parameters passed with the `list` command
+* **Alternative 1:** Pass it into the ListCommand class directly.
+  * Pros: Easier to implement.
+  * Cons: `ListCommand` has more responsibilities, such as to parse the presence of parameters.
+
+* **Alternative 2 (current choice):** Create a `ListCommandParser` to parse parameters if there are any.
+  * Pros: Delegates the different responsibilities to each class.
+  * Cons: More code to write, as the original implementation of the `list` command in AB3 did not allow parameters to be passed.
+
+I chose alternative 2, because even though the increase in responsibility for `ListCommand` is rather minimal, parsing of parameters should still be separated from execution of commands.
+
+
+#### Design consideration
+
+##### Aspect: How to pass fields to be edited
+
+* **Alternative 1 (current choice):** Store fields in `EditFlashcardDescriptor` and pass it into `EditCommand`
+  * Pros: Better separation of concerns.
+  * Cons: More code to write.
+* **Alternative 2:** Pass fields to be edited into `EditCommand` directly
+  * Pros: Easier to implement.
+  * Cons: `EditCommand` will have more responsibilities.
 
 --------------------------------------------------------------------------------------------------------------------
 
