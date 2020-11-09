@@ -30,7 +30,7 @@ If you can type fast, Bagel will be sure to aid you in managing your flashcards 
     * `clear` : Clears all flashcard entries.
     * `delete 3` : Deletes the 3rd flashcard shown in the currently displayed flashcard list.
     * `view 3` : Shows the 3rd flashcard shown in the currently displayed flashcard list.
-    * `edit 2 t/new title` : Edits the title of 2nd flashcard of the currently displayed flashcard list to become 'New title'.
+    * `edit 2 t/new title` : Edits the title of 2nd flashcard of the currently displayed flashcard list to become 'new title'.
     * `flip` : Flips from the current flashcard to next flashcard in the list.
     * `search k/keyword`: Searches for flashcards that have the matching title or description.
     * `sort r/atitle`: Sorts the flashcard list according to title, in ascending order.
@@ -110,6 +110,7 @@ Format: `delete INDEX`
 * Deletes the flashcard at the specified `INDEX`.
 * The index refers to the index number shown in the displayed flashcards list.
 * The index **must be a positive integer** 1, 2, 3, …
+* If only one flashcard is shown, its `INDEX` is `1`.
 
 <div markdown="block" class="alert alert-info">
 **:information_source: Warning:**<br>
@@ -127,6 +128,7 @@ Format: `edit INDEX [t/TITLE] [d/DESCRIPTION] [s/SET] [l/LINK] [tag/TAG]…​`
 * Edits the flashcard at the specified `INDEX`.
 * The index refers to the index number shown in the displayed flashcard list.
 * The index **must be a positive integer** 1, 2, 3, …
+* If only one flashcard is shown, its `INDEX` is `1`.
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values. New tags will be added without replacing any of the old tags.
 * You can remove all the flashcard’s tags by typing `tag/` without specifying any tags after it.
@@ -170,6 +172,7 @@ Example:
 ### Flipping through flashcards: `flip`
 
 Flips from the current flashcard to the next flashcard in the sequence.
+* Flips through all flashcards in Bagel, one at a time.
 * If multiple flashcards are shown, the first flashcard at the top will be shown.
 * Once the end of the sequence is reached, the first flashcard will be shown again.
 
