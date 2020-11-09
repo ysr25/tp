@@ -30,7 +30,7 @@ If you can type fast, Bagel will be sure to aid you in managing your flashcards 
     * `clear` : Clears all flashcard entries.
     * `delete 3` : Deletes the 3rd flashcard shown in the currently displayed flashcard list.
     * `view 3` : Shows the 3rd flashcard shown in the currently displayed flashcard list.
-    * `edit 2 t/new title` : Edits the title of 2nd flashcard of the currently displayed flashcard list to become 'New title'.
+    * `edit 2 t/new title` : Edits the title of 2nd flashcard of the currently displayed flashcard list to become 'new title'.
     * `flip` : Flips from the current flashcard to next flashcard in the list.
     * `search k/keyword`: Searches for flashcards that have the matching title or description.
     * `sort r/atitle`: Sorts the flashcard list according to title, in ascending order.
