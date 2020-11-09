@@ -50,5 +50,4 @@ deactivate BagelParser
 
 [<--LogicManager
 deactivate LogicManager
-
 @enduml
