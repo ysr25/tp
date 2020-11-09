@@ -31,7 +31,6 @@ Given below are my contributions to the project.
 
   * Developer Guide:
     * Added implementation details of the `list` feature: [\#1](https://github.com/AY2021S1-CS2103T-W13-2/tp/commit/54b710106cc4279550325424a11be289090738e6)
-    
   * README:
     * Updated Bagel's README. [\#24](https://github.com/AY2021S1-CS2103T-W13-2/tp/commit/3b83902561b4328c1116a5d0b2a03680f2ecaba7)
 
