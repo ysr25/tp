@@ -1,7 +1,6 @@
 package seedu.bagel.logic.commands.sort;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.bagel.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.bagel.logic.parser.CliSyntax.PREFIX_REQ;
 
 import java.util.Comparator;
