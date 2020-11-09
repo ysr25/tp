@@ -23,7 +23,7 @@ Given below are my contributions to the project.
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true)
 
 * **Enhancements to existing features**:
-  * Replaced the half of the file related to storage in AB3 to work with Flashcard models. (Pull request [\#44]())
+  * Replaced the half of the file related to storage in AB3 to work with Flashcard models. (Pull request [\#42](https://github.com/AY2021S1-CS2103T-W13-2/tp/pull/42))
 
 * **Documentation**:
   * User Guide:
