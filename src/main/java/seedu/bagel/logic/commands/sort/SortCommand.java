@@ -43,6 +43,7 @@ public class SortCommand extends Command {
 
         Comparator<Flashcard> comparator = this.req.getSortComparator();
         model.sortFlashcardList(comparator);
+
         String s = "";
         if (comparator instanceof SortByAscTitle) {
             s = " by ascending title";
@@ -51,6 +52,7 @@ public class SortCommand extends Command {
         } else {
             s = " by tag";
         }
+
         return new CommandResult(String.format(MESSAGE_SUCCESS + s));
     }
 
