@@ -8,7 +8,6 @@ import static seedu.bagel.testutil.TypicalFlashcards.getTypicalBagel;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.bagel.commons.core.Messages;
 import seedu.bagel.logic.commands.sort.SortByAscTitle;
 import seedu.bagel.logic.commands.sort.SortByDescTitle;
 import seedu.bagel.logic.commands.sort.SortByTag;
@@ -21,17 +20,17 @@ import seedu.bagel.model.UserPrefs;
 public class SortCommandTest {
 
     private Model model = new ModelManager(getTypicalBagel(), new UserPrefs());
-    private final SortRequirement SORT_BY_ASCENDING_TITLE = new SortRequirement("atitle");
-    private final SortRequirement SORT_BY_DESCENDING_TITLE  = new SortRequirement("dtitle");
-    private final SortRequirement SORT_BY_TAG  = new SortRequirement("tag");
-    private final SortRequirement INVALID_SORT = new SortRequirement("invalid");
+    private SortRequirement sortByAscendingTitle = new SortRequirement("atitle");
+    private SortRequirement sortByDescendingTitle = new SortRequirement("dtitle");
+    private SortRequirement sortByTag = new SortRequirement("tag");
+    private SortRequirement invalidSort = new SortRequirement("invalid");
 
     // test sort with full list of flashcards
     @Test
     public void execute_sortUnfilteredListByAscendingTitle_success() {
         ModelManager expectedModel = new ModelManager(model.getBagel(), new UserPrefs());
 
-        SortCommand sortCommand = new SortCommand(SORT_BY_ASCENDING_TITLE);
+        SortCommand sortCommand = new SortCommand(sortByAscendingTitle);
         String expectedMessage = SortCommand.MESSAGE_SUCCESS
                 + SortCommand.MESSAGE_SUCCESS_ASCENDING_TITLE;
 
@@ -44,7 +43,7 @@ public class SortCommandTest {
     public void execute_sortUnfilteredListByDescendingTitle_success() {
         ModelManager expectedModel = new ModelManager(model.getBagel(), new UserPrefs());
 
-        SortCommand sortCommand = new SortCommand(SORT_BY_DESCENDING_TITLE);
+        SortCommand sortCommand = new SortCommand(sortByDescendingTitle);
         String expectedMessage = SortCommand.MESSAGE_SUCCESS
                 + SortCommand.MESSAGE_SUCCESS_DESCENDING_TITLE;
 
@@ -57,7 +56,7 @@ public class SortCommandTest {
     public void execute_sortUnfilteredListByTag_success() {
         ModelManager expectedModel = new ModelManager(model.getBagel(), new UserPrefs());
 
-        SortCommand sortCommand = new SortCommand(SORT_BY_TAG);
+        SortCommand sortCommand = new SortCommand(sortByTag);
         String expectedMessage = SortCommand.MESSAGE_SUCCESS
                 + SortCommand.MESSAGE_SUCCESS_TAG;
 
@@ -68,14 +67,14 @@ public class SortCommandTest {
 
     @Test
     public void execute_invalidRequirementUnfilteredList_throwsCommandException() {
-        SortCommand sortCommand = new SortCommand(INVALID_SORT);
+        SortCommand sortCommand = new SortCommand(invalidSort);
         assertCommandFailure(sortCommand, model, SortCommand.MESSAGE_INVALID_REQUIREMENT);
     }
 
     @Test
     public void equals() {
-        SortCommand sortFirstCommand = new SortCommand(SORT_BY_ASCENDING_TITLE);
-        SortCommand sortSecondCommand = new SortCommand(SORT_BY_DESCENDING_TITLE);
+        SortCommand sortFirstCommand = new SortCommand(sortByAscendingTitle);
+        SortCommand sortSecondCommand = new SortCommand(sortByDescendingTitle);
 
         // same object -> returns true
         assertTrue(sortFirstCommand.equals(sortFirstCommand));
