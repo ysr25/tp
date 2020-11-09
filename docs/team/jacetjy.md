@@ -25,16 +25,19 @@ Given below are my contributions to the project.
 
 * **Documentation**:
   * User Guide:
-    * Added documentation for the feature `list`: [\#72]()
-    * Did cosmetic tweaks to existing documentation of the feature `exit`: [\#74]()
-    * Added the Introduction section.
-    * Added the Glossary section.
+    * Added the Introduction section: [\#1](https://github.com/AY2021S1-CS2103T-W13-2/tp/commit/54b710106cc4279550325424a11be289090738e6)
+    * Added documentation for the feature `list`: [\#171](https://github.com/AY2021S1-CS2103T-W13-2/tp/pull/171/commits/e745bdcad24387a42a2f9ece32b869472e2eb61e)
+    * Added the Glossary section: [\#171](https://github.com/AY2021S1-CS2103T-W13-2/tp/pull/171/commits/e745bdcad24387a42a2f9ece32b869472e2eb61e)
 
   * Developer Guide:
-    * Added implementation details of the `list` feature.
+    * Added implementation details of the `list` feature: [\#1](https://github.com/AY2021S1-CS2103T-W13-2/tp/commit/54b710106cc4279550325424a11be289090738e6)
+    
+  * README:
+    * Updated Bagel's README. [\#24](https://github.com/AY2021S1-CS2103T-W13-2/tp/commit/3b83902561b4328c1116a5d0b2a03680f2ecaba7)
 
 * **Enhancements to existing features**:
-  * Replaced the original files in AB3 to Flashcard files (Util folder, Miscellaneous classes in Model folder).
+  * Replaced the original files in AB3 to Flashcard files (Util folder, Miscellaneous classes in Model folder). [\#37](https://github.com/AY2021S1-CS2103T-W13-2/tp/commit/6428ee71c7b49cfd4f2253bf4d2793e30fdf683f)
 
 * **Community**:
-  * PRs reviewed (with non-trivial review comments): [\#78](https://github.com/nus-cs2103-AY2021S1/ip/pull/78), [\#61](https://github.com/nus-cs2103-AY2021S1/ip/pull/61)
+  * PRs reviewed (with non-trivial review comments): [\#78](https://github.com/nus-cs2103-AY2021S1/ip/pull/78), [\#61](https://github.com/nus-cs2103-AY2021S1/ip/pull/61),
+  [final iP peer evaluation #1](https://github.com/xinyee20/ip/releases), [final iP peer evaluation #2](https://github.com/murtubak/ip/releases)
