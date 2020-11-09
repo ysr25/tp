@@ -56,7 +56,7 @@ public class AddCommand extends Command {
         }
         if (!model.hasFlashcardSet(toAdd.getFlashcardSet())) {
             model.addFlashcard(toAdd);
-            return new CommandResult(String.format(toAdd.getFlashcardSet().value), false, false, true, false, false);
+            return new CommandResult(String.format(toAdd.getFlashcardSet().value), false, false, true);
         }
         model.addFlashcard(toAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
