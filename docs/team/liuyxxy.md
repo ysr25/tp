@@ -19,7 +19,7 @@ Given below are my contributions to the project.
   * What it does: allows the user to sort the list of flashcards by a given requirement.
   * Justification: This feature allows users to be able to better organise the flashcards they have.
 
-* **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true)
+* **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=&sort=groupTitle&sortWithin=title&since=2020-08-14&until=2020-11-09&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&tabAuthor=liuyxxy&tabRepo=AY2021S1-CS2103T-W13-2%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code)
 
 * **Project management**:
   * Managed releases `v1.1` - `v1.4` (4 releases) on GitHub
