@@ -203,19 +203,20 @@ I chose alternative 2, as the parsing of parameters should be a separate respons
 This mechanism makes use of the modifiable `ObservableList` in `Bagel` itself, as it was not possible to sort the unmodifiable
 `ObservableList<Flashcard>` in `Model`. It directly sorts the `ObservableList` in `Bagel` with a comparator.
 
-1. The user executes `sort r/atitle` to sort flashcards by ascending alphabetical order of their titles.
+The following sequence diagrams show how the sort operation works.
+
+![Sequence Diagram for Sort Command in Logic Component Steps 1 - 4](images/SortSequenceDiagram.png)
+![Sequence Diagram for Sort Command in Logic Component Steps 5 - 8](images/SortSequenceDiagram2.png)
+
+
+1. The user executes `sort r/tag` to sort flashcards by ascending alphabetical order of their titles.
 2. `BagelParser` creates an `SortCommandParser` and calls its parse method with the arguments passed in by the user.
 3. `SortCommandParser` returns a new `SortCommand` with the `SortRequirement` to be used.
-4. `SortRequirement` returns a new `SortByTitle` comparator.
-
-![Sequence Diagram for Sort Command in Logic Component 1](images/SortSequenceDiagram.png)
-
-5. When its execute method is called, `SortCommand` calls `sortFlashcardList()` with the comparator, `SortByTitle`.
+4. `SortRequirement` returns a new `SortByTag` comparator.
+5. When its execute method is called, `SortCommand` calls `sortFlashcardList()` with the comparator, `SortByTag`.
 6. The new sorted `ObservableList<Flashcard>` is set as `Bagel`'s `UniqueFlashcardList`.
 7. `Model` will update the displayed list as the inner list has been modified.
 8. The result of this command is returned.
-
-![Sequence Diagram for Sort Command in Logic Component 2](images/SortSequenceDiagram2.png)
 
 #### Design consideration
 
@@ -268,20 +269,18 @@ The edit mechanism involves an additional `EditFlashcardDescriptor` class to pas
 
 The following sequence diagrams show how the edit operation works.
 
-![Sequence Diagram for Edit Command in Logic Component 1](images/EditSequenceDiagram.png)
+![Sequence Diagram for Edit Command in Logic Component Steps 1 - 5](images/EditSequenceDiagram.png)
+![Sequence Diagram for Edit Command in Logic Component Steps 6 - 9](images/EditSequenceDiagram2.png)
 
 1. The user executes `edit 1 t/New Title` to edit the title of the first flashcard in the list currently shown.
 2. `BagelParser` creates an `EditCommandParser` and calls its parse method with the arguments passed in by the user.
 3. `EditCommandParser` creates an `EditFlashcardDescriptor`.
 4. For each field in the flashcard, `EditCommandParser` checks if there is an updated version provided by the user. If there is, the new content is added into the `EditFlashcardDescriptor`.
 5. `EditCommandParser` returns a new `EditCommand` with the index of the `Flashcard` to be edited and the `EditFlashcardDescriptor`.
-
-![Sequence Diagram for Edit Command in Logic Component 2](images/EditSequenceDiagram2.png)
-
-1. When its execute method is called, `EditCommand` gets the `Flashcard` to edit from `Model`.
-2. `EditCommand` creates a new `Flashcard` based on the `EditFlashcardDescriptor` and the `Flashcard` to be edited.
-3. This new `Flashcard` replaces the old `Flashcard` in `Model`.
-4. The result of this command is returned.
+6. When its execute method is called, `EditCommand` gets the `Flashcard` to edit from `Model`.
+7. `EditCommand` creates a new `Flashcard` based on the `EditFlashcardDescriptor` and the `Flashcard` to be edited.
+8. This new `Flashcard` replaces the old `Flashcard` in `Model`.
+9. The result of this command is returned.
 
 #### Design consideration
 

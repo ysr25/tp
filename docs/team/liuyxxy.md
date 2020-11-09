@@ -35,6 +35,7 @@ Given below are my contributions to the project.
   * Developer Guide:
     * Added implementation details of the `view` and `sort` features. (Pull request [\#186](https://github.com/AY2021S1-CS2103T-W13-2/tp/pull/186))
     * Expanded upon Use Case section in Appendix. [Commit](https://github.com/AY2021S1-CS2103T-W13-2/tp/commit/4a0e978adc7b0e4bb9cf558cdd3cca10b21f1c49#diff-1a95edf069a4136e9cb71bee758b0dc86996f6051f0d438ec2c424557de7160b)
+    * Added user stories in Appendix. [Commit](https://github.com/AY2021S1-CS2103T-W13-2/tp/commit/4a0e978adc7b0e4bb9cf558cdd3cca10b21f1c49#diff-1a95edf069a4136e9cb71bee758b0dc86996f6051f0d438ec2c424557de7160b)
 
 * **Community**:
   * PRs reviewed (with non-trivial review comments): [\#279](https://github.com/nus-cs2103-AY2021S1/ip/pull/279), [\#169](https://github.com/nus-cs2103-AY2021S1/ip/pull/169),
