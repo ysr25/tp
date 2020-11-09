@@ -18,11 +18,12 @@ Given below are my contributions to the project.
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true)
 
 * **Project management**:
-  * Managed releases `v1.1` - `v1.3` (3 releases) on GitHub
+  * Managed releases `v1.2` - `v1.2.1` (2 releases) on GitHub
 
 * **Enhancements to existing features**:
   * Replaced some of the original files in AB3 storage with Flashcard storage. (Pull request [\#39]())
-  * Updated the Edit feature to make use of Flashcard (Pull request [\#50]())
+  * Updated the `edit` feature to make use of Flashcard (Pull request [\#50]())
+  * Updated the graphical user interface (Pull request [\#176]())
 
 * **Documentation**:
   * User Guide:

@@ -38,10 +38,6 @@ have been included under the Documentation section of this document.
 
 The ***Architecture Diagram*** given above explains the high-level design of the App. Given below is a quick overview of each component.
 
-<div markdown="span" class="alert alert-primary">
-
-</div>
-
 **`Main`** has two classes called [`Main`](https://github.com/AY2021S1-CS2103T-W13-2/tp/blob/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2021S1-CS2103T-W13-2/tp/blob/master/src/main/java/seedu/address/MainApp.java). It is responsible for,
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
@@ -121,12 +117,6 @@ The `Model`,
 * exposes an unmodifiable `ObservableList<Flashcard>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
 
-**Note:** An alternative (arguably, a more OOP) model is given below.
-It has a `Tag` list in the `Bagel`, which `Flashcard` references.
-This allows `Bagel` to only require one `Tag` object per unique `Tag`, instead of each
-`Flashcard` needing their own `Tag` object.
-![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
-
 ### Storage component
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
@@ -147,6 +137,9 @@ Classes used by multiple components are in the `seedu.bagel.commons` package.
 This section describes some noteworthy details on how certain features are implemented.
 
 ### Search feature
+
+#### Implementation
+
 This mechanism makes use of the unmodifiable `ObservableList<Flashcard>` in `Model`. It filters the given list by searching
 for the flashcard that matches the given keyword.
 
@@ -175,12 +168,17 @@ The following sequence diagrams show how the search operation works.
 I chose alternative 1, because only field for search command is `keyword` and amount of responsibilities for `SearchCommand` will not increase a lot.
   
 ### View feature
+
+#### Implementation
+
 This mechanism makes use of the unmodifiable `ObservableList<Flashcard>` in `Model`. It filters the given list by searching for
 for the flashcard that matches the given index.
 
 *diagram to be included*
 
 ### List feature
+
+#### Implementation
 
 This mechanism makes use of the unmodifiable `ObservableList<Flashcard>` in `Model`. It filters the list based on the parameters passed with the command word `list`.
 
