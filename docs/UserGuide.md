@@ -21,8 +21,8 @@ If you can type fast, Bagel will be sure to aid you in managing your flashcards 
 2. Download the latest `bagel.jar` from [here](https://github.com/AY2021S1-CS2103T-W13-2/tp/releases).
 3. Copy the file to the folder you want to use as the home folder for Bagel.
 4. Double-click the file to start the app. The GUI should appear in a few seconds. Note how the app contains some sample data. It should look like this:
-![Starting up]()
-5. Type the command in the command box and press Enter to execute it. e.g. typing help and pressing Enter will open the help window.
+![Starting up](images/Ui.png)
+5. Type the command in the command box and press Enter to execute it. e.g. typing `help` and pressing Enter will open the help window.
     Some example commands you can try:
     * `list` : Lists all flashcards.
     * `add t/Data Analysis d/Definition of data analysis: xxxxxx` : Adds a flashcard with the title
@@ -60,22 +60,12 @@ Refer to the [Features](#features) below for details of each command.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `t/TITLE d/DESCRIPTION`, `d/DESCRIPTION t/TITLE` is also acceptable.
-  
+
 * Although it is not recommended to supply duplicate parameters, they will still be accepted. However,
 only the last parameter supplied will be considered. 
   e.g. if the command entered is `add t/title 1 t/title 2 d/description`, the title of the flashcard added will be
   `title 2`, as only `t/title 2` will be considered.
 </div>
-
-
-### View help: `help`
-
-Entering help will show you a message for a link to available commands that you can use, with format and examples (i.e. User Guide). Be sure to enter
-this command first if you're new to Bagel to maximise your efficiency in using Bagel!
-
-![help message](images/helpMessage.png)
-
-Format: `help`
 
 
 ### Adding a flashcard: `add`
@@ -85,8 +75,9 @@ This command will add a new flashcard to your current list of flashcards, into t
 Format: `add t/TITLE d/DESCRIPTION s/SET [l/LINK] [tag/TAG]…​`
 
 * Adds a flashcard with a title, description into a set.
-* Title, description and set number (a positive integer between 1 and 99) must be entered.
-* You can even add an optional lin. It should:
+* Title, description and set number (a positive integer between 1 and 20) must be entered.
+  * The set number should not have any leading zeroes.
+* You can even add an optional link. It should:
   * Have a protocol e.g. `https://example.com` instead of `example.com`.
   * Be absolute e.g. `file:///GER1000/example.png` instead of `file://example.png`.
   * Beware! Even if a URL is valid, it may not open, e.g. if the file does not exist.
@@ -101,31 +92,18 @@ Examples:
 description `If p value < 0.05, xxxx; Else, xxxx` into set `1`.
 * `add t/Data Analysis d/Definition of data analysis: xxxxxx s/2` adds a new flashcard with the title `Data Analysis`,
 description `Definition of data analysis: xxxxxx` into set `2`.
-* `add t/dds Ratio(OR) and Risk Ratio(RR) d/R: odds(exp)/odds(unexp), RR: risk(exp)/risk(unexp) s/3 tag/OddsRatio`
-adds a new flashcard with the title `dds Ratio(OR) and Risk Ratio(RR)`, description `R: odds(exp)/odds(unexp), RR: risk(exp)/risk(unexp)`
+* `add t/Odds Ratio(OR) and Risk Ratio(RR) d/R: odds(exp)/odds(unexp), RR: risk(exp)/risk(unexp) s/3 tag/OddsRatio`
+adds a new flashcard with the title `Odds Ratio(OR) and Risk Ratio(RR)`, description `R: odds(exp)/odds(unexp), RR: risk(exp)/risk(unexp)`
 with the tag `OddsRatio` into set `3`.
 * `add t/Types of Observational Studies d/Prospective, Retrospective, Cross-sectional
-l/https://en.wikipedia.org/wiki/Observational_study tag/Types tag/ObservationalStudies s/2` adds a new flashcard with 
+l/https://en.wikipedia.org/wiki/Observational_study tag/Types tag/ObservationalStudies s/2` adds a new flashcard with
 the title `Types of Observational Studies`, description `Prospective, Retrospective, Cross-sectional`,
-link `https://en.wikipedia.org/wiki/Observational_study tag/Types` with the tags `Types` and `ObservationalStudies` into set `2`.
-
-
-### Clearing all flashcard entries: `clear`
-
-This command will clear all the flashcards that you currently have stored in Bagel.
-
-Format: `clear`
-
-<div markdown="block" class="alert alert-info">
-**:information_source: Warning:**<br>
-Once you remove your flashcards, there is no way to undo this and retrieve your data! Be sure you kept a copy of your file somewhere else, or be sure
-that you would like to delete all your data!
-</div>
+link `https://en.wikipedia.org/wiki/Observational_study` with the tags `Types` and `ObservationalStudies` into set `2`.
 
 
 ### Deleting a flashcard: `delete`
 
-This command will deletes the specific flashcard that you specified from your list of flashcards.
+This command will delete the specific flashcard that you specified from your list of flashcards.
 
 Format: `delete INDEX`
 
@@ -135,14 +113,14 @@ Format: `delete INDEX`
 
 <div markdown="block" class="alert alert-info">
 **:information_source: Warning:**<br>
-Once you delete a flashcard, there is no way to undo this and retrieve it! Be sure you kept a copy of your file somewhere else, or be sure
+Once you delete a flashcard, there is no way to undo this and retrieve it! Make sure that you have a copy of your file somewhere else, or
 that you would like to delete this specific flashcard!
 </div>
 
 
 ### Editing a flashcard: `edit`
 
-Edits an existing flashcard.
+Made a mistake? No worries! This command lets you edit a specific flashcard.
 
 Format: `edit INDEX [t/TITLE] [d/DESCRIPTION] [s/SET] [l/LINK] [tag/TAG]…​`
 
@@ -170,12 +148,18 @@ Format: `view INDEX`
 * The index refers to the index number shown in the currently displayed flashcards list.
 * The index **must be a positive integer** 1, 2, 3, …
 
+<div markdown="block" class="alert alert-info">
+**:information_source: Notes about the command format:**<br>
+* To view another flashcard, enter `list` to go back to the entire list of flashcards. Then `view INDEX` of the next flashcard
+you would like to view. 
+</div>
 
-### Viewing all flashcards: `list`
+
+### Listing all flashcards: `list`
 
 Shows a list of all flashcards created, or shows a list of all flashcards in a chosen set.
 
-Format: 
+Format:
 * `list` to show all flashcards created
 * `list s/SET_NUMBER` to show all flashcards in set `SET_NUMBER`
 
@@ -186,48 +170,64 @@ Example:
 ### Flipping through flashcards: `flip`
 
 Flips from the current flashcard to the next flashcard in the sequence.
-* If multiple flashcards are shown, first flashcard at top will be shown.
-* Go back to first flashcard once reach the end of the sequence.
+* If multiple flashcards are shown, the first flashcard at the top will be shown.
+* Once the end of the sequence is reached, the first flashcard will be shown again.
 
 Format: `flip`
 Examples:
 1. Current flashcards in the sequence
 ![flip example](images/flipExample1.png)
-2. type "flip" and show first flashcard in the sequence
+2. Type "flip" to show the first flashcard in the sequence
 ![flip example](images/flipExample2.png)
-3. type "flip" and show next flashcard in the sequence
+3. Type "flip" to show the next flashcard in the sequence
 ![flip example](images/flipExample3.png)
 
 
 ### Searching through flashcards: `search`
 
-Searches for flashcards that have a matching title or description or tag with `KEYWORD` from all flashcards.
+Searches for flashcards that have a matching title, description or tag with `KEYWORD` from all flashcards.
 
 Format: `search k/KEYWORD`
 
 * Searches for flashcards that match with `KEYWORD`.
-* Search is case insensitive. Ex) k/apple can search "apple" and "APPLe".
+* The search is case-insensitive. For example, k/apple can search for "apple" and "APPLe".
 
 Examples:
-*  `search k/testing` returns `testing1`, `testing2` and `testing23` 
+*  `search k/testing` returns `testing1`, `testing2` and `testing23`
 ![search example](images/searchExample.png)
 
 
 ### Sorting flashcards: `sort`
 
-This command lets you sort the currently displayed flashcard according to a requirement. 
+This command lets you sort the currently displayed flashcard according to a requirement.
 
 Format: `sort r/REQUIREMENT`
 
-* Sorts the list by the specified requirement. 
+* Sorts the list by the specified requirement.
 * The requirement **must be one of the following**:
     * atitle (ascending alphabetical order)
     * dtitle (descending alphabetical order)
     * tag
-    
+
 Examples:
 * `sort r/atitle` returns the list of flashcards, sorted in ascending alphabetical order.
 * `sort r/tag` returns the list of flashcards, sorted according to each flashcard's first tag.
+
+
+### Clearing all flashcard entries: `clear`
+
+Clears all flashcard entries from Bagel.
+
+Format: `clear`
+
+
+### View help: `help`
+
+Shows a message for link to available commands that you can use, with format and examples (i.e. User Guide).
+
+![help message](images/helpMessage.png)
+
+Format: `help`
 
 
 ### Exiting the program: `exit`
@@ -262,7 +262,6 @@ while adding flashcards, and to prevent confusion.
 * __Set__: It acts similarly to a folder in the real world. To categorize your flashcards, and maximise your efficiency,
 do be sure to make use of the 'set' feature to place flashcards into different sets.
 
-
 --------------------------------------------------------------------------------------------------------------------
 
 ## Command summary
@@ -270,13 +269,13 @@ do be sure to make use of the 'set' feature to place flashcards into different s
 Action | Format, Examples
 --------|------------------
 **Add** | `add t/TITLE d/DESCRIPTION [s/SET] [l/LINK] [tag/TAG]…`<br> e.g., `add t/Data Analysis d/The definition of Data Analysis is…`
-**Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit** | `edit INDEX [t/TITLE] [d/DESCRIPTION] [s/SET] [l/LINK] [tag/TAG]`<br> e.g., `edit 1 t/Data analysis`
 **View** | `view INDEX`<br> e.g., `view 1`
-**List** | `list`<br> `list s/SET`<br> e.g., `list s/2`
+**List** | `list [s/SET]`<br> e.g., `list s/2`
 **Flip** | `flip`
 **Search** | `search [k/KEYWORD]` <br> e.g., `search k/Data`
-**Sort** | `sort r/REQUIREMENT` <br> e.g., `search r/tag`
+**Sort** | `sort r/REQUIREMENT` <br> e.g., `sort r/tag`
+**Clear** | `clear`
 **Help** | `help`
 **Exit** | `exit`

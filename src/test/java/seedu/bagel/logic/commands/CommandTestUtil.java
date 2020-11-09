@@ -63,7 +63,8 @@ public class CommandTestUtil {
         DESC_AMY = new EditFlashcardDescriptorBuilder().withTitle(VALID_TITLE_AMY)
                 .withDescription(VALID_DESC_AMY).withSet(VALID_SET_AMY).withTags(VALID_TAG_FRIEND).build();
         DESC_BOB = new EditFlashcardDescriptorBuilder().withTitle(VALID_TITLE_BOB)
-                .withDescription(VALID_DESC_BOB).withSet(VALID_SET_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
+                .withDescription(VALID_DESC_BOB).withSet(VALID_SET_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
+                .build();
     }
 
     /**
