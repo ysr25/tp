@@ -220,7 +220,68 @@ I chose alternative 1, because only field for search command is `keyword` and am
 This mechanism makes use of the unmodifiable `ObservableList<Flashcard>` in `Model`. It filters the given list by searching for
 for the flashcard that matches the given index.
 
-*diagram to be included*
+### List feature
+
+#### Implementation
+
+This mechanism makes use of the unmodifiable `ObservableList<Flashcard>` in `Model`. It filters the list based on the parameters passed with the command word `list`.
+
+Its implementation is similar to that of the *Search* feature, with the difference being in point 4.
+* `ViewCommand` calls `updateFilteredFlashcardList()` with predicate `predicateViewFlashcard`.
+
+The following sequence diagram shows how the view operation works with parameters.
+
+![Sequence Diagram for View Command in Logic Component](images/ViewSequenceDiagram.png)
+
+#### Design consideration
+
+##### Aspect: How to pass fields to be edited
+
+* **Alternative 1:** Pass fields to be edited into `ViewCommand` directly
+  * Pros: Easier to implement.
+  * Cons: `ViewCommand` will have more responsibilities.
+
+* **Alternative 2 (current choice):** Store fields in `ViewFlashcardParser` and pass it into `ViewCommand`
+  * Pros: Better separation of concerns.
+  * Cons: More code to write.
+
+I chose alternative 2, as the parsing of parameters should be a separate responsibility from the execution of commands.
+
+
+### Sort feature
+
+#### Implementation
+
+This mechanism makes use of the modifiable `ObservableList` in `Bagel` itself, as it was not possible to sort the unmodifiable
+`ObservableList<Flashcard>` in `Model`. It directly sorts the `ObservableList` in `Bagel` with a comparator.
+
+The following sequence diagrams show how the sort operation works.
+
+![Sequence Diagram for Sort Command in Logic Component Steps 1 - 4](images/SortSequenceDiagram.png)
+![Sequence Diagram for Sort Command in Logic Component Steps 5 - 8](images/SortSequenceDiagram2.png)
+
+
+1. The user executes `sort r/tag` to sort flashcards by ascending alphabetical order of their titles.
+2. `BagelParser` creates an `SortCommandParser` and calls its parse method with the arguments passed in by the user.
+3. `SortCommandParser` returns a new `SortCommand` with the `SortRequirement` to be used.
+4. `SortRequirement` returns a new `SortByTag` comparator.
+5. When its execute method is called, `SortCommand` calls `sortFlashcardList()` with the comparator, `SortByTag`.
+6. The new sorted `ObservableList<Flashcard>` is set as `Bagel`'s `UniqueFlashcardList`.
+7. `Model` will update the displayed list as the inner list has been modified.
+8. The result of this command is returned.
+
+#### Design consideration
+
+##### Aspect: How to pass fields to be edited
+* **Alternative 1:** Make different `SortCommand`s based on the requirement.
+  * Pros: Easier to implement.
+  * Cons: More code to write and leads to repeated code.
+
+* **Alternative 2 (current choice):** Store fields in `SortCommandParser` and `SortRequirement` and pass it into `SortCommand`
+  * Pros: Better separation of concerns.
+  * Cons: More code to write.
+
+I chose alternative 2, as this would lead to better separation of responsibilities and also leads to reduced repetitive code.
 
 ### List feature
 
@@ -239,6 +300,7 @@ The following sequence diagram shows how the list operation works with parameter
 #### Design consideration
 
 ##### Aspect: How to parse the parameters passed with the `list` command
+
 * **Alternative 1:** Pass it into the ListCommand class directly.
   * Pros: Easier to implement.
   * Cons: `ListCommand` has more responsibilities, such as to parse the presence of parameters.
@@ -248,7 +310,6 @@ The following sequence diagram shows how the list operation works with parameter
   * Cons: More code to write, as the original implementation of the `list` command in AB3 did not allow parameters to be passed.
 
 I chose alternative 2, because even though the increase in responsibility for `ListCommand` is rather minimal, parsing of parameters should still be separated from execution of commands.
-
 
 ### Edit Feature
 
@@ -258,67 +319,18 @@ The edit mechanism involves an additional `EditFlashcardDescriptor` class to pas
 
 The following sequence diagrams show how the edit operation works.
 
-![Sequence Diagram for Edit Command in Logic Component](images/EditSequenceDiagram.png)
+![Sequence Diagram for Edit Command in Logic Component Steps 1 - 5](images/EditSequenceDiagram.png)
+![Sequence Diagram for Edit Command in Logic Component Steps 6 - 9](images/EditSequenceDiagram2.png)
 
 1. The user executes `edit 1 t/New Title` to edit the title of the first flashcard in the list currently shown.
 2. `BagelParser` creates an `EditCommandParser` and calls its parse method with the arguments passed in by the user.
 3. `EditCommandParser` creates an `EditFlashcardDescriptor`.
 4. For each field in the flashcard, `EditCommandParser` checks if there is an updated version provided by the user. If there is, the new content is added into the `EditFlashcardDescriptor`.
 5. `EditCommandParser` returns a new `EditCommand` with the index of the `Flashcard` to be edited and the `EditFlashcardDescriptor`.
-
-![Sequence Diagram for Edit Command in Logic Component 2](images/EditSequenceDiagram2.png)
-
-1. When its execute method is called, `EditCommand` gets the `Flashcard` to edit from `Model`.
-2. `EditCommand` creates a new `Flashcard` based on the `EditFlashcardDescriptor` and the `Flashcard` to be edited.
-3. This new `Flashcard` replaces the old `Flashcard` in `Model`.
-4. The result of this command is returned.
-
-#### Design consideration
-
-##### Aspect: How to pass fields to be edited
-
-* **Alternative 1 (current choice):** Store fields in `EditFlashcardDescriptor` and pass it into `EditCommand`
-  * Pros: Better separation of concerns.
-  * Cons: More code to write.
-* **Alternative 2:** Pass fields to be edited into `EditCommand` directly
-  * Pros: Easier to implement.
-  * Cons: `EditCommand` will have more responsibilities.
-  
-### View Feature
-
-#### Implementation
-
-This mechanism makes use of the unmodifiable `ObservableList<Flashcard>` in `Model`. It filters the list by making use of the predicate
-to filter out the desired flashcard.
-
-1. The user executes `search k/apple` to search flashcards that has matching title, description, or tag to the keyword in the list currently shown.
-2. `BagelParser` creates an `SearchCommandParser` and calls its parse method with the arguments passed in by the user.
-3. `SearchCommandParser` returns a new `SearchCommand` with the `keyword` to be searched.
-4. When its execute method is called, `SearchCommand` calls `updateFilteredFlashcardList()` with predicate, `searchFlashcard`.
-5. `Model` will update flashcards based on the predicate.
-7. The result of this command is returned.
-
-Its implementation is similar to that of the *Search* feature, with the difference being in point 4.
-* If there are no parameters passed with the command `list`, `ListCommand ` calls `updateFilteredFlashcardList()` with predicate `PREDICATE_SHOW_ALL_FLASHCARDS`.
-* If a parameter is passed with the command, for example `list s/2`, `ListCommand` calls `updateFilteredFlashcardList()` with predicate `predicateShowFlashcardsInSet`.
-
-The following sequence diagram shows how the list operation works with parameters.
-
-![Sequence Diagram for List Command in Logic Component](images/ListSequenceDiagram.png)
-
-#### Design consideration
-
-##### Aspect: How to parse the parameters passed with the `list` command
-
-* **Alternative 1:** Pass it into the ListCommand class directly.
-  * Pros: Easier to implement.
-  * Cons: `ListCommand` has more responsibilities, such as to parse the presence of parameters.
-
-* **Alternative 2 (current choice):** Create a `ListCommandParser` to parse parameters if there are any.
-  * Pros: Delegates the different responsibilities to each class.
-  * Cons: More code to write, as the original implementation of the `list` command in AB3 did not allow parameters to be passed.
-
-I chose alternative 2, because even though the increase in responsibility for `ListCommand` is rather minimal, parsing of parameters should still be separated from execution of commands.
+6. When its execute method is called, `EditCommand` gets the `Flashcard` to edit from `Model`.
+7. `EditCommand` creates a new `Flashcard` based on the `EditFlashcardDescriptor` and the `Flashcard` to be edited.
+8. This new `Flashcard` replaces the old `Flashcard` in `Model`.
+9. The result of this command is returned.
 
 #### Design consideration
 
@@ -418,11 +430,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`    | user                                       | view a list of sets of flashcards that I currently have   | not mix them up                |
 | `* * *`      | user  | “flip” through a set of flashcards           | memorise them                                                 |
 | `* *`     |  user                             | tag flashcards        | revise a certain topic easily |
-| `* *` | forgetful user | search for flashcards | 
-| `* *` | user | sort my flashcards | keep the list organised | 
-| `* *` | user | add links to my flashcards | find the particular lecture slide/notes by clicking on it | 
-| `* *` | user | add flashcards to sets | memorise relevant flashcards together | 
-| `*` | first time user | view all possible commands | navigate the app easily | 
+| `* *` | forgetful user | search for flashcards |
+| `* *` | user | sort my flashcards | keep the list organised |
+| `* *` | user | add links to my flashcards | find the particular lecture slide/notes by clicking on it |
+| `* *` | user | add flashcards to sets | memorise relevant flashcards together |
+| `*` | first time user | view all possible commands | navigate the app easily |
 | `*` | user ready to start using the app | clear all flashcards | get rid of sample/experimental flashcards I used for exploring the app |
 
 ### Use cases
@@ -444,7 +456,7 @@ Use case ends.
     * 2a1. System requests for the correct data.
     * 2a2. User enters new details.<br>
     Steps 2a1-2a2 are repeated until the data entered are correct.
- 
+
 Use case resumes from step 3.
 
 
@@ -494,7 +506,7 @@ Use case resumes from step 4.
 
 Use case ends.
 
-**Extensions** 
+**Extensions**
 
 * 2a. Similar to extension of UC01.
 
@@ -505,7 +517,7 @@ Use case resumes from step 3.
 
 **MSS**
 
-Similar to UC04, except user enters relevant details for listing all flashcards. 
+Similar to UC04, except user enters relevant details for listing all flashcards.
 
 
 **Use case: UC06 - Flipping through flashcards**
@@ -532,23 +544,23 @@ Use case resumes from step 3/5.
 
 **MSS**
 
-Similar to UC04, except user enters relevant details for searching.  
+Similar to UC04, except user enters relevant details for searching.
 
 Use case resumes from step 3.
 
 
-**Use case: UC08 - Sorting flashcards** 
+**Use case: UC08 - Sorting flashcards**
 
-**MSS** 
+**MSS**
 
-Similar to UC04, except user enters relevant details for sort. 
+Similar to UC04, except user enters relevant details for sort.
 
 
 **Use case: UC09 - Clearing flashcards**
 
 **MSS**
 
-Similar to UC04, except user enters relevant details for clear. 
+Similar to UC04, except user enters relevant details for clear.
 
 
 ### Non-Functional Requirements
@@ -616,5 +628,9 @@ testers are expected to do more *exploratory* testing.
 
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+   1. Open the `bagel.json` file in `data` folder. If it does not exist, run the jar file and type `exit`.
 
+   1. Edit the `bagel.json` file so that it contains invalid information. For example, add a space in a flashcard's tags.
+
+   1. Re-launch the app.<br>
+      Expected: Bagel will start with no flashcards.
