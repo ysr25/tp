@@ -3,7 +3,6 @@ package seedu.bagel.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.bagel.logic.parser.CliSyntax.PREFIX_KEYWORD;
 
-import java.util.Set;
 import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;

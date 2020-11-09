@@ -11,7 +11,7 @@ public class CommandSuggestionUtil {
         ArrayList<String> commandFormats = new ArrayList<>();
         commandFormats.addAll(
                 Arrays.asList(
-                        "add t/TITLE d/DESCRIPTION [s/SET] [l/LINK] [tag/TAG]…",
+                        "add t/TITLE d/DESCRIPTION s/SET [l/LINK] [tag/TAG]…",
                         "clear",
                         "delete INDEX",
                         "edit INDEX [t/TITLE] [d/DESCRIPTION] [s/SET] [l/LINK] [tag/TAG]…",
@@ -22,7 +22,8 @@ public class CommandSuggestionUtil {
                         "view INDEX",
                         "search k/KEYWORD",
                         "sort r/tag",
-                        "sort r/title"
+                        "sort r/atitle",
+                        "sort r/dtitle"
                 )
         );
         return commandFormats;

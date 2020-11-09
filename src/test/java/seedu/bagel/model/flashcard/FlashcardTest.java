@@ -34,9 +34,9 @@ public class FlashcardTest {
         Flashcard editedAlice = new FlashcardBuilder(ALICE).withTitle(VALID_TITLE_BOB).build();
         assertFalse(ALICE.isSameFlashcard(editedAlice));
 
-        // same title, different description -> returns false
+        // same title, different description -> returns true
         editedAlice = new FlashcardBuilder(ALICE).withDescription(VALID_DESC_BOB).build();
-        assertFalse(ALICE.isSameFlashcard(editedAlice));
+        assertTrue(ALICE.isSameFlashcard(editedAlice));
 
         // same title, different link -> returns true
         editedAlice = new FlashcardBuilder(ALICE).withLink(VALID_LINK_BOB).build();
@@ -78,7 +78,7 @@ public class FlashcardTest {
         assertFalse(ALICE.equals(editedAlice));
 
         // different sets -> returns false
-        editedAlice = new FlashcardBuilder(ALICE).withSets("3").build();
+        editedAlice = new FlashcardBuilder(ALICE).withSet("3").build();
         assertFalse(ALICE.equals(editedAlice));
 
         // different tags -> returns false

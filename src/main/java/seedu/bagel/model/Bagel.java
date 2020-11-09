@@ -30,7 +30,8 @@ public class Bagel implements ReadOnlyBagel {
         setOfFlashcardSets = new SetOfFlashcardSets();
     }
 
-    public Bagel() {}
+    public Bagel() {
+    }
 
     /**
      * Creates a Bagel using the Flashcards in the {@code toBeCopied}

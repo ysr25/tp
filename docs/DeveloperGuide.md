@@ -23,9 +23,9 @@ This describes the software architecture and software decisions for the implemen
 of this document is the developers, designers, and software testers of Bagel.
 
 ### Overview
-This document focuses on 2 major parts: design and implementation. Under the Design section, you can find details of 
-the system architecture. Under the Implementation section, you can find details of the implementation of some of the 
-commands used in Bagel. In addition to the current document, separate documents and guides on how to use or test Bagel 
+This document focuses on 2 major parts: design and implementation. Under the Design section, you can find details of
+the system architecture. Under the Implementation section, you can find details of the implementation of some of the
+commands used in Bagel. In addition to the current document, separate documents and guides on how to use or test Bagel
 have been included under the Documentation section of this document.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -37,12 +37,6 @@ have been included under the Documentation section of this document.
 <img src="images/ArchitectureDiagram.png" width="450" />
 
 The ***Architecture Diagram*** given above explains the high-level design of the App. Given below is a quick overview of each component.
-
-<div markdown="span" class="alert alert-primary">
-
-:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/AY2021S1-CS2103T-W13-2/tp/tree/master/docs/diagrams) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
-
-</div>
 
 **`Main`** has two classes called [`Main`](https://github.com/AY2021S1-CS2103T-W13-2/tp/blob/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2021S1-CS2103T-W13-2/tp/blob/master/src/main/java/seedu/address/MainApp.java). It is responsible for,
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
@@ -123,12 +117,6 @@ The `Model`,
 * exposes an unmodifiable `ObservableList<Flashcard>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
 
-**Note:** An alternative (arguably, a more OOP) model is given below.
-It has a `Tag` list in the `Bagel`, which `Flashcard` references.
-This allows `Bagel` to only require one `Tag` object per unique `Tag`, instead of each
-`Flashcard` needing their own `Tag` object.
-![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
-
 ### Storage component
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
@@ -149,10 +137,13 @@ Classes used by multiple components are in the `seedu.bagel.commons` package.
 This section describes some noteworthy details on how certain features are implemented.
 
 ### Search feature
+
+#### Implementation
+
 This mechanism makes use of the unmodifiable `ObservableList<Flashcard>` in `Model`. It filters the given list by searching
 for the flashcard that matches the given keyword.
 
-The following sequence diagrams show how the edit operation works.
+The following sequence diagrams show how the search operation works.
 
 ![Sequence Diagram for Search Command in Logic Component](images/SearchSequenceDiagram.png)
 
@@ -175,12 +166,44 @@ The following sequence diagrams show how the edit operation works.
   * Cons: More code to write.
 
 I chose alternative 1, because only field for search command is `keyword` and amount of responsibilities for `SearchCommand` will not increase a lot.
-  
+
 ### View feature
-This mechanism makes use of the unmodifiable `ObservableList<Flashcard>` in `Model`. It filters the given list by searching
+
+#### Implementation
+
+This mechanism makes use of the unmodifiable `ObservableList<Flashcard>` in `Model`. It filters the given list by searching for
 for the flashcard that matches the given index.
 
 *diagram to be included*
+
+### List feature
+
+#### Implementation
+
+This mechanism makes use of the unmodifiable `ObservableList<Flashcard>` in `Model`. It filters the list based on the parameters passed with the command word `list`.
+
+
+Its implementation is similar to that of the *Search* feature, with the difference being in point 4.
+* If there are no parameters passed with the command `list`, `ListCommand ` calls `updateFilteredFlashcardList()` with predicate `PREDICATE_SHOW_ALL_FLASHCARDS`.
+* If a parameter is passed with the command, for example `list s/2`, `ListCommand` calls `updateFilteredFlashcardList()` with predicate `predicateShowFlashcardsInSet`.
+
+The following sequence diagram shows how the list operation works with parameters.
+
+![Sequence Diagram for List Command in Logic Component](images/ListSequenceDiagram.png)
+
+#### Design consideration
+
+##### Aspect: How to parse the parameters passed with the `list` command
+* **Alternative 1:** Pass it into the ListCommand class directly.
+  * Pros: Easier to implement.
+  * Cons: `ListCommand` has more responsibilities, such as to parse the presence of parameters.
+
+* **Alternative 2 (current choice):** Create a `ListCommandParser` to parse parameters if there are any.
+  * Pros: Delegates the different responsibilities to each class.
+  * Cons: More code to write, as the original implementation of the `list` command in AB3 did not allow parameters to be passed.
+
+I chose alternative 2, because even though the increase in responsibility for `ListCommand` is rather minimal, parsing of parameters should still be separated from execution of commands.
+
 
 ### Edit Feature
 
@@ -235,6 +258,7 @@ The following sequence diagrams show how the edit operation works.
 **Target user profile**:
 
 * computing students taking GER1000
+* wants to memorise content taught in GER1000
 * has a need to manage a significant number of flashcards
 * prefer desktop apps over other types
 * can type fast
@@ -259,100 +283,138 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | user                                       | view individual flashcards          | read them |
 | `* * *`    | user                                       | view a list of sets of flashcards that I currently have   | not mix them up                |
 | `* * *`      | user  | “flip” through a set of flashcards           | memorise them                                                 |
+| `* *`     |  user                             | tag flashcards        | revise a certain topic easily |
+| `* *` | forgetful user | search for flashcards | 
+| `* *` | user | sort my flashcards | keep the list organised | 
+| `* *` | user | add links to my flashcards | find the particular lecture slide/notes by clicking on it | 
+| `* *` | user | add flashcards to sets | memorise relevant flashcards together | 
+| `*` | first time user | view all possible commands | navigate the app easily | 
+| `*` | user ready to start using the app | clear all flashcards | get rid of sample/experimental flashcards I used for exploring the app |
 
 ### Use cases
 
 (For all use cases below, the **System** is `Bagel` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: UC01 - Finding a flashcard**
+**Use case: UC01 - Adding a flashcard**
 
 **MSS**
 
-1. User chooses to find a flashcard.
-2. User enters the keyword they would like to search for.
-3. Bagel finds the flashcard and shows a list of flashcards that contain that keyword.
+1. User chooses to add a flashcard.
+2. User enters the relevant details of the flashcard they would like to add.
+3. System adds the flashcard and shows the new list of flashcards.
 
 Use case ends.
 
-
 **Extensions**
-
-* 2a. Bagel detects an error in the entered data.
-    * 2a1. Bagel requests for the correct data.
-    * 2a2. User enters new details.
-    * Steps 2a1-2a2 are repeated until the data entered are correct.
-
+* 2a. System detects an error in the entered data.
+    * 2a1. System requests for the correct data.
+    * 2a2. User enters new details.<br>
+    Steps 2a1-2a2 are repeated until the data entered are correct.
+ 
 Use case resumes from step 3.
 
 
-**Use case: UC02 - Editing a flashcard**
-
-**MSS**
-
-1. User chooses to edit a flashcard.
-2. User enters ‘list’ to view indexes of flashcards.
-3. Bagel shows the list of flashcards.
-4. User enters the index of the flashcard they would like to edit, and the details to edit.
-5. Bagel edits the flashcard and shows the edited flashcard.
-Use case ends.
-
-
-**Extensions**
-
-* 4a. Bagel detects an error in the entered data.
-    * 4a1. Bagel requests for the correct data.
-    * 4a2. User enters new details.
-    * Steps 4a1-4a2 are repeated until the data entered are correct.
-
-Use case resumes from step 5.
-
-
-**Use case: UC03 - Deleting a flashcard**
+**Use case: UC02 - Deleting a flashcard**
 
 **MSS**
 
 1. User chooses to delete a flashcard.
-2. User enters ‘list’ to view indexes of flashcards.
-3. Bagel shows the list of flashcards.
-4. User enters the index of the flashcard they would like to delete.
-5. Bagel deletes the flashcard and shows the new list of flashcards.
+2. User <u>lists the entire list of flashcards. (UC)</u>
+3. User enters the index of the flashcard they would like to delete.
+4. System deletes the flashcard and shows the new list of flashcards.
 
 Use case ends.
 
+**Extensions**
+
+* 3a. Similar to extension of UC01.
+
+Use case resumes from step 4.
+
+
+**Use case: UC03 - Editing a flashcard**
+
+**MSS**
+
+1. User chooses to edit a flashcard.
+2. User <u>lists the entire list of flashcards. (UC05)</u>
+3. User enters the index of the flashcard they would like to edit, and the details to edit.
+4. System edits the flashcard and shows the edited flashcard.
+
+Use case ends.
 
 **Extensions**
 
-* 4a. Bagel detects an error in the entered data.
-    * 4a1. Bagel requests for the correct data.
-    * 4a2. User enters new details.
-    * Steps 4a1-4a2 are repeated until the data entered are correct.
+* 3a. Similar to extension of UC01.
 
-Use case resumes from step 5.
+Use case resumes from step 4.
 
 
-**Use case: UC04 - Flipping through flashcards**
+**Use case: UC04 - Viewing a flashcard**
+
+**MSS**
+
+1. User chooses to view a flashcard.
+2. User enters the index of the flashcard they would like to view.
+3. System displays the flashcard.
+
+Use case ends.
+
+**Extensions** 
+
+* 2a. Similar to extension of UC01.
+
+Use case resumes from step 3.
+
+
+**Use case: UC05 - Listing all flashcards**
+
+**MSS**
+
+Similar to UC04, except user enters relevant details for listing all flashcards. 
+
+
+**Use case: UC06 - Flipping through flashcards**
 
 **MSS**
 
 1. User chooses to flip through the list of flashcards.
-2. User enters ‘flip’ to start viewing from the first flashcard in the list.
-3. Bagel shows the first flashcard.
-4. User enters ‘flip’ to view the next flashcard in the list.
-5. Bagel shows the next flashcard.
+2. User enters the relevant details to start viewing from the first flashcard in the list.
+3. System shows the first flashcard.
+4. User enters the relevant details to view the next flashcard in the list.
+5. System shows the next flashcard.<br>
 Steps 4-5 are repeated for each flashcard, until the user reaches the end of the list.
-6. Bagel shows the current list of flashcards.
+6. System shows the first flashcard.
 
 Use case ends.
 
-
 **Extensions**
 
-* 2a/4a. Bagel detects an error in the entered data.
-    * 2a1/4a1. Bagel requests for the correct data.
-    * 2a2/4a2. User enters new details.
-    * Steps 2a1-2a2/4a1-4a2 are repeated until the data entered are correct.
+* 2a/4a. Similar to extension of UC01.
 
 Use case resumes from step 3/5.
+
+**Use case: UC07 - Searching through flashcards**
+
+**MSS**
+
+Similar to UC04, except user enters relevant details for searching.  
+
+Use case resumes from step 3.
+
+
+**Use case: UC08 - Sorting flashcards** 
+
+**MSS** 
+
+Similar to UC04, except user enters relevant details for sort. 
+
+
+**Use case: UC09 - Clearing flashcards**
+
+**MSS**
+
+Similar to UC04, except user enters relevant details for clear. 
 
 
 ### Non-Functional Requirements
@@ -371,6 +433,8 @@ Use case resumes from step 3/5.
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
+* **Command Line Interface (CLI)**: Text based user interface.
+* **Graphical User Interface (GUI)**: User interface that allows users to interact via icons and graphics.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -390,7 +454,7 @@ testers are expected to do more *exploratory* testing.
    1. Download the jar file and copy into an empty folder.
 
    1. Double-click the jar file.<br>
-      Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+      Expected: Shows the GUI with a set of sample flashcards. The window size may not be optimum.
 
 1. Saving window preferences
 

@@ -22,8 +22,8 @@ public class AddCommand extends Command {
             + "Parameters: "
             + PREFIX_TITLE + "TITLE "
             + PREFIX_DESC + "DESCRIPTION "
+            + PREFIX_SET + "SET "
             + "[" + PREFIX_LINK + "LINK] "
-            + "[" + PREFIX_SET + "SET] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_TITLE + "Definition of p-value "
@@ -54,11 +54,13 @@ public class AddCommand extends Command {
         if (model.hasFlashcard(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_FLASHCARD);
         }
-
+        if (!model.hasFlashcardSet(toAdd.getFlashcardSet())) {
+            model.addFlashcard(toAdd);
+            return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), false, false, true);
+        }
         model.addFlashcard(toAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
-
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
