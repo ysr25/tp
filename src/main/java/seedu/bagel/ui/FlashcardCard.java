@@ -4,8 +4,6 @@ import java.util.Comparator;
 import java.util.logging.Logger;
 
 import javafx.application.HostServices;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
