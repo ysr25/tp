@@ -156,6 +156,17 @@ Format: `view INDEX`
 you would like to view.
 </div>
 
+Visual walkthrough: 
+1. Use `list` to obtain the index of the flashcard you want to view. In this example, you want to view the flashcard with the
+title `Types of Sampling Plan`.
+![view example](images/viewExample1.png)
+2. You can find the index of the flashcard by looking at the number at its left.
+![view example](images/viewExample2.png)
+2. In the command box at the top, type `view`, followed by the index of the flashcard which is `2` and hit enter.
+![view example](images/viewExample3.png)
+3. The flashcard with the title `Types of Sampling Plan` will then be displayed.
+![view example](images/viewExample4.png)
+
 
 ### Listing all flashcards: `list`
 
@@ -177,12 +188,12 @@ Want to flip through the list of flashcards? This command lets you flip from the
 * Once the end of the sequence is reached, the first flashcard will be shown again.
 
 Format: `flip`
-Examples:
-1. Current flashcards in the sequence
+Visual walkthrough:
+1. Current flashcards in the sequence.
 ![flip example](images/flipExample1.png)
-2. Type "flip" to show the first flashcard in the sequence
+2. Type "flip" to show the first flashcard in the sequence.
 ![flip example](images/flipExample2.png)
-3. Type "flip" to show the next flashcard in the sequence
+3. Type "flip" to show the next flashcard in the sequence.
 ![flip example](images/flipExample3.png)
 
 
@@ -213,8 +224,16 @@ Format: `sort r/REQUIREMENT`
     * tag
 
 Examples:
-* `sort r/atitle` returns the list of flashcards, sorted in ascending alphabetical order.
 * `sort r/tag` returns the list of flashcards, sorted according to each flashcard's first tag.
+* `sort r/atitle` returns the list of flashcards, sorted in ascending alphabetical order.
+
+Visual walkthrough:
+1. You want to sort your list of flashcards by ascending title.
+2. Type `sort`, followed by `r/atitle` for the requirement.
+![sort example](images/sortExample1.png)
+3. The sorted list of flashcards will be displayed.
+![sort example](images/sortExample2.png)
+
 
 <div markdown="block" class="alert alert-info">
 **:information_source: Warning:**<br>
@@ -276,7 +295,7 @@ do be sure to make use of the 'set' feature to place flashcards into different s
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add t/TITLE d/DESCRIPTION s/SET [l/LINK] [tag/TAG]…`<br> e.g., `add t/Data Analysis d/The definition of Data Analysis is…`
+**Add** | `add t/TITLE d/DESCRIPTION [s/SET] [l/LINK] [tag/TAG]…`<br> e.g., `add t/Data Analysis d/The definition of Data Analysis is…`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit** | `edit INDEX [t/TITLE] [d/DESCRIPTION] [s/SET] [l/LINK] [tag/TAG]`<br> e.g., `edit 1 t/Data analysis`
 **View** | `view INDEX`<br> e.g., `view 1`
