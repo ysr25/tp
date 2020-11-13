@@ -50,6 +50,5 @@ Given below are my contributions to the project.
     * Added examples for commands in Quick Start
   * Developer Guide:
     * Added implementation details of the `add`, `delete`, `tag`, `clear` and `help` features.
-
 * **Community**:
   * PRs reviewed (with non-trivial review comments): [\#269](https://github.com/nus-cs2103-AY2021S1/ip/pull/269), [\#326](https://github.com/nus-cs2103-AY2021S1/ip/pull/326)
