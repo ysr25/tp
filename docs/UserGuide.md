@@ -140,6 +140,16 @@ Examples:
 *  `edit 1 s/2` edits the set number which this flashcard is in, to `2`.
 *  `edit 1 t/p-value tag/` edits the title of the 1st flashcard to be `p-value` and clears all existing tags.
 
+Visual walkthrough:
+1. Type `list` into the command box and hit enter to view all flashcards.
+   ![edit example](images/editExample1.png)
+1. Look for the index of the card you want to edit.<br>
+   For example, if you want to edit the flashcard with title `Types of Sampling Plan`, the index here is `2`, written to the left of the title.
+1. Type `edit  2` in the command box, followed with the information to be edited.<br>
+   For example, if you want to change the title to `Sampling Plan`, write `t/Sampling Plan`.
+   ![edit example](images/editExample2.png)
+1. Press enter. A message should appear saying that the flashcard has been edited.
+   ![edit example](images/editExample3.png)
 
 ### Viewing a flashcard: `view`
 
@@ -188,6 +198,7 @@ Want to flip through the list of flashcards? This command lets you flip from the
 * Once the end of the sequence is reached, the first flashcard will be shown again.
 
 Format: `flip`
+
 Visual walkthrough:
 1. Current flashcards in the sequence.
 ![flip example](images/flipExample1.png)
